@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Thoughts on things">
+    
+    <link rel="shortcut icon" href="https://wandersoncferreira.github.io/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/style.min.css">
+
+    <title>Smarter, not harder: Memoization</title>
+</head>
+<body><header id="banner">
+    <h2><a href="https://wandersoncferreira.github.io">Bartuka</a></h2>
+    <nav>
+        <ul>
+            <li>
+                <a href="/" title="blogs">Blog</a>
+            </li><li>
+                <a href="/notes/" title="notes">Notes</a>
+            </li><li>
+                <a href="/projects/" title="projects">Projects</a>
+            </li><li>
+                <a href="/about/" title="about">About</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main id="content">
+<article>
+    <header id="post-header">
+        <h1>Smarter, not harder: Memoization</h1><time>July 8, 2019</time></header><p>I&rsquo;m reading the Neal&rsquo;s Ford book Functional Thinking and now the whole
+idea of functional paradigm is becoming clearer. The whole idea of
+functional programming (FP) today is to be able to leave acidental
+complexities up to the language or the runtime to solve for you. No
+one should have to manage memory into your daily work activities. This
+kind of problem is not related to your business at all! You are not
+being paid to solve it.</p>
+<p>Luckily, most modern languages already have this task completely
+handled without your direct intervention.</p>
+<p>There are many situations where this kind of niceties are introduced
+into the FP world, for example, if you use the map function in
+Clojure, you already gain parallel execution for free at runtime. If
+you use higher-order constructs, you enable the runtine to become
+smarter and to even rearrange execution in a most appropriate order.</p>
+<p>This it not to say that you should not learn what is going on behind
+the scenes, but once you learn it you can use this knowledge in very
+succinct way.</p>
+<blockquote>
+<p>Always learn one level of abstraction underneath you</p>
+</blockquote>
+<p>However, let&rsquo;s explore the memoization mechanism for a second.</p>
+<h2 id="what-is-memoization">What is memoization?</h2>
+<p> </p>
+<p>Imagine that you have a function that is very computational intensive,
+meaning that you spend most of your execution time to perform your
+desired operation on this function. And for your despair, the very
+same function is called several times inside your application. How can
+we speed this up?</p>
+<p>Let&rsquo;s consider the task of classifying numbers into perfect, abundant
+and deficient accordingly with mathematical definitions of perfect
+numbers.</p>
+<p>Example of a Python code to Classify numbers into perfect, abundant
+and deficient.</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">Classifier</span><span class="p">:</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">sum_factors</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">Classifier</span><span class="o">.</span><span class="n">factors_of</span><span class="p">(</span><span class="n">number</span><span class="p">))</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">factors_of</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+        <span class="n">filtered_list</span> <span class="o">=</span> <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">number</span> <span class="o">%</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">),</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">number</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">filtered_list</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">is_perfect</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Classifier</span><span class="o">.</span><span class="n">sum_factors</span><span class="p">(</span><span class="n">number</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">number</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">is_abundant</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Classifier</span><span class="o">.</span><span class="n">sum_factors</span><span class="p">(</span><span class="n">number</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">number</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">is_deficient</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Classifier</span><span class="o">.</span><span class="n">sum_factors</span><span class="p">(</span><span class="n">number</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">number</span>
+</code></pre></div><p>Now, if you want to call this function on the numbers <code>[6, 25, 15000, 56000, 110560]</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">15000</span><span class="p">,</span> <span class="mi">56000</span><span class="p">,</span> <span class="mi">110560</span><span class="p">]:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&#34;The number {} is perfect? {}&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">el</span><span class="p">,</span> <span class="n">Classifier</span><span class="o">.</span><span class="n">is_perfect</span><span class="p">(</span><span class="n">el</span><span class="p">)))</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&#34;The number {} is abundant? {}&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">el</span><span class="p">,</span> <span class="n">Classifier</span><span class="o">.</span><span class="n">is_abundant</span><span class="p">(</span><span class="n">el</span><span class="p">)))</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&#34;The number {} is deficient? {}&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">el</span><span class="p">,</span> <span class="n">Classifier</span><span class="o">.</span><span class="n">is_deficient</span><span class="p">(</span><span class="n">el</span><span class="p">)))</span>
+</code></pre></div><p>You will not probably like the result as the number that you want to
+classify gets bigger and bigger. Same funcionality implemented in
+Clojure:</p>
+<div class="highlight"><pre class="chroma"><code class="language-clojure" data-lang="clojure"><span class="p">(</span><span class="kd">defn- </span><span class="nv">sum-of-factors</span> <span class="p">[</span><span class="nv">number</span><span class="p">]</span>
+  <span class="p">(</span><span class="nf">-&gt;&gt;</span> <span class="p">(</span><span class="nb">range </span><span class="mi">1</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">number</span> <span class="mi">1</span><span class="p">))</span>
+       <span class="p">(</span><span class="nb">filter </span><span class="o">#</span><span class="p">(</span><span class="nb">= </span><span class="mi">0</span> <span class="p">(</span><span class="nb">rem </span><span class="nv">number</span> <span class="nv">%</span><span class="p">)))</span>
+       <span class="p">(</span><span class="nb">reduce </span><span class="nv">+</span><span class="p">)))</span>
+
+<span class="p">(</span><span class="kd">defn </span><span class="nv">is-perfect</span> <span class="p">[</span><span class="nv">number</span><span class="p">]</span>
+  <span class="p">(</span><span class="nb">= </span><span class="p">(</span><span class="nf">sum-of-factors</span> <span class="nv">number</span><span class="p">)</span> <span class="p">(</span><span class="nb">* </span><span class="mi">2</span> <span class="nv">number</span><span class="p">)))</span>
+
+<span class="p">(</span><span class="kd">defn </span><span class="nv">is-abundant</span> <span class="p">[</span><span class="nv">number</span><span class="p">]</span>
+  <span class="p">(</span><span class="nb">&gt; </span><span class="p">(</span><span class="nf">sum-of-factors</span> <span class="nv">number</span><span class="p">)</span> <span class="p">(</span><span class="nb">* </span><span class="mi">2</span> <span class="nv">number</span><span class="p">)))</span>
+
+<span class="p">(</span><span class="kd">defn </span><span class="nv">is-deficient</span> <span class="p">[</span><span class="nv">number</span><span class="p">]</span>
+  <span class="p">(</span><span class="nb">&lt; </span><span class="p">(</span><span class="nf">sum-of-factors</span> <span class="nv">number</span><span class="p">)</span> <span class="p">(</span><span class="nb">* </span><span class="mi">2</span> <span class="nv">number</span><span class="p">)))</span>
+</code></pre></div><p>And the same tests calls:</p>
+<div class="highlight"><pre class="chroma"><code class="language-clojure" data-lang="clojure"><span class="p">(</span><span class="nb">doseq </span><span class="p">[</span><span class="nv">el</span> <span class="p">[</span><span class="mi">6</span>, <span class="mi">25</span>, <span class="mi">15000</span>, <span class="mi">56000</span>, <span class="mi">110560</span><span class="p">]]</span>
+  <span class="p">(</span><span class="nb">println </span><span class="p">(</span><span class="nb">str </span><span class="s">&#34;The number &#34;</span> <span class="nv">el</span> <span class="s">&#34; is perfect?&#34;</span> <span class="p">(</span><span class="nf">is-perfect</span> <span class="nv">el</span><span class="p">)))</span>
+  <span class="p">(</span><span class="nb">println </span><span class="p">(</span><span class="nb">str </span><span class="s">&#34;The number &#34;</span> <span class="nv">el</span> <span class="s">&#34; is abundant?&#34;</span> <span class="p">(</span><span class="nf">is-abundant</span> <span class="nv">el</span><span class="p">)))</span>
+  <span class="p">(</span><span class="nb">println </span><span class="p">(</span><span class="nb">str </span><span class="s">&#34;The number &#34;</span> <span class="nv">el</span> <span class="s">&#34; is deficient?&#34;</span> <span class="p">(</span><span class="nf">is-deficient</span> <span class="nv">el</span><span class="p">))))</span>
+</code></pre></div><p>You will not like these results too. As we are not in a speed context
+between languages, I will place the time that the Clojure
+implementation took to perform these classifications. Example of
+results. Showing only the is_perfect test.</p>
+<div class="highlight"><pre class="chroma"><code class="language-clojure" data-lang="clojure"><span class="nv">el</span> <span class="nb">- </span><span class="mi">6</span><span class="err">:</span>      <span class="s">&#34;Elapsed time: 0.122637 msecs&#34;</span>
+<span class="nv">el</span> <span class="nb">- </span><span class="mi">25</span><span class="err">:</span>     <span class="s">&#34;Elapsed time: 0.071203 msecs&#34;</span>
+<span class="nv">el</span> <span class="nb">- </span><span class="mi">15000</span><span class="err">:</span>  <span class="s">&#34;Elapsed time: 12.583968 msecs&#34;</span>
+<span class="nv">el</span> <span class="nb">- </span><span class="mi">56000</span><span class="err">:</span>  <span class="s">&#34;Elapsed time: 32.59634 msecs&#34;</span>
+<span class="nv">el</span> <span class="nb">- </span><span class="mi">110560</span><span class="err">:</span> <span class="s">&#34;Elapsed time: 47.281954 msecs&#34;</span>
+</code></pre></div><p>In order to perform all the classifications, the code took 170 msecs.</p>
+<h2 id="implementing-memoization">Implementing memoization</h2>
+<p>Ok, we understand the problem now. The whole idea of memoization is to
+cache some results in order to gain speed when you compute that value
+again. This is very nice and simple: you exchange memory space for
+speed. Instead of computing the whole thing again, you will only
+perform a lookup into some data structure.</p>
+<p>However, you see functional programming concepts kick-in again. In
+order to implement this sort of caching, you need that your function
+or method to be pure, in other words, if you pass the same inputs you
+always get the same output!</p>
+<p>Implementing caching in Python to simulate memoization.</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">ClassifierCached</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sum_cache</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">def</span> <span class="nf">sum_factors</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">number</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">number</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">sum_cache</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sum_cache</span><span class="p">[</span><span class="n">number</span><span class="p">]</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">factors_of</span><span class="p">(</span><span class="n">number</span><span class="p">))</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">sum_cache</span><span class="p">[</span><span class="n">number</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">factors_of</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">number</span><span class="p">):</span>
+        <span class="n">filtered_list</span> <span class="o">=</span> <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">number</span> <span class="o">%</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">),</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">number</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">filtered_list</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">is_perfect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">number</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">sum_factors</span><span class="p">(</span><span class="n">number</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">number</span>
+
+    <span class="k">def</span> <span class="nf">is_abundant</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">number</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">sum_factors</span><span class="p">(</span><span class="n">number</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">number</span>
+
+    <span class="k">def</span> <span class="nf">is_deficient</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">number</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">sum_factors</span><span class="p">(</span><span class="n">number</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">number</span>
+</code></pre></div><p>If you pay attention, you will see that I haven&rsquo;t done much in order to implement this simple caching mechanism. However, what happened?</p>
+<ul>
+<li>I have to choose the data structure to store the data (a dictionary sum_cache)</li>
+<li>I have to manage the lookup into the data structure</li>
+<li>I have to manage the population of the data structure</li>
+<li>I have to change the staticmethod functions to become instance methods, because now I have a state to manage.</li>
+</ul>
+<p>Let&rsquo;s take a look at the Clojure version:</p>
+<div class="highlight"><pre class="chroma"><code class="language-clojure" data-lang="clojure"><span class="kd">defn- </span><span class="nv">sum-of-factors-non-cached</span> <span class="p">[</span><span class="nv">number</span><span class="p">]</span>
+  <span class="p">(</span><span class="nf">-&gt;&gt;</span> <span class="p">(</span><span class="nb">range </span><span class="mi">1</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">number</span> <span class="mi">1</span><span class="p">))</span>
+       <span class="p">(</span><span class="nb">filter </span><span class="o">#</span><span class="p">(</span><span class="nb">= </span><span class="mi">0</span> <span class="p">(</span><span class="nb">rem </span><span class="nv">number</span> <span class="nv">%</span><span class="p">)))</span>
+       <span class="p">(</span><span class="nb">reduce </span><span class="nv">+</span><span class="p">)))</span>
+
+<span class="p">(</span><span class="k">def </span><span class="nv">sum-of-factors</span>
+  <span class="p">(</span><span class="nf">memoize</span> <span class="nv">sum-of-factors-non-cached</span><span class="p">))</span>
+</code></pre></div><p>I just renamed the old implemented function to become
+sum-of-factors-non-cached and created a new one using the function
+memoize. That&rsquo;s it.</p>
+<p>Now, the whole call cost 80 msecs. As worse as your high-demanding
+function become, the clearer become the advantages of
+memoization. What&rsquo;s the beauty on the Clojure version? I delegate to
+the language all the choices that I had to make in the Python
+version. The runtime is taking care of all the details for me.</p>
+<p>Let&rsquo;s keep focused on the business problems we want to solve!!</p>
+</article>
+
+        </main><footer id="footer">
+    Copyright © 2020 Wanderson Ferreira
+</footer>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Thoughts on things">
+    
+    <link rel="shortcut icon" href="https://wandersoncferreira.github.io/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/style.min.css">
+
+    <title>Transactions: myths, surprises, and opportunities</title>
+</head>
+<body><header id="banner">
+    <h2><a href="https://wandersoncferreira.github.io">Bartuka</a></h2>
+    <nav>
+        <ul>
+            <li>
+                <a href="/" title="blogs">Blog</a>
+            </li><li>
+                <a href="/notes/" title="notes">Notes</a>
+            </li><li>
+                <a href="/projects/" title="projects">Projects</a>
+            </li><li>
+                <a href="/about/" title="about">About</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main id="content">
+<article>
+    <header id="post-header">
+        <h1>Transactions: myths, surprises, and opportunities</h1><time>June 13, 2020</time></header><h2 id="youtubehttpsyoutube5zjhntm8xu8"><a href="https://youtu.be/5ZjhNTM8XU8">Youtube</a></h2>
+<h2 id="speaker">Speaker</h2>
+<p>Martin Kleppmann</p>
+<h2 id="thoughts">Thoughts</h2>
+<p>This was the first talk from Martin that I saw, he is very thoughtful
+and explains complex ideas somehow easily. I think because of Datomic
+I got more interest in databases, I did the Day of Datomic course in
+person at Cognitect and it was very nice to meet so many people
+interested in databases.</p>
+<p>Looks like the software engineers in general does not like this
+subject very much, however seems like the job of building and dealing
+with &ldquo;information systems&rdquo; will require you to know more and more
+about these tools.</p>
+<p>I will keep watching materials from Martin now. Luckily, I already had
+his book. Looking forward to read it.</p>
+<h2 id="quotes">Quotes</h2>
+<p>Durability:</p>
+<ul>
+<li>archive tape</li>
+<li>fysnc to disk</li>
+<li>replication</li>
+</ul>
+<p>Consistency:</p>
+<ul>
+<li>Not related to C in CAP theorem</li>
+<li>&ldquo;tossed in to make the acronym work&rdquo; (? lol)</li>
+<li>property of how the application use the database not the database itself</li>
+</ul>
+<p>Atomicity:</p>
+<ul>
+<li>not about concurrency!</li>
+<li>handling faults (crashes)</li>
+<li>transactions = (multi-object) atomicity, rollback writes on abort</li>
+<li>Abortability is better name rather than Atomicity</li>
+</ul>
+<p>Isolation:</p>
+<ul>
+<li>Serializable?</li>
+<li>Read committed. You read only after the operation has been committed.</li>
+<li>Snapshot isolation. Try to prevent read skew</li>
+<li>Repeatable read. Try to prevent read skew</li>
+</ul>
+<h2 id="recommendations">Recommendations</h2>
+<ol>
+<li>Create transaction boundaries in your applications.</li>
+<li>Avoid transactions across services</li>
+<li>Learn the isolation levels defaults of your database and the implications</li>
+</ol>
+</article>
+
+        </main><footer id="footer">
+    Copyright © 2020 Wanderson Ferreira
+</footer>
+</body>
+</html>
