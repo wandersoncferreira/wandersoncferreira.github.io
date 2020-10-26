@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Thoughts on things">
+    
+    <link rel="shortcut icon" href="https://wandersoncferreira.github.io/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/style.min.css">
+
+    <title>Transducers</title>
+</head>
+<body><header id="banner">
+    <h2><a href="https://wandersoncferreira.github.io">Bartuka</a></h2>
+    <nav>
+        <ul>
+            <li>
+                <a href="/blog" title="blog">Blog</a>
+            </li><li>
+                <a href="/notes/" title="notes">Notes</a>
+            </li><li>
+                <a href="/projects/" title="projects">Projects</a>
+            </li><li>
+                <a href="/about/" title="about">About</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main id="content">
+<article>
+    <header id="post-header">
+        <h1>Transducers</h1><time>February 24, 2020</time></header>
+    
+ 
+ <a href="https://wandersoncferreira.github.io/tags/clojure/">clojure</a> <a href="https://wandersoncferreira.github.io/tags/rich-hickey/">rich-hickey</a>
+
+
+
+<h3 id="youtube-linkhttpsyoutube6mtbuzafcii"><a href="https://youtu.be/6mTbuzafcII">Youtube Link</a></h3>
+<h2 id="speaker">Speaker</h2>
+<p>Rich Hickey, creator of Clojure</p>
+<h2 id="thoughts">Thoughts</h2>
+<p>I already watched this talk more than one year ago. And today I feel
+very happy because I could understand 80% of that was said about
+transducers and better yet, 100% of the problem that transducer
+attempt to solve.</p>
+<p>This is a good proxy that I am learning =)</p>
+<p>Rich talks are always very bright and full of ideas and provocations
+to your day-to-day job. It&rsquo;s up to you to translate them and apply
+succefully.</p>
+<p>The journey continues!</p>
+<h2 id="quotes">Quotes</h2>
+<p>What they are?</p>
+<ul>
+<li>extract the <strong>essence</strong> of map, filter et al</li>
+<li>away from the functions that transform sequences/collections</li>
+<li>recasting them as <strong>process transformations</strong></li>
+</ul>
+<p> 
+ </p>
+<p>What kind of processes?</p>
+<ul>
+<li>ones that can defined in terms of a <strong>succession</strong> or <strong>steps</strong></li>
+<li>where each step <strong>ingests</strong> an <strong>input</strong></li>
+</ul>
+<p> 
+ </p>
+<p>Transducers are fully decoupled</p>
+<ul>
+<li>know nothing of the process they modify</li>
+<li>may call step 0, 1 or more times</li>
+<li>can transform input arg</li>
+</ul>
+<p> 
+ </p>
+<p>Early Termination</p>
+<ul>
+<li>Reduction normally processes all input</li>
+<li>Sometimes a process has just &lsquo;had enough&rsquo; input, or gotten external trigger to terminate</li>
+<li>A transducer might decide the same</li>
+<li>code example:</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-clojure" data-lang="clojure"><span class="p">(</span><span class="nf">comp</span>
+ <span class="p">(</span><span class="nf">mapcatting</span> <span class="nv">unbundle-pallet</span><span class="p">)</span>
+ <span class="p">(</span><span class="nf">taking-while</span> <span class="nv">non-ticking?</span><span class="p">)</span>
+ <span class="p">(</span><span class="nf">filtering</span> <span class="nv">non-food?</span><span class="p">)</span>
+ <span class="p">(</span><span class="nf">mapping</span> <span class="nv">label-heavy</span><span class="p">))</span>
+</code></pre></div><h2 id="code-snippet">Code Snippet</h2>
+<p>Process to early terminate.</p>
+<div class="highlight"><pre class="chroma"><code class="language-clojure" data-lang="clojure"><span class="p">(</span><span class="kd">defn </span><span class="nv">taking-while</span> <span class="p">[</span><span class="nv">pred</span><span class="p">]</span>
+  <span class="p">(</span><span class="k">fn </span><span class="p">[</span><span class="nv">step</span><span class="p">]</span>
+    <span class="p">(</span><span class="k">fn </span><span class="p">[</span><span class="nv">r</span> <span class="nv">x</span><span class="p">]</span>
+      <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nf">pred</span> <span class="nv">x</span><span class="p">)</span>
+        <span class="p">(</span><span class="nf">step</span> <span class="nv">r</span> <span class="nv">x</span><span class="p">)</span>
+        <span class="p">(</span><span class="nf">reduced</span> <span class="nv">r</span><span class="p">)))))</span>
+</code></pre></div><p>A stateful transducer</p>
+<div class="highlight"><pre class="chroma"><code class="language-clojure" data-lang="clojure"><span class="p">(</span><span class="kd">defn </span><span class="nv">dropping-while</span> <span class="p">[</span><span class="nv">pred</span><span class="p">]</span>
+  <span class="p">(</span><span class="k">fn </span><span class="p">[</span><span class="nv">step</span><span class="p">]</span>
+    <span class="p">(</span><span class="k">let </span><span class="p">[</span><span class="nv">dv</span> <span class="p">(</span><span class="nf">volatile!</span> <span class="nv">true</span><span class="p">)]</span>
+      <span class="p">(</span><span class="k">fn </span><span class="p">[</span><span class="nv">r</span> <span class="nv">x</span><span class="p">]</span>
+        <span class="p">(</span><span class="k">let </span><span class="p">[</span><span class="nv">drop?</span> <span class="o">@</span><span class="nv">dv</span><span class="p">]</span>
+          <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">and </span><span class="nv">drop?</span> <span class="p">(</span><span class="nf">pred</span> <span class="nv">x</span><span class="p">))</span>
+            <span class="nv">r</span>
+            <span class="p">(</span><span class="nf">do</span>
+              <span class="p">(</span><span class="nf">vreset!</span> <span class="nv">dv</span> <span class="nv">false</span><span class="p">)</span>
+              <span class="p">(</span><span class="nf">step</span> <span class="nv">r</span> <span class="nv">x</span><span class="p">))))))))</span>
+</code></pre></div><h2 id="recommendations">Recommendations</h2>
+<ol>
+<li>We can&rsquo;t be reimplementing the same thing over and over again.</li>
+<li>Manu list fns can be defined in terms of <em>foldr</em></li>
+</ol>
+<ul>
+<li>encapsulates the recursion</li>
+<li>easier to reason about and transform</li>
+</ul>
+<ol start="3">
+<li>Transducers <em>must</em> support arity-0 init in terms of a call to the
+nested init.</li>
+</ol>
+<h2 id="papers">Papers</h2>
+<ol>
+<li><a href="https://www.cs.ox.ac.uk/files/3390/PRG69.pdf">Lectures on Constructive Functional Programming</a> - by RS Bird</li>
+<li><a href="https://www.cs.nott.ac.uk/~pszgmh/fold.pdf">A tutorial on the universality and expressiveness of fold</a> - by Graham Hutton</li>
+</ol>
+</article>
+
+        </main><footer id="footer">
+    Copyright © 2020 Wanderson Ferreira
+</footer>
+</body>
+</html>

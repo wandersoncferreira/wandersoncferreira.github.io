@@ -34,6 +34,16 @@
   </url>
   
   <url>
+    <loc>https://wandersoncferreira.github.io/notes/see-what-you-mean/</loc>
+    <lastmod>2020-06-12T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wandersoncferreira.github.io/tags/software/</loc>
+    <lastmod>2020-06-12T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://wandersoncferreira.github.io/notes/building-senior-engineers/</loc>
     <lastmod>2020-06-06T00:00:00-03:00</lastmod>
   </url>
@@ -44,12 +54,12 @@
   </url>
   
   <url>
-    <loc>https://wandersoncferreira.github.io/tags/software/</loc>
-    <lastmod>2020-06-06T00:00:00-03:00</lastmod>
+    <loc>https://wandersoncferreira.github.io/tags/clojure/</loc>
+    <lastmod>2020-05-31T00:00:00-03:00</lastmod>
   </url>
   
   <url>
-    <loc>https://wandersoncferreira.github.io/tags/clojure/</loc>
+    <loc>https://wandersoncferreira.github.io/notes/condition-system/</loc>
     <lastmod>2020-05-31T00:00:00-03:00</lastmod>
   </url>
   
@@ -71,6 +81,21 @@
   <url>
     <loc>https://wandersoncferreira.github.io/notes/on-abstraction/</loc>
     <lastmod>2020-05-30T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wandersoncferreira.github.io/notes/improving-vim-speed/</loc>
+    <lastmod>2020-05-15T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wandersoncferreira.github.io/tags/stuart-halloway/</loc>
+    <lastmod>2020-05-14T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wandersoncferreira.github.io/notes/impedance-mismatch/</loc>
+    <lastmod>2020-05-14T00:00:00-03:00</lastmod>
   </url>
   
   <url>
@@ -130,23 +155,158 @@
   </url>
   
   <url>
-    <loc>https://wandersoncferreira.github.io/notes/clojure-java-interop/</loc>
-    <lastmod>2019-09-20T00:00:00-03:00</lastmod>
+    <loc>https://wandersoncferreira.github.io/tags/dbms/</loc>
+    <lastmod>2020-02-25T00:00:00-03:00</lastmod>
   </url>
   
   <url>
-    <loc>https://wandersoncferreira.github.io/tags/stuart-halloway/</loc>
-    <lastmod>2019-09-20T00:00:00-03:00</lastmod>
+    <loc>https://wandersoncferreira.github.io/notes/design-and-implementation-of-bitemporal-dbms/</loc>
+    <lastmod>2020-02-25T00:00:00-03:00</lastmod>
   </url>
   
   <url>
-    <loc>https://wandersoncferreira.github.io/tags/agile/</loc>
-    <lastmod>2019-09-01T00:00:00-03:00</lastmod>
+    <loc>https://wandersoncferreira.github.io/notes/functional-programming/</loc>
+    <lastmod>2020-02-25T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wandersoncferreira.github.io/notes/transducers/</loc>
+    <lastmod>2020-02-24T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wandersoncferreira.github.io/notes/extreme-programming/</loc>
+    <lastmod>2019-12-28T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wandersoncferreira.github.io/notes/is-tdd-dead/</loc>
+    <lastmod>2019-12-28T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wandersoncferreira.github.io/tags/testing/</loc>
+    <lastmod>2019-12-28T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wandersoncferreira.github.io/tags/xp/</loc>
+    <lastmod>2019-12-28T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wandersoncferreira.github.io/notes/debate-tdd/</loc>
+    <lastmod>2019-12-27T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wandersoncferreira.github.io/notes/what-went-wrong/</loc>
+    <lastmod>2019-12-27T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wandersoncferreira.github.io/tags/architecture/</loc>
+    <lastmod>2019-12-26T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wandersoncferreira.github.io/notes/core-design-principles/</loc>
+    <lastmod>2019-12-26T00:00:00-03:00</lastmod>
   </url>
   
   <url>
     <loc>https://wandersoncferreira.github.io/tags/design/</loc>
-    <lastmod>2019-09-01T00:00:00-03:00</lastmod>
+    <lastmod>2019-12-26T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wandersoncferreira.github.io/notes/make-architecture-matter/</loc>
+    <lastmod>2019-12-26T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wandersoncferreira.github.io/tags/agile/</loc>
+    <lastmod>2019-12-25T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wandersoncferreira.github.io/tags/alan-kay/</loc>
+    <lastmod>2019-12-25T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wandersoncferreira.github.io/tags/git/</loc>
+    <lastmod>2019-12-25T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wandersoncferreira.github.io/tags/google/</loc>
+    <lastmod>2019-12-25T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wandersoncferreira.github.io/tags/innovation/</loc>
+    <lastmod>2019-12-25T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wandersoncferreira.github.io/notes/kill-microservices/</loc>
+    <lastmod>2019-12-25T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wandersoncferreira.github.io/notes/linus-on-git/</loc>
+    <lastmod>2019-12-25T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wandersoncferreira.github.io/tags/microservices/</loc>
+    <lastmod>2019-12-25T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wandersoncferreira.github.io/notes/solid-principles/</loc>
+    <lastmod>2019-12-25T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wandersoncferreira.github.io/notes/future-incremental/</loc>
+    <lastmod>2019-12-25T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wandersoncferreira.github.io/notes/back-to-basics/</loc>
+    <lastmod>2019-11-21T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wandersoncferreira.github.io/tags/c&#43;&#43;/</loc>
+    <lastmod>2019-11-21T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wandersoncferreira.github.io/tags/oop/</loc>
+    <lastmod>2019-11-21T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wandersoncferreira.github.io/tags/programming/</loc>
+    <lastmod>2019-11-21T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wandersoncferreira.github.io/notes/philosophy-software-design/</loc>
+    <lastmod>2019-10-10T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wandersoncferreira.github.io/notes/design-composition/</loc>
+    <lastmod>2019-10-01T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wandersoncferreira.github.io/notes/clojure-java-interop/</loc>
+    <lastmod>2019-09-20T00:00:00-03:00</lastmod>
   </url>
   
   <url>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Thoughts on things">
+    
+    <link rel="shortcut icon" href="https://wandersoncferreira.github.io/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/style.min.css">
+
+    <title>Functional Programming</title>
+</head>
+<body><header id="banner">
+    <h2><a href="https://wandersoncferreira.github.io">Bartuka</a></h2>
+    <nav>
+        <ul>
+            <li>
+                <a href="/blog" title="blog">Blog</a>
+            </li><li>
+                <a href="/notes/" title="notes">Notes</a>
+            </li><li>
+                <a href="/projects/" title="projects">Projects</a>
+            </li><li>
+                <a href="/about/" title="about">About</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main id="content">
+<article>
+    <header id="post-header">
+        <h1>Functional Programming</h1><time>February 25, 2020</time></header>
+    
+ 
+ <a href="https://wandersoncferreira.github.io/tags/functional/">functional</a>
+
+
+
+<h3 id="youtube-linkhttpsyoutubez0n1az6snbk"><a href="https://youtu.be/z0N1aZ6SnBk">Youtube Link</a></h3>
+<h2 id="speaker">Speaker</h2>
+<p>Erik Meijer, computer scientist and software developer</p>
+<h2 id="thoughts">Thoughts</h2>
+<p>Very good explanation about FP. It uses Haskell a lot as example but
+all the concepts are easy to grasp. I made parallels with Clojure
+while reading his lesson.</p>
+<h2 id="quotes">Quotes</h2>
+<p>The concept of honest and disonest programming languages is about
+tricking you to think the functions and method behaves in specific way
+that you can&rsquo;t predict.</p>
+<p>A lambda expression is a delegate.</p>
+<div class="highlight"><pre class="chroma"><code class="language-clojure" data-lang="clojure"><span class="nb">class </span><span class="nv">Delegate&lt;T</span>,<span class="nv">R&gt;</span> <span class="p">{</span>
+   <span class="nv">R</span> <span class="nv">invoke</span><span class="p">(</span><span class="nf">T</span> <span class="nv">t</span><span class="p">)</span>
+   <span class="p">}</span>
+</code></pre></div><p>A class is a superset of lambda expressions in .NET and other
+languages. Lambda expressions is not about FP or Purity, they are all
+about capturing closures.</p>
+<h2 id="recommendations">Recommendations</h2>
+<ol>
+<li>FP definition is simple: Programming with mathematical functions!</li>
+<li>Everytime someone wants to make effects you have to pass a global
+variable around. You have to pass the whole world around.</li>
+<li>Lambda expressions can provide you with closures and anonymous fns.</li>
+</ol>
+</article>
+
+        </main><footer id="footer">
+    Copyright © 2020 Wanderson Ferreira
+</footer>
+</body>
+</html>
