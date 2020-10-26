@@ -90,12 +90,7 @@
   </url>
   
   <url>
-    <loc>https://wandersoncferreira.github.io/tags/summary/</loc>
-    <lastmod>2020-04-30T00:00:00-03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wandersoncferreira.github.io/tags/reading/</loc>
+    <loc>https://wandersoncferreira.github.io/tags/readings/</loc>
     <lastmod>2020-04-28T00:00:00-03:00</lastmod>
   </url>
   
@@ -110,7 +105,7 @@
   </url>
   
   <url>
-    <loc>https://wandersoncferreira.github.io/tags/ricj-hickey/</loc>
+    <loc>https://wandersoncferreira.github.io/tags/rich-hickey/</loc>
     <lastmod>2020-03-15T00:00:00-03:00</lastmod>
   </url>
   
@@ -135,18 +130,48 @@
   </url>
   
   <url>
+    <loc>https://wandersoncferreira.github.io/notes/clojure-java-interop/</loc>
+    <lastmod>2019-09-20T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wandersoncferreira.github.io/tags/stuart-halloway/</loc>
+    <lastmod>2019-09-20T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wandersoncferreira.github.io/tags/agile/</loc>
+    <lastmod>2019-09-01T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wandersoncferreira.github.io/tags/design/</loc>
+    <lastmod>2019-09-01T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wandersoncferreira.github.io/notes/design-after-agile/</loc>
+    <lastmod>2019-09-01T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wandersoncferreira.github.io/tags/debugging/</loc>
+    <lastmod>2019-08-21T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wandersoncferreira.github.io/notes/running-with-scissors/</loc>
+    <lastmod>2019-08-21T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wandersoncferreira.github.io/notes/debugging-with-science/</loc>
+    <lastmod>2019-08-01T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://wandersoncferreira.github.io/blog/smarter-not-harder/</loc>
     <lastmod>2019-07-08T00:00:00-03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wandersoncferreira.github.io/tags/functional-programming/</loc>
-    <lastmod>2018-08-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wandersoncferreira.github.io/tags/programming/</loc>
-    <lastmod>2018-08-26T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -165,15 +190,7 @@
   </url>
   
   <url>
-    <loc>https://wandersoncferreira.github.io/categories/</loc>
-  </url>
-  
-  <url>
     <loc>https://wandersoncferreira.github.io/projects/project1/</loc>
-  </url>
-  
-  <url>
-    <loc>https://wandersoncferreira.github.io/tags/tag/</loc>
   </url>
   
 </urlset>
