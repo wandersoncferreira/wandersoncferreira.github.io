@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Thoughts on things">
+    
+    <link rel="shortcut icon" href="https://wandersoncferreira.github.io/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/style.min.css">
+
+    <title>Maybe Not</title>
+</head>
+<body><header id="banner">
+    <h2><a href="https://wandersoncferreira.github.io">Bartuka</a></h2>
+    <nav>
+        <ul>
+            <li>
+                <a href="/" title="blogs">Blog</a>
+            </li><li>
+                <a href="/notes/" title="notes">Notes</a>
+            </li><li>
+                <a href="/projects/" title="projects">Projects</a>
+            </li><li>
+                <a href="/about/" title="about">About</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main id="content">
+<article>
+    <header id="post-header">
+        <h1>Maybe Not</h1><time>March 15, 2020</time></header><h3 id="youtubehttpsyoutubeyr5wdgrpouglistplzdclr02grlrewkazv-5qbuzk0zgkoocr"><a href="https://youtu.be/YR5WdGrpoug?list=PLZdCLR02grLrEwKaZv-5QbUzK0zGKOOcr">Youtube</a></h3>
+<h2 id="speaker">Speaker</h2>
+<p>Rich Hickey, creator of Clojure</p>
+<h2 id="quotes">Quotes</h2>
+<p>I call it my billion-dollar mistake. It was the invention of the null
+reference in 1965 - by Tony Hoare.</p>
+<p><em>Where are nulls/options used?</em></p>
+<ul>
+<li>optional requirements (args)
+<ul>
+<li>variadics and kwargs mitigate in Clojure</li>
+</ul>
+</li>
+<li>conditional provision (returns)
+<ul>
+<li>managing partial information (aggregates)</li>
+<li>not idiomatic in Clojure</li>
+</ul>
+</li>
+</ul>
+<p><em>Maps vs Records/Fields</em></p>
+<ul>
+<li>maps are (mathematical) functions!</li>
+<li>simplest functions in programming
+<ul>
+<li>keyset -&gt; vals</li>
+<li>no code, no categories</li>
+</ul>
+</li>
+</ul>
+<p><em>What do we want?</em></p>
+<ul>
+<li>maximize schema reuse
+<ul>
+<li>don&rsquo;t want context-driven proliferation
+<ul>
+<li>yields more code, less reuse</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>support symmetric request/response
+<ul>
+<li>call partially filled in, get more filled in</li>
+</ul>
+</li>
+<li>information-building pipelines
+<ul>
+<li>many partial information increments</li>
+</ul>
+</li>
+</ul>
+<h2 id="recommendations">Recommendations</h2>
+<ol>
+<li>Maps are the most fundamental functions in programming</li>
+<li>You can flow information through systems that they doesn&rsquo;t know
+about and doesn&rsquo;t care about it.</li>
+</ol>
+</article>
+
+        </main><footer id="footer">
+    Copyright © 2020 Wanderson Ferreira
+</footer>
+</body>
+</html>
