@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>functional on Bartuka</title>
-    <link>https://wandersoncferreira.github.io/tags/functional/</link>
-    <description>Recent content in functional on Bartuka</description>
+    <title>lisp on Bartuka</title>
+    <link>https://wandersoncferreira.github.io/tags/lisp/</link>
+    <description>Recent content in lisp on Bartuka</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 31 May 2020 00:00:00 -0300</lastBuildDate>
     
-	<atom:link href="https://wandersoncferreira.github.io/tags/functional/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://wandersoncferreira.github.io/tags/lisp/index.xml" rel="self" type="application/rss+xml" />
     
     
     

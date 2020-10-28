@@ -34,6 +34,11 @@
   </url>
   
   <url>
+    <loc>https://wandersoncferreira.github.io/tags/declarative/</loc>
+    <lastmod>2020-06-12T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://wandersoncferreira.github.io/notes/see-what-you-mean/</loc>
     <lastmod>2020-06-12T00:00:00-03:00</lastmod>
   </url>
@@ -49,12 +54,22 @@
   </url>
   
   <url>
+    <loc>https://wandersoncferreira.github.io/tags/general/</loc>
+    <lastmod>2020-06-06T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://wandersoncferreira.github.io/tags/principles/</loc>
     <lastmod>2020-06-06T00:00:00-03:00</lastmod>
   </url>
   
   <url>
     <loc>https://wandersoncferreira.github.io/tags/clojure/</loc>
+    <lastmod>2020-05-31T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wandersoncferreira.github.io/tags/complexity/</loc>
     <lastmod>2020-05-31T00:00:00-03:00</lastmod>
   </url>
   
@@ -69,7 +84,27 @@
   </url>
   
   <url>
+    <loc>https://wandersoncferreira.github.io/tags/event-driven/</loc>
+    <lastmod>2020-05-31T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wandersoncferreira.github.io/tags/exception/</loc>
+    <lastmod>2020-05-31T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wandersoncferreira.github.io/tags/functional/</loc>
+    <lastmod>2020-05-31T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://wandersoncferreira.github.io/notes/clojure-acceptable-lisp/</loc>
+    <lastmod>2020-05-31T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wandersoncferreira.github.io/tags/lisp/</loc>
     <lastmod>2020-05-31T00:00:00-03:00</lastmod>
   </url>
   
@@ -79,12 +114,22 @@
   </url>
   
   <url>
+    <loc>https://wandersoncferreira.github.io/tags/design/</loc>
+    <lastmod>2020-05-30T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://wandersoncferreira.github.io/notes/on-abstraction/</loc>
     <lastmod>2020-05-30T00:00:00-03:00</lastmod>
   </url>
   
   <url>
     <loc>https://wandersoncferreira.github.io/notes/improving-vim-speed/</loc>
+    <lastmod>2020-05-15T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wandersoncferreira.github.io/tags/vim/</loc>
     <lastmod>2020-05-15T00:00:00-03:00</lastmod>
   </url>
   
@@ -135,18 +180,8 @@
   </url>
   
   <url>
-    <loc>https://wandersoncferreira.github.io/tags/functional/</loc>
-    <lastmod>2020-03-09T00:00:00-03:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://wandersoncferreira.github.io/notes/joys-and-perils/</loc>
     <lastmod>2020-03-09T00:00:00-03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wandersoncferreira.github.io/tags/general/</loc>
-    <lastmod>2020-03-08T00:00:00-03:00</lastmod>
   </url>
   
   <url>
@@ -185,6 +220,16 @@
   </url>
   
   <url>
+    <loc>https://wandersoncferreira.github.io/tags/kent-beck/</loc>
+    <lastmod>2019-12-28T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wandersoncferreira.github.io/tags/report/</loc>
+    <lastmod>2019-12-28T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://wandersoncferreira.github.io/tags/testing/</loc>
     <lastmod>2019-12-28T00:00:00-03:00</lastmod>
   </url>
@@ -192,6 +237,11 @@
   <url>
     <loc>https://wandersoncferreira.github.io/tags/xp/</loc>
     <lastmod>2019-12-28T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wandersoncferreira.github.io/tags/debate/</loc>
+    <lastmod>2019-12-27T00:00:00-03:00</lastmod>
   </url>
   
   <url>
@@ -211,11 +261,6 @@
   
   <url>
     <loc>https://wandersoncferreira.github.io/notes/core-design-principles/</loc>
-    <lastmod>2019-12-26T00:00:00-03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wandersoncferreira.github.io/tags/design/</loc>
     <lastmod>2019-12-26T00:00:00-03:00</lastmod>
   </url>
   
@@ -265,6 +310,11 @@
   </url>
   
   <url>
+    <loc>https://wandersoncferreira.github.io/tags/oop/</loc>
+    <lastmod>2019-12-25T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://wandersoncferreira.github.io/notes/solid-principles/</loc>
     <lastmod>2019-12-25T00:00:00-03:00</lastmod>
   </url>
@@ -281,16 +331,6 @@
   
   <url>
     <loc>https://wandersoncferreira.github.io/tags/c&#43;&#43;/</loc>
-    <lastmod>2019-11-21T00:00:00-03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wandersoncferreira.github.io/tags/oop/</loc>
-    <lastmod>2019-11-21T00:00:00-03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wandersoncferreira.github.io/tags/programming/</loc>
     <lastmod>2019-11-21T00:00:00-03:00</lastmod>
   </url>
   
