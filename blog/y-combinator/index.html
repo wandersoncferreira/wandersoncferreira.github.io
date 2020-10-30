@@ -36,27 +36,28 @@
 
 
 
-<p>The Y combinator is a higher-order function which takes a single
+<p>The Y combinator is a higher-order function that takes a single
 argument, which is a <em>function</em> that <strong>isn&rsquo;t</strong> recursive and returns a
-version of the same <em>function</em> which <em>is</em> recursive.</p>
+version of the same function that <em>is</em> recursive.</p>
 <p>If that is not enough to blow your mind, please: <em>What do you think
 recursion is?</em></p>
 <p>More generally, Y gives us a way to get recursion in a programming
-language that supports first-class functions but that doesn&rsquo;t have
+language that supports first-class functions but doesn&rsquo;t have
 recursion built in.</p>
 <h1 id="introduction">Introduction</h1>
 <p align="center">
   <img src="https://theburningmonk.com/wp-content/uploads/2017/08/recursion-01.png" />
 </p>
 <p>This post will be a comprehensive walk through the Chapter 9 of the
-Little Schemer. The idea is to reproduce the discussion about
-recursive functions and move straight to the <em>Y combinator</em>
-definition. I will be using <em>Clojure</em> and borrowing some explanations
-from this amazing <a href="https://mvanier.livejournal.com/2897.html">article</a>.</p>
+Little Schemer book. The idea is to reproduce the same discussion
+about recursive functions and get us straight to the <em>Y combinator</em>
+definition. I will also be using <em>Clojure</em> and borrowing some
+explanations from this amazing
+<a href="https://mvanier.livejournal.com/2897.html">article</a>.</p>
 <h2 id="part-1-partial-functions-and-unnatural-recursion">Part 1: Partial Functions and Unnatural Recursion</h2>
-<p>Partial functions have this strange property of being correct for <em>some</em>
-input values and to have no guarantee that it will produce the correct
-answer to other values.</p>
+<p>Partial functions have this strange property of being correct for
+<em>some</em> input values and to have no guarantees that it will produce the
+correct answer to others.</p>
 <p>For example the <code>looking</code> function below:</p>
 <div class="highlight"><pre class="chroma"><code class="language-clojure" data-lang="clojure"><span class="p">(</span><span class="kd">defn </span><span class="nv">looking</span> <span class="p">[</span><span class="nv">a</span> <span class="nv">lat</span><span class="p">]</span>
   <span class="p">(</span><span class="nf">keep-looking</span> <span class="nv">a</span> <span class="p">(</span><span class="nb">first </span><span class="nv">lat</span><span class="p">)</span> <span class="nv">lat</span><span class="p">))</span>
@@ -70,28 +71,28 @@ answer to other values.</p>
       <span class="nv">false</span>
       <span class="ss">:else</span>
       <span class="p">(</span><span class="nf">keep-looking</span> <span class="nb">val </span><span class="nv">new-val</span> <span class="nv">coll</span><span class="p">))))</span>
-</code></pre></div><p>Give it a <code>:keyword</code> and a <code>collection</code>. The <code>looking</code> function will get
-the first element of the collection and verify if it is equal to the
-<code>:keyword</code> I passed. If true, returns true.</p>
+</code></pre></div><p>Give it a <code>:keyword</code> and a <code>collection</code> and the <code>looking</code> function
+will get the first element of the collection and verify if it is equal
+to the <code>:keyword</code> I passed. If true, returns true.</p>
 <p>If false, use the first element of the collection to perform an <code>index</code>
 lookup.</p>
 <p>For example:</p>
 <div class="highlight"><pre class="chroma"><code class="language-clojure" data-lang="clojure"><span class="p">(</span><span class="k">def </span><span class="nv">lat</span> <span class="p">[</span><span class="mi">6</span> <span class="mi">2</span> <span class="mi">4</span> <span class="ss">:caviar</span> <span class="mi">5</span> <span class="mi">7</span> <span class="mi">3</span><span class="p">])</span>
 <span class="p">(</span><span class="nf">looking</span> <span class="ss">:caviar</span> <span class="nv">lat</span><span class="p">)</span>
 <span class="nv">=&gt;</span> <span class="nv">true</span>
-</code></pre></div><p>The path:</p>
+</code></pre></div><p>The path traveled by <code>looking</code> is:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">6th index --&gt; 7th index --&gt; 3rd index --&gt; 4th index <span class="o">(</span>which is my keyword<span class="o">)</span>
 </code></pre></div><p>However the following example do not have an answer:</p>
 <div class="highlight"><pre class="chroma"><code class="language-clojure" data-lang="clojure"><span class="p">(</span><span class="k">def </span><span class="nv">lat3</span> <span class="p">[</span><span class="mi">7</span> <span class="mi">1</span> <span class="mi">2</span> <span class="ss">:caviar</span> <span class="mi">5</span> <span class="mi">6</span> <span class="mi">3</span><span class="p">])</span>
 <span class="p">(</span><span class="nf">looking</span> <span class="ss">:caviar</span> <span class="nv">lat3</span><span class="p">)</span>
 </code></pre></div><p>The path:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">7th index --&gt; 3rd index --&gt; 2nd index --&gt; 1st index --&gt; 7th index ---&gt; ...
-</code></pre></div><p>There are many functions that present this behavior. We are going to
-use this kind of functions to develop the idea of the Y combinator
-below.  Why? They appear when you have the huge constrain to not
-<code>define</code> anything.</p>
+</code></pre></div><p>There are many functions like this. We are going to use the same class
+of functions to develop the idea of the Y combinator.  Why? They
+appears when you have the huge constrain of not being able to <code>define</code>
+anything.</p>
 <p>Think about it, if you understand recursion as the technique of
-defining some function f in terms of itself. Then, if you can&rsquo;t
+defining some function <em>f</em> in terms of itself. Then, if you can&rsquo;t
 <code>define</code> the name of the function in your programming language, it
 will be &ldquo;&ldquo;impossible&rdquo;&rdquo; to write a recursive call, right?</p>
 <h2 id="part-2-lets-get-into-it">Part 2: Let&rsquo;s get into it!</h2>
@@ -103,24 +104,26 @@ way through the Y Combinator function.</p>
     <span class="p">(</span><span class="nb">inc </span><span class="p">(</span><span class="nf">length</span> <span class="p">(</span><span class="nb">rest </span><span class="nv">coll</span><span class="p">)))))</span>
 </code></pre></div><p>However, without the <code>define</code> constructor we can&rsquo;t write the name
 <code>length</code> inside the body of the function because there is no way to
-refer to the name of this function, it will be written as an anonymous
-function.</p>
+refer to the name of this function yet, it will be written as an
+anonymous function.</p>
 <div class="highlight"><pre class="chroma"><code class="language-clojure" data-lang="clojure"><span class="p">(</span><span class="k">fn </span><span class="p">[</span><span class="nv">coll</span><span class="p">]</span>
   <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nf">empty?</span> <span class="nv">coll</span><span class="p">)</span>
     <span class="mi">0</span>
     <span class="p">(</span><span class="nb">inc </span><span class="p">(</span><span class="nf">?????</span> <span class="p">(</span><span class="nb">rest </span><span class="nv">coll</span><span class="p">)))))</span>
-</code></pre></div><p>We still cannot write a better function to replace <code>?????</code>, however the
-function above is all useless? Actually, not.</p>
+</code></pre></div><p>We still cannot write a better function to replace <code>?????</code>, however
+the real question is: <em>the function above is all useless?</em>*</p>
+<p>Actually, not.</p>
 <p>The following call will produce the correct value:</p>
 <div class="highlight"><pre class="chroma"><code class="language-clojure" data-lang="clojure"><span class="p">((</span><span class="k">fn </span><span class="p">[</span><span class="nv">coll</span><span class="p">]</span>
     <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nf">empty?</span> <span class="nv">coll</span><span class="p">)</span>
       <span class="mi">0</span>
       <span class="p">(</span><span class="nb">inc </span><span class="p">(</span><span class="nf">???</span> <span class="p">(</span><span class="nb">rest </span><span class="nv">coll</span><span class="p">)))))</span> <span class="p">())</span> <span class="c1">; call with the empty list</span>
 <span class="c1">;; =&gt; 0</span>
-</code></pre></div><p><em>IF</em> we could <code>define</code> the function above, we could called it <code>length-0</code>
-because it correctly returns the length of the empty list. However, is
-also possible to use this new <code>length-0</code> function to write a new version
-which returns the correct answer to a list with only <em>one</em> element.</p>
+</code></pre></div><p><em>IF</em> we could <code>define</code> the function above, we could called it
+<code>length-0</code> because it correctly returns the length of the empty
+list. However, is also possible to use this new <code>length-0</code> function to
+write a new version which returns the correct answer to a list with
+only <em>one</em> element.</p>
 <div class="highlight"><pre class="chroma"><code class="language-clojure" data-lang="clojure"><span class="p">(</span><span class="k">def </span><span class="nv">length-0</span>
   <span class="p">(</span><span class="k">fn </span><span class="p">[</span><span class="nv">coll</span><span class="p">]</span>
     <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nf">empty?</span> <span class="nv">coll</span><span class="p">)</span>
@@ -132,8 +135,9 @@ which returns the correct answer to a list with only <em>one</em> element.</p>
      <span class="mi">0</span>
      <span class="p">(</span><span class="nb">inc </span><span class="p">(</span><span class="nf">length-0</span> <span class="p">(</span><span class="nb">rest </span><span class="nv">coll</span><span class="p">)))))</span> <span class="p">(</span><span class="nb">list </span><span class="ss">:A</span><span class="p">))</span>
 <span class="c1">;; =&gt; 1</span>
-</code></pre></div><p>But, let&rsquo;s pretend we can&rsquo;t use <code>define</code> here, so the last function will
-become (I am only doing a substitution of the <code>length-0</code> function):</p>
+</code></pre></div><p>But, let&rsquo;s pretend we can&rsquo;t use <code>define</code> here, so the last function
+will become (I am only doing a substitution of the <code>length-0</code>
+function):</p>
 <div class="highlight"><pre class="chroma"><code class="language-clojure" data-lang="clojure"><span class="p">(</span><span class="k">fn </span><span class="p">[</span><span class="nv">coll</span><span class="p">]</span>
   <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nf">empty?</span> <span class="nv">coll</span><span class="p">)</span>
     <span class="mi">0</span>
@@ -143,11 +147,12 @@ become (I am only doing a substitution of the <code>length-0</code> function):</
               <span class="p">(</span><span class="nb">inc </span><span class="p">(</span><span class="nf">?????</span> <span class="p">(</span><span class="nb">rest </span><span class="nv">coll</span><span class="p">)))))</span>
           <span class="p">(</span><span class="nb">rest </span><span class="nv">coll</span><span class="p">)))))</span>
 </code></pre></div><p>Ok, let&rsquo;s pay attention to the function above.</p>
-<p>It cannot only answer correctly the length of a list with a single item,
-it can answer correctly when the input is a list <em>UP to 1 element</em>,
-therefore the empty list will also return the correct value.</p>
-<p>Now, let&rsquo;s take another step on that direction, let&rsquo;s build the function
-that will return correctly when the input is <em>UP to 2 elements</em>:</p>
+<p>It cannot only answer correctly the length of a list with a single
+item, also correctly answers when the input list is <em>UP to 1
+element</em>. Therefore the empty list will also return the correct value.</p>
+<p>Now, let&rsquo;s take another step on that direction, let&rsquo;s build the
+function that will return correctly when the input is <em>UP to 2
+elements</em>:</p>
 <div class="highlight"><pre class="chroma"><code class="language-clojure" data-lang="clojure"><span class="p">(</span><span class="k">fn </span><span class="p">[</span><span class="nv">coll</span><span class="p">]</span>
   <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nf">empty?</span> <span class="nv">coll</span><span class="p">)</span>
     <span class="mi">0</span>
@@ -201,15 +206,15 @@ that will return correctly when the input is <em>UP to 2 elements</em>:</p>
 <h2 id="now-what-do-you-think-recursion-is">Now, what do you think recursion is?</h2>
 <p>and that is a tough question.</p>
 <p>Looks like if you pile a lot of &ldquo;incomplete&rdquo; functions that <em>for some</em>
-primitive values it returns the correct answer, we can get along just
+primitive values returns the correct answer, we can get along just
 fine.</p>
 <p>Following this example, it looks like we could compute the length of
 any list if we knew beforehand the size of the list and we could pile
 the exact amount of <em>incomplete</em> functions ahead of time.</p>
 <p><em>Crazy.. if you knew the size, you could pile the exact same amount of
 stacks to compute the size recursively. How nice is that&hellip; o.O</em></p>
-<p>Let&rsquo;s organize the code above and abstract the <code>?????</code> function from the
-implementation.</p>
+<p>Let&rsquo;s organize the code above and abstract the <code>?????</code> function from
+the implementation.</p>
 <div class="highlight"><pre class="chroma"><code class="language-clojure" data-lang="clojure"><span class="p">((</span><span class="k">fn </span><span class="p">[</span><span class="nv">func-length</span><span class="p">]</span>
    <span class="p">(</span><span class="k">fn </span><span class="p">[</span><span class="nv">coll</span><span class="p">]</span>
      <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nf">empty?</span> <span class="nv">coll</span><span class="p">)</span>
@@ -368,9 +373,9 @@ The problem at hand is that we don&rsquo;t know beforehand how many calls of
 <code>length</code> operation.</p>
 <p>If we choose a lower number of <code>mk-length</code> to perform the <code>length</code>
 task, we will receive an error because it will try to call the <code>?????</code>
-function by passing the argument <code>(rest coll)</code> but <code>?????</code> does not
-exist. &hellip; Friedman suggests&hellip; let&rsquo;s substitute the function <code>?????</code>
-for another call of <code>mk-length</code>&hellip; :X&hellip;. :X &hellip; afterwards
+function by passing the argument <code>(rest coll)</code> to it, but <code>?????</code> does
+not exist. &hellip; Friedman suggests&hellip; let&rsquo;s substitute the function
+<code>?????</code>  for another call of <code>mk-length</code>&hellip; :X&hellip;. :X &hellip; afterwards
 <code>mk-length</code> creates another &ldquo;stack of calls&rdquo; to enable us to compute
 one extra element in the list.</p>
 <p>Ok&hellip;</p>
