@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Bartuka</title>
-    <link>https://wandersoncferreira.github.io/about/</link>
-    <description>Recent content on Bartuka</description>
+    <title>emacs on Bartuka</title>
+    <link>https://wandersoncferreira.github.io/tags/emacs/</link>
+    <description>Recent content in emacs on Bartuka</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Sat, 21 Nov 2020 00:00:00 -0300</lastBuildDate>
     
-	<atom:link href="https://wandersoncferreira.github.io/about/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://wandersoncferreira.github.io/tags/emacs/index.xml" rel="self" type="application/rss+xml" />
     
     
     
