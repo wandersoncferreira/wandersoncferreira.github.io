@@ -4,13 +4,33 @@
   
   <url>
     <loc>https://wandersoncferreira.github.io/blog/</loc>
-    <lastmod>2020-11-21T00:00:00-03:00</lastmod>
+    <lastmod>2020-12-08T00:00:00-03:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
+    <loc>https://wandersoncferreira.github.io/blog/back-to-windows/</loc>
+    <lastmod>2020-12-08T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://wandersoncferreira.github.io/</loc>
-    <lastmod>2020-11-21T00:00:00-03:00</lastmod>
+    <lastmod>2020-12-08T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wandersoncferreira.github.io/tags/general/</loc>
+    <lastmod>2020-12-08T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wandersoncferreira.github.io/tags/</loc>
+    <lastmod>2020-12-08T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wandersoncferreira.github.io/tags/windows/</loc>
+    <lastmod>2020-12-08T00:00:00-03:00</lastmod>
   </url>
   
   <url>
@@ -20,11 +40,6 @@
   
   <url>
     <loc>https://wandersoncferreira.github.io/blog/emacs-on-terminal/</loc>
-    <lastmod>2020-11-21T00:00:00-03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wandersoncferreira.github.io/tags/</loc>
     <lastmod>2020-11-21T00:00:00-03:00</lastmod>
   </url>
   
@@ -71,11 +86,6 @@
   
   <url>
     <loc>https://wandersoncferreira.github.io/notes/building-senior-engineers/</loc>
-    <lastmod>2020-06-06T00:00:00-03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wandersoncferreira.github.io/tags/general/</loc>
     <lastmod>2020-06-06T00:00:00-03:00</lastmod>
   </url>
   
