@@ -415,6 +415,11 @@
   </url>
   
   <url>
+    <loc>https://wandersoncferreira.github.io/rss/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://wandersoncferreira.github.io/projects/project1/</loc>
   </url>
   
