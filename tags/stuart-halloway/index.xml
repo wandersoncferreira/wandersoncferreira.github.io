@@ -11,85 +11,113 @@
 	<atom:link href="https://wandersoncferreira.github.io/tags/stuart-halloway/index.xml" rel="self" type="application/rss+xml" />
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    <item>
+      <title>The impedance mismatch is our fault</title>
+      <link>https://wandersoncferreira.github.io/notes/impedance-mismatch/</link>
+      <pubDate>Thu, 14 May 2020 00:00:00 -0300</pubDate>
+      
+      <guid>https://wandersoncferreira.github.io/notes/impedance-mismatch/</guid>
+      <description>&lt;h3 id=&#34;infoq-linkhttpswwwinfoqcompresentationsimpedance-mismatch&#34;&gt;&lt;a href=&#34;https://www.infoq.com/presentations/Impedance-Mismatch/&#34;&gt;InfoQ Link&lt;/a&gt;&lt;/h3&gt;
+&lt;h2 id=&#34;speaker&#34;&gt;Speaker&lt;/h2&gt;
+&lt;p&gt;Stuart Halloway, co-creator of Datomic&lt;/p&gt;
+&lt;h2 id=&#34;thoughts&#34;&gt;Thoughts&lt;/h2&gt;
+&lt;p&gt;Datomic is a very very interesting peace of technology, I should find
+more time to work with this. I might look for a new side project to
+experiment with new ideas.&lt;/p&gt;
+&lt;p&gt;Stuart has shaped a lot of how I think about programming today, thanks
+again.&lt;/p&gt;
+&lt;h2 id=&#34;quotes&#34;&gt;Quotes&lt;/h2&gt;
+&lt;p&gt;&amp;ldquo;All information in the database is to be represented in only one way,
+namely by valyes in column positions within row of tables&amp;rdquo; - by Codd&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;&amp;hellip; Essentially the ORM can handle about 80-90% of the mapping
+problems..&amp;rdquo; - by Martin Fowler&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;I don&amp;rsquo;t slow down when you watch me&amp;rdquo;&lt;/p&gt;
+&lt;h2 id=&#34;recommendations&#34;&gt;Recommendations&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Read &amp;ldquo;The Vietnam of computer science&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;Don&amp;rsquo;t give up! If you simplify OO and RDMS, you will find the
+building blocks for a general-purpose approach to data&lt;/li&gt;
+&lt;li&gt;Read &amp;ldquo;The Vietnam of computer science a response&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;This is not related to performace, many round-trips, this is
+related to data being changed while you are in the between of the
+round trips&lt;/li&gt;
+&lt;li&gt;Transactions are awesome&lt;/li&gt;
+&lt;/ol&gt;
+</description> 
+    </item>
+    
+    <item>
+      <title>Clojure Java Interop</title>
+      <link>https://wandersoncferreira.github.io/notes/clojure-java-interop/</link>
+      <pubDate>Fri, 20 Sep 2019 00:00:00 -0300</pubDate>
+      
+      <guid>https://wandersoncferreira.github.io/notes/clojure-java-interop/</guid>
+      <description>&lt;h3 id=&#34;youtube-linkhttpsyoutubebvi1bnggp0k&#34;&gt;&lt;a href=&#34;https://youtu.be/bvI1BNgGp0k&#34;&gt;Youtube Link&lt;/a&gt;&lt;/h3&gt;
+&lt;h2 id=&#34;speaker&#34;&gt;Speaker&lt;/h2&gt;
+&lt;p&gt;Stuart Halloway, Founder of Cognitect&lt;/p&gt;
+&lt;h2 id=&#34;thoughts&#34;&gt;Thoughts&lt;/h2&gt;
+&lt;p&gt;I had to use some pure-Java libraries to deal with XSLX data format
+lazily and that was a very simple learning curve for a person that has
+never programmed in Java before (me!). For some reason, I had never
+thought about using Clojure &lt;em&gt;from&lt;/em&gt; Java.&lt;/p&gt;
+&lt;h2 id=&#34;code-nice-examples&#34;&gt;Code Nice Examples&lt;/h2&gt;
+&lt;p&gt;Java - Chaining&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;n&#34;&gt;person&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getAddress&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getZipCode&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Clojure - Chaining&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-clojure&#34; data-lang=&#34;clojure&#34;&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;.. &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;person&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;getAddress&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;getZipCode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description> 
+    </item>
+    
+    <item>
+      <title>Running with Scissors</title>
+      <link>https://wandersoncferreira.github.io/notes/running-with-scissors/</link>
+      <pubDate>Wed, 21 Aug 2019 00:00:00 -0300</pubDate>
+      
+      <guid>https://wandersoncferreira.github.io/notes/running-with-scissors/</guid>
+      <description>&lt;h3 id=&#34;youtube-linkhttpsyoutubeqx0-pviyidu&#34;&gt;&lt;a href=&#34;https://youtu.be/Qx0-pViyIDU&#34;&gt;Youtube Link&lt;/a&gt;&lt;/h3&gt;
+&lt;h2 id=&#34;speaker&#34;&gt;Speaker&lt;/h2&gt;
+&lt;p&gt;Stuart Halloway, Founder of Cognitect&lt;/p&gt;
+&lt;h2 id=&#34;thoughts&#34;&gt;Thoughts&lt;/h2&gt;
+&lt;p&gt;I still have difficult to understand what the sentence &lt;em&gt;&amp;ldquo;your running
+program is tangible.&amp;quot;&lt;/em&gt; I never connected to a REPL created by running
+a &lt;em&gt;jar&lt;/em&gt; file, but I often have some code running in remote servers
+using &lt;em&gt;lein ring server&lt;/em&gt; or something similar which I can navigate
+around the namespaces and manipulate the code. I also started to leave
+test setup inside a comment block. VERY USEFUL!&lt;/p&gt;
+</description> 
+    </item>
+    
+    <item>
+      <title>Debugging with the Scientific Method</title>
+      <link>https://wandersoncferreira.github.io/notes/debugging-with-science/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 -0300</pubDate>
+      
+      <guid>https://wandersoncferreira.github.io/notes/debugging-with-science/</guid>
+      <description>&lt;h3 id=&#34;youtube-linkhttpswwwyoutubecomwatchvfihu5jxmnbg&#34;&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=FihU5JxmnBg&#34;&gt;Youtube Link&lt;/a&gt;&lt;/h3&gt;
+&lt;h2 id=&#34;speaker&#34;&gt;Speaker&lt;/h2&gt;
+&lt;p&gt;Stuart Halloway, Founder of Cognitect&lt;/p&gt;
+&lt;h2 id=&#34;thoughts&#34;&gt;Thoughts&lt;/h2&gt;
+&lt;p&gt;I am running closely the support team at my company today and the
+number of findings you get about software and people interactions is
+incredible. I first didn&amp;rsquo;t like the position at all, but I was not
+really understanding what was happening. The evolution of a system
+with your business is very complex and interesting with tons of
+knowledge to take on for future products.&lt;/p&gt;
+&lt;h2 id=&#34;quotes&#34;&gt;Quotes&lt;/h2&gt;
+&lt;p&gt;&amp;ldquo;If you don&amp;rsquo;t know where you are going, you might wind up someplace
+else&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;Weak &lt;em&gt;science&lt;/em&gt; is &lt;em&gt;stronger&lt;/em&gt; than &lt;em&gt;strong tools&lt;/em&gt;&amp;rdquo;&lt;/p&gt;
+&lt;h3 id=&#34;_a-thousand-dollar-slide_&#34;&gt;&lt;em&gt;A thousand dollar slide&lt;/em&gt;&lt;/h3&gt;
+&lt;p&gt;Problem statements; &lt;strong&gt;steps&lt;/strong&gt; you took, what you &lt;strong&gt;expected&lt;/strong&gt;, what
+&lt;strong&gt;actually&lt;/strong&gt; happened&lt;/p&gt;
+&lt;h2 id=&#34;book&#34;&gt;Book&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.amazon.com/Why-Programs-Fail-Systematic-Debugging/dp/0123745152&#34;&gt;Why Programs Fail - A guide to systematic debugging&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.amazon.com/Structure-Scientific-Revolutions-50th-Anniversary/dp/0226458121/ref=sr_1_1?keywords=The+Structure+of+Scientific+Revolutions&amp;amp;qid=1577230210&amp;amp;s=books&amp;amp;sr=1-1&#34;&gt;The Structure of Scientific Revolutions&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.amazon.com/Bell-Curve-Intelligence-Structure-Paperbacks/dp/0684824299/ref=sr_1_1?crid=1ZMFQ6J74SBPP&amp;amp;keywords=the+bell+curve&amp;amp;qid=1577230237&amp;amp;s=books&amp;amp;sprefix=the+bell+curve%2Cstripbooks-intl-ship%2C320&amp;amp;sr=1-1&#34;&gt;The Bell Curve&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description> 
+    </item>
     
   </channel>
 </rss>

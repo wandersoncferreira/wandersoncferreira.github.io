@@ -11,85 +11,538 @@
 	<atom:link href="https://wandersoncferreira.github.io/tags/general/index.xml" rel="self" type="application/rss+xml" />
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    <item>
+      <title>Back to Windows</title>
+      <link>https://wandersoncferreira.github.io/blog/back-to-windows/</link>
+      <pubDate>Tue, 08 Dec 2020 00:00:00 -0300</pubDate>
+      
+      <guid>https://wandersoncferreira.github.io/blog/back-to-windows/</guid>
+      <description>&lt;p&gt;A couple of weeks ago I wrote about using Emacs inside a terminal to
+perform regular software development and to my surprise I would need
+to take another unfamiliar step sooner: &lt;em&gt;become a Windows 10 user&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;The idea of this post is to document all the steps I made to Windows
+feel usable from a perspective of a 10 years old die-hard Linux user
+(slackware, archlinux with i3wm, exwm, ratpoison, etc).&lt;/p&gt;
+&lt;h1 id=&#34;swap-capslock-for-control&#34;&gt;Swap Capslock for Control&lt;/h1&gt;
+&lt;p&gt;Funny enough, my first &amp;ldquo;task&amp;rdquo; on Windows and I was welcomed with
+&amp;ldquo;change this binary data&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;You can use PowerShell with Adm rights:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$hexified&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;00,00,00,00,00,00,00,00,02,00,00,00,1d,00,3a,00,00,00,00,00&amp;#34;&lt;/span&gt;.Split&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;,&amp;#39;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; % &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;0x&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$_&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+&lt;span class=&#34;nv&#34;&gt;$kbLayout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;HKLM:\System\CurrentControlSet\Control\Keyboard Layout&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+New-ItemProperty -Path &lt;span class=&#34;nv&#34;&gt;$kbLayout&lt;/span&gt; -Name &lt;span class=&#34;s2&#34;&gt;&amp;#34;Scancode Map&amp;#34;&lt;/span&gt; -PropertyType Binary -Value &lt;span class=&#34;o&#34;&gt;([&lt;/span&gt;byte&lt;span class=&#34;o&#34;&gt;[]]&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$hexified&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Then &lt;em&gt;REBOOT!&lt;/em&gt; :O&lt;/p&gt;
+&lt;h1 id=&#34;windows-meets-linux-anyway&#34;&gt;Windows meets Linux anyway&lt;/h1&gt;
+&lt;p&gt;Install
+&lt;a href=&#34;https://docs.microsoft.com/en-us/windows/wsl/install-win10&#34;&gt;WSL2&lt;/a&gt; and
+Ubuntu 20.04 LST on your machine. Be ready to allocate a lot of memory
+on this setup. For example, I&amp;rsquo;ve been running at 2GB RAM allocated on
+a daily basis.&lt;/p&gt;
+&lt;p&gt;The next two softwares I installed was &lt;a href=&#34;https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701?activetab=pivot:overviewtab&#34;&gt;Windows
+Terminal&lt;/a&gt;
+and &lt;a href=&#34;https://docs.docker.com/docker-for-windows/wsl/&#34;&gt;Docker&lt;/a&gt;
+compatible with WSL.&lt;/p&gt;
+&lt;p&gt;A good start for me and not much to complain yet.&lt;/p&gt;
+&lt;h1 id=&#34;i-dont-need-linux-but-i-need-emacs&#34;&gt;I don&amp;rsquo;t need linux, but I need Emacs&lt;/h1&gt;
+&lt;p&gt;You can run Emacs native on Windows, but I already have lots of custom
+setup and some of them require Unix tooling like grep, find, ripgrep,
+ls, ledger cli, and many others.&lt;/p&gt;
+&lt;p&gt;My plan: Install emacs inside Ubuntu and configure X forwarding
+through a X Server application.&lt;/p&gt;
+&lt;p&gt;I bought a license for &lt;a href=&#34;https://www.microsoft.com/en-us/p/x410/9nlp712zmn9q?activetab=pivot:overviewtab&#34;&gt;X410&lt;/a&gt; (it was cheaper than learning the free alternatives) and after installation I move ahead with the following setup:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Allow Public Access&lt;/li&gt;
+&lt;li&gt;Shared Clipboard Enabled
+&lt;ul&gt;
+&lt;li&gt;Make sure to install all Windows updates or this will not work&lt;/li&gt;
+&lt;li&gt;Seems like Windows learned the value of clipboard history.. enable that&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Enable High DPI for Windowed Apps&lt;/li&gt;
+&lt;li&gt;Follow &lt;a href=&#34;https://x410.dev/cookbook/wsl/sharing-windows-fonts-with-wsl/&#34;&gt;here&lt;/a&gt; to share fonts between Windows and Ubuntu&lt;/li&gt;
+&lt;li&gt;Add the following line to your &lt;code&gt;.bashrc&lt;/code&gt; on Ubuntu:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;DISPLAY&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;cat /etc/resolv.conf &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; grep nameserver &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; awk &lt;span class=&#34;s1&#34;&gt;&amp;#39;{print $2; exit;}&amp;#39;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt;:0.0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;I created this emacs.vbs script so I can open Emacs from Windows Start Panel&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;nv&#34;&gt;args&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;-c&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34; -i &amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&amp;#34;emacs&amp;#34;&amp;#34;&amp;#34;&lt;/span&gt;
+WScript.CreateObject&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Shell.Application&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;.ShellExecute &lt;span class=&#34;s2&#34;&gt;&amp;#34;bash&amp;#34;&lt;/span&gt;, args, &lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;, &lt;span class=&#34;s2&#34;&gt;&amp;#34;open&amp;#34;&lt;/span&gt;, &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Clone your Emacs config in Ubuntu and you are good to go! Works fine.&lt;/p&gt;
+&lt;h1 id=&#34;emacs-clashing-shortcuts&#34;&gt;Emacs clashing shortcuts&lt;/h1&gt;
+&lt;p&gt;I imagined this would not be easy, because Windows does not allow you
+to change a whole lot of shortcuts. For now, I am on the weak side,
+therefore I just remapped some bindings I had using SUPER (windows
+key) to something else.&lt;/p&gt;
+&lt;p&gt;But I will be back!&lt;/p&gt;
+&lt;h1 id=&#34;clojure-setup&#34;&gt;Clojure setup&lt;/h1&gt;
+&lt;p&gt;You can install clojure and java inside the Ubuntu machine without a
+problem.&lt;/p&gt;
+&lt;h1 id=&#34;focus-follow-mouse&#34;&gt;Focus follow mouse&lt;/h1&gt;
+&lt;p&gt;I am very used to &amp;ldquo;not click&amp;rdquo; on things. Therefore, when my mouse is
+OVER some window, then I want this window to be the focus/active.&lt;/p&gt;
+&lt;p&gt;I could not find any builtin way to make this happen, therefore I
+installed this package called &lt;a href=&#34;https://joelpurra.com/projects/X-Mouse_Controls/&#34;&gt;X-Mouse
+Controls&lt;/a&gt; it works.&lt;/p&gt;
+&lt;h1 id=&#34;work-setup&#34;&gt;Work setup&lt;/h1&gt;
+&lt;p&gt;I need to connect to remote machines, therefore you need a couple of
+softwares to make this easier. I have used these guys before, they
+haven&amp;rsquo;t changed&amp;hellip; &lt;a href=&#34;https://www.putty.org/&#34;&gt;PuTTY&lt;/a&gt;, and
+&lt;a href=&#34;https://github.com/jimradford/superputty/releases&#34;&gt;SuperPuTTY&lt;/a&gt;. However,
+the last time I&amp;rsquo;ve used I remember typing my password in Extra
+Arguments for SuperPutty, but we can do better using
+&lt;a href=&#34;https://the.earth.li/~sgtatham/putty/latest/w32/pageant.exe&#34;&gt;Pageant&lt;/a&gt;
+which is an SSH authentication agent for PuTTY. Add your keys there,
+be safe.&lt;/p&gt;
+&lt;h3 id=&#34;terminal-for-work&#34;&gt;Terminal for work&lt;/h3&gt;
+&lt;p&gt;Bad days here.. I am impressed how bad the terminal emulators are on
+this side of the map. The first release of RXVT was 19 years ago and
+seems like today&amp;rsquo;s terminal are trying to &amp;ldquo;re-run&amp;rdquo; the marathon
+instead of build upon something that works.&lt;/p&gt;
+&lt;p&gt;I am using &lt;a href=&#34;https://gitforwindows.org/&#34;&gt;Git Bash&lt;/a&gt; terminal, and
+Windows Terminal, but I am not happy with none of them.&lt;/p&gt;
+&lt;p&gt;There is a &lt;code&gt;settings.json&lt;/code&gt; file on Windows Terminal where you can
+customize it.&lt;/p&gt;
+&lt;h4 id=&#34;keybindings&#34;&gt;Keybindings&lt;/h4&gt;
+&lt;p&gt;On Windows Terminal I had to remove some annoying keys:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;&amp;#34;command&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;null&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;&amp;#34;keys&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;alt+enter&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;&amp;#34;command&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;null&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;&amp;#34;keys&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;alt+left&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;&amp;#34;command&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;null&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;&amp;#34;keys&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;alt+right&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;&amp;#34;command&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;null&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;&amp;#34;keys&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;alt+up&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;&amp;#34;command&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;null&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;&amp;#34;keys&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;alt+down&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;&amp;#34;command&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;null&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;&amp;#34;keys&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;alt+shift-down&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;&amp;#34;command&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;null&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;&amp;#34;keys&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;alt+shift-up&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;&amp;#34;command&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;null&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;&amp;#34;keys&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;alt+shift-left&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;&amp;#34;command&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;null&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;&amp;#34;keys&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;alt+shift-right&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Put that inside the &lt;code&gt;settings.json&lt;/code&gt; under the &lt;code&gt;&amp;quot;keybindings&amp;quot;&lt;/code&gt; key.&lt;/p&gt;
+&lt;h4 id=&#34;default-folders&#34;&gt;Default folders&lt;/h4&gt;
+&lt;p&gt;Add inside the &lt;code&gt;settings.json&lt;/code&gt; under the &lt;code&gt;profiles&lt;/code&gt;, &lt;code&gt;lists&lt;/code&gt; keys.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;startingDirectory&amp;#34;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;\\\\wsl$\\Ubuntu\\home\\wanderson&amp;#34;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;,&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Now, every new terminal will open from my Ubuntu root folder, instead
+of Windows ones.&lt;/p&gt;
+&lt;h1 id=&#34;extras&#34;&gt;Extras&lt;/h1&gt;
+&lt;h3 id=&#34;windows-terminal-customizations&#34;&gt;Windows Terminal customizations&lt;/h3&gt;
+&lt;p&gt;There is this interesting customized
+&lt;a href=&#34;https://www.thomasmaurer.ch/2020/04/my-customized-windows-terminal-settings-json/&#34;&gt;settings.json&lt;/a&gt;
+file if you want to go wild on this.&lt;/p&gt;
+&lt;h3 id=&#34;start-x410-automatically-on-startup&#34;&gt;Start X410 automatically on startup&lt;/h3&gt;
+&lt;p&gt;Press Super + R and type &lt;code&gt;shell:startup&lt;/code&gt; and ENTER. This will take you
+to a folder, every link of application you put inside, will open when
+your Windows start.&lt;/p&gt;
+&lt;p&gt;Press Super and go to the X410 icon on the start menu, click and drag
+it to the folder. It will automatically create a link.&lt;/p&gt;
+&lt;p&gt;You can do the same to other apps.&lt;/p&gt;
+&lt;h3 id=&#34;create-symlinks-on-your-linux-box&#34;&gt;Create symlinks on your Linux box&lt;/h3&gt;
+&lt;p&gt;Mirror the Windows Documents folder with Linux Documents/&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;ln -s /mnt/c/Users/iagwa/Documents Documents/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;still-on-waiting-list&#34;&gt;Still on Waiting List&lt;/h1&gt;
+&lt;p&gt;One of my main complaints with Windows is how to install
+software. Googling + luck to click on the right file is way to much
+for me. I have to take a look at &lt;a href=&#34;https://chocolatey.org/&#34;&gt;chocolatey&lt;/a&gt;
+project. A package manager. Looks good.&lt;/p&gt;
+&lt;h1 id=&#34;still-annoyed&#34;&gt;Still annoyed&lt;/h1&gt;
+&lt;p&gt;Seems like windows only open the aplications on the so called &amp;ldquo;Primary
+Screen&amp;rdquo; which is non-sense. If I have two monitors and I am looking at
+one of them and I want to open a new Chrome window .. for sure I
+expect this new window to appear on that screen&amp;hellip; does not matter if
+it&amp;rsquo;s primary or not. I don&amp;rsquo;t care.&lt;/p&gt;
+&lt;p&gt;I could not find anything to help me out here! Please help.&lt;/p&gt;
+&lt;p&gt;More generally, the window management on windows is very poor compared
+to other window managers on linux world.&lt;/p&gt;
+&lt;h1 id=&#34;very-surprised&#34;&gt;Very surprised&lt;/h1&gt;
+&lt;p&gt;Multi monitor, audio, video, battery, and wifi just works. I know this
+might be silly, but when you spent some months using EXWM (Emacs X
+Window Manager) as your primary system you start to value this things
+a lot more.&lt;/p&gt;
+&lt;p&gt;Aghh, the startup time is also very good.&lt;/p&gt;
+&lt;p&gt;I wonder how would be my experience here without my 1TB SSD, 16GB
+of RAM, and i7 CPU. How knows, but this is good.&lt;/p&gt;
+&lt;h1 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h1&gt;
+&lt;p&gt;Windows work nicely, now I can use the &amp;ldquo;oficial&amp;rdquo; version of a lot of
+software that I was used to rely on community-driven solutions with
+variable degrees of commitment and quality.&lt;/p&gt;
+&lt;p&gt;All things considered, I am very surprised by Windows 10. I do not
+complain because I can do almost the same things as before.&lt;/p&gt;
+&lt;p&gt;And my batery is not drained. 6.7hours for a 2 years old laptop. not
+bad.&lt;/p&gt;
+&lt;p&gt;I might use this opportunity to learn a bit of F#, who knows.&lt;/p&gt;
+&lt;p&gt;Happy hacking!&lt;/p&gt;
+</description> 
+    </item>
+    
+    <item>
+      <title>Building senior Engineers</title>
+      <link>https://wandersoncferreira.github.io/notes/building-senior-engineers/</link>
+      <pubDate>Sat, 06 Jun 2020 00:00:00 -0300</pubDate>
+      
+      <guid>https://wandersoncferreira.github.io/notes/building-senior-engineers/</guid>
+      <description>&lt;h3 id=&#34;youtubehttpsyoutubeirnnk5yx4qu&#34;&gt;&lt;a href=&#34;https://youtu.be/iRNnK5Yx4QU&#34;&gt;Youtube&lt;/a&gt;&lt;/h3&gt;
+&lt;h2 id=&#34;speaker&#34;&gt;Speaker&lt;/h2&gt;
+&lt;p&gt;Dalton Mitchell&lt;/p&gt;
+&lt;h2 id=&#34;thoughts&#34;&gt;Thoughts&lt;/h2&gt;
+&lt;p&gt;Given feedbacks is really hard. I am leading my team since 3 years ago
+and I did tons of interviews, and I can say today that for our team
+the culture fit was definetely the most important factor. We have
+developed people to improve their tecnical side and sometime later
+they became the MVP of their teams.&lt;/p&gt;
+&lt;p&gt;This was great, and after sometime I started to have problems with my
+HR team because I could not clearly communicate the values I was
+&amp;ldquo;seeking&amp;rdquo;-for in the candidates and they were always asking me a list
+of techonologies that the candidate must have. But truth be told, no
+one knows Clojure in Brazil, 90% of our hires did not know it and we
+actually rejected a nice technical clojure dev because of not good
+alignment with the team.&lt;/p&gt;
+&lt;p&gt;We were a &amp;ldquo;startup&amp;rdquo; and most of the environment is very very
+high-paced, not well structured and very varying. You need to be ok of
+putting a lot of effort in something and suddly one morning that
+project is discontinued. It is shocking. Bad feeling. But it will
+happen.&lt;/p&gt;
+&lt;p&gt;What we did was to focus on the learning journey. Most of this dead
+projected contributed to team knowledge of the domain and new ways to
+solve our particular project. Proof of concepts in high speed with
+high stakes.&lt;/p&gt;
+&lt;h2 id=&#34;quotes&#34;&gt;Quotes&lt;/h2&gt;
+&lt;p&gt;&amp;ldquo;We&amp;rsquo;re looking for a more senior candidate&amp;rdquo; - Most feedback I got&lt;/p&gt;
+&lt;p&gt;Look for these attributes: communication, curiousity, passion, determination&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Determination&lt;/em&gt;: They won&amp;rsquo;t give up when things get tough.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Determination&lt;/em&gt;: Rather than complain, they&amp;rsquo;ll propose solutions.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Determination&lt;/em&gt;: They&amp;rsquo;ll show empathy to others, and try to help when they struggle.&lt;/p&gt;
+&lt;h2 id=&#34;recommendations&#34;&gt;Recommendations&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;High standards&lt;/li&gt;
+&lt;li&gt;Focus on team impact&lt;/li&gt;
+&lt;li&gt;Experience over head knowledge&lt;/li&gt;
+&lt;li&gt;Be clear about that you value on your team&lt;/li&gt;
+&lt;li&gt;Identify traits that actually matter&lt;/li&gt;
+&lt;li&gt;Give useful feedback&lt;/li&gt;
+&lt;li&gt;You received free, give gree.&lt;/li&gt;
+&lt;/ol&gt;
+</description> 
+    </item>
+    
+    <item>
+      <title>Participe de projetos Código Aberto</title>
+      <link>https://wandersoncferreira.github.io/blog/codigo-aberto/</link>
+      <pubDate>Thu, 30 Apr 2020 00:00:00 -0300</pubDate>
+      
+      <guid>https://wandersoncferreira.github.io/blog/codigo-aberto/</guid>
+      <description>&lt;p&gt;Vou comentar um pouco minha trajetória que foi moldada de forma
+integral por comunidades online.&lt;/p&gt;
+&lt;p&gt;Em 2008 eu comecei meus primeiros passos na internet, além de jogar de
+forma alucinada comecei a aprender 3D Studio Max e Blender. Na época
+eu assistia muitos vídeos &lt;a href=&#34;https://youtu.be/eplAQ3fEr8M&#34;&gt;Xiao Xiao&lt;/a&gt; e
+queria muito conseguir fazer igual em &lt;em&gt;Flash&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Começou ali uma aventura que me acompanha até os dias de hoje:&lt;/p&gt;
+&lt;p&gt;Uma conta no iMaster e fui o membro mais chato e com pior português
+possível por 3 meses seguidos &lt;em&gt;(é o máximo de tempo que um adolescente
+de 16 anos consegue se comprometer com algo)&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;
+  &lt;img src=&#34;https://wandersoncferreira.github.io/imaster.png&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;p&gt;Depois passei por fóruns e comunidades no ICQ, IRC, Orkut, Reddit,
+Blogs pessoas, Blogs de jogos como Unreal, WYD, Mu online e diversos
+outros clássicos tratando de temas desde Tire suas dúvidas para passar
+no vestibular até grupos privados sobre Unix e Sísmica de Reflexão.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Legal, mas onde quero chegar?&lt;/strong&gt; Todas essas experiências me fizeram
+entender como o processo de aprendizagem e cooperação online funciona
+(pra mim), assim como quais benefícios de médio e longo prazo eles
+podem trazer. Portanto quero fazer esse link com o mundo do
+desenvolvimento de software usando alguns exemplos que eu tive.&lt;/p&gt;
+&lt;h2 id=&#34;o-inicio-parece-impossível-mesmo&#34;&gt;O inicio parece impossível mesmo&lt;/h2&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;p&gt;Quem trabalha com Python e não gostaria de contribuir para o projeto
+do &lt;a href=&#34;https://github.com/pandas-dev/pandas&#34;&gt;Pandas&lt;/a&gt;? Biblioteca famosa,
+22 mil commits, deve ter milhares de linhas de código, são 1900
+pessoas diferentes contribuindo para o projeto. O que eu mortal posso
+fazer?  &lt;em&gt;Muito!&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;
+  &lt;img src=&#34;https://wandersoncferreira.github.io/pandas.png&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;p&gt;Porém, vamos para o começo.&lt;/p&gt;
+&lt;p&gt;Um projeto como esse é uma empresa com as portas abertas. Ele tem suas
+estruturas internas, pessoas responsáveis com papeis específicos,
+hierarquia, &lt;em&gt;politica&lt;/em&gt;, etc. E o que você faz quando chega em um
+emprego novo?&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;onboarding&lt;/li&gt;
+&lt;li&gt;tirar dúvidas com pessoas mais experientes&lt;/li&gt;
+&lt;li&gt;leitura/estudo com relação ao domínio de negócio da empresa&lt;/li&gt;
+&lt;li&gt;fazer tarefas pequenas e menos complexas&lt;/li&gt;
+&lt;li&gt;se ambientar o suficiente para migrar para tarefas complexas&lt;/li&gt;
+&lt;li&gt;liderar projetos&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt; 
+ 
+ 
+ &lt;/p&gt;
+&lt;p&gt;Nesse caso é exatamente igual.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Basicamente todos os pontos acima você resolve participando e lendo
+as &lt;em&gt;Issues&lt;/em&gt; e &lt;em&gt;Pull Requests&lt;/em&gt; dos projetos. * Não é tão raro projetos
+usarem listas de discussão via &lt;em&gt;email&lt;/em&gt;, por exemplo,
+&lt;a href=&#34;https://groups.google.com/forum/#!forum/clojure&#34;&gt;clojure&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt; 
+ 
+ 
+ &lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Importante:&lt;/em&gt; Comece fazendo tarefas pequenas!! É comum os projetos
+colocarem indicadores nos problemas para orientar os novatos, como
+&lt;em&gt;good first issue&lt;/em&gt;, &lt;em&gt;easy&lt;/em&gt;, &lt;em&gt;documentation&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;p&gt;Exemplos que participei:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Documentação pandas &lt;em&gt;group-by&lt;/em&gt; [python]: &lt;a href=&#34;https://github.com/pandas-dev/pandas/pull/14801&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Documentação &lt;em&gt;reitit&lt;/em&gt; [clojure]: &lt;a href=&#34;https://github.com/metosin/reitit/commit/fbe2f625765259e3b9ec0448395c4349cb134cdf&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Adicionar &lt;em&gt;dicas&lt;/em&gt; sobre tipos onde o autor esqueceu &lt;em&gt;reitit&lt;/em&gt; [clojure]: &lt;a href=&#34;https://github.com/metosin/reitit/commit/f7e4136e0e777c4d05200c82c12d34c1e676f51f&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Literalmente adicionei aspas no &lt;em&gt;organic-green&lt;/em&gt; [elisp]: &lt;a href=&#34;https://github.com/kostafey/organic-green-theme/commit/2f4942abc824c55412da3e8f7bd7a316640a2a74&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Adicionei 7 palavras no &lt;em&gt;spec-tools&lt;/em&gt; [clojure]: &lt;a href=&#34;https://github.com/metosin/spec-tools/pull/227&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;h2 id=&#34;inglês&#34;&gt;Inglês&lt;/h2&gt;
+&lt;p align=&#34;center&#34;&gt;
+  &lt;img
+  src=&#34;https://wandersoncferreira.github.io/prog.png&#34;
+  width=&#34;600&#34;/&gt;
+&lt;/p&gt;
+&lt;p&gt;Ponto importante, muito importante. Eu estudo Clojure, utilizo no
+trabalho e muitas pessoas me perguntam se é muito difícil de aprender,
+como se adaptar, etc. e eu tenho uma posição bem firme sobre o
+assunto:&lt;/p&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;A principal linguagem que causa dificuldades no trabalho é o inglês&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;p&gt;Isso é realidade ainda dentro de times de desenvolvimento. Conseguir
+expor suas ideias de uma forma &lt;em&gt;inteligível&lt;/em&gt; é essencial. E porque?
+Por que você vai ler bastante e precisar discutir com as pessoas sobre
+o problema, sobre suas ideias para solução e sobre as ideias delas.&lt;/p&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;p&gt;Exemplos:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1 mês discutindo [underline]#blacklist# em uma máquina de regras &lt;em&gt;clara-rules&lt;/em&gt; [clojure]: &lt;a href=&#34;https://github.com/cerner/clara-rules/pull/445&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Qual seria a melhor forma de fazer scan do código &lt;em&gt;clara-rules&lt;/em&gt; [clojure]: &lt;a href=&#34;https://github.com/cerner/clara-rules/pull/448&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Definir formato de estrutura de dados &lt;em&gt;pomidor&lt;/em&gt; [elisp]: &lt;a href=&#34;https://github.com/TatriX/pomidor/pull/33&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;h2 id=&#34;ganhe-confiança-e-familiaridade&#34;&gt;Ganhe confiança e familiaridade&lt;/h2&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;
+  &lt;img
+  src=&#34;https://wandersoncferreira.github.io/panda-cdn.jpg&#34;
+  width=&#34;300&#34;/&gt;
+&lt;/p&gt;
+&lt;p&gt;Com o tempo, lendo um pouco do código todo dia e ganhando mais
+confiança você pode começar a corrigir aqueles problemas que você
+esbarra no seu dia-a-dia no trabalho e até mesmo incluir
+funcionalidades simples que facilitaria seu trabalho. &lt;em&gt;(ou algum
+projeto pessoal seu)&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;p&gt;Exemplos:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Download de uma imagem para o org-mode &lt;em&gt;org-download&lt;/em&gt; [elisp]: &lt;a href=&#34;https://github.com/wandersoncferreira/org-download/commit/bd8768630cb0554112bbf9b6010ae3bc1e131db6&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Suporte para quebrar captcha com base64 &lt;em&gt;python3-anticaptcha&lt;/em&gt; [python]: &lt;a href=&#34;https://github.com/AndreiDrang/python3-anticaptcha/commit/e1f0dac496f5ac7f5f3a7eef43d3d378b72e61c0&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Correção para tornar compatível com versões anteriores &lt;em&gt;spec-tools&lt;/em&gt; [clojure]: &lt;a href=&#34;https://github.com/metosin/spec-tools/pull/229&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;h2 id=&#34;alguns-pontos-sobre-os-projetos-open-source&#34;&gt;Alguns pontos sobre os projetos Open Source&amp;hellip;&lt;/h2&gt;
+&lt;p align=&#34;center&#34;&gt;
+  &lt;img src=&#34;https://wandersoncferreira.github.io/oogway.png&#34; width=&#34;500&#34;/&gt;
+&lt;/p&gt;
+&lt;p&gt;Existe um ponto importante que eu gosto de lembrar, &lt;em&gt;o projeto não é
+seu&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Esse projeto de código aberto é do autor original, seja ele uma pessoa
+ou uma empresa. Se você discorda de algo, não quer discutir ou tomou
+uma carteirada, faça um &lt;em&gt;fork&lt;/em&gt; do projeto e evolua o &lt;em&gt;seu&lt;/em&gt;!&lt;/p&gt;
+&lt;p&gt;Se outras pessoas da comunidade concordam com seu ponto de vista,
+então elas vão escolher livremente o uso da sua versão do código.&lt;/p&gt;
+&lt;p&gt;Esse é um ponto critico porque algumas pessoas dedicam horas, as vezes
+anos ao mesmo projeto e conseguem fazer parte de um comitê que tem
+mais autonomia para tomar decisões sobre aquele projeto. &lt;em&gt;(Lembra?
+Igual uma empresa&amp;hellip;)&lt;/em&gt; Porém ao fazer um investimento tão alto se as
+coisas começam a ir em uma direção que você discorda, você pode se
+sentir traído ou ofendido e acaba abandonando o projeto causando algum
+tumulto online. &lt;em&gt;Isso é bastante comum.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Convenhamos, de fato é fácil se frustrar quando você tem aquela ideia
+legal e quer que todo mundo também use, mas o autor da biblioteca não
+te responde mais ou some do mapa. É um direito dele, não sabemos e nem
+podemos supor quais são as suas prioridades e atividades correntes.&lt;/p&gt;
+&lt;p&gt;E o oposto também é verdadeiro, as vezes você começa algo e perde o
+interesse no meio do caminho.&lt;/p&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;p&gt;Não seja esse maluco stalkeando o autor da biblioteca no Twitter:&lt;/p&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;
+  &lt;img src=&#34;https://wandersoncferreira.github.io/me.png&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;p&gt;Exemplos:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Gostei do tema &lt;em&gt;organic-green&lt;/em&gt; e resolvi refazê-lo para modernizar [elisp]: &lt;a href=&#34;https://github.com/kostafey/organic-green-theme/pull/3&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Inclusão complexa de uma nova funcionalidade para o &lt;em&gt;spec-tools&lt;/em&gt; [clojure]: &lt;a href=&#34;https://github.com/metosin/spec-tools/pull/226&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Uma hora eu volto para rever isso, deixei de lado um tempo &lt;em&gt;reitit&lt;/em&gt; [clojure]: &lt;a href=&#34;https://github.com/metosin/reitit/pull/354&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;h2 id=&#34;e-a-sua-vez-crie-seus-próprios-projetos&#34;&gt;E a sua vez, crie seus próprios projetos!!&lt;/h2&gt;
+&lt;p align=&#34;center&#34;&gt;
+  &lt;img
+  src=&#34;https://wandersoncferreira.github.io/tigress.jpg&#34;
+  width=&#34;300&#34;/&gt;
+&lt;/p&gt;
+&lt;p&gt;Pelas minhas contribuições em Elisp já dá para imaginar que eu gosto
+dessa linguagem e não é para menos. A comunidade que existe em torno
+do Elisp é excepcional e os conceitos embutidos são muito ricos.&lt;/p&gt;
+&lt;p&gt;Em fevereiro de 2017 publiquei junto com um amigo o meu primeiro
+pacote em Elisp que de fato teve algum usuário, o
+&lt;a href=&#34;https://github.com/wandersoncferreira/helm-spotify-plus&#34;&gt;helm-spotify-plus&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;O pacote permite que você faça buscas e opere o Spotify através do
+Emacs. Foi muito divertido fazer esse pacote e lutar com uma linguagem
+antiga como o Elisp, hoje a biblioteca ocupa a posição de destaque
+dentro do percentil 70% no repositório de pacotes &lt;em&gt;MELPA&lt;/em&gt;. Isso é bom?
+&lt;em&gt;Para mim é ótimo!&lt;/em&gt; rsrs.&lt;/p&gt;
+&lt;p&gt;Ao ter um pacote próprio com usuários você está sujeito a diversas
+situações: i) programadores que gostaram da ideia e querem contribuir,
+ii) aqueles que não veem sentido algum na sua ideia completamente
+inútil.&lt;/p&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;p&gt;Exemplos:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Adicionaram uma &amp;ldquo;playlist&amp;rdquo; usando queues no elisp &lt;em&gt;helm-spotify-plus&lt;/em&gt; [elisp]: &lt;a href=&#34;https://github.com/wandersoncferreira/helm-spotify-plus/pull/32&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;mamulengo&lt;/em&gt; banco de dados em DataScript p/ aplicações pequenas [clojure]: &lt;a href=&#34;https://github.com/wandersoncferreira/mamulengo/issues/49&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;emacs.d&lt;/em&gt; minhas configs do Emacs, trabalho &lt;em&gt;diariamente&lt;/em&gt; desde 2016 [elisp]: &lt;a href=&#34;https://github.com/wandersoncferreira/dotfiles&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;meta-schema&lt;/em&gt; ideia de specs dinâmicas [clojure]: &lt;a href=&#34;https://github.com/wandersoncferreira/meta-schema&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;h2 id=&#34;mas-por-que-fazer-tudo-isso&#34;&gt;Mas por que fazer tudo isso?&lt;/h2&gt;
+&lt;p align=&#34;center&#34;&gt;
+  &lt;img
+  src=&#34;https://wandersoncferreira.github.io/not-to.jpeg&#34;
+  width=&#34;500&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;p&gt;Primeira resposta óbvia é: &amp;ldquo;porque eu posso&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;Mas falando sério, o ambiente do software de código aberto permite
+você trocar experiencias com pessoas muito diferentes de você. Metade
+dos meus códigos foram revisados por pessoas da Rússia, Finlândia,
+Estônia, Israel, etc. Ler os códigos que eles fazem é entender um
+pouco a forma como eles pensam, como estruturam soluções, como
+implementam ideias abstratas em código palpável.&lt;/p&gt;
+&lt;p&gt;No clássico texto do Peter Norvig &lt;a href=&#34;https://pihisall.wordpress.com/2007/03/15/aprenda-a-programar-em-dez-anos/&#34;&gt;Aprenda a programar em 10
+anos&lt;/a&gt;,
+precisamos nos colocar em diversas situações diferentes para poder
+evoluir profissionalmente.&lt;/p&gt;
+&lt;p&gt;Tem projetos onde você é o que domina melhor o tema, em outros você é
+o mais novato. Participar e vivenciar as duas experiências é
+extremamente enriquecedor.&lt;/p&gt;
+&lt;p&gt;Independente de onde você trabalha, você não vai poder discutir por 1
+mês se 150 linhas de códigos devem ou não ser adicionados da maneira X
+ou Y porque não temos esse luxo em ambiente corporativo. Porém você
+precisa dessa experiência, precisa ir mais fundo no problema, aprender
+a antecipar implicações importantes.&lt;/p&gt;
+&lt;p&gt;Software é uma profissão de prática, espero ter motivado algumas
+pessoas para participar dessa jornada também!&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Happy Hacking!&lt;/em&gt;&lt;/p&gt;
+</description> 
+    </item>
+    
+    <item>
+      <title>Preventing the Collapse of Civilization</title>
+      <link>https://wandersoncferreira.github.io/notes/preventing-collapse-civilization/</link>
+      <pubDate>Sun, 08 Mar 2020 00:00:00 -0300</pubDate>
+      
+      <guid>https://wandersoncferreira.github.io/notes/preventing-collapse-civilization/</guid>
+      <description>&lt;h3 id=&#34;youtube-linkhttpsyoutubepw-sodj4kkk&#34;&gt;&lt;a href=&#34;https://youtu.be/pW-SOdj4Kkk&#34;&gt;Youtube Link&lt;/a&gt;&lt;/h3&gt;
+&lt;h2 id=&#34;speaker&#34;&gt;Speaker&lt;/h2&gt;
+&lt;p&gt;Jonathan Blow, consultant&lt;/p&gt;
+&lt;h2 id=&#34;quotes&#34;&gt;Quotes&lt;/h2&gt;
+&lt;p&gt;This is why technology degrades. It taks a lot of energy to
+communicate from generation to generation there are losses. Without
+generational transfer, civilization dies.&lt;/p&gt;
+&lt;p&gt;Thesis: Software is in decline; we depend on software
+everywhere. Collapse look slow from the inside.&lt;/p&gt;
+&lt;p&gt;Software has been riding on immense hardware improvements.&lt;/p&gt;
+&lt;p&gt;We don&amp;rsquo;t expect software to work any more. How low will our standards
+to shrink?&lt;/p&gt;
+&lt;h2 id=&#34;recommendations&#34;&gt;Recommendations&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;1177BC: The year civilization collapsed by Eric Cline&lt;/li&gt;
+&lt;li&gt;Removing complexity is the right short-term play, even if it
+doesn&amp;rsquo;t seem so&lt;/li&gt;
+&lt;li&gt;Blog post from Nikita: &lt;a href=&#34;https://tonsky.me/blog/good-times-weak-men/&#34;&gt;https://tonsky.me/blog/good-times-weak-men/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Video: The thirty million line problem - by Casey Muratori&lt;/li&gt;
+&lt;li&gt;Video: Civilizations: Institutions, Knowledge and the Future by Samo Burja&lt;/li&gt;
+&lt;/ol&gt;
+</description> 
+    </item>
+    
+    <item>
+      <title>Core Design Principles for Software Developers</title>
+      <link>https://wandersoncferreira.github.io/notes/core-design-principles/</link>
+      <pubDate>Thu, 26 Dec 2019 00:00:00 -0300</pubDate>
+      
+      <guid>https://wandersoncferreira.github.io/notes/core-design-principles/</guid>
+      <description>&lt;h3 id=&#34;youtube-videoshttpsyoutubellggo74uxmi&#34;&gt;&lt;a href=&#34;https://youtu.be/llGgO74uXMI&#34;&gt;Youtube Videos&lt;/a&gt;&lt;/h3&gt;
+&lt;h2 id=&#34;speaker&#34;&gt;Speaker&lt;/h2&gt;
+&lt;p&gt;Venkat Subramaniam, Founder of Agile Developer, Inc.&lt;/p&gt;
+&lt;h2 id=&#34;thoughts&#34;&gt;Thoughts&lt;/h2&gt;
+&lt;p&gt;The presentations from Venkat are always interesting to watch. There
+are several good guidelines to software development in general, but
+also related to OOP with some principles like polymorphism and
+open/close as good thing we should also strive for.&lt;/p&gt;
+&lt;p&gt;Not sure about some peculiarities he seems to pay really attention
+for, for example, DRY and IDE. However, I need to keep studying these
+principles because I feel there are some good patterns here to be used
+in other worlds as well.&lt;/p&gt;
+&lt;p&gt;I will look for some exercises focusing the SOLID principles. Maybe
+should be a good idea to go out for my current code and try to find
+places where I already violate some of these principles.&lt;/p&gt;
+&lt;h2 id=&#34;quotes&#34;&gt;Quotes&lt;/h2&gt;
+&lt;p&gt;Software is never written, it is always rewritten&lt;/p&gt;
+&lt;p&gt;Keep it simple, stupid&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Simple&lt;/em&gt; keeps you focused&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Simple&lt;/em&gt; solves only real problem we know about&lt;/p&gt;
+&lt;p&gt;Worst form of coupling - Inheritance&lt;/p&gt;
+&lt;h2 id=&#34;recomendations&#34;&gt;Recomendations&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Subject the design to changes along the way and see how it reacts
+to it&lt;/li&gt;
+&lt;li&gt;To create good design first step is let go of the ego&lt;/li&gt;
+&lt;li&gt;Be unemotional&lt;/li&gt;
+&lt;li&gt;Take time to review design and code&lt;/li&gt;
+&lt;li&gt;You Are Not Gonna Neet It - Think YAGNI&lt;/li&gt;
+&lt;li&gt;Try to see if you can remove coupling&lt;/li&gt;
+&lt;li&gt;Focus on Single Responsibility Principle&lt;/li&gt;
+&lt;li&gt;Don&amp;rsquo;t comment what, instead comment why&lt;/li&gt;
+&lt;/ol&gt;
+</description> 
+    </item>
     
   </channel>
 </rss>

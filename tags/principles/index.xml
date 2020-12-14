@@ -11,85 +11,96 @@
 	<atom:link href="https://wandersoncferreira.github.io/tags/principles/index.xml" rel="self" type="application/rss+xml" />
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    <item>
+      <title>Building senior Engineers</title>
+      <link>https://wandersoncferreira.github.io/notes/building-senior-engineers/</link>
+      <pubDate>Sat, 06 Jun 2020 00:00:00 -0300</pubDate>
+      
+      <guid>https://wandersoncferreira.github.io/notes/building-senior-engineers/</guid>
+      <description>&lt;h3 id=&#34;youtubehttpsyoutubeirnnk5yx4qu&#34;&gt;&lt;a href=&#34;https://youtu.be/iRNnK5Yx4QU&#34;&gt;Youtube&lt;/a&gt;&lt;/h3&gt;
+&lt;h2 id=&#34;speaker&#34;&gt;Speaker&lt;/h2&gt;
+&lt;p&gt;Dalton Mitchell&lt;/p&gt;
+&lt;h2 id=&#34;thoughts&#34;&gt;Thoughts&lt;/h2&gt;
+&lt;p&gt;Given feedbacks is really hard. I am leading my team since 3 years ago
+and I did tons of interviews, and I can say today that for our team
+the culture fit was definetely the most important factor. We have
+developed people to improve their tecnical side and sometime later
+they became the MVP of their teams.&lt;/p&gt;
+&lt;p&gt;This was great, and after sometime I started to have problems with my
+HR team because I could not clearly communicate the values I was
+&amp;ldquo;seeking&amp;rdquo;-for in the candidates and they were always asking me a list
+of techonologies that the candidate must have. But truth be told, no
+one knows Clojure in Brazil, 90% of our hires did not know it and we
+actually rejected a nice technical clojure dev because of not good
+alignment with the team.&lt;/p&gt;
+&lt;p&gt;We were a &amp;ldquo;startup&amp;rdquo; and most of the environment is very very
+high-paced, not well structured and very varying. You need to be ok of
+putting a lot of effort in something and suddly one morning that
+project is discontinued. It is shocking. Bad feeling. But it will
+happen.&lt;/p&gt;
+&lt;p&gt;What we did was to focus on the learning journey. Most of this dead
+projected contributed to team knowledge of the domain and new ways to
+solve our particular project. Proof of concepts in high speed with
+high stakes.&lt;/p&gt;
+&lt;h2 id=&#34;quotes&#34;&gt;Quotes&lt;/h2&gt;
+&lt;p&gt;&amp;ldquo;We&amp;rsquo;re looking for a more senior candidate&amp;rdquo; - Most feedback I got&lt;/p&gt;
+&lt;p&gt;Look for these attributes: communication, curiousity, passion, determination&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Determination&lt;/em&gt;: They won&amp;rsquo;t give up when things get tough.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Determination&lt;/em&gt;: Rather than complain, they&amp;rsquo;ll propose solutions.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Determination&lt;/em&gt;: They&amp;rsquo;ll show empathy to others, and try to help when they struggle.&lt;/p&gt;
+&lt;h2 id=&#34;recommendations&#34;&gt;Recommendations&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;High standards&lt;/li&gt;
+&lt;li&gt;Focus on team impact&lt;/li&gt;
+&lt;li&gt;Experience over head knowledge&lt;/li&gt;
+&lt;li&gt;Be clear about that you value on your team&lt;/li&gt;
+&lt;li&gt;Identify traits that actually matter&lt;/li&gt;
+&lt;li&gt;Give useful feedback&lt;/li&gt;
+&lt;li&gt;You received free, give gree.&lt;/li&gt;
+&lt;/ol&gt;
+</description> 
+    </item>
+    
+    <item>
+      <title>States and Nomads: Handling Software Complexity</title>
+      <link>https://wandersoncferreira.github.io/notes/states-and-nomads/</link>
+      <pubDate>Sun, 31 May 2020 00:00:00 -0300</pubDate>
+      
+      <guid>https://wandersoncferreira.github.io/notes/states-and-nomads/</guid>
+      <description>&lt;h3 id=&#34;youtubehttpsyoutubekgafci2unri&#34;&gt;&lt;a href=&#34;https://youtu.be/KGaFcI2UNrI&#34;&gt;Youtube&lt;/a&gt;&lt;/h3&gt;
+&lt;h2 id=&#34;speaker&#34;&gt;Speaker&lt;/h2&gt;
+&lt;p&gt;Zach Tellman&lt;/p&gt;
+&lt;h2 id=&#34;thoughts&#34;&gt;Thoughts&lt;/h2&gt;
+&lt;p&gt;Zach always provides a lot of references about amazing subjects, this
+guy has a very scientific approach to software development and this is
+great. I really believe we should take this road altogether.&lt;/p&gt;
+&lt;p&gt;The choices you take when you build software depends on our knowledge
+about the domain.&lt;/p&gt;
+&lt;h2 id=&#34;quotes&#34;&gt;Quotes&lt;/h2&gt;
+&lt;p&gt;We build systems that we can&amp;rsquo;t understand fully&lt;/p&gt;
+&lt;p&gt;Heuristic devices don&amp;rsquo;t tell you when to stop. No abstraction
+describes its own failures.&lt;/p&gt;
+&lt;p&gt;The map is not the territory&lt;/p&gt;
+&lt;p&gt;The Design Patterns book provides you the &amp;ldquo;blocks&amp;rdquo; about how you can
+use to build solutions, however they do not talk about the environment
+where your code is placed.&lt;/p&gt;
+&lt;h2 id=&#34;recommendations&#34;&gt;Recommendations&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Read from other areas about similar problems we face in software engineer&lt;/li&gt;
+&lt;li&gt;Good planning is good planning&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;books&#34;&gt;Books&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;An introduction to General Systems Thinking - by Gerald. M. Weinberg&lt;/li&gt;
+&lt;li&gt;A thousand plateaus&lt;/li&gt;
+&lt;li&gt;Ficcoes - by Jorge Luis Borges&lt;/li&gt;
+&lt;li&gt;A Pattern Language - by Christopher Alexander&lt;/li&gt;
+&lt;li&gt;Patterns of Software - by Richard Gabriel&lt;/li&gt;
+&lt;li&gt;Invisible Cities - by Calvino&lt;/li&gt;
+&lt;li&gt;Data and Reality - by Kent&lt;/li&gt;
+&lt;/ol&gt;
+</description> 
+    </item>
     
   </channel>
 </rss>

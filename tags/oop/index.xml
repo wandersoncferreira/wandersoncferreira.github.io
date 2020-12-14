@@ -11,85 +11,88 @@
 	<atom:link href="https://wandersoncferreira.github.io/tags/oop/index.xml" rel="self" type="application/rss+xml" />
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    <item>
+      <title>SOLID Principles of Object Oriented &amp; Agile Design</title>
+      <link>https://wandersoncferreira.github.io/notes/solid-principles/</link>
+      <pubDate>Wed, 25 Dec 2019 00:00:00 -0300</pubDate>
+      
+      <guid>https://wandersoncferreira.github.io/notes/solid-principles/</guid>
+      <description>&lt;h3 id=&#34;youtube-linkhttpsyoutubeqhnlmvdxgty&#34;&gt;&lt;a href=&#34;https://youtu.be/QHnLmvDxGTY&#34;&gt;Youtube Link&lt;/a&gt;&lt;/h3&gt;
+&lt;h2 id=&#34;speaker&#34;&gt;Speaker&lt;/h2&gt;
+&lt;p&gt;Robert &amp;ldquo;Uncle Bob&amp;rdquo; Martin&lt;/p&gt;
+&lt;h2 id=&#34;thoughts&#34;&gt;Thoughts&lt;/h2&gt;
+&lt;p&gt;I might be walking into undesirable path here, but every presentation
+I saw from Uncle Bob was bad. I have to say that, I&amp;rsquo;m now saying that
+there is no wisdom in these talks but only that I have to filter so
+much unrelated and trivias that makes it difficult and most of the
+times boring.&lt;/p&gt;
+&lt;p&gt;I like presentations like Linus names his functions: short, sweet and
+to the point.&lt;/p&gt;
+&lt;p&gt;OO is about managing dependencies so you can prevent fragility and
+rigidity&lt;/p&gt;
+&lt;h2 id=&#34;quotes&#34;&gt;Quotes&lt;/h2&gt;
+&lt;p&gt;The ultimate failure of a software developer is when the &lt;em&gt;business&lt;/em&gt;
+prohibits you to make changes to a specific module in the system.&lt;/p&gt;
+&lt;p&gt;Three magic words of OO: Encapsulation, Inherintance and Polymorphism&lt;/p&gt;
+&lt;h2 id=&#34;principles&#34;&gt;Principles&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;S&lt;/strong&gt;ingle Responsibility: a class should have one single reason to change&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;O&lt;/strong&gt;pen/Closed: modules should be open for extension but closed for modification&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;L&lt;/strong&gt;iskov Substitution: derived classes must be usable through the base class interface&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;I&lt;/strong&gt;nterface segregation: clients should not be forced to depend upon interfaces that they do not use&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;D&lt;/strong&gt;ependency inversion: high-level modules, which provide complex logic, should not depend on low-level modules, which provides utility features. Both should depend on abstractions.&lt;/p&gt;
+&lt;h2 id=&#34;recomendations&#34;&gt;Recomendations&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;You don&amp;rsquo;t get fast by written crap&lt;/li&gt;
+&lt;li&gt;Inherintance is used in dynamic languages to inherint behaviors
+from others&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;extra-links&#34;&gt;Extra links&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackify.com/solid-design-principles/&#34;&gt;Solid Design Principles Explained&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description> 
+    </item>
+    
+    <item>
+      <title>Back to Basics: Object-Oriented Programming</title>
+      <link>https://wandersoncferreira.github.io/notes/back-to-basics/</link>
+      <pubDate>Thu, 21 Nov 2019 00:00:00 -0300</pubDate>
+      
+      <guid>https://wandersoncferreira.github.io/notes/back-to-basics/</guid>
+      <description>&lt;h3 id=&#34;youtube-linkhttpsyoutube32tdtd9ujce&#34;&gt;&lt;a href=&#34;https://youtu.be/32tDTD9UJCE&#34;&gt;Youtube Link&lt;/a&gt;&lt;/h3&gt;
+&lt;h2 id=&#34;speaker&#34;&gt;Speaker&lt;/h2&gt;
+&lt;p&gt;Jon Kalb, Software Instructor&lt;/p&gt;
+&lt;h2 id=&#34;thoughts&#34;&gt;Thoughts&lt;/h2&gt;
+&lt;p&gt;I&amp;rsquo;ve being trying to find good modern material about OOP it&amp;rsquo;s very
+difficult. I &lt;em&gt;imagine&lt;/em&gt; that OOP has some good lesons about modularity
+and composition that might be very good to really master and to apply
+in different contexts. I noticed that OOP depends a lot on the
+community behind it, I could not find many good &lt;em&gt;same&lt;/em&gt; principles from
+Java, C++ and Ruby comminuties. But I am still studying and trying to
+understand polymorphism better.&lt;/p&gt;
+&lt;h2 id=&#34;definitions&#34;&gt;Definitions&lt;/h2&gt;
+&lt;p&gt;OOP: a programming paradigm in C++ using polymorphism based on runtime
+function dispatch using virtual functions&lt;/p&gt;
+&lt;h2 id=&#34;quotes&#34;&gt;Quotes&lt;/h2&gt;
+&lt;p&gt;After the base class guarantees the preconditions and postconditions
+of an operation, any derived class must respect those guarantess. An
+override can ask for &lt;em&gt;less&lt;/em&gt; and provide &lt;em&gt;more&lt;/em&gt;, but it must never
+require more or promise less because that would break the contract
+that was promised to calling code.&lt;/p&gt;
+&lt;h2 id=&#34;books&#34;&gt;Books&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.amazon.com/Coding-Standards-Rules-Guidelines-Practices/dp/0321113586&#34;&gt;From C++ Coding Standards&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.amazon.com/Effective-Specific-Improve-Programs-Designs/dp/0321334876/ref=sr_1_1?keywords=effective+c%2B%2B&amp;amp;qid=1577292173&amp;amp;s=books&amp;amp;sr=1-1&#34;&gt;Effective C++: 55 specific ways to improve your programs and designs&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;recommendations&#34;&gt;Recommendations&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Why are so many developers hating on Object-Oriented Programming?&lt;/li&gt;
+&lt;li&gt;Make every class in your hierarchy either a base-only or leaf-only&lt;/li&gt;
+&lt;li&gt;Give one entity one cohesive responsibility&lt;/li&gt;
+&lt;li&gt;Use OOP to model &amp;ldquo;is-a&amp;rdquo; relationships, not for code-reuse&lt;/li&gt;
+&lt;/ol&gt;
+</description> 
+    </item>
     
   </channel>
 </rss>

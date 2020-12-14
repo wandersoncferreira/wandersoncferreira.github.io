@@ -11,85 +11,43 @@
 	<atom:link href="https://wandersoncferreira.github.io/tags/google/index.xml" rel="self" type="application/rss+xml" />
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    <item>
+      <title>Linus Torvalds on git</title>
+      <link>https://wandersoncferreira.github.io/notes/linus-on-git/</link>
+      <pubDate>Wed, 25 Dec 2019 00:00:00 -0300</pubDate>
+      
+      <guid>https://wandersoncferreira.github.io/notes/linus-on-git/</guid>
+      <description>&lt;h3 id=&#34;youtube-linkhttpsyoutube4xpnkhjaok8&#34;&gt;&lt;a href=&#34;https://youtu.be/4XpnKHJAok8&#34;&gt;Youtube Link&lt;/a&gt;&lt;/h3&gt;
+&lt;h2 id=&#34;speaker&#34;&gt;Speaker&lt;/h2&gt;
+&lt;p&gt;Linus Torvals&lt;/p&gt;
+&lt;h2 id=&#34;thoughts&#34;&gt;Thoughts&lt;/h2&gt;
+&lt;p&gt;It&amp;rsquo;s interesting how clear the requirements about a SCM system should
+have when Linus talks about it. One day I should experiment another
+SCM tool, back at my days in the university we used none of these for
+most of the time. Actually, I had to interact with several data files
+that would be very nicely done inside a Database but I accessed it
+directly from disk. Savages =)&lt;/p&gt;
+&lt;p&gt;Interesting to see how people at that audience is not familiar with
+something that seems standard to me right now.&lt;/p&gt;
+&lt;h2 id=&#34;quotes&#34;&gt;Quotes&lt;/h2&gt;
+&lt;p&gt;The only security work that can be done is through network of trust,
+and this should be the only way that development is done as well.&lt;/p&gt;
+&lt;p&gt;Distribution means, no one is special.&lt;/p&gt;
+&lt;p&gt;Git does not track files, it tracks your contents.&lt;/p&gt;
+&lt;h2 id=&#34;recomendations&#34;&gt;Recomendations&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;You might have as many branches as you like&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Mercurial&lt;/em&gt; has the same model as git and some differences to
+implementation details&lt;/li&gt;
+&lt;li&gt;Centralized systems cannot work as well as distributed ones&lt;/li&gt;
+&lt;li&gt;Your functions should have names short, sweet and to the point&lt;/li&gt;
+&lt;li&gt;You should not have a single repository for every part of your
+system. It&amp;rsquo;s better to have a &lt;em&gt;super project&lt;/em&gt; that have pointers to
+other git repositories.&lt;/li&gt;
+&lt;li&gt;History must always be seens on a project basis&lt;/li&gt;
+&lt;/ol&gt;
+</description> 
+    </item>
     
   </channel>
 </rss>

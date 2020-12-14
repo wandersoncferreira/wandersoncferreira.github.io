@@ -11,85 +11,253 @@
 	<atom:link href="https://wandersoncferreira.github.io/tags/open-source/index.xml" rel="self" type="application/rss+xml" />
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    <item>
+      <title>Participe de projetos Código Aberto</title>
+      <link>https://wandersoncferreira.github.io/blog/codigo-aberto/</link>
+      <pubDate>Thu, 30 Apr 2020 00:00:00 -0300</pubDate>
+      
+      <guid>https://wandersoncferreira.github.io/blog/codigo-aberto/</guid>
+      <description>&lt;p&gt;Vou comentar um pouco minha trajetória que foi moldada de forma
+integral por comunidades online.&lt;/p&gt;
+&lt;p&gt;Em 2008 eu comecei meus primeiros passos na internet, além de jogar de
+forma alucinada comecei a aprender 3D Studio Max e Blender. Na época
+eu assistia muitos vídeos &lt;a href=&#34;https://youtu.be/eplAQ3fEr8M&#34;&gt;Xiao Xiao&lt;/a&gt; e
+queria muito conseguir fazer igual em &lt;em&gt;Flash&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Começou ali uma aventura que me acompanha até os dias de hoje:&lt;/p&gt;
+&lt;p&gt;Uma conta no iMaster e fui o membro mais chato e com pior português
+possível por 3 meses seguidos &lt;em&gt;(é o máximo de tempo que um adolescente
+de 16 anos consegue se comprometer com algo)&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;
+  &lt;img src=&#34;https://wandersoncferreira.github.io/imaster.png&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;p&gt;Depois passei por fóruns e comunidades no ICQ, IRC, Orkut, Reddit,
+Blogs pessoas, Blogs de jogos como Unreal, WYD, Mu online e diversos
+outros clássicos tratando de temas desde Tire suas dúvidas para passar
+no vestibular até grupos privados sobre Unix e Sísmica de Reflexão.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Legal, mas onde quero chegar?&lt;/strong&gt; Todas essas experiências me fizeram
+entender como o processo de aprendizagem e cooperação online funciona
+(pra mim), assim como quais benefícios de médio e longo prazo eles
+podem trazer. Portanto quero fazer esse link com o mundo do
+desenvolvimento de software usando alguns exemplos que eu tive.&lt;/p&gt;
+&lt;h2 id=&#34;o-inicio-parece-impossível-mesmo&#34;&gt;O inicio parece impossível mesmo&lt;/h2&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;p&gt;Quem trabalha com Python e não gostaria de contribuir para o projeto
+do &lt;a href=&#34;https://github.com/pandas-dev/pandas&#34;&gt;Pandas&lt;/a&gt;? Biblioteca famosa,
+22 mil commits, deve ter milhares de linhas de código, são 1900
+pessoas diferentes contribuindo para o projeto. O que eu mortal posso
+fazer?  &lt;em&gt;Muito!&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;
+  &lt;img src=&#34;https://wandersoncferreira.github.io/pandas.png&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;p&gt;Porém, vamos para o começo.&lt;/p&gt;
+&lt;p&gt;Um projeto como esse é uma empresa com as portas abertas. Ele tem suas
+estruturas internas, pessoas responsáveis com papeis específicos,
+hierarquia, &lt;em&gt;politica&lt;/em&gt;, etc. E o que você faz quando chega em um
+emprego novo?&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;onboarding&lt;/li&gt;
+&lt;li&gt;tirar dúvidas com pessoas mais experientes&lt;/li&gt;
+&lt;li&gt;leitura/estudo com relação ao domínio de negócio da empresa&lt;/li&gt;
+&lt;li&gt;fazer tarefas pequenas e menos complexas&lt;/li&gt;
+&lt;li&gt;se ambientar o suficiente para migrar para tarefas complexas&lt;/li&gt;
+&lt;li&gt;liderar projetos&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt; 
+ 
+ 
+ &lt;/p&gt;
+&lt;p&gt;Nesse caso é exatamente igual.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Basicamente todos os pontos acima você resolve participando e lendo
+as &lt;em&gt;Issues&lt;/em&gt; e &lt;em&gt;Pull Requests&lt;/em&gt; dos projetos. * Não é tão raro projetos
+usarem listas de discussão via &lt;em&gt;email&lt;/em&gt;, por exemplo,
+&lt;a href=&#34;https://groups.google.com/forum/#!forum/clojure&#34;&gt;clojure&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt; 
+ 
+ 
+ &lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Importante:&lt;/em&gt; Comece fazendo tarefas pequenas!! É comum os projetos
+colocarem indicadores nos problemas para orientar os novatos, como
+&lt;em&gt;good first issue&lt;/em&gt;, &lt;em&gt;easy&lt;/em&gt;, &lt;em&gt;documentation&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;p&gt;Exemplos que participei:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Documentação pandas &lt;em&gt;group-by&lt;/em&gt; [python]: &lt;a href=&#34;https://github.com/pandas-dev/pandas/pull/14801&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Documentação &lt;em&gt;reitit&lt;/em&gt; [clojure]: &lt;a href=&#34;https://github.com/metosin/reitit/commit/fbe2f625765259e3b9ec0448395c4349cb134cdf&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Adicionar &lt;em&gt;dicas&lt;/em&gt; sobre tipos onde o autor esqueceu &lt;em&gt;reitit&lt;/em&gt; [clojure]: &lt;a href=&#34;https://github.com/metosin/reitit/commit/f7e4136e0e777c4d05200c82c12d34c1e676f51f&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Literalmente adicionei aspas no &lt;em&gt;organic-green&lt;/em&gt; [elisp]: &lt;a href=&#34;https://github.com/kostafey/organic-green-theme/commit/2f4942abc824c55412da3e8f7bd7a316640a2a74&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Adicionei 7 palavras no &lt;em&gt;spec-tools&lt;/em&gt; [clojure]: &lt;a href=&#34;https://github.com/metosin/spec-tools/pull/227&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;h2 id=&#34;inglês&#34;&gt;Inglês&lt;/h2&gt;
+&lt;p align=&#34;center&#34;&gt;
+  &lt;img
+  src=&#34;https://wandersoncferreira.github.io/prog.png&#34;
+  width=&#34;600&#34;/&gt;
+&lt;/p&gt;
+&lt;p&gt;Ponto importante, muito importante. Eu estudo Clojure, utilizo no
+trabalho e muitas pessoas me perguntam se é muito difícil de aprender,
+como se adaptar, etc. e eu tenho uma posição bem firme sobre o
+assunto:&lt;/p&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;A principal linguagem que causa dificuldades no trabalho é o inglês&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;p&gt;Isso é realidade ainda dentro de times de desenvolvimento. Conseguir
+expor suas ideias de uma forma &lt;em&gt;inteligível&lt;/em&gt; é essencial. E porque?
+Por que você vai ler bastante e precisar discutir com as pessoas sobre
+o problema, sobre suas ideias para solução e sobre as ideias delas.&lt;/p&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;p&gt;Exemplos:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1 mês discutindo [underline]#blacklist# em uma máquina de regras &lt;em&gt;clara-rules&lt;/em&gt; [clojure]: &lt;a href=&#34;https://github.com/cerner/clara-rules/pull/445&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Qual seria a melhor forma de fazer scan do código &lt;em&gt;clara-rules&lt;/em&gt; [clojure]: &lt;a href=&#34;https://github.com/cerner/clara-rules/pull/448&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Definir formato de estrutura de dados &lt;em&gt;pomidor&lt;/em&gt; [elisp]: &lt;a href=&#34;https://github.com/TatriX/pomidor/pull/33&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;h2 id=&#34;ganhe-confiança-e-familiaridade&#34;&gt;Ganhe confiança e familiaridade&lt;/h2&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;
+  &lt;img
+  src=&#34;https://wandersoncferreira.github.io/panda-cdn.jpg&#34;
+  width=&#34;300&#34;/&gt;
+&lt;/p&gt;
+&lt;p&gt;Com o tempo, lendo um pouco do código todo dia e ganhando mais
+confiança você pode começar a corrigir aqueles problemas que você
+esbarra no seu dia-a-dia no trabalho e até mesmo incluir
+funcionalidades simples que facilitaria seu trabalho. &lt;em&gt;(ou algum
+projeto pessoal seu)&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;p&gt;Exemplos:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Download de uma imagem para o org-mode &lt;em&gt;org-download&lt;/em&gt; [elisp]: &lt;a href=&#34;https://github.com/wandersoncferreira/org-download/commit/bd8768630cb0554112bbf9b6010ae3bc1e131db6&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Suporte para quebrar captcha com base64 &lt;em&gt;python3-anticaptcha&lt;/em&gt; [python]: &lt;a href=&#34;https://github.com/AndreiDrang/python3-anticaptcha/commit/e1f0dac496f5ac7f5f3a7eef43d3d378b72e61c0&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Correção para tornar compatível com versões anteriores &lt;em&gt;spec-tools&lt;/em&gt; [clojure]: &lt;a href=&#34;https://github.com/metosin/spec-tools/pull/229&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;h2 id=&#34;alguns-pontos-sobre-os-projetos-open-source&#34;&gt;Alguns pontos sobre os projetos Open Source&amp;hellip;&lt;/h2&gt;
+&lt;p align=&#34;center&#34;&gt;
+  &lt;img src=&#34;https://wandersoncferreira.github.io/oogway.png&#34; width=&#34;500&#34;/&gt;
+&lt;/p&gt;
+&lt;p&gt;Existe um ponto importante que eu gosto de lembrar, &lt;em&gt;o projeto não é
+seu&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Esse projeto de código aberto é do autor original, seja ele uma pessoa
+ou uma empresa. Se você discorda de algo, não quer discutir ou tomou
+uma carteirada, faça um &lt;em&gt;fork&lt;/em&gt; do projeto e evolua o &lt;em&gt;seu&lt;/em&gt;!&lt;/p&gt;
+&lt;p&gt;Se outras pessoas da comunidade concordam com seu ponto de vista,
+então elas vão escolher livremente o uso da sua versão do código.&lt;/p&gt;
+&lt;p&gt;Esse é um ponto critico porque algumas pessoas dedicam horas, as vezes
+anos ao mesmo projeto e conseguem fazer parte de um comitê que tem
+mais autonomia para tomar decisões sobre aquele projeto. &lt;em&gt;(Lembra?
+Igual uma empresa&amp;hellip;)&lt;/em&gt; Porém ao fazer um investimento tão alto se as
+coisas começam a ir em uma direção que você discorda, você pode se
+sentir traído ou ofendido e acaba abandonando o projeto causando algum
+tumulto online. &lt;em&gt;Isso é bastante comum.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Convenhamos, de fato é fácil se frustrar quando você tem aquela ideia
+legal e quer que todo mundo também use, mas o autor da biblioteca não
+te responde mais ou some do mapa. É um direito dele, não sabemos e nem
+podemos supor quais são as suas prioridades e atividades correntes.&lt;/p&gt;
+&lt;p&gt;E o oposto também é verdadeiro, as vezes você começa algo e perde o
+interesse no meio do caminho.&lt;/p&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;p&gt;Não seja esse maluco stalkeando o autor da biblioteca no Twitter:&lt;/p&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;
+  &lt;img src=&#34;https://wandersoncferreira.github.io/me.png&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;p&gt;Exemplos:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Gostei do tema &lt;em&gt;organic-green&lt;/em&gt; e resolvi refazê-lo para modernizar [elisp]: &lt;a href=&#34;https://github.com/kostafey/organic-green-theme/pull/3&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Inclusão complexa de uma nova funcionalidade para o &lt;em&gt;spec-tools&lt;/em&gt; [clojure]: &lt;a href=&#34;https://github.com/metosin/spec-tools/pull/226&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Uma hora eu volto para rever isso, deixei de lado um tempo &lt;em&gt;reitit&lt;/em&gt; [clojure]: &lt;a href=&#34;https://github.com/metosin/reitit/pull/354&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;h2 id=&#34;e-a-sua-vez-crie-seus-próprios-projetos&#34;&gt;E a sua vez, crie seus próprios projetos!!&lt;/h2&gt;
+&lt;p align=&#34;center&#34;&gt;
+  &lt;img
+  src=&#34;https://wandersoncferreira.github.io/tigress.jpg&#34;
+  width=&#34;300&#34;/&gt;
+&lt;/p&gt;
+&lt;p&gt;Pelas minhas contribuições em Elisp já dá para imaginar que eu gosto
+dessa linguagem e não é para menos. A comunidade que existe em torno
+do Elisp é excepcional e os conceitos embutidos são muito ricos.&lt;/p&gt;
+&lt;p&gt;Em fevereiro de 2017 publiquei junto com um amigo o meu primeiro
+pacote em Elisp que de fato teve algum usuário, o
+&lt;a href=&#34;https://github.com/wandersoncferreira/helm-spotify-plus&#34;&gt;helm-spotify-plus&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;O pacote permite que você faça buscas e opere o Spotify através do
+Emacs. Foi muito divertido fazer esse pacote e lutar com uma linguagem
+antiga como o Elisp, hoje a biblioteca ocupa a posição de destaque
+dentro do percentil 70% no repositório de pacotes &lt;em&gt;MELPA&lt;/em&gt;. Isso é bom?
+&lt;em&gt;Para mim é ótimo!&lt;/em&gt; rsrs.&lt;/p&gt;
+&lt;p&gt;Ao ter um pacote próprio com usuários você está sujeito a diversas
+situações: i) programadores que gostaram da ideia e querem contribuir,
+ii) aqueles que não veem sentido algum na sua ideia completamente
+inútil.&lt;/p&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;p&gt;Exemplos:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Adicionaram uma &amp;ldquo;playlist&amp;rdquo; usando queues no elisp &lt;em&gt;helm-spotify-plus&lt;/em&gt; [elisp]: &lt;a href=&#34;https://github.com/wandersoncferreira/helm-spotify-plus/pull/32&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;mamulengo&lt;/em&gt; banco de dados em DataScript p/ aplicações pequenas [clojure]: &lt;a href=&#34;https://github.com/wandersoncferreira/mamulengo/issues/49&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;emacs.d&lt;/em&gt; minhas configs do Emacs, trabalho &lt;em&gt;diariamente&lt;/em&gt; desde 2016 [elisp]: &lt;a href=&#34;https://github.com/wandersoncferreira/dotfiles&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;meta-schema&lt;/em&gt; ideia de specs dinâmicas [clojure]: &lt;a href=&#34;https://github.com/wandersoncferreira/meta-schema&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;h2 id=&#34;mas-por-que-fazer-tudo-isso&#34;&gt;Mas por que fazer tudo isso?&lt;/h2&gt;
+&lt;p align=&#34;center&#34;&gt;
+  &lt;img
+  src=&#34;https://wandersoncferreira.github.io/not-to.jpeg&#34;
+  width=&#34;500&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;p&gt;Primeira resposta óbvia é: &amp;ldquo;porque eu posso&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;Mas falando sério, o ambiente do software de código aberto permite
+você trocar experiencias com pessoas muito diferentes de você. Metade
+dos meus códigos foram revisados por pessoas da Rússia, Finlândia,
+Estônia, Israel, etc. Ler os códigos que eles fazem é entender um
+pouco a forma como eles pensam, como estruturam soluções, como
+implementam ideias abstratas em código palpável.&lt;/p&gt;
+&lt;p&gt;No clássico texto do Peter Norvig &lt;a href=&#34;https://pihisall.wordpress.com/2007/03/15/aprenda-a-programar-em-dez-anos/&#34;&gt;Aprenda a programar em 10
+anos&lt;/a&gt;,
+precisamos nos colocar em diversas situações diferentes para poder
+evoluir profissionalmente.&lt;/p&gt;
+&lt;p&gt;Tem projetos onde você é o que domina melhor o tema, em outros você é
+o mais novato. Participar e vivenciar as duas experiências é
+extremamente enriquecedor.&lt;/p&gt;
+&lt;p&gt;Independente de onde você trabalha, você não vai poder discutir por 1
+mês se 150 linhas de códigos devem ou não ser adicionados da maneira X
+ou Y porque não temos esse luxo em ambiente corporativo. Porém você
+precisa dessa experiência, precisa ir mais fundo no problema, aprender
+a antecipar implicações importantes.&lt;/p&gt;
+&lt;p&gt;Software é uma profissão de prática, espero ter motivado algumas
+pessoas para participar dessa jornada também!&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Happy Hacking!&lt;/em&gt;&lt;/p&gt;
+</description> 
+    </item>
     
   </channel>
 </rss>

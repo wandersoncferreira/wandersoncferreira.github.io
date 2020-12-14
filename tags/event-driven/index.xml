@@ -11,85 +11,44 @@
 	<atom:link href="https://wandersoncferreira.github.io/tags/event-driven/index.xml" rel="self" type="application/rss+xml" />
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    <item>
+      <title>Event Driven Programming in Clojure</title>
+      <link>https://wandersoncferreira.github.io/notes/event-driven-programming/</link>
+      <pubDate>Sun, 31 May 2020 00:00:00 -0300</pubDate>
+      
+      <guid>https://wandersoncferreira.github.io/notes/event-driven-programming/</guid>
+      <description>&lt;h3 id=&#34;youtubehttpsyoutubeqoscks51xfm&#34;&gt;&lt;a href=&#34;https://youtu.be/QOSCKs51xfM&#34;&gt;Youtube&lt;/a&gt;&lt;/h3&gt;
+&lt;h2 id=&#34;speaker&#34;&gt;Speaker&lt;/h2&gt;
+&lt;p&gt;Zach Tellman&lt;/p&gt;
+&lt;h2 id=&#34;thoughts&#34;&gt;Thoughts&lt;/h2&gt;
+&lt;p&gt;One of the systems at work was very interesting because it had a very
+asyncronous nature and our service provider did a great work enabling
+us to leverage this style of programming. At the time I studied a lot
+of materials from Golang community because we had this requirement to
+develop it in Golang.&lt;/p&gt;
+&lt;p&gt;The talks and materials online was far more rich and interesting than
+what I found about clojure&amp;rsquo;s take in event driven programming. I do
+have a book about it in Clojure, but I need to set aside more time for
+reading it.&lt;/p&gt;
+&lt;p&gt;For now, I signup for Timothy Baldridge Dropbox folder (rsrsrs) with a
+really nice tutorials on core.async, and concurrency in general. I
+recommend the material.&lt;/p&gt;
+&lt;h2 id=&#34;quotes&#34;&gt;Quotes&lt;/h2&gt;
+&lt;p&gt;&amp;ldquo;We often spend more time &lt;em&gt;waiting&lt;/em&gt; on data than we do &lt;em&gt;computing&lt;/em&gt; our
+response.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;System threads don&amp;rsquo;t grow on trees&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;events in clojure&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;immutability&lt;/li&gt;
+&lt;li&gt;software transactional memory&lt;/li&gt;
+&lt;li&gt;thread-agnosticism&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;recommendations&#34;&gt;Recommendations&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;syncrhonous concurrency is still simple&lt;/li&gt;
+&lt;/ol&gt;
+</description> 
+    </item>
     
   </channel>
 </rss>

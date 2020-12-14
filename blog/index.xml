@@ -11,85 +11,1429 @@
 	<atom:link href="https://wandersoncferreira.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    <item>
+      <title>Back to Windows</title>
+      <link>https://wandersoncferreira.github.io/blog/back-to-windows/</link>
+      <pubDate>Tue, 08 Dec 2020 00:00:00 -0300</pubDate>
+      
+      <guid>https://wandersoncferreira.github.io/blog/back-to-windows/</guid>
+      <description>&lt;p&gt;A couple of weeks ago I wrote about using Emacs inside a terminal to
+perform regular software development and to my surprise I would need
+to take another unfamiliar step sooner: &lt;em&gt;become a Windows 10 user&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;The idea of this post is to document all the steps I made to Windows
+feel usable from a perspective of a 10 years old die-hard Linux user
+(slackware, archlinux with i3wm, exwm, ratpoison, etc).&lt;/p&gt;
+&lt;h1 id=&#34;swap-capslock-for-control&#34;&gt;Swap Capslock for Control&lt;/h1&gt;
+&lt;p&gt;Funny enough, my first &amp;ldquo;task&amp;rdquo; on Windows and I was welcomed with
+&amp;ldquo;change this binary data&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;You can use PowerShell with Adm rights:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$hexified&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;00,00,00,00,00,00,00,00,02,00,00,00,1d,00,3a,00,00,00,00,00&amp;#34;&lt;/span&gt;.Split&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;,&amp;#39;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; % &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;0x&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$_&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+&lt;span class=&#34;nv&#34;&gt;$kbLayout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;HKLM:\System\CurrentControlSet\Control\Keyboard Layout&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+New-ItemProperty -Path &lt;span class=&#34;nv&#34;&gt;$kbLayout&lt;/span&gt; -Name &lt;span class=&#34;s2&#34;&gt;&amp;#34;Scancode Map&amp;#34;&lt;/span&gt; -PropertyType Binary -Value &lt;span class=&#34;o&#34;&gt;([&lt;/span&gt;byte&lt;span class=&#34;o&#34;&gt;[]]&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$hexified&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Then &lt;em&gt;REBOOT!&lt;/em&gt; :O&lt;/p&gt;
+&lt;h1 id=&#34;windows-meets-linux-anyway&#34;&gt;Windows meets Linux anyway&lt;/h1&gt;
+&lt;p&gt;Install
+&lt;a href=&#34;https://docs.microsoft.com/en-us/windows/wsl/install-win10&#34;&gt;WSL2&lt;/a&gt; and
+Ubuntu 20.04 LST on your machine. Be ready to allocate a lot of memory
+on this setup. For example, I&amp;rsquo;ve been running at 2GB RAM allocated on
+a daily basis.&lt;/p&gt;
+&lt;p&gt;The next two softwares I installed was &lt;a href=&#34;https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701?activetab=pivot:overviewtab&#34;&gt;Windows
+Terminal&lt;/a&gt;
+and &lt;a href=&#34;https://docs.docker.com/docker-for-windows/wsl/&#34;&gt;Docker&lt;/a&gt;
+compatible with WSL.&lt;/p&gt;
+&lt;p&gt;A good start for me and not much to complain yet.&lt;/p&gt;
+&lt;h1 id=&#34;i-dont-need-linux-but-i-need-emacs&#34;&gt;I don&amp;rsquo;t need linux, but I need Emacs&lt;/h1&gt;
+&lt;p&gt;You can run Emacs native on Windows, but I already have lots of custom
+setup and some of them require Unix tooling like grep, find, ripgrep,
+ls, ledger cli, and many others.&lt;/p&gt;
+&lt;p&gt;My plan: Install emacs inside Ubuntu and configure X forwarding
+through a X Server application.&lt;/p&gt;
+&lt;p&gt;I bought a license for &lt;a href=&#34;https://www.microsoft.com/en-us/p/x410/9nlp712zmn9q?activetab=pivot:overviewtab&#34;&gt;X410&lt;/a&gt; (it was cheaper than learning the free alternatives) and after installation I move ahead with the following setup:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Allow Public Access&lt;/li&gt;
+&lt;li&gt;Shared Clipboard Enabled
+&lt;ul&gt;
+&lt;li&gt;Make sure to install all Windows updates or this will not work&lt;/li&gt;
+&lt;li&gt;Seems like Windows learned the value of clipboard history.. enable that&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Enable High DPI for Windowed Apps&lt;/li&gt;
+&lt;li&gt;Follow &lt;a href=&#34;https://x410.dev/cookbook/wsl/sharing-windows-fonts-with-wsl/&#34;&gt;here&lt;/a&gt; to share fonts between Windows and Ubuntu&lt;/li&gt;
+&lt;li&gt;Add the following line to your &lt;code&gt;.bashrc&lt;/code&gt; on Ubuntu:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;DISPLAY&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;cat /etc/resolv.conf &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; grep nameserver &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; awk &lt;span class=&#34;s1&#34;&gt;&amp;#39;{print $2; exit;}&amp;#39;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt;:0.0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;I created this emacs.vbs script so I can open Emacs from Windows Start Panel&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;nv&#34;&gt;args&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;-c&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34; -i &amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&amp;#34;emacs&amp;#34;&amp;#34;&amp;#34;&lt;/span&gt;
+WScript.CreateObject&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Shell.Application&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;.ShellExecute &lt;span class=&#34;s2&#34;&gt;&amp;#34;bash&amp;#34;&lt;/span&gt;, args, &lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;, &lt;span class=&#34;s2&#34;&gt;&amp;#34;open&amp;#34;&lt;/span&gt;, &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Clone your Emacs config in Ubuntu and you are good to go! Works fine.&lt;/p&gt;
+&lt;h1 id=&#34;emacs-clashing-shortcuts&#34;&gt;Emacs clashing shortcuts&lt;/h1&gt;
+&lt;p&gt;I imagined this would not be easy, because Windows does not allow you
+to change a whole lot of shortcuts. For now, I am on the weak side,
+therefore I just remapped some bindings I had using SUPER (windows
+key) to something else.&lt;/p&gt;
+&lt;p&gt;But I will be back!&lt;/p&gt;
+&lt;h1 id=&#34;clojure-setup&#34;&gt;Clojure setup&lt;/h1&gt;
+&lt;p&gt;You can install clojure and java inside the Ubuntu machine without a
+problem.&lt;/p&gt;
+&lt;h1 id=&#34;focus-follow-mouse&#34;&gt;Focus follow mouse&lt;/h1&gt;
+&lt;p&gt;I am very used to &amp;ldquo;not click&amp;rdquo; on things. Therefore, when my mouse is
+OVER some window, then I want this window to be the focus/active.&lt;/p&gt;
+&lt;p&gt;I could not find any builtin way to make this happen, therefore I
+installed this package called &lt;a href=&#34;https://joelpurra.com/projects/X-Mouse_Controls/&#34;&gt;X-Mouse
+Controls&lt;/a&gt; it works.&lt;/p&gt;
+&lt;h1 id=&#34;work-setup&#34;&gt;Work setup&lt;/h1&gt;
+&lt;p&gt;I need to connect to remote machines, therefore you need a couple of
+softwares to make this easier. I have used these guys before, they
+haven&amp;rsquo;t changed&amp;hellip; &lt;a href=&#34;https://www.putty.org/&#34;&gt;PuTTY&lt;/a&gt;, and
+&lt;a href=&#34;https://github.com/jimradford/superputty/releases&#34;&gt;SuperPuTTY&lt;/a&gt;. However,
+the last time I&amp;rsquo;ve used I remember typing my password in Extra
+Arguments for SuperPutty, but we can do better using
+&lt;a href=&#34;https://the.earth.li/~sgtatham/putty/latest/w32/pageant.exe&#34;&gt;Pageant&lt;/a&gt;
+which is an SSH authentication agent for PuTTY. Add your keys there,
+be safe.&lt;/p&gt;
+&lt;h3 id=&#34;terminal-for-work&#34;&gt;Terminal for work&lt;/h3&gt;
+&lt;p&gt;Bad days here.. I am impressed how bad the terminal emulators are on
+this side of the map. The first release of RXVT was 19 years ago and
+seems like today&amp;rsquo;s terminal are trying to &amp;ldquo;re-run&amp;rdquo; the marathon
+instead of build upon something that works.&lt;/p&gt;
+&lt;p&gt;I am using &lt;a href=&#34;https://gitforwindows.org/&#34;&gt;Git Bash&lt;/a&gt; terminal, and
+Windows Terminal, but I am not happy with none of them.&lt;/p&gt;
+&lt;p&gt;There is a &lt;code&gt;settings.json&lt;/code&gt; file on Windows Terminal where you can
+customize it.&lt;/p&gt;
+&lt;h4 id=&#34;keybindings&#34;&gt;Keybindings&lt;/h4&gt;
+&lt;p&gt;On Windows Terminal I had to remove some annoying keys:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;&amp;#34;command&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;null&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;&amp;#34;keys&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;alt+enter&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;&amp;#34;command&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;null&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;&amp;#34;keys&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;alt+left&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;&amp;#34;command&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;null&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;&amp;#34;keys&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;alt+right&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;&amp;#34;command&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;null&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;&amp;#34;keys&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;alt+up&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;&amp;#34;command&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;null&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;&amp;#34;keys&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;alt+down&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;&amp;#34;command&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;null&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;&amp;#34;keys&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;alt+shift-down&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;&amp;#34;command&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;null&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;&amp;#34;keys&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;alt+shift-up&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;&amp;#34;command&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;null&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;&amp;#34;keys&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;alt+shift-left&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;&amp;#34;command&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;null&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;&amp;#34;keys&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;alt+shift-right&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Put that inside the &lt;code&gt;settings.json&lt;/code&gt; under the &lt;code&gt;&amp;quot;keybindings&amp;quot;&lt;/code&gt; key.&lt;/p&gt;
+&lt;h4 id=&#34;default-folders&#34;&gt;Default folders&lt;/h4&gt;
+&lt;p&gt;Add inside the &lt;code&gt;settings.json&lt;/code&gt; under the &lt;code&gt;profiles&lt;/code&gt;, &lt;code&gt;lists&lt;/code&gt; keys.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;startingDirectory&amp;#34;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;\\\\wsl$\\Ubuntu\\home\\wanderson&amp;#34;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;,&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Now, every new terminal will open from my Ubuntu root folder, instead
+of Windows ones.&lt;/p&gt;
+&lt;h1 id=&#34;extras&#34;&gt;Extras&lt;/h1&gt;
+&lt;h3 id=&#34;windows-terminal-customizations&#34;&gt;Windows Terminal customizations&lt;/h3&gt;
+&lt;p&gt;There is this interesting customized
+&lt;a href=&#34;https://www.thomasmaurer.ch/2020/04/my-customized-windows-terminal-settings-json/&#34;&gt;settings.json&lt;/a&gt;
+file if you want to go wild on this.&lt;/p&gt;
+&lt;h3 id=&#34;start-x410-automatically-on-startup&#34;&gt;Start X410 automatically on startup&lt;/h3&gt;
+&lt;p&gt;Press Super + R and type &lt;code&gt;shell:startup&lt;/code&gt; and ENTER. This will take you
+to a folder, every link of application you put inside, will open when
+your Windows start.&lt;/p&gt;
+&lt;p&gt;Press Super and go to the X410 icon on the start menu, click and drag
+it to the folder. It will automatically create a link.&lt;/p&gt;
+&lt;p&gt;You can do the same to other apps.&lt;/p&gt;
+&lt;h3 id=&#34;create-symlinks-on-your-linux-box&#34;&gt;Create symlinks on your Linux box&lt;/h3&gt;
+&lt;p&gt;Mirror the Windows Documents folder with Linux Documents/&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;ln -s /mnt/c/Users/iagwa/Documents Documents/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;still-on-waiting-list&#34;&gt;Still on Waiting List&lt;/h1&gt;
+&lt;p&gt;One of my main complaints with Windows is how to install
+software. Googling + luck to click on the right file is way to much
+for me. I have to take a look at &lt;a href=&#34;https://chocolatey.org/&#34;&gt;chocolatey&lt;/a&gt;
+project. A package manager. Looks good.&lt;/p&gt;
+&lt;h1 id=&#34;still-annoyed&#34;&gt;Still annoyed&lt;/h1&gt;
+&lt;p&gt;Seems like windows only open the aplications on the so called &amp;ldquo;Primary
+Screen&amp;rdquo; which is non-sense. If I have two monitors and I am looking at
+one of them and I want to open a new Chrome window .. for sure I
+expect this new window to appear on that screen&amp;hellip; does not matter if
+it&amp;rsquo;s primary or not. I don&amp;rsquo;t care.&lt;/p&gt;
+&lt;p&gt;I could not find anything to help me out here! Please help.&lt;/p&gt;
+&lt;p&gt;More generally, the window management on windows is very poor compared
+to other window managers on linux world.&lt;/p&gt;
+&lt;h1 id=&#34;very-surprised&#34;&gt;Very surprised&lt;/h1&gt;
+&lt;p&gt;Multi monitor, audio, video, battery, and wifi just works. I know this
+might be silly, but when you spent some months using EXWM (Emacs X
+Window Manager) as your primary system you start to value this things
+a lot more.&lt;/p&gt;
+&lt;p&gt;Aghh, the startup time is also very good.&lt;/p&gt;
+&lt;p&gt;I wonder how would be my experience here without my 1TB SSD, 16GB
+of RAM, and i7 CPU. How knows, but this is good.&lt;/p&gt;
+&lt;h1 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h1&gt;
+&lt;p&gt;Windows work nicely, now I can use the &amp;ldquo;oficial&amp;rdquo; version of a lot of
+software that I was used to rely on community-driven solutions with
+variable degrees of commitment and quality.&lt;/p&gt;
+&lt;p&gt;All things considered, I am very surprised by Windows 10. I do not
+complain because I can do almost the same things as before.&lt;/p&gt;
+&lt;p&gt;And my batery is not drained. 6.7hours for a 2 years old laptop. not
+bad.&lt;/p&gt;
+&lt;p&gt;I might use this opportunity to learn a bit of F#, who knows.&lt;/p&gt;
+&lt;p&gt;Happy hacking!&lt;/p&gt;
+</description> 
+    </item>
+    
+    <item>
+      <title>Emacs in the terminal</title>
+      <link>https://wandersoncferreira.github.io/blog/emacs-on-terminal/</link>
+      <pubDate>Sat, 21 Nov 2020 00:00:00 -0300</pubDate>
+      
+      <guid>https://wandersoncferreira.github.io/blog/emacs-on-terminal/</guid>
+      <description>&lt;p&gt;Unfortunately, the Emacs community seems to don&amp;rsquo;t like very much the
+idea of using Emacs inside a &lt;strong&gt;terminal&lt;/strong&gt;. I can relate to that
+afterall we have &lt;a href=&#34;https://www.emacswiki.org/emacs/TrampMode&#34;&gt;Tramp
+Mode&lt;/a&gt; and all the nicities
+that Emacs executes behind the scenes to make other commands work
+flawlessly like Magit, and some REPL interactions.&lt;/p&gt;
+&lt;p&gt;However, life is harder than that and often full of requirements. I
+have a slow connection and I need to work in a project that cannot
+leave a remote machine. I code in Clojure and the delay to access
+&lt;em&gt;code completion&lt;/em&gt;, &lt;em&gt;eldoc hints&lt;/em&gt;, &lt;em&gt;magit commands&lt;/em&gt;, &lt;em&gt;saving files and running scripts&lt;/em&gt;, &lt;em&gt;navigating around folder structures in dired&lt;/em&gt;, etc,
+is too much for my taste and for my internet connection pinging ~150ms.&lt;/p&gt;
+&lt;p&gt;Therefore, this post will be my collection of tips I&amp;rsquo;ve been using to
+make my Emacs in terminal life more pleasant.&lt;/p&gt;
+&lt;h2 id=&#34;choose-a-good-terminal-emulator&#34;&gt;Choose a good terminal emulator&lt;/h2&gt;
+&lt;p&gt;Yeah, I have been using Xfce Terminal for a while and most of my work
+was done inside Eshell. I tried several emulators and settled with
+&lt;a href=&#34;http://rxvt.sourceforge.net/&#34;&gt;RXVT&lt;/a&gt; which is a bless and a curse at
+the same time.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;m using Arch linux and you can install by:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;pacman -S rxvt-unicode
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;making-rxvt-looks-good&#34;&gt;Making RXVT looks good&lt;/h2&gt;
+&lt;p&gt;The relevant portions of my &lt;code&gt;~/.Xresources&lt;/code&gt; file:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;Xft.dpi:                    &lt;span class=&#34;m&#34;&gt;96&lt;/span&gt;
+Xft.antialias:              &lt;span class=&#34;nb&#34;&gt;true&lt;/span&gt;
+Xft.rgba:                   rgb
+Xft.hinting:                &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;
+Xft.hintstyle:              hintslight
+URxvt*buffered: &lt;span class=&#34;nb&#34;&gt;false&lt;/span&gt;
+
+URxvt*font: xft:Fira Code:style&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;Retina:pixelsize&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;14:antialias&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;true:hinting&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;true&lt;/span&gt;
+
+URxvt.geometry:             90x30
+URxvt.transparent:          &lt;span class=&#34;nb&#34;&gt;false&lt;/span&gt;
+URxvt.visualBell:           &lt;span class=&#34;nb&#34;&gt;false&lt;/span&gt;
+URxvt.inheritPixmap:        &lt;span class=&#34;nb&#34;&gt;false&lt;/span&gt;
+URxvt.loginShell:           &lt;span class=&#34;nb&#34;&gt;true&lt;/span&gt;
+URxvt.saveLines:            &lt;span class=&#34;m&#34;&gt;50&lt;/span&gt;
+URxvt.scrollBar:            &lt;span class=&#34;nb&#34;&gt;false&lt;/span&gt;
+URxvt.internalBorder:       &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;
+URxvt.lineSpace:            &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;
+
+! fix cursor size
+Xcursor.size: &lt;span class=&#34;m&#34;&gt;16&lt;/span&gt;
+
+! Fix font space
+URxvt*letterSpace: -1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;I don&amp;rsquo;t want to engage in color scheme fights, I often use the simple
+black on white default from Emacs.&lt;/p&gt;
+&lt;h2 id=&#34;leveraging-remappings-in-rxvt&#34;&gt;Leveraging remappings in RXVT&lt;/h2&gt;
+&lt;p&gt;For an Emacs user, the most frustrated moment is to type that
+powercord that is wired in your brain for ages and the result be the
+unexpected.&lt;/p&gt;
+&lt;p&gt;For me &lt;code&gt;C-backspace&lt;/code&gt; was very very important. I rely on that to kill
+words all the time. Fortunately, RXVT can help me out here. Let&amp;rsquo;s look
+at it.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;! remapping some &lt;span class=&#34;nb&#34;&gt;command&lt;/span&gt; 
+URxvt.keysym.C-BackSpace: &lt;span class=&#34;se&#34;&gt;\0&lt;/span&gt;33&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;33~
+URxvt.keysym.C-equal: &lt;span class=&#34;se&#34;&gt;\0&lt;/span&gt;33&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;34~
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;What is happening? RXVT is remapping &lt;code&gt;C-Backspace&lt;/code&gt; and &lt;code&gt;C-equal&lt;/code&gt; to
+&lt;code&gt;&amp;lt;f9&amp;gt;&lt;/code&gt; and &lt;code&gt;&amp;lt;f10&amp;gt;&lt;/code&gt;. So you already know what to do, right?&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-elisp&#34; data-lang=&#34;elisp&#34;&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;global-set-key&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;kbd&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;&amp;lt;f9&amp;gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;&amp;#39;backward-kill-word&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;global-set-key&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;kbd&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;&amp;lt;f10&amp;gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;&amp;#39;er/expand-region&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;And life can go on!&lt;/p&gt;
+&lt;p&gt;I haven&amp;rsquo;t tested if the rxvt remap is consistent across different
+machines, I recommend remapping and using &lt;code&gt;C-h k&lt;/code&gt; inside emacs to
+figure out which was the target key.&lt;/p&gt;
+&lt;p&gt;For some reason I could not find a list with all the available keysyms
+to be remapped in rxvt, but let me list those I have used:&lt;/p&gt;
+&lt;p&gt;C-equal, C-apostrophe, C-0, C-minus, C-plus, C-S-Down, C-slash,
+C-S-Up, C-M-v, Escape.&lt;/p&gt;
+&lt;h2 id=&#34;copy-paste-and-resize&#34;&gt;Copy, paste and resize&lt;/h2&gt;
+&lt;p&gt;Crazy, hein? In 2020 we have issues with copy and paste in a reliable
+form. I installed a package with Perl extensions to improve this a bit.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;pacman -S urxvt-perls
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;And the relevant portions for configuration:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;URxvt.perl-ext-common:      default,clipboard,resize-font
+URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+
+! scale fonts
+URxvt.resize-font.reset: C-0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;However, the &lt;code&gt;resize-font&lt;/code&gt; plugin was extracted from somewhere
+else. You have to create a folder (if not exist yet) at
+&lt;code&gt;~/.urxvt/ext/&lt;/code&gt;, paste the script from
+&lt;a href=&#34;https://blog.khmersite.net/2017/12/change-the-urxvt-font-size-on-the-fly/&#34;&gt;here&lt;/a&gt;
+in there and update RXVT using &lt;code&gt;xrdb ~/.Xresources&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;You can follow more detailed steps in this great
+&lt;a href=&#34;https://blog.khmersite.net/2017/12/change-the-urxvt-font-size-on-the-fly/&#34;&gt;post&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;You can now use &lt;code&gt;C-+&lt;/code&gt; and &lt;code&gt;C--&lt;/code&gt; to resize the font and also &lt;code&gt;C-0&lt;/code&gt; to
+reset it. I change the default because I wanted &lt;code&gt;C-=&lt;/code&gt; to be used by
+&lt;code&gt;expand-region&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Ok, these are the configurations from the RXVT side, let&amp;rsquo;s go inside
+Emacs and see what we need to change.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-elisp&#34; data-lang=&#34;elisp&#34;&gt;&lt;span class=&#34;c1&#34;&gt;;;; fix kill rings&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;setq&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;save-interprogram-paste-before-kill&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;t&lt;/span&gt;
+      &lt;span class=&#34;nv&#34;&gt;x-select-enable-clipboard&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;t&lt;/span&gt;
+      &lt;span class=&#34;nv&#34;&gt;select-enable-clipboard&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+
+&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;use-package&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;xclip&lt;/span&gt;
+  &lt;span class=&#34;nb&#34;&gt;:ensure&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;t&lt;/span&gt;
+  &lt;span class=&#34;nb&#34;&gt;:config&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;xclip-mode&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;+1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;I am assuming you have &lt;code&gt;use-package&lt;/code&gt; or know how to install packages
+otherwise.&lt;/p&gt;
+&lt;p&gt;Now you can simply copy something from Firefox and paste inside Emacs
+using the regular &lt;code&gt;C-y&lt;/code&gt;. And the opposite is also true, just copy
+something with &lt;code&gt;M-w&lt;/code&gt; and paste inside your external program.&lt;/p&gt;
+&lt;h2 id=&#34;run-emacs-in-daemon-mode&#34;&gt;Run emacs in daemon mode&lt;/h2&gt;
+&lt;p&gt;At the terminal, you might be using &lt;code&gt;tmux&lt;/code&gt; or &lt;code&gt;screen&lt;/code&gt; to handle
+different workspaces and you might want to open Emacs in there to some
+quick editing.&lt;/p&gt;
+&lt;p&gt;Therefore, I find easier to run emacs as a daemon to quickly jump to a
+running server when I need.&lt;/p&gt;
+&lt;p&gt;I run the following code in the remote machine.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;emacs --daemon
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;And I have this function inside my &lt;code&gt;~/.init.el&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-elisp&#34; data-lang=&#34;elisp&#34;&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;defun&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;server-shutdown&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+  &lt;span class=&#34;s&#34;&gt;&amp;#34;Save buffers, quit, and shutdown server&amp;#34;&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;interactive&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;save-some-buffers&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;kill-emacs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Also, the following alias at the &lt;code&gt;~/.bashrc&lt;/code&gt; remote machine:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;nb&#34;&gt;alias&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;ee&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;emacsclient -t&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;But now, you will notice something bad&amp;hellip; when you type &lt;code&gt;ee my_f&lt;/code&gt; and
+hit &lt;code&gt;TAB&lt;/code&gt; you would expect a completion. I had to use the
+&lt;a href=&#34;https://github.com/cykerway/complete-alias&#34;&gt;complete_alias&lt;/a&gt; project
+to make it work.&lt;/p&gt;
+&lt;p&gt;It was simple, just follow their README, but in essence you need to
+install &lt;code&gt;bash-completion&lt;/code&gt;, copy their &lt;code&gt;complete_alias&lt;/code&gt; script inside
+your &lt;code&gt;~/.bash_completion&lt;/code&gt; file and setup your alias as:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;nb&#34;&gt;alias&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;ee&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;emacsclient -t&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;complete&lt;/span&gt; -F _complete_alias ee
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Fine!&lt;/p&gt;
+&lt;h2 id=&#34;multiplexers&#34;&gt;Multiplexers&lt;/h2&gt;
+&lt;p&gt;If you are using &lt;code&gt;tmux&lt;/code&gt; you will notice that the default keybind to
+manipulate it is &lt;code&gt;C-b&lt;/code&gt; :/. I often do not use it inside Emacs, but I
+would like to have something to not conflict with basic keys.&lt;/p&gt;
+&lt;p&gt;This is my &lt;code&gt;~/.tmux.conf&lt;/code&gt; using &lt;code&gt;C-]&lt;/code&gt; as the leader key for tmux.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;set-window-option -g mode-keys emacs
+
+unbind-key C-b
+set-option -g prefix C-&lt;span class=&#34;s1&#34;&gt;&amp;#39;]&amp;#39;&lt;/span&gt;
+
+bind-key r source-file ~/.tmux.conf &lt;span class=&#34;se&#34;&gt;\;&lt;/span&gt; display-message &lt;span class=&#34;s2&#34;&gt;&amp;#34;~/.tmux.conf reloaded&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;a-new-friendier-binding&#34;&gt;A new friendier binding&lt;/h2&gt;
+&lt;p&gt;I just wanted to point out that I have never used &lt;code&gt;C-z&lt;/code&gt;
+(suspend-frame) before. And this is killer right now, &lt;code&gt;C-z&lt;/code&gt; and &lt;code&gt;fg&lt;/code&gt;
+reminds me of my darker background as a &lt;code&gt;vim&lt;/code&gt; user a long time ago.&lt;/p&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;I was expecting to be a lot easier to have a more similar experience
+in the terminal as we have in GUI, but I was even more astonished by
+the lack of informations to help a newcomer (me) to setup a workable
+environment.&lt;/p&gt;
+&lt;p&gt;Hope to continue releasing more about Emacs inside the Terminal as I
+move along. Please, if you have any tips, share them around! Reddit or
+hackernews are great platforms to achieve visibility.&lt;/p&gt;
+&lt;p&gt;All this post was made in Emacs, inside a rxvt terminal. No
+complaints.&lt;/p&gt;
+</description> 
+    </item>
+    
+    <item>
+      <title>Participe de projetos Código Aberto</title>
+      <link>https://wandersoncferreira.github.io/blog/codigo-aberto/</link>
+      <pubDate>Thu, 30 Apr 2020 00:00:00 -0300</pubDate>
+      
+      <guid>https://wandersoncferreira.github.io/blog/codigo-aberto/</guid>
+      <description>&lt;p&gt;Vou comentar um pouco minha trajetória que foi moldada de forma
+integral por comunidades online.&lt;/p&gt;
+&lt;p&gt;Em 2008 eu comecei meus primeiros passos na internet, além de jogar de
+forma alucinada comecei a aprender 3D Studio Max e Blender. Na época
+eu assistia muitos vídeos &lt;a href=&#34;https://youtu.be/eplAQ3fEr8M&#34;&gt;Xiao Xiao&lt;/a&gt; e
+queria muito conseguir fazer igual em &lt;em&gt;Flash&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Começou ali uma aventura que me acompanha até os dias de hoje:&lt;/p&gt;
+&lt;p&gt;Uma conta no iMaster e fui o membro mais chato e com pior português
+possível por 3 meses seguidos &lt;em&gt;(é o máximo de tempo que um adolescente
+de 16 anos consegue se comprometer com algo)&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;
+  &lt;img src=&#34;https://wandersoncferreira.github.io/imaster.png&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;p&gt;Depois passei por fóruns e comunidades no ICQ, IRC, Orkut, Reddit,
+Blogs pessoas, Blogs de jogos como Unreal, WYD, Mu online e diversos
+outros clássicos tratando de temas desde Tire suas dúvidas para passar
+no vestibular até grupos privados sobre Unix e Sísmica de Reflexão.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Legal, mas onde quero chegar?&lt;/strong&gt; Todas essas experiências me fizeram
+entender como o processo de aprendizagem e cooperação online funciona
+(pra mim), assim como quais benefícios de médio e longo prazo eles
+podem trazer. Portanto quero fazer esse link com o mundo do
+desenvolvimento de software usando alguns exemplos que eu tive.&lt;/p&gt;
+&lt;h2 id=&#34;o-inicio-parece-impossível-mesmo&#34;&gt;O inicio parece impossível mesmo&lt;/h2&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;p&gt;Quem trabalha com Python e não gostaria de contribuir para o projeto
+do &lt;a href=&#34;https://github.com/pandas-dev/pandas&#34;&gt;Pandas&lt;/a&gt;? Biblioteca famosa,
+22 mil commits, deve ter milhares de linhas de código, são 1900
+pessoas diferentes contribuindo para o projeto. O que eu mortal posso
+fazer?  &lt;em&gt;Muito!&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;
+  &lt;img src=&#34;https://wandersoncferreira.github.io/pandas.png&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;p&gt;Porém, vamos para o começo.&lt;/p&gt;
+&lt;p&gt;Um projeto como esse é uma empresa com as portas abertas. Ele tem suas
+estruturas internas, pessoas responsáveis com papeis específicos,
+hierarquia, &lt;em&gt;politica&lt;/em&gt;, etc. E o que você faz quando chega em um
+emprego novo?&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;onboarding&lt;/li&gt;
+&lt;li&gt;tirar dúvidas com pessoas mais experientes&lt;/li&gt;
+&lt;li&gt;leitura/estudo com relação ao domínio de negócio da empresa&lt;/li&gt;
+&lt;li&gt;fazer tarefas pequenas e menos complexas&lt;/li&gt;
+&lt;li&gt;se ambientar o suficiente para migrar para tarefas complexas&lt;/li&gt;
+&lt;li&gt;liderar projetos&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt; 
+ 
+ 
+ &lt;/p&gt;
+&lt;p&gt;Nesse caso é exatamente igual.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Basicamente todos os pontos acima você resolve participando e lendo
+as &lt;em&gt;Issues&lt;/em&gt; e &lt;em&gt;Pull Requests&lt;/em&gt; dos projetos. * Não é tão raro projetos
+usarem listas de discussão via &lt;em&gt;email&lt;/em&gt;, por exemplo,
+&lt;a href=&#34;https://groups.google.com/forum/#!forum/clojure&#34;&gt;clojure&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt; 
+ 
+ 
+ &lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Importante:&lt;/em&gt; Comece fazendo tarefas pequenas!! É comum os projetos
+colocarem indicadores nos problemas para orientar os novatos, como
+&lt;em&gt;good first issue&lt;/em&gt;, &lt;em&gt;easy&lt;/em&gt;, &lt;em&gt;documentation&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;p&gt;Exemplos que participei:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Documentação pandas &lt;em&gt;group-by&lt;/em&gt; [python]: &lt;a href=&#34;https://github.com/pandas-dev/pandas/pull/14801&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Documentação &lt;em&gt;reitit&lt;/em&gt; [clojure]: &lt;a href=&#34;https://github.com/metosin/reitit/commit/fbe2f625765259e3b9ec0448395c4349cb134cdf&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Adicionar &lt;em&gt;dicas&lt;/em&gt; sobre tipos onde o autor esqueceu &lt;em&gt;reitit&lt;/em&gt; [clojure]: &lt;a href=&#34;https://github.com/metosin/reitit/commit/f7e4136e0e777c4d05200c82c12d34c1e676f51f&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Literalmente adicionei aspas no &lt;em&gt;organic-green&lt;/em&gt; [elisp]: &lt;a href=&#34;https://github.com/kostafey/organic-green-theme/commit/2f4942abc824c55412da3e8f7bd7a316640a2a74&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Adicionei 7 palavras no &lt;em&gt;spec-tools&lt;/em&gt; [clojure]: &lt;a href=&#34;https://github.com/metosin/spec-tools/pull/227&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;h2 id=&#34;inglês&#34;&gt;Inglês&lt;/h2&gt;
+&lt;p align=&#34;center&#34;&gt;
+  &lt;img
+  src=&#34;https://wandersoncferreira.github.io/prog.png&#34;
+  width=&#34;600&#34;/&gt;
+&lt;/p&gt;
+&lt;p&gt;Ponto importante, muito importante. Eu estudo Clojure, utilizo no
+trabalho e muitas pessoas me perguntam se é muito difícil de aprender,
+como se adaptar, etc. e eu tenho uma posição bem firme sobre o
+assunto:&lt;/p&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;A principal linguagem que causa dificuldades no trabalho é o inglês&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;p&gt;Isso é realidade ainda dentro de times de desenvolvimento. Conseguir
+expor suas ideias de uma forma &lt;em&gt;inteligível&lt;/em&gt; é essencial. E porque?
+Por que você vai ler bastante e precisar discutir com as pessoas sobre
+o problema, sobre suas ideias para solução e sobre as ideias delas.&lt;/p&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;p&gt;Exemplos:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1 mês discutindo [underline]#blacklist# em uma máquina de regras &lt;em&gt;clara-rules&lt;/em&gt; [clojure]: &lt;a href=&#34;https://github.com/cerner/clara-rules/pull/445&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Qual seria a melhor forma de fazer scan do código &lt;em&gt;clara-rules&lt;/em&gt; [clojure]: &lt;a href=&#34;https://github.com/cerner/clara-rules/pull/448&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Definir formato de estrutura de dados &lt;em&gt;pomidor&lt;/em&gt; [elisp]: &lt;a href=&#34;https://github.com/TatriX/pomidor/pull/33&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;h2 id=&#34;ganhe-confiança-e-familiaridade&#34;&gt;Ganhe confiança e familiaridade&lt;/h2&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;
+  &lt;img
+  src=&#34;https://wandersoncferreira.github.io/panda-cdn.jpg&#34;
+  width=&#34;300&#34;/&gt;
+&lt;/p&gt;
+&lt;p&gt;Com o tempo, lendo um pouco do código todo dia e ganhando mais
+confiança você pode começar a corrigir aqueles problemas que você
+esbarra no seu dia-a-dia no trabalho e até mesmo incluir
+funcionalidades simples que facilitaria seu trabalho. &lt;em&gt;(ou algum
+projeto pessoal seu)&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;p&gt;Exemplos:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Download de uma imagem para o org-mode &lt;em&gt;org-download&lt;/em&gt; [elisp]: &lt;a href=&#34;https://github.com/wandersoncferreira/org-download/commit/bd8768630cb0554112bbf9b6010ae3bc1e131db6&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Suporte para quebrar captcha com base64 &lt;em&gt;python3-anticaptcha&lt;/em&gt; [python]: &lt;a href=&#34;https://github.com/AndreiDrang/python3-anticaptcha/commit/e1f0dac496f5ac7f5f3a7eef43d3d378b72e61c0&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Correção para tornar compatível com versões anteriores &lt;em&gt;spec-tools&lt;/em&gt; [clojure]: &lt;a href=&#34;https://github.com/metosin/spec-tools/pull/229&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;h2 id=&#34;alguns-pontos-sobre-os-projetos-open-source&#34;&gt;Alguns pontos sobre os projetos Open Source&amp;hellip;&lt;/h2&gt;
+&lt;p align=&#34;center&#34;&gt;
+  &lt;img src=&#34;https://wandersoncferreira.github.io/oogway.png&#34; width=&#34;500&#34;/&gt;
+&lt;/p&gt;
+&lt;p&gt;Existe um ponto importante que eu gosto de lembrar, &lt;em&gt;o projeto não é
+seu&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Esse projeto de código aberto é do autor original, seja ele uma pessoa
+ou uma empresa. Se você discorda de algo, não quer discutir ou tomou
+uma carteirada, faça um &lt;em&gt;fork&lt;/em&gt; do projeto e evolua o &lt;em&gt;seu&lt;/em&gt;!&lt;/p&gt;
+&lt;p&gt;Se outras pessoas da comunidade concordam com seu ponto de vista,
+então elas vão escolher livremente o uso da sua versão do código.&lt;/p&gt;
+&lt;p&gt;Esse é um ponto critico porque algumas pessoas dedicam horas, as vezes
+anos ao mesmo projeto e conseguem fazer parte de um comitê que tem
+mais autonomia para tomar decisões sobre aquele projeto. &lt;em&gt;(Lembra?
+Igual uma empresa&amp;hellip;)&lt;/em&gt; Porém ao fazer um investimento tão alto se as
+coisas começam a ir em uma direção que você discorda, você pode se
+sentir traído ou ofendido e acaba abandonando o projeto causando algum
+tumulto online. &lt;em&gt;Isso é bastante comum.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Convenhamos, de fato é fácil se frustrar quando você tem aquela ideia
+legal e quer que todo mundo também use, mas o autor da biblioteca não
+te responde mais ou some do mapa. É um direito dele, não sabemos e nem
+podemos supor quais são as suas prioridades e atividades correntes.&lt;/p&gt;
+&lt;p&gt;E o oposto também é verdadeiro, as vezes você começa algo e perde o
+interesse no meio do caminho.&lt;/p&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;p&gt;Não seja esse maluco stalkeando o autor da biblioteca no Twitter:&lt;/p&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;
+  &lt;img src=&#34;https://wandersoncferreira.github.io/me.png&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;p&gt;Exemplos:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Gostei do tema &lt;em&gt;organic-green&lt;/em&gt; e resolvi refazê-lo para modernizar [elisp]: &lt;a href=&#34;https://github.com/kostafey/organic-green-theme/pull/3&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Inclusão complexa de uma nova funcionalidade para o &lt;em&gt;spec-tools&lt;/em&gt; [clojure]: &lt;a href=&#34;https://github.com/metosin/spec-tools/pull/226&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Uma hora eu volto para rever isso, deixei de lado um tempo &lt;em&gt;reitit&lt;/em&gt; [clojure]: &lt;a href=&#34;https://github.com/metosin/reitit/pull/354&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;h2 id=&#34;e-a-sua-vez-crie-seus-próprios-projetos&#34;&gt;E a sua vez, crie seus próprios projetos!!&lt;/h2&gt;
+&lt;p align=&#34;center&#34;&gt;
+  &lt;img
+  src=&#34;https://wandersoncferreira.github.io/tigress.jpg&#34;
+  width=&#34;300&#34;/&gt;
+&lt;/p&gt;
+&lt;p&gt;Pelas minhas contribuições em Elisp já dá para imaginar que eu gosto
+dessa linguagem e não é para menos. A comunidade que existe em torno
+do Elisp é excepcional e os conceitos embutidos são muito ricos.&lt;/p&gt;
+&lt;p&gt;Em fevereiro de 2017 publiquei junto com um amigo o meu primeiro
+pacote em Elisp que de fato teve algum usuário, o
+&lt;a href=&#34;https://github.com/wandersoncferreira/helm-spotify-plus&#34;&gt;helm-spotify-plus&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;O pacote permite que você faça buscas e opere o Spotify através do
+Emacs. Foi muito divertido fazer esse pacote e lutar com uma linguagem
+antiga como o Elisp, hoje a biblioteca ocupa a posição de destaque
+dentro do percentil 70% no repositório de pacotes &lt;em&gt;MELPA&lt;/em&gt;. Isso é bom?
+&lt;em&gt;Para mim é ótimo!&lt;/em&gt; rsrs.&lt;/p&gt;
+&lt;p&gt;Ao ter um pacote próprio com usuários você está sujeito a diversas
+situações: i) programadores que gostaram da ideia e querem contribuir,
+ii) aqueles que não veem sentido algum na sua ideia completamente
+inútil.&lt;/p&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;p&gt;Exemplos:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Adicionaram uma &amp;ldquo;playlist&amp;rdquo; usando queues no elisp &lt;em&gt;helm-spotify-plus&lt;/em&gt; [elisp]: &lt;a href=&#34;https://github.com/wandersoncferreira/helm-spotify-plus/pull/32&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;mamulengo&lt;/em&gt; banco de dados em DataScript p/ aplicações pequenas [clojure]: &lt;a href=&#34;https://github.com/wandersoncferreira/mamulengo/issues/49&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;emacs.d&lt;/em&gt; minhas configs do Emacs, trabalho &lt;em&gt;diariamente&lt;/em&gt; desde 2016 [elisp]: &lt;a href=&#34;https://github.com/wandersoncferreira/dotfiles&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;meta-schema&lt;/em&gt; ideia de specs dinâmicas [clojure]: &lt;a href=&#34;https://github.com/wandersoncferreira/meta-schema&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;h2 id=&#34;mas-por-que-fazer-tudo-isso&#34;&gt;Mas por que fazer tudo isso?&lt;/h2&gt;
+&lt;p align=&#34;center&#34;&gt;
+  &lt;img
+  src=&#34;https://wandersoncferreira.github.io/not-to.jpeg&#34;
+  width=&#34;500&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;p&gt;Primeira resposta óbvia é: &amp;ldquo;porque eu posso&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;Mas falando sério, o ambiente do software de código aberto permite
+você trocar experiencias com pessoas muito diferentes de você. Metade
+dos meus códigos foram revisados por pessoas da Rússia, Finlândia,
+Estônia, Israel, etc. Ler os códigos que eles fazem é entender um
+pouco a forma como eles pensam, como estruturam soluções, como
+implementam ideias abstratas em código palpável.&lt;/p&gt;
+&lt;p&gt;No clássico texto do Peter Norvig &lt;a href=&#34;https://pihisall.wordpress.com/2007/03/15/aprenda-a-programar-em-dez-anos/&#34;&gt;Aprenda a programar em 10
+anos&lt;/a&gt;,
+precisamos nos colocar em diversas situações diferentes para poder
+evoluir profissionalmente.&lt;/p&gt;
+&lt;p&gt;Tem projetos onde você é o que domina melhor o tema, em outros você é
+o mais novato. Participar e vivenciar as duas experiências é
+extremamente enriquecedor.&lt;/p&gt;
+&lt;p&gt;Independente de onde você trabalha, você não vai poder discutir por 1
+mês se 150 linhas de códigos devem ou não ser adicionados da maneira X
+ou Y porque não temos esse luxo em ambiente corporativo. Porém você
+precisa dessa experiência, precisa ir mais fundo no problema, aprender
+a antecipar implicações importantes.&lt;/p&gt;
+&lt;p&gt;Software é uma profissão de prática, espero ter motivado algumas
+pessoas para participar dessa jornada também!&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Happy Hacking!&lt;/em&gt;&lt;/p&gt;
+</description> 
+    </item>
+    
+    <item>
+      <title>Summary readings: March - April 2020</title>
+      <link>https://wandersoncferreira.github.io/blog/summary-readings-march-april/</link>
+      <pubDate>Tue, 28 Apr 2020 00:00:00 -0300</pubDate>
+      
+      <guid>https://wandersoncferreira.github.io/blog/summary-readings-march-april/</guid>
+      <description>&lt;p&gt;I follow &lt;a href=&#34;https://eli.thegreenplace.net/&#34;&gt;Eli Bendersky&lt;/a&gt; blog and he
+produces a very simple and not so detailed summary of all his book
+readings from time to time. This is very useful because I like to read
+and one of the most difficult tasks for me is searching &lt;em&gt;what&lt;/em&gt; to read
+(you know, time is limited).&lt;/p&gt;
+&lt;p&gt;Therefore, I decided to do the same. I also try to keep track of my
+&lt;em&gt;to-read&lt;/em&gt; and &lt;em&gt;read&lt;/em&gt; books since 2016 at
+&lt;a href=&#34;https://www.goodreads.com/user/show/85018850-wanderson-ferreira&#34;&gt;Goodreads&lt;/a&gt;,
+I hope to help someone else choosing the next book.&lt;/p&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;h2 id=&#34;1-surely-youre-joking-mr-feynman---by-richard-p-feynman&#34;&gt;1. &lt;em&gt;Surely You&amp;rsquo;re Joking Mr. Feynman!&lt;/em&gt; - by Richard P. Feynman&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;You should go to some other school. You should find out how the rest
+of the world it.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&amp;ndash; Professor Slate&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Link: &lt;a href=&#34;https://www.amazon.com/What-Care-Other-People-Think-ebook/dp/B004OA6KIS/ref=sr_1_2?crid=LILHFC7OIE0&amp;amp;dchild=1&amp;amp;keywords=surely+you+are+joking&amp;amp;qid=1587699386&amp;amp;s=digital-text&amp;amp;sprefix=surely+you+are%2Cdigital-text%2C285&amp;amp;sr=1-2&#34;&gt;Amazon&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Rated: 5/5&lt;/li&gt;
+&lt;li&gt;Read again? Yes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;I postponed this reading for a long time, but what a bad decision!.
+This book is very nice! As a previous (geo)physicist student, I very
+often you read and listened about the great work of some scientists
+and Feynman was definitely one of them.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I study at Universidade de São Paulo and Feynman came to Brazil and
+was there for a while (there is even a chapter about that!!) so he was
+&lt;em&gt;the&lt;/em&gt; figure!&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;This book shows how &lt;em&gt;human&lt;/em&gt; Feynman was! He had an incredible
+curiosity and willpower to act upon his experiments. So many funny
+histories.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;He described one of this presentation about his academic work and on
+the audience was Einstein, Oppenheimer, Norris Russell, von Neumann,
+and many others. Wow! I personally relate to that because in 2014 I
+presented my findings in Houston to many great geophysicist that I had
+only met before by reading their work on journals. The feeling is
+great, rush of adrenaline when you start talking about the subject
+that you have been investigating for 2 years in a row .. you &lt;em&gt;think&lt;/em&gt;
+you are the expert.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;So I have just one wish to you &amp;ndash; the good luck to be somewhere
+where you are free to maintain the kind of integrity I have described,
+and where you do not feel forced by a need to maintain your position
+in the organization, or financial support, or so on, to lose your
+integrity. May you have that freedom.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;h2 id=&#34;2-the-complete-problem-solver---by-john-r-hayes&#34;&gt;2. &lt;em&gt;The Complete Problem Solver&lt;/em&gt; - by John R. Hayes&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;People can influence their own learning processes and have a great
+deal to gain by doing so. By 1. choosing to distribute practice, 2.
+select appropriate learning strategies, and 3. using evaluation of
+progress to control study.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Link: &lt;a href=&#34;https://www.amazon.com/Complete-Problem-Solver-John-Hayes-ebook/dp/B00C7TB1XM/ref=sr_1_1?dchild=1&amp;amp;keywords=the+complete+problem+solver&amp;amp;qid=1587699347&amp;amp;s=digital-text&amp;amp;sr=1-1&#34;&gt;Amazon&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Rated: 3/5&lt;/li&gt;
+&lt;li&gt;Read again? No&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;More detail and technical explanation about the components involved
+at &lt;em&gt;solving problems&lt;/em&gt; such as &lt;em&gt;memory&lt;/em&gt;, &lt;em&gt;proper problem
+representation&lt;/em&gt;, &lt;em&gt;learning&lt;/em&gt;, &lt;em&gt;creativity&lt;/em&gt; and &lt;em&gt;decision making&lt;/em&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;It is indeed interesting, but I think if you are into some of these
+subjects you already know 80% of this book. However, if you are only
+interested in starting, this is a very dense read. Therefore, I do not
+find it worthy.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;There is a nice study about creativity though.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;[&amp;hellip;] These results &lt;em&gt;do not&lt;/em&gt; mean that there is no such thing as
+genius. They &lt;em&gt;do not&lt;/em&gt; mean that just anyone with 10 to 25 years of
+experience can write great music. They &lt;em&gt;do&lt;/em&gt; mean that even a person
+endowed with the genius of Mozart or Beethoven will need 10 years
+or more of intense preparation to be creative.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;3-the-clean-coder---by-robert-c-martin-uncle-bob&#34;&gt;3. &lt;em&gt;The Clean Coder&lt;/em&gt; - by Robert C. Martin (Uncle Bob)&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;All professionals practice their art by engaging in skill-sharpening
+exercises. Musicians rehearse scales, Football players run through
+tires, &lt;em&gt;Doctors&lt;/em&gt; practice sutures and surgical techniques, &lt;em&gt;Lawyers&lt;/em&gt;
+practice arguments. When performance matters, professionals
+practice.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Link: &lt;a href=&#34;https://www.amazon.com/Clean-Coder-Conduct-Professional-Programmers-ebook/dp/B0050JLC9Y/ref=sr_1_1?dchild=1&amp;amp;keywords=the+clean+coder&amp;amp;qid=1587699322&amp;amp;s=digital-text&amp;amp;sr=1-1&#34;&gt;Amazon&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Rated: 4/5&lt;/li&gt;
+&lt;li&gt;Read again? Yes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Easy and good to read, the message is harsh towards &lt;em&gt;programmer&amp;rsquo;s
+profissionalism&lt;/em&gt; and very eye opener.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;It starts with a history about a project where the business manager
+was paired up with the technical leader and they were kicking in all
+the obstacles to deliver all the features, working really intense
+hours to deliver on time.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;However, at the release date the &lt;em&gt;legal department&lt;/em&gt; could not
+finish a necessary contract to go live.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The technical leader says to the business manager: &amp;ldquo;ok, let&amp;rsquo;s do our
+thing again and go there and ask them to finish this two pages by the
+end of the day!&amp;rdquo; and the answer caught the technical leader with great
+surprise: &lt;em&gt;&amp;ldquo;we cannot do this, they are real professionals&amp;rdquo;&lt;/em&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Wait a moment! Wait a moment&amp;hellip;!! What am I? Wait a moment.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The software development &lt;em&gt;has&lt;/em&gt; processes, rituals and ways at we
+can act and perform like professionals and most of the time we &lt;em&gt;should
+not violate&lt;/em&gt; these &lt;em&gt;principles&lt;/em&gt; because of our work ethics.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;We might negotiate with business people the correct estimates to
+deliver everything, and we &lt;em&gt;are&lt;/em&gt; professionals, we &lt;em&gt;want&lt;/em&gt; to deliver
+the product, we are a member of this organization, we work on the
+company&amp;rsquo;s side. There are no reasons for me to be lying.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;This is difficult. Because the developers itself does not take
+themselves serious enough, how can the management do it so?&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A Language of commitment: Say. Mean. Do.  &amp;ndash; Roy Osherove.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;h2 id=&#34;4-the-joy-of-clojure---by-michael-fogus&#34;&gt;4. &lt;em&gt;The Joy of Clojure&lt;/em&gt; - by Michael Fogus&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;If you give someone Fortran, he has Fortran. If you give someone
+Lisp, he has any language he pleases. &amp;ndash; Guy Steele&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Link: &lt;a href=&#34;https://www.amazon.com/Joy-Clojure-Michael-Fogus/dp/1617291412/ref=sr_1_1?dchild=1&amp;amp;keywords=joy+of+clojure&amp;amp;qid=1587699263&amp;amp;s=digital-text&amp;amp;sr=1-1-catcorr&#34;&gt;Amazon&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Rated: 5/5&lt;/li&gt;
+&lt;li&gt;Read again? Always reaching out!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Sometimes is not clear to people when I say that I am studying
+Clojure. The language itself has lots of interesting bits, but very
+often the subjects that interest me most are the reasoning behind
+how Clojure was design and how it is used.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Fogus goes deep in each aspect of the language and provides several
+valuable references to papers or books in order to improve our
+understanding about the concepts.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The fact that Clojure was designed &amp;ldquo;by/to experienced programmers&amp;rdquo;
+makes it very interesting to me. I haven&amp;rsquo;t participated in
+communities with such a high quality discussions and support.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;It requires a very unusual mind to undertake the analysis of the
+obvious. &amp;ndash; Alfred North Whitehead&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;5-meditations---by-marcus-aurelius&#34;&gt;5. &lt;em&gt;Meditations&lt;/em&gt; - by Marcus Aurelius&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The first rule is to keep an untroubled spirit. The second is to
+look things in the face and know them for what they are.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Link: &lt;a href=&#34;https://www.amazon.com/Meditations-AmazonClassics-Marcus-Aurelius-ebook/dp/B07QQRGH6R/ref=sr_1_2?crid=CQUKNCRBJHCO&amp;amp;dchild=1&amp;amp;keywords=meditations+by+marcus&amp;amp;qid=1587699224&amp;amp;s=digital-text&amp;amp;sprefix=medidations%2Cdigital-text%2C292&amp;amp;sr=1-2&#34;&gt;Amazon&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Rated: 4/5&lt;/li&gt;
+&lt;li&gt;Read again? Maybe&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Very easy read, Marcus Aurelius was an Roman Emperor and also a
+Stoic Philosopher.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I read this book right after reading the &lt;a href=&#34;https://www.amazon.com/Zen-Mind-Beginners-Informal-Meditation-ebook/dp/B00I8USOM0/ref=pd_sbsd_14_1/136-4339934-2460642?_encoding=UTF8&amp;amp;pd_rd_i=B00I8USOM0&amp;amp;pd_rd_r=e82a0562-5bc2-496b-aeff-ddef62decae3&amp;amp;pd_rd_w=wzsZ2&amp;amp;pd_rd_wg=TNaZz&amp;amp;pf_rd_p=2c2d0d3b-b3c5-4110-93fa-2c1270309ac1&amp;amp;pf_rd_r=ZG3N26GRJBCNETGJ5XTD&amp;amp;psc=1&amp;amp;refRID=ZG3N26GRJBCNETGJ5XTD&#34;&gt;Zen
+Mind&lt;/a&gt;,
+which is a book about Zen Practice and Buddhism, and I was astonished
+to notice so many similarities.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;This is basically a Twitter Account from 120d.C. Amazing to see how
+he thinks and his priorities back them, also some chad of light about
+society. You should definitely read it.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Remember two things:&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;that everything has always been the same, and keeps recurring,
+and it makes no difference whether you see the same things recur in
+a hundred years or two hundred, or in an infinite period;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;that the longest-lived and those who will die soonest lose the
+same thing. The present is all that they can give up, since that is
+all you have, and what you do not have you cannot lose.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Happy reading!&lt;/em&gt;&lt;/p&gt;
+</description> 
+    </item>
+    
+    <item>
+      <title>Smarter, not harder: Memoization</title>
+      <link>https://wandersoncferreira.github.io/blog/smarter-not-harder/</link>
+      <pubDate>Mon, 08 Jul 2019 00:00:00 -0300</pubDate>
+      
+      <guid>https://wandersoncferreira.github.io/blog/smarter-not-harder/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;m reading the Neal&amp;rsquo;s Ford book Functional Thinking and now the whole
+idea of functional paradigm is becoming clearer. The whole idea of
+functional programming (FP) today is to be able to leave acidental
+complexities up to the language or the runtime to solve for you. No
+one should have to manage memory into your daily work activities. This
+kind of problem is not related to your business at all! You are not
+being paid to solve it.&lt;/p&gt;
+&lt;p&gt;Luckily, most modern languages already have this task completely
+handled without your direct intervention.&lt;/p&gt;
+&lt;p&gt;There are many situations where this kind of niceties are introduced
+into the FP world, for example, if you use the map function in
+Clojure, you already gain parallel execution for free at runtime. If
+you use higher-order constructs, you enable the runtine to become
+smarter and to even rearrange execution in a most appropriate order.&lt;/p&gt;
+&lt;p&gt;This it not to say that you should not learn what is going on behind
+the scenes, but once you learn it you can use this knowledge in very
+succinct way.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Always learn one level of abstraction underneath you&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;However, let&amp;rsquo;s explore the memoization mechanism for a second.&lt;/p&gt;
+&lt;h2 id=&#34;what-is-memoization&#34;&gt;What is memoization?&lt;/h2&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;p&gt;Imagine that you have a function that is very computational intensive,
+meaning that you spend most of your execution time to perform your
+desired operation on this function. And for your despair, the very
+same function is called several times inside your application. How can
+we speed this up?&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s consider the task of classifying numbers into perfect, abundant
+and deficient accordingly with mathematical definitions of perfect
+numbers.&lt;/p&gt;
+&lt;p&gt;Example of a Python code to Classify numbers into perfect, abundant
+and deficient.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Classifier&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+    &lt;span class=&#34;nd&#34;&gt;@staticmethod&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;sum_factors&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;number&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;sum&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Classifier&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;factors_of&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;number&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+
+    &lt;span class=&#34;nd&#34;&gt;@staticmethod&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;factors_of&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;number&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;filtered_list&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;filter&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;lambda&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;number&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;number&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;list&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;filtered_list&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+
+    &lt;span class=&#34;nd&#34;&gt;@staticmethod&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;is_perfect&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;number&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Classifier&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sum_factors&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;number&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;number&lt;/span&gt;
+
+    &lt;span class=&#34;nd&#34;&gt;@staticmethod&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;is_abundant&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;number&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Classifier&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sum_factors&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;number&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;number&lt;/span&gt;
+
+    &lt;span class=&#34;nd&#34;&gt;@staticmethod&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;is_deficient&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;number&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Classifier&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sum_factors&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;number&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;number&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Now, if you want to call this function on the numbers &lt;code&gt;[6, 25, 15000, 56000, 110560]&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;el&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;6&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;25&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;15000&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;56000&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;110560&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]:&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;The number {} is perfect? {}&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;format&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;el&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Classifier&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;is_perfect&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;el&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)))&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;The number {} is abundant? {}&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;format&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;el&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Classifier&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;is_abundant&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;el&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)))&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;The number {} is deficient? {}&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;format&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;el&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Classifier&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;is_deficient&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;el&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You will not probably like the result as the number that you want to
+classify gets bigger and bigger. Same funcionality implemented in
+Clojure:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-clojure&#34; data-lang=&#34;clojure&#34;&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;defn- &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;sum-of-factors&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;number&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;-&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;range &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;+ &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;number&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+       &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;filter &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;= &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;rem &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;number&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)))&lt;/span&gt;
+       &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;reduce &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)))&lt;/span&gt;
+
+&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;defn &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;is-perfect&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;number&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;= &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;sum-of-factors&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;number&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;* &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;number&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)))&lt;/span&gt;
+
+&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;defn &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;is-abundant&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;number&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;&amp;gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;sum-of-factors&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;number&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;* &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;number&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)))&lt;/span&gt;
+
+&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;defn &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;is-deficient&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;number&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;&amp;lt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;sum-of-factors&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;number&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;* &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;number&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;And the same tests calls:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-clojure&#34; data-lang=&#34;clojure&#34;&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;doseq &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;el&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;6&lt;/span&gt;, &lt;span class=&#34;mi&#34;&gt;25&lt;/span&gt;, &lt;span class=&#34;mi&#34;&gt;15000&lt;/span&gt;, &lt;span class=&#34;mi&#34;&gt;56000&lt;/span&gt;, &lt;span class=&#34;mi&#34;&gt;110560&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]]&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;println &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;str &lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;The number &amp;#34;&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;el&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34; is perfect?&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;is-perfect&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;el&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)))&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;println &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;str &lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;The number &amp;#34;&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;el&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34; is abundant?&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;is-abundant&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;el&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)))&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;println &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;str &lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;The number &amp;#34;&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;el&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34; is deficient?&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;is-deficient&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;el&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You will not like these results too. As we are not in a speed context
+between languages, I will place the time that the Clojure
+implementation took to perform these classifications. Example of
+results. Showing only the is_perfect test.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-clojure&#34; data-lang=&#34;clojure&#34;&gt;&lt;span class=&#34;nv&#34;&gt;el&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;- &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;6&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;:&lt;/span&gt;      &lt;span class=&#34;s&#34;&gt;&amp;#34;Elapsed time: 0.122637 msecs&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;nv&#34;&gt;el&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;- &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;25&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;:&lt;/span&gt;     &lt;span class=&#34;s&#34;&gt;&amp;#34;Elapsed time: 0.071203 msecs&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;nv&#34;&gt;el&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;- &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;15000&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;:&lt;/span&gt;  &lt;span class=&#34;s&#34;&gt;&amp;#34;Elapsed time: 12.583968 msecs&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;nv&#34;&gt;el&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;- &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;56000&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;:&lt;/span&gt;  &lt;span class=&#34;s&#34;&gt;&amp;#34;Elapsed time: 32.59634 msecs&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;nv&#34;&gt;el&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;- &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;110560&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;Elapsed time: 47.281954 msecs&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;In order to perform all the classifications, the code took 170 msecs.&lt;/p&gt;
+&lt;h2 id=&#34;implementing-memoization&#34;&gt;Implementing memoization&lt;/h2&gt;
+&lt;p&gt;Ok, we understand the problem now. The whole idea of memoization is to
+cache some results in order to gain speed when you compute that value
+again. This is very nice and simple: you exchange memory space for
+speed. Instead of computing the whole thing again, you will only
+perform a lookup into some data structure.&lt;/p&gt;
+&lt;p&gt;However, you see functional programming concepts kick-in again. In
+order to implement this sort of caching, you need that your function
+or method to be pure, in other words, if you pass the same inputs you
+always get the same output!&lt;/p&gt;
+&lt;p&gt;Implementing caching in Python to simulate memoization.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;ClassifierCached&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;fm&#34;&gt;__init__&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+        &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sum_cache&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{}&lt;/span&gt;
+
+    &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;sum_factors&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;number&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;not&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;number&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sum_cache&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+            &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sum_cache&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;number&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;sum&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;factors_of&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;number&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sum_cache&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;number&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+
+    &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;factors_of&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;number&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;filtered_list&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;filter&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;lambda&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;number&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;number&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;list&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;filtered_list&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+
+    &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;is_perfect&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;number&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sum_factors&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;number&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;number&lt;/span&gt;
+
+    &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;is_abundant&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;number&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sum_factors&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;number&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;number&lt;/span&gt;
+
+    &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;is_deficient&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;number&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sum_factors&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;number&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;number&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If you pay attention, you will see that I haven&amp;rsquo;t done much in order to implement this simple caching mechanism. However, what happened?&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;I have to choose the data structure to store the data (a dictionary sum_cache)&lt;/li&gt;
+&lt;li&gt;I have to manage the lookup into the data structure&lt;/li&gt;
+&lt;li&gt;I have to manage the population of the data structure&lt;/li&gt;
+&lt;li&gt;I have to change the staticmethod functions to become instance methods, because now I have a state to manage.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Let&amp;rsquo;s take a look at the Clojure version:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-clojure&#34; data-lang=&#34;clojure&#34;&gt;&lt;span class=&#34;kd&#34;&gt;defn- &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;sum-of-factors-non-cached&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;number&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;-&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;range &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;+ &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;number&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+       &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;filter &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;= &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;rem &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;number&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)))&lt;/span&gt;
+       &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;reduce &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)))&lt;/span&gt;
+
+&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;def &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;sum-of-factors&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;memoize&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;sum-of-factors-non-cached&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;I just renamed the old implemented function to become
+sum-of-factors-non-cached and created a new one using the function
+memoize. That&amp;rsquo;s it.&lt;/p&gt;
+&lt;p&gt;Now, the whole call cost 80 msecs. As worse as your high-demanding
+function become, the clearer become the advantages of
+memoization. What&amp;rsquo;s the beauty on the Clojure version? I delegate to
+the language all the choices that I had to make in the Python
+version. The runtime is taking care of all the details for me.&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s keep focused on the business problems we want to solve!!&lt;/p&gt;
+</description> 
+    </item>
+    
+    <item>
+      <title>Y Combinator</title>
+      <link>https://wandersoncferreira.github.io/blog/y-combinator/</link>
+      <pubDate>Sun, 26 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://wandersoncferreira.github.io/blog/y-combinator/</guid>
+      <description>&lt;p&gt;The Y combinator is a higher-order function that takes a single
+argument, which is a &lt;em&gt;function&lt;/em&gt; that &lt;strong&gt;isn&amp;rsquo;t&lt;/strong&gt; recursive and returns a
+version of the same function that &lt;em&gt;is&lt;/em&gt; recursive.&lt;/p&gt;
+&lt;p&gt;If that is not enough to blow your mind, please: &lt;em&gt;What do you think
+recursion is?&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;More generally, Y gives us a way to get recursion in a programming
+language that supports first-class functions but doesn&amp;rsquo;t have
+recursion built in.&lt;/p&gt;
+&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
+&lt;p align=&#34;center&#34;&gt;
+  &lt;img src=&#34;https://theburningmonk.com/wp-content/uploads/2017/08/recursion-01.png&#34; /&gt;
+&lt;/p&gt;
+&lt;p&gt;This post will be a comprehensive walk through the Chapter 9 of the
+Little Schemer book. The idea is to reproduce the same discussion
+about recursive functions and get us straight to the &lt;em&gt;Y combinator&lt;/em&gt;
+definition. I will also be using &lt;em&gt;Clojure&lt;/em&gt; and borrowing some
+explanations from this amazing
+&lt;a href=&#34;https://mvanier.livejournal.com/2897.html&#34;&gt;article&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;part-1-partial-functions-and-unnatural-recursion&#34;&gt;Part 1: Partial Functions and Unnatural Recursion&lt;/h2&gt;
+&lt;p&gt;Partial functions have this strange property of being correct for
+&lt;em&gt;some&lt;/em&gt; input values and to have no guarantees that it will produce the
+correct answer to others.&lt;/p&gt;
+&lt;p&gt;For example the &lt;code&gt;looking&lt;/code&gt; function below:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-clojure&#34; data-lang=&#34;clojure&#34;&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;defn &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;looking&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;lat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;keep-looking&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;first &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;lat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;lat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+
+&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;defn &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;keep-looking&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;val index &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;let &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;new-val&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;get &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;- index &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))]&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;cond&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;= &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;new-val&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;val&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+      &lt;span class=&#34;nv&#34;&gt;true&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;not &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;integer?&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;new-val&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+      &lt;span class=&#34;nv&#34;&gt;false&lt;/span&gt;
+      &lt;span class=&#34;ss&#34;&gt;:else&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;keep-looking&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;val &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;new-val&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Give it a &lt;code&gt;:keyword&lt;/code&gt; and a &lt;code&gt;collection&lt;/code&gt; and the &lt;code&gt;looking&lt;/code&gt; function
+will get the first element of the collection and verify if it is equal
+to the &lt;code&gt;:keyword&lt;/code&gt; I passed. If true, returns true.&lt;/p&gt;
+&lt;p&gt;If false, use the first element of the collection to perform an &lt;code&gt;index&lt;/code&gt;
+lookup.&lt;/p&gt;
+&lt;p&gt;For example:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-clojure&#34; data-lang=&#34;clojure&#34;&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;def &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;lat&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;6&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;:caviar&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;5&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;7&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;])&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;looking&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;:caviar&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;lat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;nv&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;true&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The path traveled by &lt;code&gt;looking&lt;/code&gt; is:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;6th index --&amp;gt; 7th index --&amp;gt; 3rd index --&amp;gt; 4th index &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;which is my keyword&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;However the following example do not have an answer:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-clojure&#34; data-lang=&#34;clojure&#34;&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;def &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;lat3&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;7&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;:caviar&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;5&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;6&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;])&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;looking&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;:caviar&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;lat3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The path:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;7th index --&amp;gt; 3rd index --&amp;gt; 2nd index --&amp;gt; 1st index --&amp;gt; 7th index ---&amp;gt; ...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;There are many functions like this. We are going to use the same class
+of functions to develop the idea of the Y combinator.  Why? They
+appears when you have the huge constrain of not being able to &lt;code&gt;define&lt;/code&gt;
+anything.&lt;/p&gt;
+&lt;p&gt;Think about it, if you understand recursion as the technique of
+defining some function &lt;em&gt;f&lt;/em&gt; in terms of itself. Then, if you can&amp;rsquo;t
+&lt;code&gt;define&lt;/code&gt; the name of the function in your programming language, it
+will be &amp;ldquo;&amp;ldquo;impossible&amp;rdquo;&amp;rdquo; to write a recursive call, right?&lt;/p&gt;
+&lt;h2 id=&#34;part-2-lets-get-into-it&#34;&gt;Part 2: Let&amp;rsquo;s get into it!&lt;/h2&gt;
+&lt;p&gt;We are going to use the &lt;code&gt;length&lt;/code&gt; function below in order to build our
+way through the Y Combinator function.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-clojure&#34; data-lang=&#34;clojure&#34;&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;defn &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;length&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;empty?&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+    &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;inc &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;length&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;rest &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)))))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;However, without the &lt;code&gt;define&lt;/code&gt; constructor we can&amp;rsquo;t write the name
+&lt;code&gt;length&lt;/code&gt; inside the body of the function because there is no way to
+refer to the name of this function yet, it will be written as an
+anonymous function.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-clojure&#34; data-lang=&#34;clojure&#34;&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;empty?&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+    &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;inc &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;?????&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;rest &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)))))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;We still cannot write a better function to replace &lt;code&gt;?????&lt;/code&gt;, however
+the real question is: &lt;em&gt;the function above is all useless?&lt;/em&gt;*&lt;/p&gt;
+&lt;p&gt;Actually, not.&lt;/p&gt;
+&lt;p&gt;The following call will produce the correct value:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-clojure&#34; data-lang=&#34;clojure&#34;&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;empty?&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+      &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;inc &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;???&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;rest &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)))))&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;())&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;; call with the empty list&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;;; =&amp;gt; 0&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;em&gt;IF&lt;/em&gt; we could &lt;code&gt;define&lt;/code&gt; the function above, we could called it
+&lt;code&gt;length-0&lt;/code&gt; because it correctly returns the length of the empty
+list. However, is also possible to use this new &lt;code&gt;length-0&lt;/code&gt; function to
+write a new version which returns the correct answer to a list with
+only &lt;em&gt;one&lt;/em&gt; element.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-clojure&#34; data-lang=&#34;clojure&#34;&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;def &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;length-0&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;empty?&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+      &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;inc &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;?????&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;rest &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))))))&lt;/span&gt;
+
+&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+   &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;empty?&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+     &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;
+     &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;inc &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;length-0&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;rest &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)))))&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;list &lt;/span&gt;&lt;span class=&#34;ss&#34;&gt;:A&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;;; =&amp;gt; 1&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;But, let&amp;rsquo;s pretend we can&amp;rsquo;t use &lt;code&gt;define&lt;/code&gt; here, so the last function
+will become (I am only doing a substitution of the &lt;code&gt;length-0&lt;/code&gt;
+function):&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-clojure&#34; data-lang=&#34;clojure&#34;&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;empty?&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+    &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;inc &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+            &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;empty?&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+              &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;
+              &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;inc &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;?????&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;rest &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)))))&lt;/span&gt;
+          &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;rest &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)))))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Ok, let&amp;rsquo;s pay attention to the function above.&lt;/p&gt;
+&lt;p&gt;It cannot only answer correctly the length of a list with a single
+item, also correctly answers when the input list is &lt;em&gt;UP to 1
+element&lt;/em&gt;. Therefore the empty list will also return the correct value.&lt;/p&gt;
+&lt;p&gt;Now, let&amp;rsquo;s take another step on that direction, let&amp;rsquo;s build the
+function that will return correctly when the input is &lt;em&gt;UP to 2
+elements&lt;/em&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-clojure&#34; data-lang=&#34;clojure&#34;&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;empty?&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+    &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;inc &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+            &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;empty?&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+              &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;
+              &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;inc &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+                      &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;empty?&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+                        &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;
+                        &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;inc &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;?????&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;rest &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)))))&lt;/span&gt;
+                    &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;rest &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)))))&lt;/span&gt;
+          &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;rest &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)))))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;UP to 3 elements:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-clojure&#34; data-lang=&#34;clojure&#34;&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;empty?&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+    &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;inc &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+            &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;empty?&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+              &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;
+              &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;inc &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+                      &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;empty?&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+                        &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;
+                        &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;inc &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+                                &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;empty?&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+                                  &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;
+                                  &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;inc &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;?????&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;rest &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)))))&lt;/span&gt;
+                              &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;rest &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)))))&lt;/span&gt;
+                    &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;rest &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)))))&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;rest &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)))))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;UP to 4 elements:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-clojure&#34; data-lang=&#34;clojure&#34;&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;empty?&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+    &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;inc &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+            &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;empty?&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+              &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;
+              &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;inc &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+                      &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;empty?&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+                        &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;
+                        &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;inc &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+                                &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;empty?&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+                                  &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;
+                                  &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;inc &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+                                          &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;empty?&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+                                            &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;
+                                            &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;inc &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;?????&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;rest &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)))))&lt;/span&gt;
+                                        &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;rest &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)))))&lt;/span&gt;
+                              &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;rest &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)))))&lt;/span&gt;
+                    &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;rest &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)))))&lt;/span&gt;
+          &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;rest &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)))))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;And now, Friedman asks you:&lt;/p&gt;
+&lt;h2 id=&#34;now-what-do-you-think-recursion-is&#34;&gt;Now, what do you think recursion is?&lt;/h2&gt;
+&lt;p&gt;and that is a tough question.&lt;/p&gt;
+&lt;p&gt;Looks like if you pile a lot of &amp;ldquo;incomplete&amp;rdquo; functions that &lt;em&gt;for some&lt;/em&gt;
+primitive values returns the correct answer, we can get along just
+fine.&lt;/p&gt;
+&lt;p&gt;Following this example, it looks like we could compute the length of
+any list if we knew beforehand the size of the list and we could pile
+the exact amount of &lt;em&gt;incomplete&lt;/em&gt; functions ahead of time.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Crazy.. if you knew the size, you could pile the exact same amount of
+stacks to compute the size recursively. How nice is that&amp;hellip; o.O&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s organize the code above and abstract the &lt;code&gt;?????&lt;/code&gt; function from
+the implementation.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-clojure&#34; data-lang=&#34;clojure&#34;&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;func-length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+   &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+     &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;empty?&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+       &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;
+       &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;inc &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;func-length&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;rest &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))))))&lt;/span&gt;
+ &lt;span class=&#34;nv&#34;&gt;?????&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Ok, the function above is important&amp;hellip;It is another version of the
+&lt;code&gt;length-0&lt;/code&gt; function. The only difference here is that: &lt;strong&gt;as I don&amp;rsquo;t know
+the function &lt;code&gt;?????&lt;/code&gt;, it could be &amp;ldquo;anything&amp;rdquo;, so I will abstract that
+&lt;em&gt;out&lt;/em&gt; of my main function and receive it as an argument&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Something like this:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-clojure&#34; data-lang=&#34;clojure&#34;&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;main-function&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;?????&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;;; got it?&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Ok, the new versions of the length up to 2 and 3 elements will be:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-clojure&#34; data-lang=&#34;clojure&#34;&gt;&lt;span class=&#34;c1&#34;&gt;;; length-1&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;func-length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+   &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+     &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;empty?&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+       &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;
+       &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;inc &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;func-length&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;rest &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))))))&lt;/span&gt;
+
+
+ &lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;func2-length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;empty?&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+        &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;inc &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;func2-length&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;rest &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))))))&lt;/span&gt;
+   &lt;span class=&#34;nv&#34;&gt;?????&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+
+
+&lt;span class=&#34;c1&#34;&gt;;; length-2&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;func-length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+   &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+     &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;empty?&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+       &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;
+       &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;inc &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;func-length&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;rest &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))))))&lt;/span&gt;
+
+
+ &lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;func2-length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;empty?&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+        &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;inc &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;func2-length&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;rest &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))))))&lt;/span&gt;
+
+
+  &lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;func3-length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+     &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+       &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;empty?&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+         &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;
+         &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;inc &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;func3-length&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;rest &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))))))&lt;/span&gt;
+   &lt;span class=&#34;nv&#34;&gt;?????&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)))&lt;/span&gt;
+
+
+&lt;span class=&#34;c1&#34;&gt;;; length-3&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;func-length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+   &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+     &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;empty?&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+       &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;
+       &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;inc &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;func-length&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;rest &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))))))&lt;/span&gt;
+
+
+ &lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;func2-length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;empty?&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+        &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;inc &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;func2-length&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;rest &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))))))&lt;/span&gt;
+
+
+  &lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;func3-length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+     &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+       &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;empty?&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+         &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;
+         &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;inc &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;func3-length&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;rest &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))))))&lt;/span&gt;
+
+   &lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;func4-length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;empty?&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+          &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;
+          &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;inc &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;func4-length&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;rest &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))))))&lt;/span&gt;
+    &lt;span class=&#34;nv&#34;&gt;?????&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Let&amp;rsquo;s try to remove all the repetition above, let&amp;rsquo;s rewrite the
+&lt;code&gt;length-0&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-clojure&#34; data-lang=&#34;clojure&#34;&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;mk-length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+   &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;mk-length&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;?????&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+ &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+   &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+     &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;empty?&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+       &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;
+       &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;inc &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;length&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;rest &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)))))))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Let&amp;rsquo;s follow the calls of the function above in order to see how it
+works to compute the length of the EMPTY list.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-clojure&#34; data-lang=&#34;clojure&#34;&gt;&lt;span class=&#34;c1&#34;&gt;;;; the first parenthesis has 2 main blocks:&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;;; the function - Let&amp;#39;s call it func0&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;mk-length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;mk-length&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;?????&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+
+&lt;span class=&#34;c1&#34;&gt;;; and the argument. Let&amp;#39;s call it arg0&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;empty?&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+      &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;inc &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;length&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;rest &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))))))&lt;/span&gt;
+
+&lt;span class=&#34;c1&#34;&gt;;;; so the first call will be (func0 arg0)&lt;/span&gt;
+
+&lt;span class=&#34;c1&#34;&gt;;;; ok, now he will have the second level of calls&lt;/span&gt;
+
+&lt;span class=&#34;c1&#34;&gt;;; (arg0 ?????)&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;;; however, this level expand to another function like:&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;empty?&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+    &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;inc &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;?????&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;rest &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)))))&lt;/span&gt;
+
+&lt;span class=&#34;c1&#34;&gt;;; behold.. this is our first version of `length-0`&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Ok, take some time to process this new notation. It only gets worse.&lt;/p&gt;
+&lt;p&gt;Now, how can we write the &lt;code&gt;length-1&lt;/code&gt; and &lt;code&gt;length-2&lt;/code&gt; using the concise
+definition above?&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-clojure&#34; data-lang=&#34;clojure&#34;&gt;&lt;span class=&#34;c1&#34;&gt;;; length-1&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+ &lt;span class=&#34;c1&#34;&gt;;; func&lt;/span&gt;
+ &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;mk-length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;mk-length&lt;/span&gt;
+     &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;mk-length&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;?????&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)))&lt;/span&gt;
+
+ &lt;span class=&#34;c1&#34;&gt;;; arg&lt;/span&gt;
+ &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+   &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+     &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;empty?&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+       &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;
+       &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;inc &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;length&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;rest &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))))))&lt;/span&gt;
+ &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+
+
+&lt;span class=&#34;c1&#34;&gt;;; length-2&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+ &lt;span class=&#34;c1&#34;&gt;;; func&lt;/span&gt;
+ &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;mk-length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+   &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;mk-length&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;mk-length&lt;/span&gt;
+     &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;mk-length&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;?????&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))))&lt;/span&gt;
+
+ &lt;span class=&#34;c1&#34;&gt;;; arg&lt;/span&gt;
+ &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+   &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+     &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;empty?&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+       &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;
+       &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;inc &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;length&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;rest &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))))))&lt;/span&gt;
+ &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Wait a second&amp;hellip; what just happened? It looks like the amount of
+levels we need to build &lt;em&gt;DOES NOT DEPEND OF THE TASK AT
+HAND&lt;/em&gt;. WoW.. we factor out the &lt;code&gt;length&lt;/code&gt;-specific portion of the code
+and we started to pile up some sort of stack of incomplete calls.&lt;/p&gt;
+&lt;p&gt;Up to this point, everything was fine. Now, the magic starts to kick-in.
+The problem at hand is that we don&amp;rsquo;t know beforehand how many calls of
+&lt;code&gt;mk-length&lt;/code&gt; we will need to do when we receive any list to perform the
+&lt;code&gt;length&lt;/code&gt; operation.&lt;/p&gt;
+&lt;p&gt;If we choose a lower number of &lt;code&gt;mk-length&lt;/code&gt; to perform the &lt;code&gt;length&lt;/code&gt;
+task, we will receive an error because it will try to call the &lt;code&gt;?????&lt;/code&gt;
+function by passing the argument &lt;code&gt;(rest coll)&lt;/code&gt; to it, but &lt;code&gt;?????&lt;/code&gt; does
+not exist. &amp;hellip; Friedman suggests&amp;hellip; let&amp;rsquo;s substitute the function
+&lt;code&gt;?????&lt;/code&gt;  for another call of &lt;code&gt;mk-length&lt;/code&gt;&amp;hellip; :X&amp;hellip;. :X &amp;hellip; afterwards
+&lt;code&gt;mk-length&lt;/code&gt; creates another &amp;ldquo;stack of calls&amp;rdquo; to enable us to compute
+one extra element in the list.&lt;/p&gt;
+&lt;p&gt;Ok&amp;hellip;&lt;/p&gt;
+&lt;p&gt;&amp;hellip;&lt;/p&gt;
+&lt;p&gt;Now, the &lt;code&gt;length-0&lt;/code&gt; will become:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-clojure&#34; data-lang=&#34;clojure&#34;&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;mk-length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+   &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;mk-length&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;mk-length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+
+ &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+   &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+     &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;empty?&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+       &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;
+       &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;inc &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;length&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;rest &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)))))))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;So, if we apply &lt;code&gt;mk-length&lt;/code&gt; one time, we will have &lt;code&gt;length-1&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-clojure&#34; data-lang=&#34;clojure&#34;&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;mk-length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+   &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;mk-length&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;mk-length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+
+ &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;mk-length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+   &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+     &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;empty?&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+       &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;
+       &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;inc &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;mk-length&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;?????&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+             &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;rest &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))))))&lt;/span&gt;
+ &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The above code is working equivalently to &lt;code&gt;length-1&lt;/code&gt;, but it will
+failed for a list with 2 elements. However, let&amp;rsquo;s get wild. &lt;em&gt;keep
+passing &lt;code&gt;mk-length&lt;/code&gt; to itself&amp;hellip;&lt;/em&gt;, you will create as many frames as
+you need&amp;hellip;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-clojure&#34; data-lang=&#34;clojure&#34;&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;;;; func0&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;mk-length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+     &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;mk-length&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;mk-length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+
+&lt;span class=&#34;c1&#34;&gt;;;; arg0&lt;/span&gt;
+   &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;mk-length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+     &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+       &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;empty?&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+         &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;
+         &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;inc &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;mk-length&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;mk-length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+               &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;rest &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))))))&lt;/span&gt;
+   &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Are you kidding me&amp;hellip; there is a problem though. The second function,
+&lt;code&gt;arg0&lt;/code&gt; in the comments above, does not remember the function that
+actually computes the &lt;code&gt;length&lt;/code&gt; operation as we started.&lt;/p&gt;
+&lt;p&gt;So, let&amp;rsquo;s get rid of the &lt;code&gt;(mk-length mk-length)&lt;/code&gt; call in there. Just
+add another layer of function call and abstract that away.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-clojure&#34; data-lang=&#34;clojure&#34;&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;mk-length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+     &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;mk-length&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;mk-length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+ &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;mk-length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+   &lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+       &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+         &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;empty?&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+           &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;
+           &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;inc &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;length&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;rest &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))))))&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;mk-length&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;mk-length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;However, if you run the code above.. it will give you an
+&lt;code&gt;StackOverflow Error&lt;/code&gt; because you are applying &lt;code&gt;mk-length&lt;/code&gt; to itself
+indefinitely. What you need to do is a &amp;ldquo;lazy&amp;rdquo; call, only call it when
+needed. So you must wrap it under another function call layer.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-clojure&#34; data-lang=&#34;clojure&#34;&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;mk-length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+     &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;mk-length&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;mk-length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+ &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;mk-length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+   &lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+       &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+         &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;empty?&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+           &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;
+           &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;inc &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;length&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;rest &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))))))&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;mk-length&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;mk-length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)))))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Alright, the next step is just re-arranging the code to factor out the
+portion of the code that is related to the &lt;code&gt;length&lt;/code&gt; operation that we
+desire.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-clojure&#34; data-lang=&#34;clojure&#34;&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;;;func0&lt;/span&gt;
+ &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;non-recursive-func&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+   &lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;mk-length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;mk-length&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;mk-length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;mk-length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;non-recursive-func&lt;/span&gt;
+       &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+         &lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;mk-length&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;mk-length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))))))&lt;/span&gt;
+
+ &lt;span class=&#34;c1&#34;&gt;;;; arg0&lt;/span&gt;
+ &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+   &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+     &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;empty?&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+       &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;
+       &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;inc &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;length&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;rest &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;coll&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)))))))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Congratulations&amp;hellip; &lt;code&gt;func0&lt;/code&gt; above is the Y combinator function. It
+receives one function and return another function which is recursive.&lt;/p&gt;
+&lt;p&gt;Changing the name of the variables:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-clojure&#34; data-lang=&#34;clojure&#34;&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;def &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;Y&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;non-recursive-func&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;f&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+     &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+       &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;non-recursive-func&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;f&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)))))))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This chapter of The Little Schemer could not have ended better:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Q: Do you now know why Y works?&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;A: Read this chapter just one more time and you will.&lt;/strong&gt;&lt;/p&gt;
+</description> 
+    </item>
     
   </channel>
 </rss>

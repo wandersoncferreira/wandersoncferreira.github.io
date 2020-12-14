@@ -11,85 +11,206 @@
 	<atom:link href="https://wandersoncferreira.github.io/tags/rich-hickey/index.xml" rel="self" type="application/rss+xml" />
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    <item>
+      <title>Maybe Not</title>
+      <link>https://wandersoncferreira.github.io/notes/maybe-not/</link>
+      <pubDate>Sun, 15 Mar 2020 00:00:00 -0300</pubDate>
+      
+      <guid>https://wandersoncferreira.github.io/notes/maybe-not/</guid>
+      <description>&lt;h3 id=&#34;youtubehttpsyoutubeyr5wdgrpouglistplzdclr02grlrewkazv-5qbuzk0zgkoocr&#34;&gt;&lt;a href=&#34;https://youtu.be/YR5WdGrpoug?list=PLZdCLR02grLrEwKaZv-5QbUzK0zGKOOcr&#34;&gt;Youtube&lt;/a&gt;&lt;/h3&gt;
+&lt;h2 id=&#34;speaker&#34;&gt;Speaker&lt;/h2&gt;
+&lt;p&gt;Rich Hickey, creator of Clojure&lt;/p&gt;
+&lt;h2 id=&#34;quotes&#34;&gt;Quotes&lt;/h2&gt;
+&lt;p&gt;I call it my billion-dollar mistake. It was the invention of the null
+reference in 1965 - by Tony Hoare.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Where are nulls/options used?&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;optional requirements (args)
+&lt;ul&gt;
+&lt;li&gt;variadics and kwargs mitigate in Clojure&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;conditional provision (returns)
+&lt;ul&gt;
+&lt;li&gt;managing partial information (aggregates)&lt;/li&gt;
+&lt;li&gt;not idiomatic in Clojure&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;em&gt;Maps vs Records/Fields&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;maps are (mathematical) functions!&lt;/li&gt;
+&lt;li&gt;simplest functions in programming
+&lt;ul&gt;
+&lt;li&gt;keyset -&amp;gt; vals&lt;/li&gt;
+&lt;li&gt;no code, no categories&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;em&gt;What do we want?&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;maximize schema reuse
+&lt;ul&gt;
+&lt;li&gt;don&amp;rsquo;t want context-driven proliferation
+&lt;ul&gt;
+&lt;li&gt;yields more code, less reuse&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;support symmetric request/response
+&lt;ul&gt;
+&lt;li&gt;call partially filled in, get more filled in&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;information-building pipelines
+&lt;ul&gt;
+&lt;li&gt;many partial information increments&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;recommendations&#34;&gt;Recommendations&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Maps are the most fundamental functions in programming&lt;/li&gt;
+&lt;li&gt;You can flow information through systems that they doesn&amp;rsquo;t know
+about and doesn&amp;rsquo;t care about it.&lt;/li&gt;
+&lt;/ol&gt;
+</description> 
+    </item>
+    
+    <item>
+      <title>Transducers</title>
+      <link>https://wandersoncferreira.github.io/notes/transducers/</link>
+      <pubDate>Mon, 24 Feb 2020 00:00:00 -0300</pubDate>
+      
+      <guid>https://wandersoncferreira.github.io/notes/transducers/</guid>
+      <description>&lt;h3 id=&#34;youtube-linkhttpsyoutube6mtbuzafcii&#34;&gt;&lt;a href=&#34;https://youtu.be/6mTbuzafcII&#34;&gt;Youtube Link&lt;/a&gt;&lt;/h3&gt;
+&lt;h2 id=&#34;speaker&#34;&gt;Speaker&lt;/h2&gt;
+&lt;p&gt;Rich Hickey, creator of Clojure&lt;/p&gt;
+&lt;h2 id=&#34;thoughts&#34;&gt;Thoughts&lt;/h2&gt;
+&lt;p&gt;I already watched this talk more than one year ago. And today I feel
+very happy because I could understand 80% of that was said about
+transducers and better yet, 100% of the problem that transducer
+attempt to solve.&lt;/p&gt;
+&lt;p&gt;This is a good proxy that I am learning =)&lt;/p&gt;
+&lt;p&gt;Rich talks are always very bright and full of ideas and provocations
+to your day-to-day job. It&amp;rsquo;s up to you to translate them and apply
+succefully.&lt;/p&gt;
+&lt;p&gt;The journey continues!&lt;/p&gt;
+&lt;h2 id=&#34;quotes&#34;&gt;Quotes&lt;/h2&gt;
+&lt;p&gt;What they are?&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;extract the &lt;strong&gt;essence&lt;/strong&gt; of map, filter et al&lt;/li&gt;
+&lt;li&gt;away from the functions that transform sequences/collections&lt;/li&gt;
+&lt;li&gt;recasting them as &lt;strong&gt;process transformations&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;p&gt;What kind of processes?&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ones that can defined in terms of a &lt;strong&gt;succession&lt;/strong&gt; or &lt;strong&gt;steps&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;where each step &lt;strong&gt;ingests&lt;/strong&gt; an &lt;strong&gt;input&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;p&gt;Transducers are fully decoupled&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;know nothing of the process they modify&lt;/li&gt;
+&lt;li&gt;may call step 0, 1 or more times&lt;/li&gt;
+&lt;li&gt;can transform input arg&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;p&gt;Early Termination&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Reduction normally processes all input&lt;/li&gt;
+&lt;li&gt;Sometimes a process has just &amp;lsquo;had enough&amp;rsquo; input, or gotten external trigger to terminate&lt;/li&gt;
+&lt;li&gt;A transducer might decide the same&lt;/li&gt;
+&lt;li&gt;code example:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-clojure&#34; data-lang=&#34;clojure&#34;&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;comp&lt;/span&gt;
+ &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;mapcatting&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;unbundle-pallet&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+ &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;taking-while&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;non-ticking?&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+ &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;filtering&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;non-food?&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+ &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;mapping&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;label-heavy&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;code-snippet&#34;&gt;Code Snippet&lt;/h2&gt;
+&lt;p&gt;Process to early terminate.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-clojure&#34; data-lang=&#34;clojure&#34;&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;defn &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;taking-while&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;pred&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;step&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;r&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;pred&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;step&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;r&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;reduced&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;r&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)))))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;A stateful transducer&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-clojure&#34; data-lang=&#34;clojure&#34;&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;defn &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;dropping-while&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;pred&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;step&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;let &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;dv&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;volatile!&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)]&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;fn &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;r&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;let &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;drop?&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;@&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;dv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+          &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;and &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;drop?&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;pred&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+            &lt;span class=&#34;nv&#34;&gt;r&lt;/span&gt;
+            &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;do&lt;/span&gt;
+              &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;vreset!&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;dv&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;false&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+              &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;step&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;r&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))))))))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;recommendations&#34;&gt;Recommendations&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;We can&amp;rsquo;t be reimplementing the same thing over and over again.&lt;/li&gt;
+&lt;li&gt;Manu list fns can be defined in terms of &lt;em&gt;foldr&lt;/em&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;encapsulates the recursion&lt;/li&gt;
+&lt;li&gt;easier to reason about and transform&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;Transducers &lt;em&gt;must&lt;/em&gt; support arity-0 init in terms of a call to the
+nested init.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;papers&#34;&gt;Papers&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.cs.ox.ac.uk/files/3390/PRG69.pdf&#34;&gt;Lectures on Constructive Functional Programming&lt;/a&gt; - by RS Bird&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.cs.nott.ac.uk/~pszgmh/fold.pdf&#34;&gt;A tutorial on the universality and expressiveness of fold&lt;/a&gt; - by Graham Hutton&lt;/li&gt;
+&lt;/ol&gt;
+</description> 
+    </item>
+    
+    <item>
+      <title>Design, composition, and performance</title>
+      <link>https://wandersoncferreira.github.io/notes/design-composition/</link>
+      <pubDate>Tue, 01 Oct 2019 00:00:00 -0300</pubDate>
+      
+      <guid>https://wandersoncferreira.github.io/notes/design-composition/</guid>
+      <description>&lt;h3 id=&#34;youtube-linkhttpsyoutubemcz3ygeeupglistplgddwz9ghpmkako9gbvzocobf_bri2ugy&#34;&gt;&lt;a href=&#34;https://youtu.be/MCZ3YgeEUPg?list=PLgDdwz9gHpMKAkO9gBvzoCobF_Bri2ugY&#34;&gt;Youtube Link&lt;/a&gt;&lt;/h3&gt;
+&lt;h2 id=&#34;speaker&#34;&gt;Speaker&lt;/h2&gt;
+&lt;p&gt;Rich Hickey, Creator of Clojure&lt;/p&gt;
+&lt;h2 id=&#34;thoughts&#34;&gt;Thoughts&lt;/h2&gt;
+&lt;p&gt;I am currently working in a greenfield project and I will take some
+step down and make sure I have all the pieces in place to move
+forward. I&amp;rsquo;ve being doing a lot of work to take things apart in this
+project, but I need a big picture to address things like
+comprehension, coordination, extension, reuse, testing, and
+efficiency.&lt;/p&gt;
+&lt;p&gt;I have a profound simpathy for this talk because I often engaged in
+discussions with colleagues about the situation of practice &lt;em&gt;before&lt;/em&gt;
+work in software development. I came from the geophysics industry and
+before you touch any equipment or data, you have to be subjected to
+tons of training and simulations. Why people learn to code in
+production time? I think the problem is even worse because most
+managers do not even know that this situation happens, they think that
+the team is ready to solve anything. This is scary.&lt;/p&gt;
+&lt;h2 id=&#34;quotes&#34;&gt;Quotes&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;In order to be creative you have to know how to prepare to be creative&lt;/li&gt;
+&lt;li&gt;Separating into things that can be composed&lt;/li&gt;
+&lt;li&gt;Move from want/need to &lt;em&gt;problems&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;Take apart time/order/flow using queues, idempotency, commutation, transactions&lt;/li&gt;
+&lt;li&gt;Composition you usually have self-imposed problems/constrains&lt;/li&gt;
+&lt;li&gt;Beginners are not yet players&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;definitions&#34;&gt;Definitions&lt;/h2&gt;
+&lt;p&gt;+Design+: &lt;em&gt;to prepare the plans for (a work to be executed),
+especially to plan the form and structure of&lt;/em&gt;&lt;/p&gt;
+</description> 
+    </item>
     
   </channel>
 </rss>

@@ -11,85 +11,75 @@
 	<atom:link href="https://wandersoncferreira.github.io/tags/agile/index.xml" rel="self" type="application/rss+xml" />
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    <item>
+      <title>SOLID Principles of Object Oriented &amp; Agile Design</title>
+      <link>https://wandersoncferreira.github.io/notes/solid-principles/</link>
+      <pubDate>Wed, 25 Dec 2019 00:00:00 -0300</pubDate>
+      
+      <guid>https://wandersoncferreira.github.io/notes/solid-principles/</guid>
+      <description>&lt;h3 id=&#34;youtube-linkhttpsyoutubeqhnlmvdxgty&#34;&gt;&lt;a href=&#34;https://youtu.be/QHnLmvDxGTY&#34;&gt;Youtube Link&lt;/a&gt;&lt;/h3&gt;
+&lt;h2 id=&#34;speaker&#34;&gt;Speaker&lt;/h2&gt;
+&lt;p&gt;Robert &amp;ldquo;Uncle Bob&amp;rdquo; Martin&lt;/p&gt;
+&lt;h2 id=&#34;thoughts&#34;&gt;Thoughts&lt;/h2&gt;
+&lt;p&gt;I might be walking into undesirable path here, but every presentation
+I saw from Uncle Bob was bad. I have to say that, I&amp;rsquo;m now saying that
+there is no wisdom in these talks but only that I have to filter so
+much unrelated and trivias that makes it difficult and most of the
+times boring.&lt;/p&gt;
+&lt;p&gt;I like presentations like Linus names his functions: short, sweet and
+to the point.&lt;/p&gt;
+&lt;p&gt;OO is about managing dependencies so you can prevent fragility and
+rigidity&lt;/p&gt;
+&lt;h2 id=&#34;quotes&#34;&gt;Quotes&lt;/h2&gt;
+&lt;p&gt;The ultimate failure of a software developer is when the &lt;em&gt;business&lt;/em&gt;
+prohibits you to make changes to a specific module in the system.&lt;/p&gt;
+&lt;p&gt;Three magic words of OO: Encapsulation, Inherintance and Polymorphism&lt;/p&gt;
+&lt;h2 id=&#34;principles&#34;&gt;Principles&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;S&lt;/strong&gt;ingle Responsibility: a class should have one single reason to change&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;O&lt;/strong&gt;pen/Closed: modules should be open for extension but closed for modification&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;L&lt;/strong&gt;iskov Substitution: derived classes must be usable through the base class interface&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;I&lt;/strong&gt;nterface segregation: clients should not be forced to depend upon interfaces that they do not use&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;D&lt;/strong&gt;ependency inversion: high-level modules, which provide complex logic, should not depend on low-level modules, which provides utility features. Both should depend on abstractions.&lt;/p&gt;
+&lt;h2 id=&#34;recomendations&#34;&gt;Recomendations&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;You don&amp;rsquo;t get fast by written crap&lt;/li&gt;
+&lt;li&gt;Inherintance is used in dynamic languages to inherint behaviors
+from others&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;extra-links&#34;&gt;Extra links&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackify.com/solid-design-principles/&#34;&gt;Solid Design Principles Explained&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description> 
+    </item>
+    
+    <item>
+      <title>Design after agile, how to succed by trying less</title>
+      <link>https://wandersoncferreira.github.io/notes/design-after-agile/</link>
+      <pubDate>Sun, 01 Sep 2019 00:00:00 -0300</pubDate>
+      
+      <guid>https://wandersoncferreira.github.io/notes/design-after-agile/</guid>
+      <description>&lt;h3 id=&#34;youtube-linkhttpsyoutubege_s55uvpyglistplgddwz9ghpmkako9gbvzocobf_bri2ugy&#34;&gt;&lt;a href=&#34;https://youtu.be/GE_s55Uvpyg?list=PLgDdwz9gHpMKAkO9gBvzoCobF_Bri2ugY&#34;&gt;Youtube Link&lt;/a&gt;&lt;/h3&gt;
+&lt;h2 id=&#34;speaker&#34;&gt;Speaker&lt;/h2&gt;
+&lt;p&gt;Stuart Halloway, Founder of Cognitect&lt;/p&gt;
+&lt;h2 id=&#34;thoughts&#34;&gt;Thoughts&lt;/h2&gt;
+&lt;p&gt;I still create several diagrams about portion of my code. After I
+discovered &lt;a href=&#34;https://plantuml.com/&#34;&gt;PlantUML&lt;/a&gt; all my diagrams are plain
+text files that create the figures as I compile in Emacs, you can even
+render on github/gitlab issue tickets &amp;amp; PR&amp;rsquo;s. However, I still need to
+be more dilligent to reach these files &lt;em&gt;before&lt;/em&gt; going to
+code. Sometimes I find that experimenting with real code helps me to
+see clearer and sometimes is just waste of time. Life is hard, right?&lt;/p&gt;
+&lt;h2 id=&#34;quotes&#34;&gt;Quotes&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;plans&lt;/em&gt; are useless, but &lt;em&gt;planning&lt;/em&gt; is indispensable.&lt;/p&gt;
+&lt;h2 id=&#34;recommendations&#34;&gt;Recommendations&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Make diagrams&lt;/li&gt;
+&lt;li&gt;Make tables&lt;/li&gt;
+&lt;li&gt;Write prose&lt;/li&gt;
+&lt;/ol&gt;
+</description> 
+    </item>
     
   </channel>
 </rss>

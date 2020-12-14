@@ -11,85 +11,52 @@
 	<atom:link href="https://wandersoncferreira.github.io/tags/dbms/index.xml" rel="self" type="application/rss+xml" />
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    <item>
+      <title>Design and Implementation of Bitemporal DBMS</title>
+      <link>https://wandersoncferreira.github.io/notes/design-and-implementation-of-bitemporal-dbms/</link>
+      <pubDate>Tue, 25 Feb 2020 00:00:00 -0300</pubDate>
+      
+      <guid>https://wandersoncferreira.github.io/notes/design-and-implementation-of-bitemporal-dbms/</guid>
+      <description>&lt;h3 id=&#34;youtube-linkhttpsyoutubeyjavsvygbuulistplethprqvx4a-c3kdrtxxwgrmemutl8apf&#34;&gt;&lt;a href=&#34;https://youtu.be/YjAVsvYGbuU?list=PLetHPRQvX4a-c3KDRTxxwGRmEMutL8Apf&#34;&gt;Youtube Link&lt;/a&gt;&lt;/h3&gt;
+&lt;h2 id=&#34;speaker&#34;&gt;Speaker&lt;/h2&gt;
+&lt;p&gt;Hákan Raberg, clojure developer&lt;/p&gt;
+&lt;h2 id=&#34;thoughts&#34;&gt;Thoughts&lt;/h2&gt;
+&lt;p&gt;The amount of knowledge hidden in the world is incredible. Almost all
+of these projects when explained makes me feel happy that I can grasp
+the whole idea and I know I can understand the inner workings and
+maybe start to contribute to some of these ideas.&lt;/p&gt;
+&lt;p&gt;I would like to be more involved with very rigorous projects
+like this one. One day!&lt;/p&gt;
+&lt;h2 id=&#34;quotes&#34;&gt;Quotes&lt;/h2&gt;
+&lt;p&gt;&amp;ldquo;&lt;strong&gt;A bitemporal table is a glorious structure&lt;/strong&gt;. It simultaneously
+records the history of the enterprise, while also capturing the
+sequence of record of that history.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Transaction time&lt;/strong&gt;: may be implemented using transaction commit
+times, and are system-generated and -supplied.&lt;/p&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Valid time&lt;/strong&gt;: Is the time when the fact is true in the modeled
+reality. Valid times are usually supplied by the user.&lt;/p&gt;
+&lt;p&gt; 
+ &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Bitemporal time - slice queries&lt;/strong&gt;: takes as input two instants, a
+valid-time and a transaction-time instant, and results in a snapshot
+state of the information regarding the enterprise at that valid
+time, as recorded in the database at that transaction time.&lt;/p&gt;
+&lt;h2 id=&#34;recommendations&#34;&gt;Recommendations&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Read more papers about computer science!&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;papers&#34;&gt;Papers&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://www2.cs.arizona.edu/~rts/tdbbook.pdf&#34;&gt;Developing Time-Oriented database applications in SQL&lt;/a&gt; - by Richard Snodgrass&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.cs.arizona.edu/~rts/pubs/SIGMODRecordMarch94p52.pdf&#34;&gt;A consensus glossary of temporal database concepts&lt;/a&gt; - CS Jensen&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cs.ulb.ac.be/public/_media/teaching/infoh415/tempfeaturessql2011.pdf&#34;&gt;Temporal Features in SQL 2011&lt;/a&gt; - by Krishna&lt;/li&gt;
+&lt;/ol&gt;
+</description> 
+    </item>
     
   </channel>
 </rss>

@@ -11,85 +11,32 @@
 	<atom:link href="https://wandersoncferreira.github.io/tags/declarative/index.xml" rel="self" type="application/rss+xml" />
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    <item>
+      <title>I see what you mean</title>
+      <link>https://wandersoncferreira.github.io/notes/see-what-you-mean/</link>
+      <pubDate>Fri, 12 Jun 2020 00:00:00 -0300</pubDate>
+      
+      <guid>https://wandersoncferreira.github.io/notes/see-what-you-mean/</guid>
+      <description>&lt;h3 id=&#34;youtubehttpsyoutuber2aa4pivg0g&#34;&gt;&lt;a href=&#34;https://youtu.be/R2Aa4PivG0g&#34;&gt;Youtube&lt;/a&gt;&lt;/h3&gt;
+&lt;h2 id=&#34;speaker&#34;&gt;Speaker&lt;/h2&gt;
+&lt;p&gt;Peter Alvado, UC Professor&lt;/p&gt;
+&lt;h2 id=&#34;thoughts&#34;&gt;Thoughts&lt;/h2&gt;
+&lt;p&gt;Very nice presentation about declarative programming language.&lt;/p&gt;
+&lt;h2 id=&#34;quotes&#34;&gt;Quotes&lt;/h2&gt;
+&lt;p&gt;&amp;ldquo;Abstraction is sometimes harmful&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;Operational semantics: the meaning of a program is what it does&lt;/p&gt;
+&lt;p&gt;Model-theoretic semantics: the meaning of a program is the databases
+that make it true&lt;/p&gt;
+&lt;p&gt;What we want: Programs that are resilient to failure and tolerant of
+loose ordering&lt;/p&gt;
+&lt;p&gt;Why it is so hard: Too many possible behaviors.&lt;/p&gt;
+&lt;h2 id=&#34;recommendations&#34;&gt;Recommendations&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Meanings are data representing outcomes. Outcomes are independent
+of execution order.&lt;/li&gt;
+&lt;/ol&gt;
+</description> 
+    </item>
     
   </channel>
 </rss>

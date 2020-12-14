@@ -11,85 +11,36 @@
 	<atom:link href="https://wandersoncferreira.github.io/tags/exception/index.xml" rel="self" type="application/rss+xml" />
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    <item>
+      <title>Condition System in an Exceptional Language</title>
+      <link>https://wandersoncferreira.github.io/notes/condition-system/</link>
+      <pubDate>Sun, 31 May 2020 00:00:00 -0300</pubDate>
+      
+      <guid>https://wandersoncferreira.github.io/notes/condition-system/</guid>
+      <description>&lt;h3 id=&#34;youtubehttpsyoutubezp0oedcaro0&#34;&gt;&lt;a href=&#34;https://youtu.be/zp0OEDcAro0&#34;&gt;Youtube&lt;/a&gt;&lt;/h3&gt;
+&lt;h2 id=&#34;speaker&#34;&gt;Speaker&lt;/h2&gt;
+&lt;p&gt;Cris Houser&lt;/p&gt;
+&lt;h2 id=&#34;thoughts&#34;&gt;Thoughts&lt;/h2&gt;
+&lt;p&gt;Very nice presentation about how to handle errors.&lt;/p&gt;
+&lt;h2 id=&#34;quotes&#34;&gt;Quotes&lt;/h2&gt;
+&lt;p&gt;&amp;ldquo;Vast opportunities that we software developers have to make models
+that prove and expand human knowledge, but &lt;strong&gt;we&amp;rsquo;are too busy
+plumbing&lt;/strong&gt;&amp;rdquo;&lt;/p&gt;
+&lt;h2 id=&#34;recommendations&#34;&gt;Recommendations&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Consider alternatives to throwing exceptions&lt;/li&gt;
+&lt;li&gt;Try out the built-in condition system, knowing this technique can
+take you as far as you&amp;rsquo;re likely to need&lt;/li&gt;
+&lt;li&gt;Use an existing condition system library where it makes sense.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;books&#34;&gt;Books&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Software Reliability, Principles &amp;amp; Practices - by Glenford&lt;/li&gt;
+&lt;li&gt;Practical Common Lisp - by Peter Seibel&lt;/li&gt;
+&lt;li&gt;The adventure of a blunder&lt;/li&gt;
+&lt;/ol&gt;
+</description> 
+    </item>
     
   </channel>
 </rss>

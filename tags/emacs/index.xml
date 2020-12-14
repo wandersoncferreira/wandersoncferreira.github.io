@@ -11,85 +11,171 @@
 	<atom:link href="https://wandersoncferreira.github.io/tags/emacs/index.xml" rel="self" type="application/rss+xml" />
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    <item>
+      <title>Emacs in the terminal</title>
+      <link>https://wandersoncferreira.github.io/blog/emacs-on-terminal/</link>
+      <pubDate>Sat, 21 Nov 2020 00:00:00 -0300</pubDate>
+      
+      <guid>https://wandersoncferreira.github.io/blog/emacs-on-terminal/</guid>
+      <description>&lt;p&gt;Unfortunately, the Emacs community seems to don&amp;rsquo;t like very much the
+idea of using Emacs inside a &lt;strong&gt;terminal&lt;/strong&gt;. I can relate to that
+afterall we have &lt;a href=&#34;https://www.emacswiki.org/emacs/TrampMode&#34;&gt;Tramp
+Mode&lt;/a&gt; and all the nicities
+that Emacs executes behind the scenes to make other commands work
+flawlessly like Magit, and some REPL interactions.&lt;/p&gt;
+&lt;p&gt;However, life is harder than that and often full of requirements. I
+have a slow connection and I need to work in a project that cannot
+leave a remote machine. I code in Clojure and the delay to access
+&lt;em&gt;code completion&lt;/em&gt;, &lt;em&gt;eldoc hints&lt;/em&gt;, &lt;em&gt;magit commands&lt;/em&gt;, &lt;em&gt;saving files and running scripts&lt;/em&gt;, &lt;em&gt;navigating around folder structures in dired&lt;/em&gt;, etc,
+is too much for my taste and for my internet connection pinging ~150ms.&lt;/p&gt;
+&lt;p&gt;Therefore, this post will be my collection of tips I&amp;rsquo;ve been using to
+make my Emacs in terminal life more pleasant.&lt;/p&gt;
+&lt;h2 id=&#34;choose-a-good-terminal-emulator&#34;&gt;Choose a good terminal emulator&lt;/h2&gt;
+&lt;p&gt;Yeah, I have been using Xfce Terminal for a while and most of my work
+was done inside Eshell. I tried several emulators and settled with
+&lt;a href=&#34;http://rxvt.sourceforge.net/&#34;&gt;RXVT&lt;/a&gt; which is a bless and a curse at
+the same time.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;m using Arch linux and you can install by:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;pacman -S rxvt-unicode
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;making-rxvt-looks-good&#34;&gt;Making RXVT looks good&lt;/h2&gt;
+&lt;p&gt;The relevant portions of my &lt;code&gt;~/.Xresources&lt;/code&gt; file:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;Xft.dpi:                    &lt;span class=&#34;m&#34;&gt;96&lt;/span&gt;
+Xft.antialias:              &lt;span class=&#34;nb&#34;&gt;true&lt;/span&gt;
+Xft.rgba:                   rgb
+Xft.hinting:                &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;
+Xft.hintstyle:              hintslight
+URxvt*buffered: &lt;span class=&#34;nb&#34;&gt;false&lt;/span&gt;
+
+URxvt*font: xft:Fira Code:style&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;Retina:pixelsize&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;14:antialias&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;true:hinting&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;true&lt;/span&gt;
+
+URxvt.geometry:             90x30
+URxvt.transparent:          &lt;span class=&#34;nb&#34;&gt;false&lt;/span&gt;
+URxvt.visualBell:           &lt;span class=&#34;nb&#34;&gt;false&lt;/span&gt;
+URxvt.inheritPixmap:        &lt;span class=&#34;nb&#34;&gt;false&lt;/span&gt;
+URxvt.loginShell:           &lt;span class=&#34;nb&#34;&gt;true&lt;/span&gt;
+URxvt.saveLines:            &lt;span class=&#34;m&#34;&gt;50&lt;/span&gt;
+URxvt.scrollBar:            &lt;span class=&#34;nb&#34;&gt;false&lt;/span&gt;
+URxvt.internalBorder:       &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;
+URxvt.lineSpace:            &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;
+
+! fix cursor size
+Xcursor.size: &lt;span class=&#34;m&#34;&gt;16&lt;/span&gt;
+
+! Fix font space
+URxvt*letterSpace: -1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;I don&amp;rsquo;t want to engage in color scheme fights, I often use the simple
+black on white default from Emacs.&lt;/p&gt;
+&lt;h2 id=&#34;leveraging-remappings-in-rxvt&#34;&gt;Leveraging remappings in RXVT&lt;/h2&gt;
+&lt;p&gt;For an Emacs user, the most frustrated moment is to type that
+powercord that is wired in your brain for ages and the result be the
+unexpected.&lt;/p&gt;
+&lt;p&gt;For me &lt;code&gt;C-backspace&lt;/code&gt; was very very important. I rely on that to kill
+words all the time. Fortunately, RXVT can help me out here. Let&amp;rsquo;s look
+at it.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;! remapping some &lt;span class=&#34;nb&#34;&gt;command&lt;/span&gt; 
+URxvt.keysym.C-BackSpace: &lt;span class=&#34;se&#34;&gt;\0&lt;/span&gt;33&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;33~
+URxvt.keysym.C-equal: &lt;span class=&#34;se&#34;&gt;\0&lt;/span&gt;33&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;34~
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;What is happening? RXVT is remapping &lt;code&gt;C-Backspace&lt;/code&gt; and &lt;code&gt;C-equal&lt;/code&gt; to
+&lt;code&gt;&amp;lt;f9&amp;gt;&lt;/code&gt; and &lt;code&gt;&amp;lt;f10&amp;gt;&lt;/code&gt;. So you already know what to do, right?&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-elisp&#34; data-lang=&#34;elisp&#34;&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;global-set-key&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;kbd&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;&amp;lt;f9&amp;gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;&amp;#39;backward-kill-word&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;global-set-key&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;kbd&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;&amp;lt;f10&amp;gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;&amp;#39;er/expand-region&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;And life can go on!&lt;/p&gt;
+&lt;p&gt;I haven&amp;rsquo;t tested if the rxvt remap is consistent across different
+machines, I recommend remapping and using &lt;code&gt;C-h k&lt;/code&gt; inside emacs to
+figure out which was the target key.&lt;/p&gt;
+&lt;p&gt;For some reason I could not find a list with all the available keysyms
+to be remapped in rxvt, but let me list those I have used:&lt;/p&gt;
+&lt;p&gt;C-equal, C-apostrophe, C-0, C-minus, C-plus, C-S-Down, C-slash,
+C-S-Up, C-M-v, Escape.&lt;/p&gt;
+&lt;h2 id=&#34;copy-paste-and-resize&#34;&gt;Copy, paste and resize&lt;/h2&gt;
+&lt;p&gt;Crazy, hein? In 2020 we have issues with copy and paste in a reliable
+form. I installed a package with Perl extensions to improve this a bit.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;pacman -S urxvt-perls
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;And the relevant portions for configuration:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;URxvt.perl-ext-common:      default,clipboard,resize-font
+URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+
+! scale fonts
+URxvt.resize-font.reset: C-0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;However, the &lt;code&gt;resize-font&lt;/code&gt; plugin was extracted from somewhere
+else. You have to create a folder (if not exist yet) at
+&lt;code&gt;~/.urxvt/ext/&lt;/code&gt;, paste the script from
+&lt;a href=&#34;https://blog.khmersite.net/2017/12/change-the-urxvt-font-size-on-the-fly/&#34;&gt;here&lt;/a&gt;
+in there and update RXVT using &lt;code&gt;xrdb ~/.Xresources&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;You can follow more detailed steps in this great
+&lt;a href=&#34;https://blog.khmersite.net/2017/12/change-the-urxvt-font-size-on-the-fly/&#34;&gt;post&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;You can now use &lt;code&gt;C-+&lt;/code&gt; and &lt;code&gt;C--&lt;/code&gt; to resize the font and also &lt;code&gt;C-0&lt;/code&gt; to
+reset it. I change the default because I wanted &lt;code&gt;C-=&lt;/code&gt; to be used by
+&lt;code&gt;expand-region&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Ok, these are the configurations from the RXVT side, let&amp;rsquo;s go inside
+Emacs and see what we need to change.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-elisp&#34; data-lang=&#34;elisp&#34;&gt;&lt;span class=&#34;c1&#34;&gt;;;; fix kill rings&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;setq&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;save-interprogram-paste-before-kill&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;t&lt;/span&gt;
+      &lt;span class=&#34;nv&#34;&gt;x-select-enable-clipboard&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;t&lt;/span&gt;
+      &lt;span class=&#34;nv&#34;&gt;select-enable-clipboard&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+
+&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;use-package&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;xclip&lt;/span&gt;
+  &lt;span class=&#34;nb&#34;&gt;:ensure&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;t&lt;/span&gt;
+  &lt;span class=&#34;nb&#34;&gt;:config&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;xclip-mode&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;+1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;I am assuming you have &lt;code&gt;use-package&lt;/code&gt; or know how to install packages
+otherwise.&lt;/p&gt;
+&lt;p&gt;Now you can simply copy something from Firefox and paste inside Emacs
+using the regular &lt;code&gt;C-y&lt;/code&gt;. And the opposite is also true, just copy
+something with &lt;code&gt;M-w&lt;/code&gt; and paste inside your external program.&lt;/p&gt;
+&lt;h2 id=&#34;run-emacs-in-daemon-mode&#34;&gt;Run emacs in daemon mode&lt;/h2&gt;
+&lt;p&gt;At the terminal, you might be using &lt;code&gt;tmux&lt;/code&gt; or &lt;code&gt;screen&lt;/code&gt; to handle
+different workspaces and you might want to open Emacs in there to some
+quick editing.&lt;/p&gt;
+&lt;p&gt;Therefore, I find easier to run emacs as a daemon to quickly jump to a
+running server when I need.&lt;/p&gt;
+&lt;p&gt;I run the following code in the remote machine.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;emacs --daemon
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;And I have this function inside my &lt;code&gt;~/.init.el&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-elisp&#34; data-lang=&#34;elisp&#34;&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;defun&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;server-shutdown&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+  &lt;span class=&#34;s&#34;&gt;&amp;#34;Save buffers, quit, and shutdown server&amp;#34;&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;interactive&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;save-some-buffers&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;kill-emacs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Also, the following alias at the &lt;code&gt;~/.bashrc&lt;/code&gt; remote machine:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;nb&#34;&gt;alias&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;ee&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;emacsclient -t&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;But now, you will notice something bad&amp;hellip; when you type &lt;code&gt;ee my_f&lt;/code&gt; and
+hit &lt;code&gt;TAB&lt;/code&gt; you would expect a completion. I had to use the
+&lt;a href=&#34;https://github.com/cykerway/complete-alias&#34;&gt;complete_alias&lt;/a&gt; project
+to make it work.&lt;/p&gt;
+&lt;p&gt;It was simple, just follow their README, but in essence you need to
+install &lt;code&gt;bash-completion&lt;/code&gt;, copy their &lt;code&gt;complete_alias&lt;/code&gt; script inside
+your &lt;code&gt;~/.bash_completion&lt;/code&gt; file and setup your alias as:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;nb&#34;&gt;alias&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;ee&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;emacsclient -t&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;complete&lt;/span&gt; -F _complete_alias ee
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Fine!&lt;/p&gt;
+&lt;h2 id=&#34;multiplexers&#34;&gt;Multiplexers&lt;/h2&gt;
+&lt;p&gt;If you are using &lt;code&gt;tmux&lt;/code&gt; you will notice that the default keybind to
+manipulate it is &lt;code&gt;C-b&lt;/code&gt; :/. I often do not use it inside Emacs, but I
+would like to have something to not conflict with basic keys.&lt;/p&gt;
+&lt;p&gt;This is my &lt;code&gt;~/.tmux.conf&lt;/code&gt; using &lt;code&gt;C-]&lt;/code&gt; as the leader key for tmux.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;set-window-option -g mode-keys emacs
+
+unbind-key C-b
+set-option -g prefix C-&lt;span class=&#34;s1&#34;&gt;&amp;#39;]&amp;#39;&lt;/span&gt;
+
+bind-key r source-file ~/.tmux.conf &lt;span class=&#34;se&#34;&gt;\;&lt;/span&gt; display-message &lt;span class=&#34;s2&#34;&gt;&amp;#34;~/.tmux.conf reloaded&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;a-new-friendier-binding&#34;&gt;A new friendier binding&lt;/h2&gt;
+&lt;p&gt;I just wanted to point out that I have never used &lt;code&gt;C-z&lt;/code&gt;
+(suspend-frame) before. And this is killer right now, &lt;code&gt;C-z&lt;/code&gt; and &lt;code&gt;fg&lt;/code&gt;
+reminds me of my darker background as a &lt;code&gt;vim&lt;/code&gt; user a long time ago.&lt;/p&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;I was expecting to be a lot easier to have a more similar experience
+in the terminal as we have in GUI, but I was even more astonished by
+the lack of informations to help a newcomer (me) to setup a workable
+environment.&lt;/p&gt;
+&lt;p&gt;Hope to continue releasing more about Emacs inside the Terminal as I
+move along. Please, if you have any tips, share them around! Reddit or
+hackernews are great platforms to achieve visibility.&lt;/p&gt;
+&lt;p&gt;All this post was made in Emacs, inside a rxvt terminal. No
+complaints.&lt;/p&gt;
+</description> 
+    </item>
     
   </channel>
 </rss>
