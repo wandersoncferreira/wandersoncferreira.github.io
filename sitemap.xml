@@ -4,8 +4,28 @@
   
   <url>
     <loc>https://wandersoncferreira.github.io/blog/</loc>
-    <lastmod>2020-12-08T00:00:00-03:00</lastmod>
+    <lastmod>2020-12-22T00:00:00-03:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://wandersoncferreira.github.io/</loc>
+    <lastmod>2020-12-22T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wandersoncferreira.github.io/tags/readings/</loc>
+    <lastmod>2020-12-22T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wandersoncferreira.github.io/blog/summary-readings-rest-of-2020/</loc>
+    <lastmod>2020-12-22T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wandersoncferreira.github.io/tags/</loc>
+    <lastmod>2020-12-22T00:00:00-03:00</lastmod>
   </url>
   
   <url>
@@ -14,17 +34,7 @@
   </url>
   
   <url>
-    <loc>https://wandersoncferreira.github.io/</loc>
-    <lastmod>2020-12-08T00:00:00-03:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://wandersoncferreira.github.io/tags/general/</loc>
-    <lastmod>2020-12-08T00:00:00-03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wandersoncferreira.github.io/tags/</loc>
     <lastmod>2020-12-08T00:00:00-03:00</lastmod>
   </url>
   
@@ -182,11 +192,6 @@
   <url>
     <loc>https://wandersoncferreira.github.io/blog/codigo-aberto/</loc>
     <lastmod>2020-04-30T00:00:00-03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wandersoncferreira.github.io/tags/readings/</loc>
-    <lastmod>2020-04-28T00:00:00-03:00</lastmod>
   </url>
   
   <url>
