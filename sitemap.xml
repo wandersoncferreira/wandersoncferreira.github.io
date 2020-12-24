@@ -59,6 +59,26 @@
   </url>
   
   <url>
+    <loc>https://wandersoncferreira.github.io/tags/clojure/</loc>
+    <lastmod>2020-10-05T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wandersoncferreira.github.io/blog/clojure-data-readers/</loc>
+    <lastmod>2020-10-05T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wandersoncferreira.github.io/tags/programming/</loc>
+    <lastmod>2020-10-05T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wandersoncferreira.github.io/blog/clojure-assertions/</loc>
+    <lastmod>2020-10-02T00:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://wandersoncferreira.github.io/notes/</loc>
     <lastmod>2020-06-13T00:00:00-03:00</lastmod>
     <priority>0</priority>
@@ -102,11 +122,6 @@
   <url>
     <loc>https://wandersoncferreira.github.io/tags/principles/</loc>
     <lastmod>2020-06-06T00:00:00-03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wandersoncferreira.github.io/tags/clojure/</loc>
-    <lastmod>2020-05-31T00:00:00-03:00</lastmod>
   </url>
   
   <url>

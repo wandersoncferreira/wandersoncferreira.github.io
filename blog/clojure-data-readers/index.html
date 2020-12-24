@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html><head>
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-107192581-3', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Thoughts on things">
+    
+
+    <link rel="shortcut icon" href="https://wandersoncferreira.github.io/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/style.min.250df4aa82162a2c5a9d6eb446907e3132c4226dde8db0dd884556325b734ddf.css" integrity="{{ $css.Data.Integrity }}">
+
+
+    <title>Clojure Data Readers</title>
+</head>
+<body><header id="banner">
+    <h2><a href="https://wandersoncferreira.github.io">Bartuka</a></h2>
+    <nav>
+        <ul>
+            <li>
+                <a href="/blog" title="blog">Blog</a>
+            </li><li>
+                <a href="/notes/" title="notes">Notes</a>
+            </li><li>
+                <a href="/projects/" title="projects">Projects</a>
+            </li><li>
+                <a href="/about/" title="about">About</a>
+            </li><li>
+                <a href="/rss/" title="rss">RSS</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main id="content">
+<article>
+    <header id="post-header">
+        <h1>Clojure Data Readers</h1><time>October 5, 2020</time></header>
+    
+ 
+ <a href="https://wandersoncferreira.github.io/tags/clojure/">clojure</a> <a href="https://wandersoncferreira.github.io/tags/programming/">programming</a>
+
+
+
+<p>I&rsquo;ve read about the subject, but I want to look closer. The following
+analysis will be ECA (Exploratory Clojure Analysis) on data readers
+and I hope more people can benefit from it.</p>
+<h2 id="what-are-data-readers">What are data readers?</h2>
+<p>Functions used to read specific <em>tagged literals</em>. For example,
+<strong>#inst &ldquo;2020-10-05&rdquo;</strong> is a built-in literal in Clojure and if you
+type it in the REPL, you will get a <code>java.util.Date</code> instance back.</p>
+<p>The magic happens because clojure has a mechanism where we can define
+a <em>loose contract</em> between the <strong>tagged literal</strong> and <strong>its
+implementation</strong> which is the actual code that will be executed in
+order to transform the self-describing data into <em>something else</em>.</p>
+<p>For example, if you want to change the default implementation that
+handles the <code>#inst</code> literal you can proceed like</p>
+<div class="highlight"><pre class="chroma"><code class="language-clojure" data-lang="clojure"><span class="p">(</span><span class="nb">binding </span><span class="p">[</span><span class="nv">*data-readers*</span> <span class="p">{</span><span class="ss">&#39;inst</span> <span class="o">#</span><span class="ss">&#39;clojure.instant/read-instant-timestamp</span><span class="p">}]</span>
+  <span class="p">(</span><span class="nf">type</span> <span class="p">(</span><span class="nf">read-string</span> <span class="s">&#34;#inst \&#34;2020-10-05\&#34;&#34;</span><span class="p">)))</span>
+<span class="c1">;; =&gt; java.sql.Timestamp</span>
+
+<span class="p">(</span><span class="nb">binding </span><span class="p">[</span><span class="nv">*data-readers*</span> <span class="p">{</span><span class="ss">&#39;inst</span> <span class="o">#</span><span class="ss">&#39;clojure.instant/read-instant-calendar</span><span class="p">}]</span>
+  <span class="p">(</span><span class="nf">type</span> <span class="p">(</span><span class="nf">read-string</span> <span class="s">&#34;#inst \&#34;2020-10-05\&#34;&#34;</span><span class="p">)))</span>
+<span class="c1">;; =&gt; java.util.GregorianCalendar</span>
+
+</code></pre></div><p>You can also add one of these options to the <code>data_readers.clj</code> file
+or even create a completely new one. If you do so, your whole
+application will use the new definition for the conversion.</p>
+<p>We will look how to create custom data readers.</p>
+<h2 id="custom-data-readers">Custom data readers</h2>
+<p>Clojure enable you to create your own data readers too. This can be
+interesting to share context between services.</p>
+<p>Currently, I work in financial industry with Private Credit and there
+are some special values that I wish I could encode differently to add
+more context and validations around them. Let&rsquo;s see some examples and
+how to achieve it.</p>
+<p><em>(All these rules to create the context are purely illustrative&hellip;)</em></p>
+<ul>
+<li>
+<p><strong>Internal Rate of Return</strong> (IRR)</p>
+<ul>
+<li>Always BigDecimals</li>
+<li>Never negative</li>
+</ul>
+</li>
+<li>
+<p><strong>Credit Score</strong></p>
+<ul>
+<li>Always Integer</li>
+<li>Never larger than 1000</li>
+</ul>
+</li>
+<li>
+<p><strong>Credit Risk</strong></p>
+<ul>
+<li>Always a Single Letter</li>
+<li>Letter in set {A,B,C,D,E}</li>
+</ul>
+</li>
+</ul>
+<p>First create the following file <code>src/data_readers.clj</code></p>
+<div class="highlight"><pre class="chroma"><code class="language-clojure" data-lang="clojure"><span class="p">{</span><span class="nv">company/irr</span> <span class="nv">wand.util.readers/irr</span>
+ <span class="nv">company/credit-score</span> <span class="nv">wand.util.readers/credit-score</span>
+ <span class="nv">company/credit-risk</span> <span class="nv">wand.util.readers/credit-risk</span><span class="p">}</span>
+</code></pre></div><p>(<strong>wand</strong> <em>is the name of my prototype project</em>)</p>
+<p>As best practice, you should always use qualified namespaces literals
+and reserve the unqualified for Clojure.</p>
+<p>The content of the file <code>src/wand/util/readers.clj</code></p>
+<div class="highlight"><pre class="chroma"><code class="language-clojure" data-lang="clojure"><span class="p">(</span><span class="kd">ns </span><span class="nv">wand.util.readers</span><span class="p">)</span>
+
+<span class="p">(</span><span class="kd">defn </span><span class="nv">irr</span> <span class="p">[</span><span class="nv">form</span><span class="p">]</span>
+  <span class="nv">form</span><span class="p">)</span>
+
+<span class="p">(</span><span class="kd">defn </span><span class="nv">credit-score</span> <span class="p">[</span><span class="nv">form</span><span class="p">]</span>
+  <span class="nv">form</span><span class="p">)</span>
+
+<span class="p">(</span><span class="kd">defn </span><span class="nv">credit-risk</span> <span class="p">[</span><span class="nv">form</span><span class="p">]</span>
+  <span class="nv">form</span><span class="p">)</span>
+
+</code></pre></div><p>You can now connect to your REPL and at the <code>src/wand/core.clj</code>
+namespace you can try</p>
+<div class="highlight"><pre class="chroma"><code class="language-clojure" data-lang="clojure"><span class="p">(</span><span class="kd">ns </span><span class="nv">wand.core</span>
+  <span class="p">(</span><span class="ss">:require</span> <span class="p">[</span><span class="nv">wand.util.readers</span><span class="p">]))</span>
+
+
+<span class="o">#</span><span class="nv">company/credit-score</span> <span class="mi">100</span>
+<span class="c1">;; =&gt; 100</span>
+</code></pre></div><p>Do not forget to require the implementations. Now, we can implement
+the rules behind the tagged literals.</p>
+<div class="highlight"><pre class="chroma"><code class="language-clojure" data-lang="clojure"><span class="p">(</span><span class="kd">defn </span><span class="nv">irr</span>
+  <span class="p">[</span><span class="nv">form</span><span class="p">]</span>
+  <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">pos? </span><span class="nv">form</span><span class="p">)</span>
+    <span class="p">(</span><span class="nf">BigDecimal.</span> <span class="nv">form</span><span class="p">)</span>
+    <span class="p">(</span><span class="nf">throw</span> <span class="p">(</span><span class="nf">ex-info</span> <span class="p">(</span><span class="nb">str </span><span class="nv">form</span> <span class="s">&#34; is negative!&#34;</span><span class="p">)</span> <span class="p">{}))))</span>
+
+<span class="p">(</span><span class="kd">defn </span><span class="nv">credit-score</span>
+  <span class="p">[</span><span class="nv">form</span><span class="p">]</span>
+  <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">&lt;= </span><span class="nv">form</span> <span class="mi">1000</span><span class="p">)</span>
+    <span class="p">(</span><span class="nf">Integer.</span> <span class="nv">form</span><span class="p">)</span>
+    <span class="p">(</span><span class="nf">throw</span> <span class="p">(</span><span class="nf">ex-info</span> <span class="p">(</span><span class="nb">str </span><span class="nv">form</span> <span class="s">&#34; is larger than 1000!&#34;</span><span class="p">)</span> <span class="p">{}))))</span>
+
+<span class="p">(</span><span class="kd">defn </span><span class="nv">credit-risk</span>
+  <span class="p">[</span><span class="nv">form</span><span class="p">]</span>
+  <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">contains? </span><span class="o">#</span><span class="p">{</span><span class="s">&#34;A&#34;</span>, <span class="s">&#34;B&#34;</span>, <span class="s">&#34;C&#34;</span>, <span class="s">&#34;D&#34;</span>, <span class="s">&#34;E&#34;</span><span class="p">}</span> <span class="nv">form</span><span class="p">)</span>
+    <span class="nv">form</span>
+    <span class="p">(</span><span class="nf">throw</span> <span class="p">(</span><span class="nf">ex-info</span> <span class="p">(</span><span class="nb">str </span><span class="nv">form</span> <span class="s">&#34; is not in the set{A,B,C,D,E}!&#34;</span><span class="p">)</span> <span class="p">{}))))</span>
+
+</code></pre></div><p>Cool!! Now, if you need to create a map with some custom data, you can
+offload the burden to check the validity of that number to the tagged
+literal.</p>
+<div class="highlight"><pre class="chroma"><code class="language-clojure" data-lang="clojure"><span class="p">{</span><span class="ss">:score</span> <span class="mi">232</span>
+ <span class="ss">:risk</span> <span class="s">&#34;V&#34;</span>
+ <span class="ss">:irr</span> <span class="mf">2.1</span><span class="p">}</span>
+</code></pre></div><p>Is a perfect valid map. However,</p>
+<div class="highlight"><pre class="chroma"><code class="language-clojure" data-lang="clojure"><span class="p">{</span><span class="ss">:score</span> <span class="o">#</span><span class="nv">company/credit-score</span> <span class="mi">232</span>
+ <span class="ss">:risk</span> <span class="o">#</span><span class="nv">company/credit-risk</span> <span class="s">&#34;V&#34;</span>
+ <span class="ss">:irr</span> <span class="o">#</span><span class="nv">company/irr</span> <span class="mf">2.1</span><span class="p">}</span>
+</code></pre></div><p>Is not!</p>
+<div class="highlight"><pre class="chroma"><code class="language-clojure" data-lang="clojure"><span class="mi">1</span><span class="k">. </span><span class="nv">Caused</span> <span class="nv">by</span> <span class="nv">clojure.lang.ExceptionInfo</span>
+   <span class="nv">V</span> <span class="nv">is</span> <span class="nb">not </span><span class="nv">in</span> <span class="nv">the</span> <span class="nv">set</span><span class="p">{</span><span class="nv">A</span>,<span class="nv">B</span>,<span class="nv">C</span>,<span class="nv">D</span>,<span class="nv">E</span><span class="p">}</span><span class="nv">!</span>
+   <span class="p">{}</span>
+</code></pre></div><p>Great!!</p>
+<h3 id="store-and-share-your-data">Store and share your data</h3>
+<p>Now, let&rsquo;s say that we want to read an EDN file that was produced by
+other service that also shares the <em>same meaning</em> for our custom
+literals.</p>
+<p>The content of our <code>credit.edn</code> file</p>
+<div class="highlight"><pre class="chroma"><code class="language-clojure" data-lang="clojure"><span class="p">{</span><span class="ss">:score</span> <span class="o">#</span><span class="nv">company/credit-score</span> <span class="mi">232</span>
+ <span class="ss">:risk</span> <span class="o">#</span><span class="nv">company/credit-risk</span> <span class="s">&#34;B&#34;</span>
+ <span class="ss">:irr</span> <span class="o">#</span><span class="nv">company/irr</span> <span class="mf">2.1</span><span class="p">}</span>
+</code></pre></div><p>All great! Let&rsquo;s read it</p>
+<div class="highlight"><pre class="chroma"><code class="language-clojure" data-lang="clojure"><span class="p">(</span><span class="nf">edn/read-string</span> <span class="p">(</span><span class="nb">slurp </span><span class="p">(</span><span class="nf">io/resource</span> <span class="s">&#34;credit.edn&#34;</span><span class="p">)))</span>
+</code></pre></div><p>And&hellip; boom!</p>
+<div class="highlight"><pre class="chroma"><code class="language-clojure" data-lang="clojure"><span class="mi">1</span><span class="k">. </span><span class="nv">Unhandled</span> <span class="nv">java.lang.RuntimeException</span>
+   <span class="nv">No</span> <span class="nv">reader</span> <span class="nv">function</span> <span class="nb">for </span><span class="nv">tag</span> <span class="nv">company/credit-score</span>
+</code></pre></div><p>What? We defined the data readers and they all work just fine. Yes,
+but life is not so easy&hellip; There are two nice materials talking about
+the problem with safety of reading data and evaluating untrusted
+code.</p>
+<p>The first is the great
+<a href="https://clojuredocs.org/clojure.edn/read">Documentation</a> entry
+provided at the <code>clojure.edn/read</code> function and the second is this
+great <a href="https://www.infoq.com/presentations/Clojure-Data-Reader/">talk</a>
+from Steve Miner (The Data-Reader&rsquo;s Guide to the Galaxy)</p>
+<p>So, I will consider you at least read the documentation entry, and
+let&rsquo;s be confident that no malicious code was added in the
+implementation of our three custom literals.</p>
+<p>We should explicit pass our readers to the <code>edn/read-string</code></p>
+<div class="highlight"><pre class="chroma"><code class="language-clojure" data-lang="clojure">
+<span class="p">(</span><span class="nf">edn/read-string</span> <span class="p">{</span><span class="ss">:readers</span> <span class="nv">*data-readers*</span><span class="p">}</span>
+                 <span class="p">(</span><span class="nb">slurp </span><span class="p">(</span><span class="nf">io/resource</span> <span class="s">&#34;credit.edn&#34;</span><span class="p">)))</span>
+
+<span class="c1">;; =&gt; {:score 232, :risk &#34;B&#34;, :irr 2.100000000000000088817841970012523233890533447265625M}</span>
+</code></pre></div><p>And if someone tried to cheat on you and handed over the following EDN
+file</p>
+<div class="highlight"><pre class="chroma"><code class="language-clojure" data-lang="clojure"><span class="p">{</span><span class="ss">:score</span> <span class="o">#</span><span class="nv">company/credit-score</span> <span class="mi">2000</span>
+ <span class="ss">:risk</span> <span class="o">#</span><span class="nv">company/credit-risk</span> <span class="s">&#34;B&#34;</span>
+ <span class="ss">:irr</span> <span class="o">#</span><span class="nv">company/irr</span> <span class="mf">2.1</span><span class="p">}</span>
+</code></pre></div><p>You will spot right on reading</p>
+<div class="highlight"><pre class="chroma"><code class="language-clojure" data-lang="clojure"><span class="mi">1</span><span class="k">. </span><span class="nv">Unhandled</span> <span class="nv">clojure.lang.ExceptionInfo</span>
+   <span class="mi">2000</span> <span class="nv">is</span> <span class="nv">larger</span> <span class="nv">than</span> <span class="mi">1000</span><span class="nv">!</span>
+   <span class="p">{}</span>
+</code></pre></div><h3 id="print-representation-and-more">Print representation and more&hellip;</h3>
+<p>Let&rsquo;s get fancy! Let&rsquo;s say we want to provide special printing to our
+Score, Risk, and IRR values. After all, when you print a <code>#inst</code>
+literal, you get a nice <code>#inst ....</code> value back at your REPL. Also, we
+will encode these company-specific values into their own <em>types</em>.</p>
+<p>To enable such functionality I will encode our values into custom
+records and extend the <code>print-method</code> interface to them.</p>
+<div class="highlight"><pre class="chroma"><code class="language-clojure" data-lang="clojure"><span class="p">(</span><span class="kd">ns </span><span class="nv">wand.util.readers</span><span class="p">)</span>
+
+<span class="p">(</span><span class="kd">defrecord </span><span class="nv">Irr</span> <span class="p">[</span><span class="nv">value</span><span class="p">])</span>
+<span class="p">(</span><span class="kd">defrecord </span><span class="nv">CreditScore</span> <span class="p">[</span><span class="nv">value</span><span class="p">])</span>
+<span class="p">(</span><span class="kd">defrecord </span><span class="nv">CreditRisk</span> <span class="p">[</span><span class="nv">value</span><span class="p">])</span>
+
+<span class="p">(</span><span class="kd">defn </span><span class="nv">irr</span>
+  <span class="p">[</span><span class="nv">form</span><span class="p">]</span>
+  <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">pos? </span><span class="nv">form</span><span class="p">)</span>
+    <span class="p">(</span><span class="nf">-&gt;Irr</span> <span class="p">(</span><span class="nf">BigDecimal.</span> <span class="nv">form</span><span class="p">))</span>
+    <span class="p">(</span><span class="nf">throw</span> <span class="p">(</span><span class="nf">ex-info</span> <span class="p">(</span><span class="nb">str </span><span class="nv">form</span> <span class="s">&#34; is negative!&#34;</span><span class="p">)</span> <span class="p">{}))))</span>
+
+<span class="p">(</span><span class="kd">defn </span><span class="nv">credit-score</span>
+  <span class="p">[</span><span class="nv">form</span><span class="p">]</span>
+  <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">&lt;= </span><span class="nv">form</span> <span class="mi">1000</span><span class="p">)</span>
+    <span class="p">(</span><span class="nf">-&gt;CreditScore</span> <span class="p">(</span><span class="nf">Integer.</span> <span class="nv">form</span><span class="p">))</span>
+    <span class="p">(</span><span class="nf">throw</span> <span class="p">(</span><span class="nf">ex-info</span> <span class="p">(</span><span class="nb">str </span><span class="nv">form</span> <span class="s">&#34; is larger than 1000!&#34;</span><span class="p">)</span> <span class="p">{}))))</span>
+
+<span class="p">(</span><span class="kd">defn </span><span class="nv">credit-risk</span>
+  <span class="p">[</span><span class="nv">form</span><span class="p">]</span>
+  <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">contains? </span><span class="o">#</span><span class="p">{</span><span class="s">&#34;A&#34;</span>, <span class="s">&#34;B&#34;</span>, <span class="s">&#34;C&#34;</span>, <span class="s">&#34;D&#34;</span>, <span class="s">&#34;E&#34;</span><span class="p">}</span> <span class="nv">form</span><span class="p">)</span>
+    <span class="p">(</span><span class="nf">-&gt;CreditRisk</span> <span class="nv">form</span><span class="p">)</span>
+    <span class="p">(</span><span class="nf">throw</span> <span class="p">(</span><span class="nf">ex-info</span> <span class="p">(</span><span class="nb">str </span><span class="nv">form</span> <span class="s">&#34; is not in the set{A,B,C,D,E}!&#34;</span><span class="p">)</span> <span class="p">{}))))</span>
+
+<span class="p">(</span><span class="kd">defmethod </span><span class="nv">print-method</span> <span class="nv">wand.util.readers.Irr</span> <span class="p">[</span><span class="nv">irr</span> <span class="o">^</span><span class="nv">java.io.Writer</span> <span class="nv">w</span><span class="p">]</span>
+  <span class="p">(</span><span class="nf">.write</span> <span class="nv">w</span> <span class="p">(</span><span class="nf">format</span> <span class="s">&#34;#company/irr %s%%&#34;</span> <span class="p">(</span><span class="ss">:value</span> <span class="nv">irr</span><span class="p">))))</span>
+
+<span class="p">(</span><span class="kd">defmethod </span><span class="nv">print-method</span> <span class="nv">wand.util.readers.CreditRisk</span> <span class="p">[</span><span class="nv">credit-risk</span> <span class="o">^</span><span class="nv">java.io.Writer</span> <span class="nv">w</span><span class="p">]</span>
+  <span class="p">(</span><span class="nf">.write</span> <span class="nv">w</span> <span class="p">(</span><span class="nf">format</span> <span class="s">&#34;#company/credit-risk %s Level&#34;</span> <span class="p">(</span><span class="ss">:value</span> <span class="nv">credit-risk</span><span class="p">))))</span>
+
+<span class="p">(</span><span class="kd">defmethod </span><span class="nv">print-method</span> <span class="nv">wand.util.readers.CreditScore</span> <span class="p">[</span><span class="nv">credit-score</span> <span class="o">^</span><span class="nv">java.io.Writer</span> <span class="nv">w</span><span class="p">]</span>
+  <span class="p">(</span><span class="nf">.write</span> <span class="nv">w</span> <span class="p">(</span><span class="nf">format</span> <span class="s">&#34;#company/credit-score %s Points&#34;</span> <span class="p">(</span><span class="ss">:value</span> <span class="nv">credit-score</span><span class="p">))))</span>
+</code></pre></div><p>And our example in the <code>core</code> namespace become</p>
+<div class="highlight"><pre class="chroma"><code class="language-clojure" data-lang="clojure"><span class="p">{</span><span class="ss">:score</span> <span class="o">#</span><span class="nv">company/credit-score</span> <span class="mi">232</span>
+ <span class="ss">:risk</span> <span class="o">#</span><span class="nv">company/credit-risk</span> <span class="s">&#34;C&#34;</span>
+ <span class="ss">:irr</span> <span class="o">#</span><span class="nv">company/irr</span> <span class="mf">2.1</span><span class="p">}</span>
+
+<span class="c1">;; =&gt; {:score #company/credit-score 232 Points,</span>
+<span class="c1">;;     :risk #company/credit-risk C Level,</span>
+<span class="c1">;;     :irr #company/irr 2.100000000000000088817841970012523233890533447265625%}</span>
+</code></pre></div><p>I don&rsquo;t know if I find this sooo useful now. But we can do that. :)</p>
+<h1 id="open-questions">Open questions</h1>
+<p>I can see the benefits of data readers to secure regular understanding
+about a piece of data between (and inner) services. And to enable
+different contexts to handle the data transformation in their own way.</p>
+<p>However, as we currently do not leverage this approach too much at
+work, I don&rsquo;t know exactly the shortcomings of this decision in the
+long run.</p>
+<p>Would love to hear more people presenting their experiences with a
+codebase that heavily leverages custom tag literals.</p>
+</article>
+
+        </main><footer id="footer">
+    Copyright © 2020 Wanderson Ferreira
+</footer>
+</body>
+</html>
