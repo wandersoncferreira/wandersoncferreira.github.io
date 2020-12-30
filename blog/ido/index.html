@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html><head>
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-107192581-3', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Thoughts on things">
+    
+
+    <link rel="shortcut icon" href="https://wandersoncferreira.github.io/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/style.min.250df4aa82162a2c5a9d6eb446907e3132c4226dde8db0dd884556325b734ddf.css" integrity="{{ $css.Data.Integrity }}">
+
+
+    <title>IDO - Emacs</title>
+</head>
+<body><header id="banner">
+    <h2><a href="https://wandersoncferreira.github.io">Bartuka</a></h2>
+    <nav>
+        <ul>
+            <li>
+                <a href="/blog" title="blog">Blog</a>
+            </li><li>
+                <a href="/notes/" title="notes">Notes</a>
+            </li><li>
+                <a href="/projects/" title="projects">Projects</a>
+            </li><li>
+                <a href="/about/" title="about">About</a>
+            </li><li>
+                <a href="/rss/" title="rss">RSS</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main id="content">
+<article>
+    <header id="post-header">
+        <h1>IDO - Emacs</h1><time>December 30, 2020</time></header>
+    
+ 
+ <a href="https://wandersoncferreira.github.io/tags/emacs/">emacs</a>
+
+
+
+<h1 id="table-of-contents">Table of Contents</h1>
+<ol>
+<li><a href="#orgc91b152">Minibuffer Completion</a></li>
+<li><a href="#orgfdc80d0">Use SPACES in the minibuffer</a></li>
+<li><a href="#org9d15ec4">Vertical candidates</a></li>
+<li><a href="#orga27a97f">Move to most used folders</a></li>
+<li><a href="#org3ac9e88">Ignore some buffers</a></li>
+<li><a href="#org9f35c43">Open dired immediately in current directory at find-file</a></li>
+</ol>
+<p><a id="orgc91b152"></a></p>
+<h1 id="minibuffer-completion">Minibuffer Completion</h1>
+<p>Emacs-land is gifted with many options for Minibuffer completion
+e.g. <a href="https://github.com/abo-abo/swiper">ivy</a>,
+<a href="https://github.com/emacs-helm/helm">helm</a>, icomplete, selectrum, and
+ido. But when I started , <code>(ido-mode t)</code> was the first line of Elisp
+code that I wrote, therefore I have a special care about it.</p>
+<p>I tried almost all third-party packages for minibuffer completions,
+but I always go back to IDO after a while. Probably I am not a power
+user for the kind of functionality these frameworks provide.</p>
+<p>This is my current setup for ido:</p>
+<div class="highlight"><pre class="chroma"><code class="language-elisp" data-lang="elisp">
+    <span class="p">(</span><span class="nb">defun</span> <span class="nv">ido-choose-from-recentf</span> <span class="p">()</span>
+      <span class="s">&#34;Use ido to select recently visited files.&#34;</span>
+      <span class="p">(</span><span class="nb">interactive</span><span class="p">)</span>
+      <span class="p">(</span><span class="nv">find-file</span> <span class="p">(</span><span class="nv">ido-completing-read</span> <span class="s">&#34;Open file: &#34;</span> <span class="nv">recentf-list</span> <span class="no">nil</span> <span class="no">t</span><span class="p">)))</span>
+
+    <span class="p">(</span><span class="nb">defun</span> <span class="nv">bk/go-straight-home</span> <span class="p">()</span>
+      <span class="p">(</span><span class="nb">interactive</span><span class="p">)</span>
+      <span class="p">(</span><span class="nb">cond</span>
+       <span class="p">((</span><span class="nv">looking-back</span> <span class="s">&#34;~/&#34;</span><span class="p">)</span> <span class="p">(</span><span class="nf">insert</span> <span class="s">&#34;projects/&#34;</span><span class="p">))</span>
+       <span class="p">((</span><span class="nv">looking-back</span> <span class="s">&#34;/&#34;</span><span class="p">)</span> <span class="p">(</span><span class="nf">insert</span> <span class="s">&#34;~/&#34;</span><span class="p">))</span>
+       <span class="p">(</span><span class="nb">:else</span> <span class="p">(</span><span class="nf">call-interactively</span> <span class="ss">&#39;self-insert-command</span><span class="p">))))</span>
+
+    <span class="p">(</span><span class="nb">defun</span> <span class="nv">ido-disable-line-truncation</span> <span class="p">()</span>
+      <span class="p">(</span><span class="nf">set</span> <span class="p">(</span><span class="nf">make-local-variable</span> <span class="ss">&#39;truncate-lines</span><span class="p">)</span> <span class="no">nil</span><span class="p">))</span>
+
+    <span class="p">(</span><span class="nb">defun</span> <span class="nv">ido-define-keys</span> <span class="p">()</span>
+      <span class="p">(</span><span class="nf">define-key</span> <span class="nv">ido-completion-map</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;C-n&#34;</span><span class="p">)</span> <span class="ss">&#39;ido-next-match</span><span class="p">)</span>
+      <span class="p">(</span><span class="nf">define-key</span> <span class="nv">ido-completion-map</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;C-p&#34;</span><span class="p">)</span> <span class="ss">&#39;ido-prev-match</span><span class="p">))</span>
+
+    <span class="p">(</span><span class="nb">use-package</span> <span class="nv">ido</span>
+      <span class="nb">:ensure</span> <span class="no">nil</span>
+      <span class="nb">:init</span>
+      <span class="p">(</span><span class="nb">setq</span> <span class="nv">ido-enable-flex-matching</span> <span class="no">t</span>
+            <span class="nv">ido-use-filename-at-point</span> <span class="no">nil</span>
+            <span class="nv">ido-create-new-buffer</span> <span class="ss">&#39;always</span>
+            <span class="nv">confirm-nonexistent-file-or-buffer</span> <span class="no">nil</span>
+            <span class="nv">completion-ignored-extensions</span> <span class="p">(</span><span class="nf">cons</span> <span class="s">&#34;*.aux&#34;</span> <span class="nv">completion-ignored-extensions</span><span class="p">)</span>
+            <span class="nv">max-mini-window-height</span> <span class="mf">0.5</span>
+            <span class="nv">ido-enable-tramp-completion</span> <span class="no">t</span>
+            <span class="nv">ido-auto-merge-work-directories-length</span> <span class="mi">-1</span>
+            <span class="nv">ido-confirm-unique-completion</span> <span class="no">t</span>
+            <span class="nv">ido-default-file-method</span> <span class="ss">&#39;selected-window</span>
+            <span class="nv">ido-case-fold</span> <span class="no">t</span>
+            <span class="nv">ido-show-dot-for-dired</span> <span class="no">t</span>
+            <span class="nv">ido-everywhere</span> <span class="no">t</span>
+            <span class="nv">ido-ignore-buffers</span> <span class="p">(</span><span class="nf">list</span> <span class="p">(</span><span class="nb">rx</span> <span class="p">(</span><span class="nb">or</span> <span class="p">(</span><span class="nb">and</span> <span class="nv">bos</span>  <span class="s">&#34; &#34;</span><span class="p">)</span>
+                                             <span class="p">(</span><span class="nb">and</span> <span class="nv">bos</span>
+                                                  <span class="p">(</span><span class="nb">or</span> <span class="s">&#34;*Completions*&#34;</span>
+                                                      <span class="s">&#34;*Compile-Log*&#34;</span>
+                                                      <span class="s">&#34;*Ido Completions*&#34;</span>
+                                                      <span class="s">&#34;*Shell Command Output*&#34;</span>
+                                                      <span class="s">&#34;*vc-diff*&#34;</span><span class="p">)</span>
+                                                  <span class="nv">eos</span><span class="p">))))</span>
+            <span class="nv">ido-decorations</span> <span class="p">(</span><span class="nb">quote</span> <span class="p">(</span><span class="s">&#34;\n-&gt; &#34;</span> <span class="s">&#34;&#34;</span> <span class="s">&#34;\n &#34;</span> <span class="s">&#34;\n ...&#34;</span> <span class="s">&#34;[&#34;</span> <span class="s">&#34;]&#34;</span> <span class="s">&#34;
+</span><span class="s">      [No match]&#34;</span> <span class="s">&#34; [Matched]&#34;</span> <span class="s">&#34; [Not readable]&#34;</span> <span class="s">&#34; [Too big]&#34;</span> <span class="s">&#34;
+</span><span class="s">      [Confirm]&#34;</span><span class="p">)))</span>
+
+      <span class="nb">:config</span>
+      <span class="p">(</span><span class="nf">define-key</span> <span class="nv">ido-common-completion-map</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;M-SPC&#34;</span><span class="p">)</span> <span class="ss">&#39;just-one-space</span><span class="p">)</span>
+      <span class="p">(</span><span class="nf">define-key</span> <span class="nv">ido-common-completion-map</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;SPC&#34;</span><span class="p">)</span> <span class="ss">&#39;self-insert-command</span><span class="p">)</span>
+      <span class="p">(</span><span class="nf">define-key</span> <span class="nv">ido-file-completion-map</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;~&#34;</span><span class="p">)</span> <span class="ss">&#39;bk/go-straight-home</span><span class="p">)</span>
+
+      <span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;ido-setup-hook</span> <span class="ss">&#39;ido-define-keys</span><span class="p">)</span>
+
+      <span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;ido-minibuffer-setup-hook</span> <span class="ss">&#39;ido-disable-line-truncation</span><span class="p">)</span>
+
+      <span class="p">(</span><span class="nf">set-default</span> <span class="ss">&#39;imenu-auto-rescan</span> <span class="no">t</span><span class="p">)</span>
+
+      <span class="p">(</span><span class="nv">add-to-list</span> <span class="ss">&#39;ido-ignore-directories</span> <span class="s">&#34;target&#34;</span><span class="p">)</span>
+      <span class="p">(</span><span class="nv">add-to-list</span> <span class="ss">&#39;ido-ignore-directories</span> <span class="s">&#34;node_modules&#34;</span><span class="p">)</span>
+
+      <span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;after-init-hook</span> <span class="ss">&#39;ido-mode</span><span class="p">))</span>
+
+</code></pre></div><p>This might be a bit lengthy, but I want to explain some of the highlights.</p>
+<p><a id="orgfdc80d0"></a></p>
+<h1 id="use-spaces-in-the-minibuffer">Use SPACES in the minibuffer</h1>
+<p>Yes, I really like how <strong>Ivy</strong> let us use the spaces to add more
+tokens to our searches. That is nice. I didn&rsquo;t go that deep to
+reproduce such functionality in IDO, but I use
+<a href="https://github.com/org-roam/org-roam">org-roam</a> a lot and several of
+my notes have spaces in their names.</p>
+<p>Thus, the idea was to be able to add SPACES in the minibuffer to filter
+candidates from Org-Roam.</p>
+<p>Turns out you can type <code>M-q SPC</code> to add a space symbol in the
+minibuffer. But we can do better, right?</p>
+<div class="highlight"><pre class="chroma"><code class="language-elisp" data-lang="elisp">    <span class="p">(</span><span class="nf">define-key</span> <span class="nv">minibuffer-local-completion-map</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;SPC&#34;</span><span class="p">)</span> <span class="ss">&#39;self-insert-command</span><span class="p">)</span>
+</code></pre></div><p>The code above let us type SPC in the minibuffer, however, IDO also
+uses the SPC keyword for <code>ido-complete-space</code> function, therefore we
+need to remap it too:</p>
+<div class="highlight"><pre class="chroma"><code class="language-elisp" data-lang="elisp">    <span class="p">(</span><span class="nf">define-key</span> <span class="nv">ido-common-completion-map</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;SPC&#34;</span><span class="p">)</span> <span class="ss">&#39;self-insert-command</span><span class="p">)</span>
+</code></pre></div><p><a id="org9d15ec4"></a></p>
+<h1 id="vertical-candidates">Vertical candidates</h1>
+<p>I tried to get used to the horizontal display, but even not being so
+bad, I find the benefits for vertical mode very appealing and the
+necessary tweaks are simple to do:</p>
+<div class="highlight"><pre class="chroma"><code class="language-elisp" data-lang="elisp">    <span class="p">(</span><span class="nb">setq</span> <span class="nv">ido-decorations</span> <span class="p">(</span><span class="nb">quote</span> <span class="s">&#34;\n-&gt; &#34;</span> <span class="s">&#34;&#34;</span> <span class="s">&#34;\n &#34;</span> <span class="s">&#34;\n ...&#34;</span> <span class="s">&#34;[&#34;</span> <span class="s">&#34;]&#34;</span> <span class="s">&#34;
+</span><span class="s">        [No match]&#34;</span> <span class="s">&#34; [Matched]&#34;</span> <span class="s">&#34; [Not readable]&#34;</span> <span class="s">&#34; [Too big]&#34;</span> <span class="s">&#34;
+</span><span class="s">        [Confirm]&#34;</span><span class="p">))</span>
+</code></pre></div><p>I also like to adjust the height of the candidate list to be a little
+bit taller than usual to fit more candidates before typing anything.</p>
+<div class="highlight"><pre class="chroma"><code class="language-elisp" data-lang="elisp">    <span class="p">(</span><span class="nb">setq</span> <span class="nv">max-mini-window-height</span> <span class="mf">0.5</span><span class="p">)</span>
+</code></pre></div><p>Also need to adjust the navigation keys to use standard C-n and C-p to
+move up and down the list.</p>
+<div class="highlight"><pre class="chroma"><code class="language-elisp" data-lang="elisp">
+      <span class="p">(</span><span class="nb">defun</span> <span class="nv">ido-define-keys</span> <span class="p">()</span>
+        <span class="p">(</span><span class="nf">define-key</span> <span class="nv">ido-completion-map</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;C-n&#34;</span><span class="p">)</span> <span class="ss">&#39;ido-next-match</span><span class="p">)</span>
+        <span class="p">(</span><span class="nf">define-key</span> <span class="nv">ido-completion-map</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;C-p&#34;</span><span class="p">)</span> <span class="ss">&#39;ido-prev-match</span><span class="p">))</span>
+
+    <span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;ido-setup-hook</span> <span class="ss">&#39;ido-define-keys</span><span class="p">)</span>
+
+</code></pre></div><p><a id="orga27a97f"></a></p>
+<h1 id="move-to-most-used-folders">Move to most used folders</h1>
+<p>I like to type <code>~</code> twice and be taken to my &ldquo;projects&rdquo; folder. This is a
+nice recipe for you to change as you like.</p>
+<div class="highlight"><pre class="chroma"><code class="language-elisp" data-lang="elisp">
+      <span class="p">(</span><span class="nb">defun</span> <span class="nv">bk/go-straight-home</span> <span class="p">()</span>
+        <span class="p">(</span><span class="nb">interactive</span><span class="p">)</span>
+        <span class="p">(</span><span class="nb">cond</span>
+         <span class="p">((</span><span class="nv">looking-back</span> <span class="s">&#34;~/&#34;</span><span class="p">)</span> <span class="p">(</span><span class="nf">insert</span> <span class="s">&#34;projects/&#34;</span><span class="p">))</span>
+         <span class="p">((</span><span class="nv">looking-back</span> <span class="s">&#34;/&#34;</span><span class="p">)</span> <span class="p">(</span><span class="nf">insert</span> <span class="s">&#34;~/&#34;</span><span class="p">))</span>
+         <span class="p">(</span><span class="nb">:else</span> <span class="p">(</span><span class="nf">call-interactively</span> <span class="ss">&#39;self-insert-command</span><span class="p">))))</span>
+
+    <span class="p">(</span><span class="nf">define-key</span> <span class="nv">ido-file-completion-map</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">&#34;~&#34;</span><span class="p">)</span> <span class="ss">&#39;bk/go-straight-home</span><span class="p">)</span>
+
+</code></pre></div><p><a id="org3ac9e88"></a></p>
+<h1 id="ignore-some-buffers">Ignore some buffers</h1>
+<p>I really don&rsquo;t like to see some buffers like <code>*Completions*</code>,
+<code>*Compile-Log*</code>, etc. If I want to look at them, I will go to <code>M-x ibuffer</code> or <code>M-x buffer-list</code> explicitly.</p>
+<div class="highlight"><pre class="chroma"><code class="language-elisp" data-lang="elisp">
+    <span class="p">(</span><span class="nb">setq</span> <span class="nv">ido-ignore-buffers</span> <span class="p">(</span><span class="nf">list</span> <span class="p">(</span><span class="nb">rx</span> <span class="p">(</span><span class="nb">or</span> <span class="p">(</span><span class="nb">and</span> <span class="nv">bos</span>  <span class="s">&#34; &#34;</span><span class="p">)</span>
+                                           <span class="p">(</span><span class="nb">and</span> <span class="nv">bos</span>
+                                                <span class="p">(</span><span class="nb">or</span> <span class="s">&#34;*Completions*&#34;</span>
+                                                    <span class="s">&#34;*Compile-Log*&#34;</span>
+                                                    <span class="s">&#34;*Ido Completions*&#34;</span>
+                                                    <span class="s">&#34;*Shell Command Output*&#34;</span>
+                                                    <span class="s">&#34;*vc-diff*&#34;</span><span class="p">)</span>
+                                                <span class="nv">eos</span><span class="p">)))))</span>
+</code></pre></div><p>As soon as I find a new buffer bothering me, I add the name to my
+blocklist.</p>
+<p>Similar situation for some file extensions like the auxiliary files
+created by LaTeX compilation process.</p>
+<div class="highlight"><pre class="chroma"><code class="language-elisp" data-lang="elisp">    <span class="p">(</span><span class="nb">setq</span>  <span class="nv">completion-ignored-extensions</span> <span class="p">(</span><span class="nf">cons</span> <span class="s">&#34;*.aux&#34;</span> <span class="nv">completion-ignored-extensions</span><span class="p">))</span>
+</code></pre></div><p><a id="org9f35c43"></a></p>
+<h1 id="open-dired-immediately-in-current-directory-at-find-file">Open dired immediately in current directory at find-file</h1>
+<p>This simple setup is very handy. it will add a dot as the first item
+of your candidates when you fire <code>find-file</code>. You can open <code>dired</code>
+immediately using RET on the dot.</p>
+<div class="highlight"><pre class="chroma"><code class="language-elisp" data-lang="elisp">    <span class="p">(</span><span class="nb">setq</span> <span class="nv">ido-show-dot-for-dired</span> <span class="no">t</span><span class="p">)</span>
+</code></pre></div><h1 id="conclusion">Conclusion</h1>
+<p>I keep learning something new in IDO everytime. Up to now I manage to
+survive without <code>flx-ido</code> or even <code>ido-completing-read+</code>. I might give
+then another chance in the near future.</p>
+<p>If you have more tweaks to IDO, I would love to know about.</p>
+<p>Happy New Year, keep hacking!</p>
+</article>
+
+        </main><footer id="footer">
+    Copyright © 2020 Wanderson Ferreira
+</footer>
+</body>
+</html>

@@ -6,10 +6,184 @@
     <description>Recent content on Bartuka</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 22 Dec 2020 00:00:00 -0300</lastBuildDate>
+    <lastBuildDate>Wed, 30 Dec 2020 00:00:00 -0300</lastBuildDate>
     
 	<atom:link href="https://wandersoncferreira.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>IDO - Emacs</title>
+      <link>https://wandersoncferreira.github.io/blog/ido/</link>
+      <pubDate>Wed, 30 Dec 2020 00:00:00 -0300</pubDate>
+      
+      <guid>https://wandersoncferreira.github.io/blog/ido/</guid>
+      <description>&lt;h1 id=&#34;table-of-contents&#34;&gt;Table of Contents&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;#orgc91b152&#34;&gt;Minibuffer Completion&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#orgfdc80d0&#34;&gt;Use SPACES in the minibuffer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#org9d15ec4&#34;&gt;Vertical candidates&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#orga27a97f&#34;&gt;Move to most used folders&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#org3ac9e88&#34;&gt;Ignore some buffers&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#org9f35c43&#34;&gt;Open dired immediately in current directory at find-file&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;a id=&#34;orgc91b152&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;minibuffer-completion&#34;&gt;Minibuffer Completion&lt;/h1&gt;
+&lt;p&gt;Emacs-land is gifted with many options for Minibuffer completion
+e.g. &lt;a href=&#34;https://github.com/abo-abo/swiper&#34;&gt;ivy&lt;/a&gt;,
+&lt;a href=&#34;https://github.com/emacs-helm/helm&#34;&gt;helm&lt;/a&gt;, icomplete, selectrum, and
+ido. But when I started , &lt;code&gt;(ido-mode t)&lt;/code&gt; was the first line of Elisp
+code that I wrote, therefore I have a special care about it.&lt;/p&gt;
+&lt;p&gt;I tried almost all third-party packages for minibuffer completions,
+but I always go back to IDO after a while. Probably I am not a power
+user for the kind of functionality these frameworks provide.&lt;/p&gt;
+&lt;p&gt;This is my current setup for ido:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-elisp&#34; data-lang=&#34;elisp&#34;&gt;
+    &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;defun&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;ido-choose-from-recentf&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+      &lt;span class=&#34;s&#34;&gt;&amp;#34;Use ido to select recently visited files.&amp;#34;&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;interactive&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;find-file&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;ido-completing-read&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;Open file: &amp;#34;&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;recentf-list&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;nil&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)))&lt;/span&gt;
+
+    &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;defun&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;bk/go-straight-home&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;interactive&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;cond&lt;/span&gt;
+       &lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;looking-back&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;~/&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;insert&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;projects/&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+       &lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;looking-back&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;/&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;insert&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;~/&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+       &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;:else&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;call-interactively&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;&amp;#39;self-insert-command&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))))&lt;/span&gt;
+
+    &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;defun&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;ido-disable-line-truncation&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;make-local-variable&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;&amp;#39;truncate-lines&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;nil&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+
+    &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;defun&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;ido-define-keys&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;define-key&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;ido-completion-map&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;kbd&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;C-n&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;&amp;#39;ido-next-match&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;define-key&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;ido-completion-map&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;kbd&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;C-p&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;&amp;#39;ido-prev-match&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+
+    &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;use-package&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;ido&lt;/span&gt;
+      &lt;span class=&#34;nb&#34;&gt;:ensure&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;nil&lt;/span&gt;
+      &lt;span class=&#34;nb&#34;&gt;:init&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;setq&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;ido-enable-flex-matching&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;t&lt;/span&gt;
+            &lt;span class=&#34;nv&#34;&gt;ido-use-filename-at-point&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;nil&lt;/span&gt;
+            &lt;span class=&#34;nv&#34;&gt;ido-create-new-buffer&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;&amp;#39;always&lt;/span&gt;
+            &lt;span class=&#34;nv&#34;&gt;confirm-nonexistent-file-or-buffer&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;nil&lt;/span&gt;
+            &lt;span class=&#34;nv&#34;&gt;completion-ignored-extensions&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;cons&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;*.aux&amp;#34;&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;completion-ignored-extensions&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+            &lt;span class=&#34;nv&#34;&gt;max-mini-window-height&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.5&lt;/span&gt;
+            &lt;span class=&#34;nv&#34;&gt;ido-enable-tramp-completion&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;t&lt;/span&gt;
+            &lt;span class=&#34;nv&#34;&gt;ido-auto-merge-work-directories-length&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;-1&lt;/span&gt;
+            &lt;span class=&#34;nv&#34;&gt;ido-confirm-unique-completion&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;t&lt;/span&gt;
+            &lt;span class=&#34;nv&#34;&gt;ido-default-file-method&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;&amp;#39;selected-window&lt;/span&gt;
+            &lt;span class=&#34;nv&#34;&gt;ido-case-fold&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;t&lt;/span&gt;
+            &lt;span class=&#34;nv&#34;&gt;ido-show-dot-for-dired&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;t&lt;/span&gt;
+            &lt;span class=&#34;nv&#34;&gt;ido-everywhere&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;t&lt;/span&gt;
+            &lt;span class=&#34;nv&#34;&gt;ido-ignore-buffers&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;list&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;rx&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;or&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;and&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;bos&lt;/span&gt;  &lt;span class=&#34;s&#34;&gt;&amp;#34; &amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+                                             &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;and&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;bos&lt;/span&gt;
+                                                  &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;or&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;*Completions*&amp;#34;&lt;/span&gt;
+                                                      &lt;span class=&#34;s&#34;&gt;&amp;#34;*Compile-Log*&amp;#34;&lt;/span&gt;
+                                                      &lt;span class=&#34;s&#34;&gt;&amp;#34;*Ido Completions*&amp;#34;&lt;/span&gt;
+                                                      &lt;span class=&#34;s&#34;&gt;&amp;#34;*Shell Command Output*&amp;#34;&lt;/span&gt;
+                                                      &lt;span class=&#34;s&#34;&gt;&amp;#34;*vc-diff*&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+                                                  &lt;span class=&#34;nv&#34;&gt;eos&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))))&lt;/span&gt;
+            &lt;span class=&#34;nv&#34;&gt;ido-decorations&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;quote&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;\n-&amp;gt; &amp;#34;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;\n &amp;#34;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;\n ...&amp;#34;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;[&amp;#34;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;]&amp;#34;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;
+&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;      [No match]&amp;#34;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34; [Matched]&amp;#34;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34; [Not readable]&amp;#34;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34; [Too big]&amp;#34;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;
+&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;      [Confirm]&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)))&lt;/span&gt;
+
+      &lt;span class=&#34;nb&#34;&gt;:config&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;define-key&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;ido-common-completion-map&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;kbd&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;M-SPC&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;&amp;#39;just-one-space&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;define-key&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;ido-common-completion-map&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;kbd&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;SPC&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;&amp;#39;self-insert-command&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;define-key&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;ido-file-completion-map&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;kbd&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;~&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;&amp;#39;bk/go-straight-home&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+
+      &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;add-hook&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;&amp;#39;ido-setup-hook&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;&amp;#39;ido-define-keys&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+
+      &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;add-hook&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;&amp;#39;ido-minibuffer-setup-hook&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;&amp;#39;ido-disable-line-truncation&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+
+      &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;set-default&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;&amp;#39;imenu-auto-rescan&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+
+      &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;add-to-list&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;&amp;#39;ido-ignore-directories&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;target&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;add-to-list&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;&amp;#39;ido-ignore-directories&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;node_modules&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+
+      &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;add-hook&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;&amp;#39;after-init-hook&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;&amp;#39;ido-mode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This might be a bit lengthy, but I want to explain some of the highlights.&lt;/p&gt;
+&lt;p&gt;&lt;a id=&#34;orgfdc80d0&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;use-spaces-in-the-minibuffer&#34;&gt;Use SPACES in the minibuffer&lt;/h1&gt;
+&lt;p&gt;Yes, I really like how &lt;strong&gt;Ivy&lt;/strong&gt; let us use the spaces to add more
+tokens to our searches. That is nice. I didn&amp;rsquo;t go that deep to
+reproduce such functionality in IDO, but I use
+&lt;a href=&#34;https://github.com/org-roam/org-roam&#34;&gt;org-roam&lt;/a&gt; a lot and several of
+my notes have spaces in their names.&lt;/p&gt;
+&lt;p&gt;Thus, the idea was to be able to add SPACES in the minibuffer to filter
+candidates from Org-Roam.&lt;/p&gt;
+&lt;p&gt;Turns out you can type &lt;code&gt;M-q SPC&lt;/code&gt; to add a space symbol in the
+minibuffer. But we can do better, right?&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-elisp&#34; data-lang=&#34;elisp&#34;&gt;    &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;define-key&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;minibuffer-local-completion-map&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;kbd&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;SPC&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;&amp;#39;self-insert-command&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The code above let us type SPC in the minibuffer, however, IDO also
+uses the SPC keyword for &lt;code&gt;ido-complete-space&lt;/code&gt; function, therefore we
+need to remap it too:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-elisp&#34; data-lang=&#34;elisp&#34;&gt;    &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;define-key&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;ido-common-completion-map&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;kbd&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;SPC&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;&amp;#39;self-insert-command&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;a id=&#34;org9d15ec4&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;vertical-candidates&#34;&gt;Vertical candidates&lt;/h1&gt;
+&lt;p&gt;I tried to get used to the horizontal display, but even not being so
+bad, I find the benefits for vertical mode very appealing and the
+necessary tweaks are simple to do:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-elisp&#34; data-lang=&#34;elisp&#34;&gt;    &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;setq&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;ido-decorations&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;quote&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;\n-&amp;gt; &amp;#34;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;\n &amp;#34;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;\n ...&amp;#34;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;[&amp;#34;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;]&amp;#34;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;
+&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;        [No match]&amp;#34;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34; [Matched]&amp;#34;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34; [Not readable]&amp;#34;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34; [Too big]&amp;#34;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;
+&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;        [Confirm]&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;I also like to adjust the height of the candidate list to be a little
+bit taller than usual to fit more candidates before typing anything.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-elisp&#34; data-lang=&#34;elisp&#34;&gt;    &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;setq&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;max-mini-window-height&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Also need to adjust the navigation keys to use standard C-n and C-p to
+move up and down the list.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-elisp&#34; data-lang=&#34;elisp&#34;&gt;
+      &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;defun&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;ido-define-keys&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;define-key&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;ido-completion-map&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;kbd&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;C-n&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;&amp;#39;ido-next-match&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;define-key&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;ido-completion-map&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;kbd&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;C-p&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;&amp;#39;ido-prev-match&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+
+    &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;add-hook&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;&amp;#39;ido-setup-hook&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;&amp;#39;ido-define-keys&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;a id=&#34;orga27a97f&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;move-to-most-used-folders&#34;&gt;Move to most used folders&lt;/h1&gt;
+&lt;p&gt;I like to type &lt;code&gt;~&lt;/code&gt; twice and be taken to my &amp;ldquo;projects&amp;rdquo; folder. This is a
+nice recipe for you to change as you like.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-elisp&#34; data-lang=&#34;elisp&#34;&gt;
+      &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;defun&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;bk/go-straight-home&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;interactive&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;cond&lt;/span&gt;
+         &lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;looking-back&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;~/&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;insert&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;projects/&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+         &lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;looking-back&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;/&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;insert&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;~/&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+         &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;:else&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;call-interactively&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;&amp;#39;self-insert-command&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))))&lt;/span&gt;
+
+    &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;define-key&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;ido-file-completion-map&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;kbd&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;~&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;&amp;#39;bk/go-straight-home&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;a id=&#34;org3ac9e88&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;ignore-some-buffers&#34;&gt;Ignore some buffers&lt;/h1&gt;
+&lt;p&gt;I really don&amp;rsquo;t like to see some buffers like &lt;code&gt;*Completions*&lt;/code&gt;,
+&lt;code&gt;*Compile-Log*&lt;/code&gt;, etc. If I want to look at them, I will go to &lt;code&gt;M-x ibuffer&lt;/code&gt; or &lt;code&gt;M-x buffer-list&lt;/code&gt; explicitly.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-elisp&#34; data-lang=&#34;elisp&#34;&gt;
+    &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;setq&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;ido-ignore-buffers&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;list&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;rx&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;or&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;and&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;bos&lt;/span&gt;  &lt;span class=&#34;s&#34;&gt;&amp;#34; &amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+                                           &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;and&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;bos&lt;/span&gt;
+                                                &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;or&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;*Completions*&amp;#34;&lt;/span&gt;
+                                                    &lt;span class=&#34;s&#34;&gt;&amp;#34;*Compile-Log*&amp;#34;&lt;/span&gt;
+                                                    &lt;span class=&#34;s&#34;&gt;&amp;#34;*Ido Completions*&amp;#34;&lt;/span&gt;
+                                                    &lt;span class=&#34;s&#34;&gt;&amp;#34;*Shell Command Output*&amp;#34;&lt;/span&gt;
+                                                    &lt;span class=&#34;s&#34;&gt;&amp;#34;*vc-diff*&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+                                                &lt;span class=&#34;nv&#34;&gt;eos&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)))))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;As soon as I find a new buffer bothering me, I add the name to my
+blocklist.&lt;/p&gt;
+&lt;p&gt;Similar situation for some file extensions like the auxiliary files
+created by LaTeX compilation process.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-elisp&#34; data-lang=&#34;elisp&#34;&gt;    &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;setq&lt;/span&gt;  &lt;span class=&#34;nv&#34;&gt;completion-ignored-extensions&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;cons&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;*.aux&amp;#34;&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;completion-ignored-extensions&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;a id=&#34;org9f35c43&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;open-dired-immediately-in-current-directory-at-find-file&#34;&gt;Open dired immediately in current directory at find-file&lt;/h1&gt;
+&lt;p&gt;This simple setup is very handy. it will add a dot as the first item
+of your candidates when you fire &lt;code&gt;find-file&lt;/code&gt;. You can open &lt;code&gt;dired&lt;/code&gt;
+immediately using RET on the dot.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-elisp&#34; data-lang=&#34;elisp&#34;&gt;    &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;setq&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;ido-show-dot-for-dired&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h1&gt;
+&lt;p&gt;I keep learning something new in IDO everytime. Up to now I manage to
+survive without &lt;code&gt;flx-ido&lt;/code&gt; or even &lt;code&gt;ido-completing-read+&lt;/code&gt;. I might give
+then another chance in the near future.&lt;/p&gt;
+&lt;p&gt;If you have more tweaks to IDO, I would love to know about.&lt;/p&gt;
+&lt;p&gt;Happy New Year, keep hacking!&lt;/p&gt;
+</description> 
+    </item>
     
     <item>
       <title>Summary readings: April - December 2020</title>
