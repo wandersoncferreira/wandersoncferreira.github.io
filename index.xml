@@ -6,10 +6,239 @@
     <description>Recent content on Bartuka</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 30 Dec 2020 00:00:00 -0300</lastBuildDate>
+    <lastBuildDate>Thu, 31 Dec 2020 00:00:00 -0300</lastBuildDate>
     
 	<atom:link href="https://wandersoncferreira.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Emacs configurations</title>
+      <link>https://wandersoncferreira.github.io/blog/emacs-configurations/</link>
+      <pubDate>Thu, 31 Dec 2020 00:00:00 -0300</pubDate>
+      
+      <guid>https://wandersoncferreira.github.io/blog/emacs-configurations/</guid>
+      <description>&lt;h1 id=&#34;table-of-contents&#34;&gt;Table of Contents&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;#org8495536&#34;&gt;Full-all-in-Emacs-everywhere&lt;/a&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;#orgc2ae8bc&#34;&gt;Highlights&lt;/a&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;#org2cca2d5&#34;&gt;Different themes per buffer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#org3f50568&#34;&gt;Spelling&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#org35c9a58&#34;&gt;RSS with Elfeed&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#orgfb81d35&#34;&gt;Lazy loading manually&lt;/a&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;#org1eb7ebd&#34;&gt;Highlights&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#org2540475&#34;&gt;The Profiler&lt;/a&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;#orgd9b3cd0&#34;&gt;Highlights&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#orge99c188&#34;&gt;After thoughts&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The most appealing feature of Emacs is to enable every single user to
+enjoy a very customized experience and this is possible through a very
+powerful infrastructure a.k.a Elisp Interpreter and by lots of
+community contribution around packages and code fragments to
+accomplish the most varied tasks.&lt;/p&gt;
+&lt;p&gt;All of it can be summarized by the relationship between an Emacs user
+and she&amp;rsquo;s configuration setup.&lt;/p&gt;
+&lt;p&gt;Over the years I wrote a lot of customized &lt;code&gt;.emacs.d&lt;/code&gt; folders and even
+added to my 2021 resolutions to stick with my current one for a longer
+run. I tried to study the configs and explore possibilities, also I
+enjoy the feeling of &amp;ldquo;crafting my own tool&amp;rdquo; behind it.&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s talk about some of these experiments.&lt;/p&gt;
+&lt;p&gt;&lt;a id=&#34;org8495536&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;full-all-in-emacs-everywhere&#34;&gt;Full-all-in-Emacs-everywhere&lt;/h1&gt;
+&lt;p&gt;I don&amp;rsquo;t even use this setup in my daily activities but I invested a
+lot of time in crafting this beauty. The setup uses EXWM as my Window
+Manager and lots of customization around desktop activities such as
+screenshots, multi-monitor support, audio, etc.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Link: &lt;a href=&#34;https://github.com/wandersoncferreira/dotfiles&#34;&gt;github&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Style: Literate Programming in Org-mode&lt;/li&gt;
+&lt;li&gt;Goal: Emacs all the way down!&lt;/li&gt;
+&lt;li&gt;Rate: 7/10&lt;/li&gt;
+&lt;li&gt;Bad aspects: Eventual hanging during Garbage Collection&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a id=&#34;orgc2ae8bc&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;highlights&#34;&gt;Highlights&lt;/h3&gt;
+&lt;p&gt;I learned a lot about literate programming style and how awesome Org
+Mode can be to accomplish that, but there are a couple of interesting
+things in this config I want to call out.&lt;/p&gt;
+&lt;p&gt;&lt;a id=&#34;org2cca2d5&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&#34;different-themes-per-buffer&#34;&gt;Different themes per buffer&lt;/h4&gt;
+&lt;p&gt;Add &lt;a href=&#34;https://github.com/wandersoncferreira/dotfiles/blob/master/lisps/load-theme-buffer-local/load-theme-buffer-local.el&#34;&gt;this&lt;/a&gt; code to your &lt;code&gt;load-path&lt;/code&gt; and you can use the function
+&lt;code&gt;load-theme-buffer-local&lt;/code&gt; to customize it such as this example:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-elisp&#34; data-lang=&#34;elisp&#34;&gt;    &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;load-theme-buffer-local&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;&amp;#39;deeper-blue&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;get-buffer&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;*wttr.in - São Paulo*&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;a id=&#34;org3f50568&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&#34;spelling&#34;&gt;Spelling&lt;/h4&gt;
+&lt;p&gt;English is not my first language, therefore I use a lot of resources
+to spell-check, find meanings, translation, synonyms for common words,
+etc. I use &lt;a href=&#34;https://github.com/wandersoncferreira/dotfiles#spelling&#34;&gt;this&lt;/a&gt; same setup for ages.&lt;/p&gt;
+&lt;p&gt;&lt;a id=&#34;org35c9a58&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&#34;rss-with-elfeed&#34;&gt;RSS with Elfeed&lt;/h4&gt;
+&lt;p&gt;Yeah, I enjoyed a lot to do all &lt;a href=&#34;https://github.com/wandersoncferreira/dotfiles#rss-feed&#34;&gt;this&lt;/a&gt; customization with
+Elfeed. Specially the portion about scoring each RSS entry to match
+content I would be more interesting in reading first.&lt;/p&gt;
+&lt;p&gt;Also, you see the power of literate programming in Org-mode using this
+anchors.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-elisp&#34; data-lang=&#34;elisp&#34;&gt;    &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;require&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;&amp;#39;elfeed&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;require&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;&amp;#39;cl-lib&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;require&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;&amp;#39;elfeed-search&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;require&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;&amp;#39;elfeed-db&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+
+    &lt;span class=&#34;nv&#34;&gt;&amp;lt;&amp;lt;elfeed-basic-config&amp;gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nv&#34;&gt;&amp;lt;&amp;lt;elfeed-mode-disabled&amp;gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nv&#34;&gt;&amp;lt;&amp;lt;elfeed-newsletters&amp;gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nv&#34;&gt;&amp;lt;&amp;lt;elfeed-scoring&amp;gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nv&#34;&gt;&amp;lt;&amp;lt;elfeed-filters&amp;gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nv&#34;&gt;&amp;lt;&amp;lt;elfeed-automatic-update&amp;gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nv&#34;&gt;&amp;lt;&amp;lt;elfeed-starred&amp;gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nv&#34;&gt;&amp;lt;&amp;lt;elfeed-youtube&amp;gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;a id=&#34;orgfb81d35&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;lazy-loading-manually&#34;&gt;Lazy loading manually&lt;/h1&gt;
+&lt;p&gt;I always understood in theory how lazy loading works, but I never gave
+much attention to it. I tend to not close my Emacs session that often,
+therefore startup time was rarely an issue for me (which is usually
+the main motivation I see around for lazy loading)&lt;/p&gt;
+&lt;p&gt;However, as I stared digging deeper in Emacs and look at what packages
+were loaded at a time, I wondered &amp;ldquo;why does CIDER (clojure interactive
+development environment) is loaded when I only want to write some
+essays in Org-mode?&amp;rdquo;  (I made up this example to illustrate the point,
+can&amp;rsquo;t remember which package was the trigger)&lt;/p&gt;
+&lt;p&gt;Then I started a new config to manage to understand this situation.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Link: &lt;a href=&#34;https://github.com/wandersoncferreira/daily-emacs&#34;&gt;github&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Style: Small separate modules&lt;/li&gt;
+&lt;li&gt;Goal: Only load modules when I actually need them&lt;/li&gt;
+&lt;li&gt;Rate: 8/10&lt;/li&gt;
+&lt;li&gt;Bad aspects: Too manual&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a id=&#34;org1eb7ebd&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;highlights-1&#34;&gt;Highlights&lt;/h3&gt;
+&lt;p&gt;I noticed that I had started my own &amp;ldquo;framework&amp;rdquo; and I even wrote some
+specialized functions to handle some activities such as load, update,
+list, and delete packages.&lt;/p&gt;
+&lt;p&gt;The bulk of the work is here:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-elisp&#34; data-lang=&#34;elisp&#34;&gt;
+    &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;defun&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;bk/add-load-path&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;pkg&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;subdir&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+      &lt;span class=&#34;s&#34;&gt;&amp;#34;If PKG/SUBDIR exist add it to &lt;/span&gt;&lt;span class=&#34;ss&#34;&gt;`load-path&amp;#39;&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;.
+&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;    Return non-nil if successful.&amp;#34;&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;let*&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;path&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;concat&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;file-name-as-directory&lt;/span&gt;
+                            &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;expand-file-name&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;pkg&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;user-emacs-directory&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+                           &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;concat&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;pkgs/&amp;#34;&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;subdir&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))))&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;when&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;file-readable-p&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;path&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+          &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;add-to-list&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;&amp;#39;load-path&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;path&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))))&lt;/span&gt;
+
+    &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;defun&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;bk-auto-loads&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;file&lt;/span&gt; &lt;span class=&#34;kp&#34;&gt;&amp;amp;rest&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;func-or-ext-with-func&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+      &lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;ss&#34;&gt;`autoload&amp;#39;&lt;/span&gt;&lt;span class=&#34;s&#34;&gt; and &lt;/span&gt;&lt;span class=&#34;ss&#34;&gt;`auto-mode-alist&amp;#39;&lt;/span&gt;&lt;span class=&#34;s&#34;&gt; for packages in the FILE.
+&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;    FUNC-OR-EXT-WITH-FUNC are the triggers of the package activation.
+&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;    After any of the functions is called, the whole package is loaded in memory.&amp;#34;&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;dolist&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;func-or-ext-with-func&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;autoload&lt;/span&gt;
+          &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;consp&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;cdr&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+          &lt;span class=&#34;nv&#34;&gt;file&lt;/span&gt;
+          &lt;span class=&#34;s&#34;&gt;&amp;#34;Undocumented &lt;/span&gt;&lt;span class=&#34;ss&#34;&gt;`autoload&amp;#39;&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;.&amp;#34;&lt;/span&gt;
+          &lt;span class=&#34;no&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;when&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;consp&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;add-to-list&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;&amp;#39;auto-mode-alist&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))))&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;With this two functions you can &amp;ldquo;register&amp;rdquo; the entrypoint functions to
+your modules or functionalities that will be the triggers to load the
+full module afterwards.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-elisp&#34; data-lang=&#34;elisp&#34;&gt;
+    &lt;span class=&#34;c1&#34;&gt;;; * cider mode&lt;/span&gt;
+    &lt;span class=&#34;c1&#34;&gt;;; - History&lt;/span&gt;
+    &lt;span class=&#34;c1&#34;&gt;;;   -  2020-08-14 Created&lt;/span&gt;
+    &lt;span class=&#34;c1&#34;&gt;;;   -  2020-08-18 Adding key binding to cider-jack-in&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;when&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;bk/add-load-path&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;langs/clojure&amp;#34;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;cider&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;bk-auto-loads&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;cider&amp;#34;&lt;/span&gt;
+                     &lt;span class=&#34;nf&#34;&gt;#&amp;#39;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;cider-jack-in&lt;/span&gt;
+                     &lt;span class=&#34;nf&#34;&gt;#&amp;#39;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;cider-connect&lt;/span&gt;
+                     &lt;span class=&#34;nf&#34;&gt;#&amp;#39;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;cider-jack-in-clj&amp;amp;cljs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;In the case above, if you open your Emacs and hit &lt;code&gt;M-x cider-&lt;/code&gt; the only
+options you will see are those three functions registered as
+entrypoint. To contrast with my current setup (which I just found out
+and really don&amp;rsquo;t like that much), I haven&amp;rsquo;t used Clojure today at all
+and if I hit &lt;code&gt;M-x cider-&lt;/code&gt; there are hundreds of functions available.&lt;/p&gt;
+&lt;p&gt;Current setup:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-elisp&#34; data-lang=&#34;elisp&#34;&gt;
+    &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;use-package&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;cider&lt;/span&gt;
+      &lt;span class=&#34;nb&#34;&gt;:ensure&lt;/span&gt; &lt;span class=&#34;no&#34;&gt;t&lt;/span&gt;
+      &lt;span class=&#34;nb&#34;&gt;:commands&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;cider&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;cider-connect&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;cider-jack-in&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;cider-jack-in-clj&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+      &lt;span class=&#34;nb&#34;&gt;:config&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;add-hook&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;&amp;#39;cider-mode-hook&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;#&amp;#39;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;eldoc-mode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;add-hook&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;&amp;#39;cider-mode-hook&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;#&amp;#39;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;whitespace-cleanup-mode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;add-hook&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;&amp;#39;cider-repl-mode-hook&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;#&amp;#39;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;eldoc-mode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;add-hook&lt;/span&gt; &lt;span class=&#34;ss&#34;&gt;&amp;#39;cider-repl-mode-hook&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;#&amp;#39;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;paredit-mode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;By reading &lt;code&gt;use-package&lt;/code&gt; I expected that only the functions specified in
+the &lt;code&gt;:commands&lt;/code&gt; key were available to me. (Another fight, for another
+day)&lt;/p&gt;
+&lt;p&gt;I thought about continuing evolving this configuration to improve the
+very bad aspect of &amp;ldquo;manual installation&amp;rdquo; of packages and its
+dependencies through git submodules. Who knows, I might come back to
+it some day.&lt;/p&gt;
+&lt;p&gt;&lt;a id=&#34;org2540475&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;the-profiler&#34;&gt;The Profiler&lt;/h1&gt;
+&lt;p&gt;My idea was to leverage chemacs to build very isolated configurations
+to specific tasks. For example, I might open my &amp;ldquo;clojure toolbox&amp;rdquo; that
+only is concerned with Clojure and nothing else.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Link: &lt;a href=&#34;https://github.com/wandersoncferreira/emacs&#34;&gt;github&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Style: Separate folders per &amp;ldquo;goal&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;Goal: Provide specific configuration schemes for your goals&lt;/li&gt;
+&lt;li&gt;Rate: 8/10&lt;/li&gt;
+&lt;li&gt;Bad aspects: Not too bad if you live in the terminal&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a id=&#34;orgd9b3cd0&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;highlights-2&#34;&gt;Highlights&lt;/h3&gt;
+&lt;p&gt;The idea was to provide a configuration file (the same from chemacs
+actually was pretty good) and be able to lunch your own instances as
+you need. The cost of startup time is decreased by loading all the
+instances as emacs servers when you log in.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-elisp&#34; data-lang=&#34;elisp&#34;&gt;    &lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;default&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;.&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;user-emacs-directory&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;.&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;~/emacs/profile/default&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)))&lt;/span&gt;
+     &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;clojure&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;.&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;user-emacs-directory&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;.&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;~/emacs/profile/clojure&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)))&lt;/span&gt;
+     &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;roam&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;.&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;user-emacs-directory&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;.&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;~/emacs/profile/roam&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)))&lt;/span&gt;
+     &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;ledger&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;.&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;user-emacs-directory&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;.&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;~/emacs/profile/ledger&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;And a set of aliases to help you out.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;
+    &lt;span class=&#34;c1&#34;&gt;# GUI instances&lt;/span&gt;
+    &lt;span class=&#34;nb&#34;&gt;alias&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;emacs&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;emacsclient -c -s default&amp;#34;&lt;/span&gt;
+    &lt;span class=&#34;nb&#34;&gt;alias&lt;/span&gt; emacs.default&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;emacsclient -c -s default&amp;#34;&lt;/span&gt;
+    &lt;span class=&#34;nb&#34;&gt;alias&lt;/span&gt; emacs.clojure&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;emacsclient -c -s clojure&amp;#34;&lt;/span&gt;
+    &lt;span class=&#34;nb&#34;&gt;alias&lt;/span&gt; emacs.roam&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;emacsclient -c -s roam&amp;#34;&lt;/span&gt;
+    &lt;span class=&#34;nb&#34;&gt;alias&lt;/span&gt; emacs.ledger&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;emacsclient -c -s ledger&amp;#34;&lt;/span&gt;
+
+    &lt;span class=&#34;c1&#34;&gt;# terminal instances&lt;/span&gt;
+    &lt;span class=&#34;nb&#34;&gt;alias&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;et&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;emacsclient -t -s default&amp;#34;&lt;/span&gt;
+    &lt;span class=&#34;nb&#34;&gt;alias&lt;/span&gt; et.default&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;emacsclient -t -s default&amp;#34;&lt;/span&gt;
+    &lt;span class=&#34;nb&#34;&gt;alias&lt;/span&gt; et.clojure&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;emacsclient -t -s clojure&amp;#34;&lt;/span&gt;
+    &lt;span class=&#34;nb&#34;&gt;alias&lt;/span&gt; et.roam&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;emacsclient -t -s roam&amp;#34;&lt;/span&gt;
+    &lt;span class=&#34;nb&#34;&gt;alias&lt;/span&gt; et.ledger&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;emacsclient -t -s ledger&amp;#34;&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;I still like this idea.&lt;/p&gt;
+&lt;p&gt;&lt;a id=&#34;orge99c188&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;after-thoughts&#34;&gt;After thoughts&lt;/h1&gt;
+&lt;p&gt;I like how much I learned by writing each one of this configuration
+files and I am definitely proud to be able to go through my own ideas
+and explore Emacs landscape. But the underlying principle here is how
+flexible Emacs actually is.&lt;/p&gt;
+&lt;p&gt;My current configuration setup is &lt;a href=&#34;https://github.com/wandersoncferreira/cfg&#34;&gt;this&lt;/a&gt; one which I am aiming to learn
+more about how to leverage &lt;code&gt;use-package&lt;/code&gt; correctly.&lt;/p&gt;
+&lt;p&gt;The term &lt;a href=&#34;https://www.emacswiki.org/emacs/DotEmacsBankruptcy&#34;&gt;Emacs Bankruptcy&lt;/a&gt; is very famous in the community, but I don&amp;rsquo;t
+believe this is the only reason you would be willing to &amp;ldquo;re-write&amp;rdquo;
+your configurations. I definitely encourage you to experiment.&lt;/p&gt;
+&lt;p&gt;You will notice that some pieces of code will follow you whatever you go :)&lt;/p&gt;
+&lt;p&gt;Happy Hacking.&lt;/p&gt;
+</description> 
+    </item>
     
     <item>
       <title>IDO - Emacs</title>

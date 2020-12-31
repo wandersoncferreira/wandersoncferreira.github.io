@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html><head>
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-107192581-3', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Thoughts on things">
+    
+
+    <link rel="shortcut icon" href="https://wandersoncferreira.github.io/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/style.min.250df4aa82162a2c5a9d6eb446907e3132c4226dde8db0dd884556325b734ddf.css" integrity="{{ $css.Data.Integrity }}">
+
+
+    <title>Emacs configurations</title>
+</head>
+<body><header id="banner">
+    <h2><a href="https://wandersoncferreira.github.io">Bartuka</a></h2>
+    <nav>
+        <ul>
+            <li>
+                <a href="/blog" title="blog">Blog</a>
+            </li><li>
+                <a href="/notes/" title="notes">Notes</a>
+            </li><li>
+                <a href="/projects/" title="projects">Projects</a>
+            </li><li>
+                <a href="/about/" title="about">About</a>
+            </li><li>
+                <a href="/rss/" title="rss">RSS</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main id="content">
+<article>
+    <header id="post-header">
+        <h1>Emacs configurations</h1><time>December 31, 2020</time></header>
+    
+ 
+ <a href="https://wandersoncferreira.github.io/tags/emacs/">emacs</a>
+
+
+
+<h1 id="table-of-contents">Table of Contents</h1>
+<ol>
+<li><a href="#org8495536">Full-all-in-Emacs-everywhere</a>
+<ol>
+<li><a href="#orgc2ae8bc">Highlights</a>
+<ol>
+<li><a href="#org2cca2d5">Different themes per buffer</a></li>
+<li><a href="#org3f50568">Spelling</a></li>
+<li><a href="#org35c9a58">RSS with Elfeed</a></li>
+</ol>
+</li>
+</ol>
+</li>
+<li><a href="#orgfb81d35">Lazy loading manually</a>
+<ol>
+<li><a href="#org1eb7ebd">Highlights</a></li>
+</ol>
+</li>
+<li><a href="#org2540475">The Profiler</a>
+<ol>
+<li><a href="#orgd9b3cd0">Highlights</a></li>
+</ol>
+</li>
+<li><a href="#orge99c188">After thoughts</a></li>
+</ol>
+<p>The most appealing feature of Emacs is to enable every single user to
+enjoy a very customized experience and this is possible through a very
+powerful infrastructure a.k.a Elisp Interpreter and by lots of
+community contribution around packages and code fragments to
+accomplish the most varied tasks.</p>
+<p>All of it can be summarized by the relationship between an Emacs user
+and she&rsquo;s configuration setup.</p>
+<p>Over the years I wrote a lot of customized <code>.emacs.d</code> folders and even
+added to my 2021 resolutions to stick with my current one for a longer
+run. I tried to study the configs and explore possibilities, also I
+enjoy the feeling of &ldquo;crafting my own tool&rdquo; behind it.</p>
+<p>Let&rsquo;s talk about some of these experiments.</p>
+<p><a id="org8495536"></a></p>
+<h1 id="full-all-in-emacs-everywhere">Full-all-in-Emacs-everywhere</h1>
+<p>I don&rsquo;t even use this setup in my daily activities but I invested a
+lot of time in crafting this beauty. The setup uses EXWM as my Window
+Manager and lots of customization around desktop activities such as
+screenshots, multi-monitor support, audio, etc.</p>
+<ul>
+<li>Link: <a href="https://github.com/wandersoncferreira/dotfiles">github</a></li>
+<li>Style: Literate Programming in Org-mode</li>
+<li>Goal: Emacs all the way down!</li>
+<li>Rate: 7/10</li>
+<li>Bad aspects: Eventual hanging during Garbage Collection</li>
+</ul>
+<p><a id="orgc2ae8bc"></a></p>
+<h3 id="highlights">Highlights</h3>
+<p>I learned a lot about literate programming style and how awesome Org
+Mode can be to accomplish that, but there are a couple of interesting
+things in this config I want to call out.</p>
+<p><a id="org2cca2d5"></a></p>
+<h4 id="different-themes-per-buffer">Different themes per buffer</h4>
+<p>Add <a href="https://github.com/wandersoncferreira/dotfiles/blob/master/lisps/load-theme-buffer-local/load-theme-buffer-local.el">this</a> code to your <code>load-path</code> and you can use the function
+<code>load-theme-buffer-local</code> to customize it such as this example:</p>
+<div class="highlight"><pre class="chroma"><code class="language-elisp" data-lang="elisp">    <span class="p">(</span><span class="nv">load-theme-buffer-local</span> <span class="ss">&#39;deeper-blue</span> <span class="p">(</span><span class="nf">get-buffer</span> <span class="s">&#34;*wttr.in - São Paulo*&#34;</span><span class="p">))</span>
+</code></pre></div><p><a id="org3f50568"></a></p>
+<h4 id="spelling">Spelling</h4>
+<p>English is not my first language, therefore I use a lot of resources
+to spell-check, find meanings, translation, synonyms for common words,
+etc. I use <a href="https://github.com/wandersoncferreira/dotfiles#spelling">this</a> same setup for ages.</p>
+<p><a id="org35c9a58"></a></p>
+<h4 id="rss-with-elfeed">RSS with Elfeed</h4>
+<p>Yeah, I enjoyed a lot to do all <a href="https://github.com/wandersoncferreira/dotfiles#rss-feed">this</a> customization with
+Elfeed. Specially the portion about scoring each RSS entry to match
+content I would be more interesting in reading first.</p>
+<p>Also, you see the power of literate programming in Org-mode using this
+anchors.</p>
+<div class="highlight"><pre class="chroma"><code class="language-elisp" data-lang="elisp">    <span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;elfeed</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;cl-lib</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;elfeed-search</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">require</span> <span class="ss">&#39;elfeed-db</span><span class="p">)</span>
+
+    <span class="nv">&lt;&lt;elfeed-basic-config&gt;&gt;</span>
+    <span class="nv">&lt;&lt;elfeed-mode-disabled&gt;&gt;</span>
+    <span class="nv">&lt;&lt;elfeed-newsletters&gt;&gt;</span>
+    <span class="nv">&lt;&lt;elfeed-scoring&gt;&gt;</span>
+    <span class="nv">&lt;&lt;elfeed-filters&gt;&gt;</span>
+    <span class="nv">&lt;&lt;elfeed-automatic-update&gt;&gt;</span>
+    <span class="nv">&lt;&lt;elfeed-starred&gt;&gt;</span>
+    <span class="nv">&lt;&lt;elfeed-youtube&gt;&gt;</span>
+</code></pre></div><p><a id="orgfb81d35"></a></p>
+<h1 id="lazy-loading-manually">Lazy loading manually</h1>
+<p>I always understood in theory how lazy loading works, but I never gave
+much attention to it. I tend to not close my Emacs session that often,
+therefore startup time was rarely an issue for me (which is usually
+the main motivation I see around for lazy loading)</p>
+<p>However, as I stared digging deeper in Emacs and look at what packages
+were loaded at a time, I wondered &ldquo;why does CIDER (clojure interactive
+development environment) is loaded when I only want to write some
+essays in Org-mode?&rdquo;  (I made up this example to illustrate the point,
+can&rsquo;t remember which package was the trigger)</p>
+<p>Then I started a new config to manage to understand this situation.</p>
+<ul>
+<li>Link: <a href="https://github.com/wandersoncferreira/daily-emacs">github</a></li>
+<li>Style: Small separate modules</li>
+<li>Goal: Only load modules when I actually need them</li>
+<li>Rate: 8/10</li>
+<li>Bad aspects: Too manual</li>
+</ul>
+<p><a id="org1eb7ebd"></a></p>
+<h3 id="highlights-1">Highlights</h3>
+<p>I noticed that I had started my own &ldquo;framework&rdquo; and I even wrote some
+specialized functions to handle some activities such as load, update,
+list, and delete packages.</p>
+<p>The bulk of the work is here:</p>
+<div class="highlight"><pre class="chroma"><code class="language-elisp" data-lang="elisp">
+    <span class="p">(</span><span class="nb">defun</span> <span class="nv">bk/add-load-path</span> <span class="p">(</span><span class="nv">pkg</span> <span class="nv">subdir</span><span class="p">)</span>
+      <span class="s">&#34;If PKG/SUBDIR exist add it to </span><span class="ss">`load-path&#39;</span><span class="s">.
+</span><span class="s">    Return non-nil if successful.&#34;</span>
+      <span class="p">(</span><span class="nb">let*</span> <span class="p">((</span><span class="nv">path</span> <span class="p">(</span><span class="nf">concat</span> <span class="p">(</span><span class="nf">file-name-as-directory</span>
+                            <span class="p">(</span><span class="nf">expand-file-name</span> <span class="nv">pkg</span> <span class="nv">user-emacs-directory</span><span class="p">))</span>
+                           <span class="p">(</span><span class="nf">concat</span> <span class="s">&#34;pkgs/&#34;</span> <span class="nv">subdir</span><span class="p">))))</span>
+        <span class="p">(</span><span class="nb">when</span> <span class="p">(</span><span class="nf">file-readable-p</span> <span class="nv">path</span><span class="p">)</span>
+          <span class="p">(</span><span class="nv">add-to-list</span> <span class="ss">&#39;load-path</span> <span class="nv">path</span><span class="p">))))</span>
+
+    <span class="p">(</span><span class="nb">defun</span> <span class="nv">bk-auto-loads</span> <span class="p">(</span><span class="nv">file</span> <span class="kp">&amp;rest</span> <span class="nv">func-or-ext-with-func</span><span class="p">)</span>
+      <span class="s">&#34;</span><span class="ss">`autoload&#39;</span><span class="s"> and </span><span class="ss">`auto-mode-alist&#39;</span><span class="s"> for packages in the FILE.
+</span><span class="s">    FUNC-OR-EXT-WITH-FUNC are the triggers of the package activation.
+</span><span class="s">    After any of the functions is called, the whole package is loaded in memory.&#34;</span>
+      <span class="p">(</span><span class="nb">dolist</span> <span class="p">(</span><span class="nv">x</span> <span class="nv">func-or-ext-with-func</span><span class="p">)</span>
+        <span class="p">(</span><span class="nf">autoload</span>
+          <span class="p">(</span><span class="nb">if</span> <span class="p">(</span><span class="nf">consp</span> <span class="nv">x</span><span class="p">)</span> <span class="p">(</span><span class="nf">cdr</span> <span class="nv">x</span><span class="p">)</span> <span class="nv">x</span><span class="p">)</span>
+          <span class="nv">file</span>
+          <span class="s">&#34;Undocumented </span><span class="ss">`autoload&#39;</span><span class="s">.&#34;</span>
+          <span class="no">t</span><span class="p">)</span>
+        <span class="p">(</span><span class="nb">when</span> <span class="p">(</span><span class="nf">consp</span> <span class="nv">x</span><span class="p">)</span> <span class="p">(</span><span class="nv">add-to-list</span> <span class="ss">&#39;auto-mode-alist</span> <span class="nv">x</span><span class="p">))))</span>
+
+</code></pre></div><p>With this two functions you can &ldquo;register&rdquo; the entrypoint functions to
+your modules or functionalities that will be the triggers to load the
+full module afterwards.</p>
+<div class="highlight"><pre class="chroma"><code class="language-elisp" data-lang="elisp">
+    <span class="c1">;; * cider mode</span>
+    <span class="c1">;; - History</span>
+    <span class="c1">;;   -  2020-08-14 Created</span>
+    <span class="c1">;;   -  2020-08-18 Adding key binding to cider-jack-in</span>
+    <span class="p">(</span><span class="nb">when</span> <span class="p">(</span><span class="nv">bk/add-load-path</span> <span class="s">&#34;langs/clojure&#34;</span> <span class="s">&#34;cider&#34;</span><span class="p">)</span>
+      <span class="p">(</span><span class="nv">bk-auto-loads</span> <span class="s">&#34;cider&#34;</span>
+                     <span class="nf">#&#39;</span><span class="nv">cider-jack-in</span>
+                     <span class="nf">#&#39;</span><span class="nv">cider-connect</span>
+                     <span class="nf">#&#39;</span><span class="nv">cider-jack-in-clj&amp;cljs</span><span class="p">))</span>
+</code></pre></div><p>In the case above, if you open your Emacs and hit <code>M-x cider-</code> the only
+options you will see are those three functions registered as
+entrypoint. To contrast with my current setup (which I just found out
+and really don&rsquo;t like that much), I haven&rsquo;t used Clojure today at all
+and if I hit <code>M-x cider-</code> there are hundreds of functions available.</p>
+<p>Current setup:</p>
+<div class="highlight"><pre class="chroma"><code class="language-elisp" data-lang="elisp">
+    <span class="p">(</span><span class="nb">use-package</span> <span class="nv">cider</span>
+      <span class="nb">:ensure</span> <span class="no">t</span>
+      <span class="nb">:commands</span> <span class="p">(</span><span class="nv">cider</span> <span class="nv">cider-connect</span> <span class="nv">cider-jack-in</span> <span class="nv">cider-jack-in-clj</span><span class="p">)</span>
+      <span class="nb">:config</span>
+      <span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;cider-mode-hook</span> <span class="nf">#&#39;</span><span class="nv">eldoc-mode</span><span class="p">)</span>
+      <span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;cider-mode-hook</span> <span class="nf">#&#39;</span><span class="nv">whitespace-cleanup-mode</span><span class="p">)</span>
+      <span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;cider-repl-mode-hook</span> <span class="nf">#&#39;</span><span class="nv">eldoc-mode</span><span class="p">)</span>
+      <span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;cider-repl-mode-hook</span> <span class="nf">#&#39;</span><span class="nv">paredit-mode</span><span class="p">))</span>
+
+</code></pre></div><p>By reading <code>use-package</code> I expected that only the functions specified in
+the <code>:commands</code> key were available to me. (Another fight, for another
+day)</p>
+<p>I thought about continuing evolving this configuration to improve the
+very bad aspect of &ldquo;manual installation&rdquo; of packages and its
+dependencies through git submodules. Who knows, I might come back to
+it some day.</p>
+<p><a id="org2540475"></a></p>
+<h1 id="the-profiler">The Profiler</h1>
+<p>My idea was to leverage chemacs to build very isolated configurations
+to specific tasks. For example, I might open my &ldquo;clojure toolbox&rdquo; that
+only is concerned with Clojure and nothing else.</p>
+<ul>
+<li>Link: <a href="https://github.com/wandersoncferreira/emacs">github</a></li>
+<li>Style: Separate folders per &ldquo;goal&rdquo;</li>
+<li>Goal: Provide specific configuration schemes for your goals</li>
+<li>Rate: 8/10</li>
+<li>Bad aspects: Not too bad if you live in the terminal</li>
+</ul>
+<p><a id="orgd9b3cd0"></a></p>
+<h3 id="highlights-2">Highlights</h3>
+<p>The idea was to provide a configuration file (the same from chemacs
+actually was pretty good) and be able to lunch your own instances as
+you need. The cost of startup time is decreased by loading all the
+instances as emacs servers when you log in.</p>
+<div class="highlight"><pre class="chroma"><code class="language-elisp" data-lang="elisp">    <span class="p">((</span><span class="s">&#34;default&#34;</span> <span class="o">.</span> <span class="p">((</span><span class="nv">user-emacs-directory</span> <span class="o">.</span> <span class="s">&#34;~/emacs/profile/default&#34;</span><span class="p">)))</span>
+     <span class="p">(</span><span class="s">&#34;clojure&#34;</span> <span class="o">.</span> <span class="p">((</span><span class="nv">user-emacs-directory</span> <span class="o">.</span> <span class="s">&#34;~/emacs/profile/clojure&#34;</span><span class="p">)))</span>
+     <span class="p">(</span><span class="s">&#34;roam&#34;</span> <span class="o">.</span> <span class="p">((</span><span class="nv">user-emacs-directory</span> <span class="o">.</span> <span class="s">&#34;~/emacs/profile/roam&#34;</span><span class="p">)))</span>
+     <span class="p">(</span><span class="s">&#34;ledger&#34;</span> <span class="o">.</span> <span class="p">((</span><span class="nv">user-emacs-directory</span> <span class="o">.</span> <span class="s">&#34;~/emacs/profile/ledger&#34;</span><span class="p">))))</span>
+</code></pre></div><p>And a set of aliases to help you out.</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">
+    <span class="c1"># GUI instances</span>
+    <span class="nb">alias</span> <span class="nv">emacs</span><span class="o">=</span><span class="s2">&#34;emacsclient -c -s default&#34;</span>
+    <span class="nb">alias</span> emacs.default<span class="o">=</span><span class="s2">&#34;emacsclient -c -s default&#34;</span>
+    <span class="nb">alias</span> emacs.clojure<span class="o">=</span><span class="s2">&#34;emacsclient -c -s clojure&#34;</span>
+    <span class="nb">alias</span> emacs.roam<span class="o">=</span><span class="s2">&#34;emacsclient -c -s roam&#34;</span>
+    <span class="nb">alias</span> emacs.ledger<span class="o">=</span><span class="s2">&#34;emacsclient -c -s ledger&#34;</span>
+
+    <span class="c1"># terminal instances</span>
+    <span class="nb">alias</span> <span class="nv">et</span><span class="o">=</span><span class="s2">&#34;emacsclient -t -s default&#34;</span>
+    <span class="nb">alias</span> et.default<span class="o">=</span><span class="s2">&#34;emacsclient -t -s default&#34;</span>
+    <span class="nb">alias</span> et.clojure<span class="o">=</span><span class="s2">&#34;emacsclient -t -s clojure&#34;</span>
+    <span class="nb">alias</span> et.roam<span class="o">=</span><span class="s2">&#34;emacsclient -t -s roam&#34;</span>
+    <span class="nb">alias</span> et.ledger<span class="o">=</span><span class="s2">&#34;emacsclient -t -s ledger&#34;</span>
+
+</code></pre></div><p>I still like this idea.</p>
+<p><a id="orge99c188"></a></p>
+<h1 id="after-thoughts">After thoughts</h1>
+<p>I like how much I learned by writing each one of this configuration
+files and I am definitely proud to be able to go through my own ideas
+and explore Emacs landscape. But the underlying principle here is how
+flexible Emacs actually is.</p>
+<p>My current configuration setup is <a href="https://github.com/wandersoncferreira/cfg">this</a> one which I am aiming to learn
+more about how to leverage <code>use-package</code> correctly.</p>
+<p>The term <a href="https://www.emacswiki.org/emacs/DotEmacsBankruptcy">Emacs Bankruptcy</a> is very famous in the community, but I don&rsquo;t
+believe this is the only reason you would be willing to &ldquo;re-write&rdquo;
+your configurations. I definitely encourage you to experiment.</p>
+<p>You will notice that some pieces of code will follow you whatever you go :)</p>
+<p>Happy Hacking.</p>
+</article>
+
+        </main><footer id="footer">
+    Copyright © 2020 Wanderson Ferreira
+</footer>
+</body>
+</html>
