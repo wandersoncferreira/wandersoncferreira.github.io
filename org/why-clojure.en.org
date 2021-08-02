@@ -22,7 +22,7 @@ come up with a pretty good theory, data to support it and many researchers
 independently confirming your findings. So, as you might expect this does not
 happen so often with "foundational concepts".
 
-Even to regular concepts we always have a good ruler in Geophysics: Earth.
+Even to regular concepts we always have a good ruler in Geophysics: Planet Earth.
 
 If you shoot some electrical waves into the ground and create a new mechanism to
 measure resistivity you can easily test if it works by making a hole in the
