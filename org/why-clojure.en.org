@@ -109,12 +109,12 @@ this kind of application as simple as possible.The consequences of that is
 evident in the previous companies I worked with: *we eliminate the language from
 the thinking process to solve problems*.
 
-I never talk about Clojure when I discuss some business problem. Clojure is an
-implementation detail. It's common to say: We can create a Protocol for that or
-should we type check this to make sure? But its very different than waiting for
-a senior developer or architect to explain that a specific set of classes cannot
-be manipulated to perform X due to A, B, C, D, and E that we defined in the
-past.
+I never talk about Clojure when I discuss some business problem with my teams.
+Clojure is an implementation detail. It's common to say: "We can create a
+Protocol for that or should we type check this to make sure?" But its very
+different than waiting for a senior developer or architect to explain that a
+specific set of classes cannot be manipulated to perform X due to A, B, C, D,
+and E that we defined in the past.
 
 Of course there are bad ways to code something, you will need to interact with
 existing code and make sure nothing will break. However, there are no set of
