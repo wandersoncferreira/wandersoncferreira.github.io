@@ -1,7 +1,7 @@
 #+TITLE: Why Clojure?
 #+hugo_tags: clojure
 #+hugo_draft: false
-#+date: <2021-08-01 Sun 23:25>
+#+date: <2021-08-02 Mon 14:29>
 
 For the past 5 years I have been asked this question from time to time and I
 always give a bad answer. In fact let's start with why can't I answer this
@@ -16,13 +16,14 @@ I came from an academic background and as soon as I started in software
 development a striking fact was visible: *Personal opinions are a driven force
 to several important decisions*.
 
-I'm not allowed to have a personal favorite explanation about Plate Tectonics in
-Geophysics, for sure we can disagree with mainstream theory, but you need to
-come up with a pretty good theory, data to support it and many researchers
-independently confirming your findings. So, as you might expect this does not
-happen so often with "foundational concepts".
+Curious, right? I'm not allowed to have a personal favorite explanation about
+Plate Tectonics in Geophysics, for sure we can disagree with mainstream theory,
+but you need to come up with a pretty good theory, data to support it and many
+researchers independently confirming your findings. So, as you might expect this
+does not happen so often with "foundational concepts".
 
-Even to regular concepts we always have a good ruler in Geophysics: Planet Earth.
+Even to regular concepts we always have a good ruler in Geophysics: The Planet
+Earth.
 
 If you shoot some electrical waves into the ground and create a new mechanism to
 measure resistivity you can easily test if it works by making a hole in the
@@ -75,13 +76,13 @@ rationale above we have more jobs around that community too.
 
 Then, why clojure?
 
-Back in 2014 when I started programming regularly, I joined a company and we
-were writing in Object-Oriented style. The amount of jargons in those days were
-insane: Should we use Factory Pattern? What do you think about doing Multiple
-Inheritance from X, and Y? We could create an Abstract Base class for that? I
-believe Visitor Pattern will be useful here. Yeah, let's think if we are not
-violating LSP over that. Maybe this relationship is not mapped correct in the
-ORM, so the objects are not hydrated correctly when you call Z.
+Back in 2014 when I started programming regularly, I joined a company writing in
+Object-Oriented style. The amount of jargons in those days were insane: Should
+we use Factory Pattern? What do you think about doing Multiple Inheritance from
+X, and Y? We could create an Abstract Base class for that? I believe Visitor
+Pattern will be useful here. Yeah, let's think if we are not violating LSP too.
+Maybe this relationship is not mapped correct in the ORM, so the objects are not
+hydrated correctly when you call Z.
 
 Incredible, no words about the problem domain. In fact, the business domain was
 reframed to fit the established narrative. Then, eight months into the future,
@@ -99,15 +100,17 @@ of the business problems out there you will never use any advanced feature. I so
 far experienced codebases with better Object Oriented concepts applied written
 in Clojure rather than Java/C# which is very amazing to me.
 
-Most of the business problems nowdays are related to information processing. You
-get data from source 1, you send data to recipient 2, you collect result, you
-modify some stateful store or send some emails, and we respond to source 1 with
+Most of the business problems nowdays are related to information processing.
+Basically, get data from source 1, send data to recipient 2, collect result,
+modify some stateful store or send some emails, and respond to source 1 with
 results.
 
-The community also developed its own set of "best practices" to make developing
-this kind of application as simple as possible.The consequences of that is
-evident in the previous companies I worked with: *we eliminate the language from
-the thinking process to solve problems*.
+The Clojure community also developed its own set of "best practices" to make
+developing this kind of application as simple as possible.
+
+The consequences of everything I said above about Clojure became evident in the
+previous companies I worked for: *we eliminate the language from the thinking
+process to solve problems*.
 
 I never talk about Clojure when I discuss some business problem with my teams.
 Clojure is an implementation detail. It's common to say: "We can create a
@@ -150,22 +153,21 @@ And everybody can follow.
 * What about Python, Ruby, etc?
 
 Languages like Python got a great deal of attention due to the "easiness" of use
-and the speed in order to get yourself a good prototype for an idea. Python
-specially became even more essential due to the advancements of the Data Science
-community.
+and the speed in order to get yourself a good prototype for an idea. Other than
+that, Python became even more essential due to the advancements of the Data
+Science community.
 
 I can only talk about Python here, its a great language and I would never
 recommend that you start a data science team using Clojure or F#. However, if
 you are creating an engineering team, you might consider something else.
 
 - Python is nice for prototype, but it's difficult to get consistency across teams
-  + python enables several idioms in same codebase
-  + dependending on previous background you might write something I never saw
-  + more difficult to jump from one system to the next if you have/need to
+  + enables several idioms
+  + dependending on previous background you might write something the team never saw
+  + more difficult for a developer to jump from one system to the next
 - Waste of resources
   + wild range of variability in published benchmarks from 30x to 200x slower than Java
-  + In a big team, the performance hit of Python will imply in spending more on
-    servers
+  + In a big team, this difference implies more spending with servers
 - Lack of good idioms to handle concurrent problems
   + we are in 2021
 - Stability
