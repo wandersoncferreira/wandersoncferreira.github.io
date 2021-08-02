@@ -26,7 +26,7 @@
 <main>
 <article>
 <h1>Why Clojure?</h1>
-<b><time>2021-08-01 23:25:00</time></b>
+<b><time>2021-08-02 14:29:00</time></b>
 <a href=https://wandersoncferreira.github.io/en/tags/clojure>clojure</a>
 <div>
 <p>For the past 5 years I have been asked this question from time to time and I
@@ -37,12 +37,13 @@ question properly?</p>
 <p>I came from an academic background and as soon as I started in software
 development a striking fact was visible: <strong>Personal opinions are a driven force
 to several important decisions</strong>.</p>
-<p>I&rsquo;m not allowed to have a personal favorite explanation about Plate Tectonics in
-Geophysics, for sure we can disagree with mainstream theory, but you need to
-come up with a pretty good theory, data to support it and many researchers
-independently confirming your findings. So, as you might expect this does not
-happen so often with &ldquo;foundational concepts&rdquo;.</p>
-<p>Even to regular concepts we always have a good ruler in Geophysics: Planet Earth.</p>
+<p>Curious, right? I&rsquo;m not allowed to have a personal favorite explanation about
+Plate Tectonics in Geophysics, for sure we can disagree with mainstream theory,
+but you need to come up with a pretty good theory, data to support it and many
+researchers independently confirming your findings. So, as you might expect this
+does not happen so often with &ldquo;foundational concepts&rdquo;.</p>
+<p>Even to regular concepts we always have a good ruler in Geophysics: The Planet
+Earth.</p>
 <p>If you shoot some electrical waves into the ground and create a new mechanism to
 measure resistivity you can easily test if it works by making a hole in the
 ground, get a rock sample and measure the resistivity in your lab. And this
@@ -81,13 +82,13 @@ proficient. We have many idioms to master, we have bills to pay and due to
 rationale above we have more jobs around that community too.</p>
 <hr>
 <p>Then, why clojure?</p>
-<p>Back in 2014 when I started programming regularly, I joined a company and we
-were writing in Object-Oriented style. The amount of jargons in those days were
-insane: Should we use Factory Pattern? What do you think about doing Multiple
-Inheritance from X, and Y? We could create an Abstract Base class for that? I
-believe Visitor Pattern will be useful here. Yeah, let&rsquo;s think if we are not
-violating LSP over that. Maybe this relationship is not mapped correct in the
-ORM, so the objects are not hydrated correctly when you call Z.</p>
+<p>Back in 2014 when I started programming regularly, I joined a company writing in
+Object-Oriented style. The amount of jargons in those days were insane: Should
+we use Factory Pattern? What do you think about doing Multiple Inheritance from
+X, and Y? We could create an Abstract Base class for that? I believe Visitor
+Pattern will be useful here. Yeah, let&rsquo;s think if we are not violating LSP too.
+Maybe this relationship is not mapped correct in the ORM, so the objects are not
+hydrated correctly when you call Z.</p>
 <p>Incredible, no words about the problem domain. In fact, the business domain was
 reframed to fit the established narrative. Then, eight months into the future,
 the real world shows us a new scenario that completely invalidate a very
@@ -99,14 +100,15 @@ important assumption we made to keep the code &ldquo;elegant&rdquo;.</p>
 of the business problems out there you will never use any advanced feature. I so
 far experienced codebases with better Object Oriented concepts applied written
 in Clojure rather than Java/C# which is very amazing to me.</p>
-<p>Most of the business problems nowdays are related to information processing. You
-get data from source 1, you send data to recipient 2, you collect result, you
-modify some stateful store or send some emails, and we respond to source 1 with
+<p>Most of the business problems nowdays are related to information processing.
+Basically, get data from source 1, send data to recipient 2, collect result,
+modify some stateful store or send some emails, and respond to source 1 with
 results.</p>
-<p>The community also developed its own set of &ldquo;best practices&rdquo; to make developing
-this kind of application as simple as possible.The consequences of that is
-evident in the previous companies I worked with: <strong>we eliminate the language from
-the thinking process to solve problems</strong>.</p>
+<p>The Clojure community also developed its own set of &ldquo;best practices&rdquo; to make
+developing this kind of application as simple as possible.</p>
+<p>The consequences of everything I said above about Clojure became evident in the
+previous companies I worked for: <strong>we eliminate the language from the thinking
+process to solve problems</strong>.</p>
 <p>I never talk about Clojure when I discuss some business problem with my teams.
 Clojure is an implementation detail. It&rsquo;s common to say: &ldquo;We can create a
 Protocol for that or should we type check this to make sure?&rdquo; But its very
@@ -141,25 +143,24 @@ the language we can turn the team focus into:</p>
 <p>And everybody can follow.</p>
 <h2 id=what-about-python-ruby-etc>What about Python, Ruby, etc?</h2>
 <p>Languages like Python got a great deal of attention due to the &ldquo;easiness&rdquo; of use
-and the speed in order to get yourself a good prototype for an idea. Python
-specially became even more essential due to the advancements of the Data Science
-community.</p>
+and the speed in order to get yourself a good prototype for an idea. Other than
+that, Python became even more essential due to the advancements of the Data
+Science community.</p>
 <p>I can only talk about Python here, its a great language and I would never
 recommend that you start a data science team using Clojure or F#. However, if
 you are creating an engineering team, you might consider something else.</p>
 <ul>
 <li>Python is nice for prototype, but it&rsquo;s difficult to get consistency across teams
 <ul>
-<li>python enables several idioms in same codebase</li>
-<li>dependending on previous background you might write something I never saw</li>
-<li>more difficult to jump from one system to the next if you have/need to</li>
+<li>enables several idioms</li>
+<li>dependending on previous background you might write something the team never saw</li>
+<li>more difficult for a developer to jump from one system to the next</li>
 </ul>
 </li>
 <li>Waste of resources
 <ul>
 <li>wild range of variability in published benchmarks from 30x to 200x slower than Java</li>
-<li>In a big team, the performance hit of Python will imply in spending more on
-servers</li>
+<li>In a big team, this difference implies more spending with servers</li>
 </ul>
 </li>
 <li>Lack of good idioms to handle concurrent problems
