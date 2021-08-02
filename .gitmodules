@@ -1,0 +1,9 @@
+[submodule "themes/hugonews"]
+	path = themes/hugonews
+	url = https://github.com/spaghettiwews/hugonews.git
+[submodule "themes/photophobia"]
+	path = themes/photophobia
+	url = https://github.com/setsevireon/photophobia.git
+[submodule "themes/zen"]
+	path = themes/zen
+	url = https://github.com/frjo/hugo-theme-zen.git

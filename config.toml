@@ -1,0 +1,46 @@
+baseURL = "https://wandersoncferreira.github.io"
+title = "Wanderson Ferreira"
+defaultContentLanguage = "en"
+theme = "smol"
+copyright = "Wanderson Ferreira"
+defaultContentLanguageInSubdir = true
+
+canonifyURLs = true
+
+enableEmoji = true
+enableGitInfo = true
+
+disableFastRender = true        # Hugo 0.30
+
+pygmentsCodeFences = true       # This applies to Chroma too.
+pygmentsUseClasses = true       # This applies to Chroma too.
+
+[languages]
+    [languages.en]
+        weight = 1
+    [languages.en.params]
+        subtitle = "Reifying fragmented ideas"
+    [languages.pt]
+        weight = 2
+    [languages.pt.params]
+        subtitle = "Materializando ideias fragmentadas"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true # This is *necessary* for ox-hugo to work well with Hugo 0.60.0+
+
+[menu]
+    [[menu.main]]
+        identifier = "tags"
+        name = "Tags"
+        url = "/tags/"
+        weight = 3
+    [[menu.footer]]
+        name = "Github"
+        url = "https://github.com/wandersoncferreira"
+        weight = 1
+    [[menu.footer]]
+        name = "Twitter"
+        url = "https://twitter.com/bartuka_"
+        weight = 2
