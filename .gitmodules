@@ -9,4 +9,4 @@
 	url = https://github.com/frjo/hugo-theme-zen.git
 [submodule "themes/smol"]
 	path = themes/smol
-	url = git@github.com:wandersoncferreira/smol.git
+	url = https://github.com/wandersoncferreira/smol.git
