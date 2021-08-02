@@ -27,7 +27,7 @@ come up with a pretty good theory, data to support it and many researchers
 independently confirming your findings. So, as you might expect this does not
 happen so often with "foundational concepts".
 
-Even to regular concepts we always have a good ruler in Geophysics: Earth.
+Even to regular concepts we always have a good ruler in Geophysics: Planet Earth.
 
 If you shoot some electrical waves into the ground and create a new mechanism to
 measure resistivity you can easily test if it works by making a hole in the
@@ -167,19 +167,25 @@ recommend that you start a data science team using Clojure or F#. However, if
 you are creating an engineering team, you might consider something else.
 
 -   Python is nice for prototype, but it's difficult to get consistency across teams
-    -   Python enables several idioms in same codebase
-    -   Dependending on previous background you might write something I never saw
+    -   python enables several idioms in same codebase
+    -   dependending on previous background you might write something I never saw
+    -   more difficult to jump from one system to the next if you have/need to
 -   Waste of resources
-    -   Wild range of variability in published benchmarks from 30x to 200x slower
+    -   wild range of variability in published benchmarks from 30x to 200x slower than Java
     -   In a big team, the performance hit of Python will imply in spending more on
         servers
 -   Lack of good idioms to handle concurrent problems
-    -   We are in 2021
+    -   we are in 2021
 -   Stability
-    -   The language itself has many features being added every release
-    -   Do not have a strong community supporting backward compatibility
-    -   Clojure has a very small core and any additional feature can be suplied via libraries
-    -   Java libraries are very stable and battle-tested too
+    -   the language itself has many features being added every release
+    -   do not have a strong community supporting backward compatibility
+    -   clojure has a very small core and any additional feature can be suplied via libraries
+    -   java libraries are very stable and battle-tested too
+
+These are some of the facets of Python that matters to **me**, so you should have
+your owns, right? As we are in a world where everything is personal, I am sure
+you can come up with ways to do better on each of those points above; please do
+it.
 
 One of the main selling points of Python is that "machine is cheap" and the time
 to get something done in Java is too expensive, so we throw away a good
@@ -187,7 +193,7 @@ foundation in the name of speed ("productivity"). Then, if our product is a
 success we think about what to do later.
 
 To be honest, the whole premise of Java/C# programmers to be "slower" can be
-argued when we see the amount of money that giant enterprises put into
+argued too when we compare the amount of money that giant enterprises put into
 developing good tooling for developers.
 
 My take on this is that Clojure provides the best of both worlds, I can use all
@@ -207,7 +213,7 @@ I would definitely choose the functional alternative to whatever mainstream
 language happen to be in place.
 
 In the end, how does it fix the "opinionated" scenario we face in software
-development? No!, no way whatsoever.
+development? It does not, no way whatsoever.
 
 Clojure has its own set of believes and its followers too.
 
