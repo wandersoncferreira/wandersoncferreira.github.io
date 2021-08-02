@@ -109,7 +109,7 @@ this kind of application as simple as possible.The consequences of that is
 evident in the previous companies I worked with: *we eliminate the language from
 the thinking process to solve problems*.
 
-I never hear about Clojure when I discuss some business problem. Clojure is an
+I never talk about Clojure when I discuss some business problem. Clojure is an
 implementation detail. It's common to say: We can create a Protocol for that or
 should we type check this to make sure? But its very different than waiting for
 a senior developer or architect to explain that a specific set of classes cannot
