@@ -41,10 +41,10 @@ But now, what are the core concepts of software development? Are they easily
 measurable? Better yet, how does them matter inside a small company building a
 pilot project to 1000 users at best?
 
-I never went to Computer Science, but I imagine we do have good answers there,
-but in corporate world we quickly get into the realm of "good practices" which
-is a pile of general advices that most of the industry agreed upon. How useful
-are these advices? In my opinion, not much.
+I never went to Computer Science college, but I imagine we do have good answers
+there, but in corporate world we quickly get into the realm of "good practices"
+which is a pile of general advices that most of the industry agreed upon. How
+useful are these advices? In my opinion, not much.
 
 If I tell you "avoid complexity", what does that mean? Of course I want to avoid
 complexity, but how? and more important, how can I avoid it given the current
@@ -89,9 +89,9 @@ believe Visitor Pattern will be useful here. Yeah, let's think if we are not
 violating LSP over that. Maybe this relationship is not mapped correct in the
 ORM, so the objects are not hydrated correctly when you call Z.
 
-Incredible, no words about the problem domain. In fact, the business domain
-became reframed to fit the established narrative. Then, eight months into the
-future, the real world shows us a new scenario that completely invalidate a very
+Incredible, no words about the problem domain. In fact, the business domain was
+reframed to fit the established narrative. Then, eight months into the future,
+the real world shows us a new scenario that completely invalidate a very
 important assumption we made to keep the code "elegant".
 
 Back to whiteboard.
@@ -115,12 +115,12 @@ this kind of application as simple as possible.The consequences of that is
 evident in the previous companies I worked with: **we eliminate the language from
 the thinking process to solve problems**.
 
-I never hear about Clojure when I discuss some business problem. Clojure is an
-implementation detail. It's common to say: We can create a Protocol for that or
-should we type check this to make sure? But its very different than waiting for
-a senior developer or architect to explain that a specific set of classes cannot
-be manipulated to perform X due to A, B, C, D, and E that we defined in the
-past.
+I never talk about Clojure when I discuss some business problem with my teams.
+Clojure is an implementation detail. It's common to say: "We can create a
+Protocol for that or should we type check this to make sure?" But its very
+different than waiting for a senior developer or architect to explain that a
+specific set of classes cannot be manipulated to perform X due to A, B, C, D,
+and E that we defined in the past.
 
 Of course there are bad ways to code something, you will need to interact with
 existing code and make sure nothing will break. However, there are no set of
