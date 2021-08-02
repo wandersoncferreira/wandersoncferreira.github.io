@@ -49,15 +49,15 @@ measure resistivity you can easily test if it works by making a hole in the
 ground, get a rock sample and measure the resistivity in your lab. And this
 scenario is not only true inside the academia, if you are a company like
 ExxonMobil or Petrobras, you do have the same constraints and ruler. Companies
-usually have rules of thumbs when science don&rsquo;t have established explanations to
+usually have rules of thumb when science don&rsquo;t have established explanations to
 events, but they are always validated by the same ruler.</p>
 <p>But now, what are the core concepts of software development? Are they easily
 measurable? Better yet, how does them matter inside a small company building a
 pilot project to 1000 users at best?</p>
 <p>I never went to Computer Science college, but I imagine we do have good answers
 there, but in corporate world we quickly get into the realm of &ldquo;good practices&rdquo;
-which is a pile of general advices that most of the industry agreed upon. How
-useful are these advices? In my opinion, not much.</p>
+which are a pile of general advices that most of the industry think as good
+ideas. How useful are these advices? In my opinion, not much.</p>
 <p>If I tell you &ldquo;avoid complexity&rdquo;, what does that mean? Of course I want to avoid
 complexity, but how? and more important, how can I avoid it given the current
 circumstances of <strong>my</strong> project, <strong>my</strong> company, <strong>my</strong> budget, <strong>my</strong> timeframe, and
@@ -70,7 +70,7 @@ for changes in the future? What are the possible nature of these changes? How
 can they manifest in the company?</p>
 <p>Impossible.</p>
 <p>The amount of issues in this picture is amazing to me.</p>
-<h2 id=your-options>Your options</h2>
+<h2 id=the-options>The options</h2>
 <p>I can easily understand why a <strong>team</strong> chooses Java/C# to create their products.
 We have so many things to think about and Java/C# has been around for ages and
 it just works! Google, Amazon, Netflix, and many others have lots of Java around
@@ -82,13 +82,13 @@ proficient. We have many idioms to master, we have bills to pay and due to
 rationale above we have more jobs around that community too.</p>
 <hr>
 <p>Then, why clojure?</p>
-<p>Back in 2014 when I started programming regularly, I joined a company writing in
+<p>Back in 2014 when I started programming regularly, I joined a company using
 Object-Oriented style. The amount of jargons in those days were insane: Should
-we use Factory Pattern? What do you think about doing Multiple Inheritance from
-X, and Y? We could create an Abstract Base class for that? I believe Visitor
-Pattern will be useful here. Yeah, let&rsquo;s think if we are not violating LSP too.
-Maybe this relationship is not mapped correct in the ORM, so the objects are not
-hydrated correctly when you call Z.</p>
+we use Factory Pattern? And Multiple Inheritance from X, and Y? We could create
+an Abstract Base class for that? I believe Visitor Pattern will be useful here.
+Yeah, let&rsquo;s think if we are not violating LSP too. Maybe this relationship is
+not mapped correct in the ORM, so the objects are not hydrated correctly when
+you call Z.</p>
 <p>Incredible, no words about the problem domain. In fact, the business domain was
 reframed to fit the established narrative. Then, eight months into the future,
 the real world shows us a new scenario that completely invalidate a very
@@ -106,9 +106,9 @@ modify some stateful store or send some emails, and respond to source 1 with
 results.</p>
 <p>The Clojure community also developed its own set of &ldquo;best practices&rdquo; to make
 developing this kind of application as simple as possible.</p>
-<p>The consequences of everything I said above about Clojure became evident in the
-previous companies I worked for: <strong>we eliminate the language from the thinking
-process to solve problems</strong>.</p>
+<p>The consequences about being a small language became evident in the previous
+companies I worked for: <strong>we eliminate the language from the thinking process to
+solve problems</strong>.</p>
 <p>I never talk about Clojure when I discuss some business problem with my teams.
 Clojure is an implementation detail. It&rsquo;s common to say: &ldquo;We can create a
 Protocol for that or should we type check this to make sure?&rdquo; But its very
