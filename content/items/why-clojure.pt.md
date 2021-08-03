@@ -202,7 +202,7 @@ outra coisa.
     -   Estamos em 2021, isso deve ser cada vez mais demandado
 -   Estabilidade
     -   a linguagem em si recebe diversas funcionalidades novas a cada lançamento
-    -   a comunidade não tem a mentalidade de manter versões antigas funcionando ao mesmo tempo que as novas
+    -   a comunidade não tem a mentalidade de manter versões antigas em nome de compatibilidade com software existente
     -   clojure tem um núcleo da linguagem muito pequeno e qualquer funcionalidade pode ser feita via bibliotecas
     -   as bibliotecas em java são bem estáveis e testadas em produção por muitos anos
 
