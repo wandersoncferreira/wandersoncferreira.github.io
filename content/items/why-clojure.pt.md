@@ -6,9 +6,9 @@ tags: ["clojure"]
 draft: false
 ---
 
-Nos últimos 5 anos, me fizeram essa pergunta de tempos em tempos e eu sempre dou
-uma resposta ruim. De fato, eu gostaria de iniciar com o porque eu não consigo
-responder essa pergunta direito.
+Nos últimos 5 anos, eu precisei responder essa pergunta diversas vezes e eu
+sempre dei uma resposta ruim. De fato, eu gostaria de iniciar com o porque eu
+não consigo responder essa pergunta direito.
 
 <!--more-->
 
