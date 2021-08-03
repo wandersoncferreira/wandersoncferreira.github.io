@@ -6,9 +6,9 @@ tags: ["clojure"]
 draft: false
 ---
 
-Nos últimos 5 anos, eu precisei responder essa pergunta diversas vezes e eu
-sempre dei uma resposta ruim. De fato, eu gostaria de iniciar com o porque eu
-não consigo responder essa pergunta direito.
+Nos últimos 5 anos eu precisei responder essa pergunta diversas vezes e eu
+sempre dei uma resposta ruim. Vou tentar novamente, vamos iniciar com o porque
+eu não consigo responder essa pergunta direito.
 
 <!--more-->
 
@@ -36,14 +36,11 @@ resistividade, você pode facilmente testar se funcionou ou não pegando uma
 amostra da rocha em profundidade e medindo a resistividade no seu laboratório.E
 esse tipo de abordagem não é exclusivo para pesquisadores em universidades, se
 você trabalha em empresas como a ExxonMobil ou Petrobras, você vai ter os mesmos
-problemas e o planeta Terra vai continuar sendo o seu arbitro. As empresas
-geralmente tem algumas regras de bolso para os momentos em que a ciência não tem
-boas respostas para os problemas, mas ainda assim precisam ser sempre validadas.
+problemas e o planeta Terra vai continuar sendo o seu arbitro.
 
 Mas agora, quais são os conceitos fundamentais do desenvolvimento de software?
 Eles são facilmente mensuráveis? Melhor ainda, como esses conceitos impactam
-empresas pequenas construindo sistemas piloto para 1000 usuários no melhor
-cenário?
+empresas pequenas construindo sistemas para 1000 usuários no melhor cenário?
 
 Eu nunca frequentei universidade de Ciência da Computação, mas eu imagino que
 temos boas respostas para essas perguntas por lá, porém quando entramos no mundo
@@ -51,13 +48,19 @@ corporativo nós rapidamente nos apoiamos em "melhores práticas" do mercado que
 basicamente uma pilha de conselhos genéricos que a maioria da industria acordou
 serem boas ideias.
 
-O quão úteis são esses conselhos? Na minha opinião, não muito!
+E por que isso? É esquisito que os conceitos teóricos não façam parte do
+dia-a-dia do programador. Isso pensando em "estruturas de dados", "tempo de
+execução de algoritmos", etc. Porém quando falamos de "como resolver um problema
+de logistica da empresa do setor farmacêutico com restrições A, B, e C", ai a
+teoria nos deixa completamente a deriva.
+
+O quão úteis são os conselhos de melhores práticas? Na minha opinião, não muito!
 
 Se eu te falar "evite complexidade", o que isso significa? Certamente eu quero
 evitar complexidade, mas como? e mais importante ainda, como eu posso evitar
-isso dado as circunstancias especificas do meu projeto, da minha empresa, de
-quanto eu tenho disponível para gastar, do meu tempo disponível, e das minhas
-habilidades?
+dada as circunstancias especificas do meu projeto, da minha empresa, do meu
+time, de quanto eu tenho disponível para gastar, do meu tempo disponível, e das
+minhas habilidades?
 
 Eu não sei, só evite complexidade.
 
@@ -70,7 +73,7 @@ manifestam dentro da empresa?
 
 Impossível.
 
-A quantidade de problemas nesse quadro pintado acima é abismal.
+A quantidade de questões abertas nesse quadro pintado acima é abismal.
 
 
 ## As opções {#as-opções}
