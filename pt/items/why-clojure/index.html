@@ -106,7 +106,7 @@ narrativa. Dai, 8 meses no futuro o mundo real nos mostrava algum cenário que
 invalidava completamente alguma suposição critica que fizemos no passado para
 manter o código mais &ldquo;elegante&rdquo;.</p>
 <p>De volta para a lousa!</p>
-<p>Algumas vezes, de volta para re-escrever o programa.</p>
+<p>Algumas vezes, de volta para re-escrever o programa inteiro.</p>
 <hr>
 <p>Clojure é terrivelmente chato. Tem poucos construtores para serem aprendidos e
 para 90% dos problemas de negocio por ai você nunca vai utilizar nenhuma
@@ -135,13 +135,15 @@ precisa interagir com código existente e tomar cuidado para não quebrar nada.
 Porém, não existe um conjunto de dor autoinfligida devido a relacionamentos
 inventados entre as entidades de negocio no nosso sistema.</p>
 <p>Eu concordo que as vezes é útil ter formas de restringir alguns relacionamentos
-e impor invariantes no sistema. Dessa forma, existem formas de criar isso em
-Clojure através do uso de Schemas e/ou Specs que se parecem como um &ldquo;sistema de
-tipagem&rdquo;.</p>
-<p>O podemos do estilo Funcional em si é algo que não dá para ignorar. A quantidade
-de carga cognitiva associada com a programação em Python (por exemplo) é
-incrível que aceitamos isso e ainda seja encorajado. Tente seguir algum código
-das bibliotecas SQLAlchemy ou Pandas, ou simplesmente tente entender alguns
+e impor invariantes no sistema. Dessa forma, existem maneiras de criar isso em
+Clojure através do uso de Schemas e/ou Specs que se parecem com um &ldquo;sistema de
+tipagem&rdquo; sob demanda.</p>
+<p>O poder do estilo Funcional em si é algo que não dá para ignorar também. A
+quantidade de carga cognitiva associada com a programação em Python (por
+exemplo) é incrível, aceitamos e encorajamos isso. Mutação de dados e calls com
+side-effects encoraja que você mantenha na sua cabeça alguns bons passos lógicos
+do estado do seu programa em um dado instante. Tente seguir algum código das
+bibliotecas SQLAlchemy ou Pandas, ou simplesmente tente entender alguns
 <code>decoradores</code>, é uma maravilha. Se você consegue, eu tenho certeza que você se
 sente bem esperto e deveria mesmo.</p>
 <p>A sensação de entender algo completo é muito boa, eu sinto bastante falta disso
@@ -156,6 +158,8 @@ em outros pontos:</p>
 <li>entendimento compartilhado sobre a arquitetura (alto nivel)</li>
 <li>entendimento compartilhado das capacidades atuais do sistema</li>
 <li>melhorias em entendimento do código</li>
+<li>melhorias com automações</li>
+<li>melhorias em teste</li>
 <li>melhorias em eficiência (baixo nivel e truques isolados)</li>
 </ul>
 <p>E todo mundo consegue acompanhar.</p>
@@ -179,7 +183,7 @@ outra coisa.</p>
 </li>
 <li>Desperdício de recursos
 <ul>
-<li>temos uma quantidade bem variada de benchmarks indo de 30x até 200x mais lento que Java</li>
+<li>benchmarks variados indo de 30x até 200x mais lento que Java</li>
 <li>em um time grande, essa diferença implica em mais gastos com servidores</li>
 </ul>
 </li>
@@ -191,16 +195,21 @@ outra coisa.</p>
 <li>Estabilidade
 <ul>
 <li>a linguagem em si recebe diversas funcionalidades novas a cada lançamento</li>
-<li>a comunidade não tem a mentalidade de manter versões antigas em nome de compatibilidade com software existente</li>
-<li>clojure tem um núcleo da linguagem muito pequeno e qualquer funcionalidade pode ser feita via bibliotecas</li>
+<li>a comunidade não tem a mentalidade de manter retro compatibilidade com software existente</li>
+<li>clojure tem um núcleo da linguagem muito pequeno
+<ul>
+<li>qualquer funcionalidade pode ser feita via bibliotecas</li>
+<li>vide o caso do <code>core.async</code> e <code>specs</code> como exemplos</li>
+</ul>
+</li>
 <li>as bibliotecas em java são bem estáveis e testadas em produção por muitos anos</li>
 </ul>
 </li>
 </ul>
-<p>Esses são alguns aspectos do Python que importam para <strong>mim</strong>, logo se você deve
-ter os seus próprios motivos, certo? E como estamos em um mundo onde tudo é
-pessoal, eu tenho certeza que você tem melhores formas de lidar com cada um dos
-pontos que eu mencionei de uma forma melhor; por favor faça isso.</p>
+<p>Esses são alguns aspectos do Python que importam para <strong>mim</strong>, logo você deve ter
+os seus próprios motivos, certo? E como estamos em um mundo onde tudo é pessoal,
+eu tenho certeza que você tem melhores formas de lidar com cada um dos pontos
+que eu mencionei acima; por favor faça isso.</p>
 <p>Um dos principais pontos atrativos do Python é que o gasto com servidores é
 barato e o tempo para codificar qualquer coisa em Java é muito custoso, assim a
 gente joga fora toda a fundação robusta e impressionante do Java (JVM) em nome
