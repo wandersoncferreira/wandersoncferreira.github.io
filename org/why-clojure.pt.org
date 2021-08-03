@@ -105,7 +105,7 @@ manter o código mais "elegante".
 
 De volta para a lousa!
 
-Algumas vezes, de volta para re-escrever o programa.
+Algumas vezes, de volta para re-escrever o programa inteiro.
 
 -------
 
@@ -142,14 +142,16 @@ Porém, não existe um conjunto de dor autoinfligida devido a relacionamentos
 inventados entre as entidades de negocio no nosso sistema.
 
 Eu concordo que as vezes é útil ter formas de restringir alguns relacionamentos
-e impor invariantes no sistema. Dessa forma, existem formas de criar isso em
-Clojure através do uso de Schemas e/ou Specs que se parecem como um "sistema de
-tipagem".
+e impor invariantes no sistema. Dessa forma, existem maneiras de criar isso em
+Clojure através do uso de Schemas e/ou Specs que se parecem com um "sistema de
+tipagem" sob demanda.
 
-O podemos do estilo Funcional em si é algo que não dá para ignorar. A quantidade
-de carga cognitiva associada com a programação em Python (por exemplo) é
-incrível que aceitamos isso e ainda seja encorajado. Tente seguir algum código
-das bibliotecas SQLAlchemy ou Pandas, ou simplesmente tente entender alguns
+O poder do estilo Funcional em si é algo que não dá para ignorar também. A
+quantidade de carga cognitiva associada com a programação em Python (por
+exemplo) é incrível, aceitamos e encorajamos isso. Mutação de dados e calls com
+side-effects encoraja que você mantenha na sua cabeça alguns bons passos lógicos
+do estado do seu programa em um dado instante. Tente seguir algum código das
+bibliotecas SQLAlchemy ou Pandas, ou simplesmente tente entender alguns
 =decoradores=, é uma maravilha. Se você consegue, eu tenho certeza que você se
 sente bem esperto e deveria mesmo.
 
@@ -167,6 +169,8 @@ em outros pontos:
 - entendimento compartilhado sobre a arquitetura (alto nivel)
 - entendimento compartilhado das capacidades atuais do sistema
 - melhorias em entendimento do código
+- melhorias com automações
+- melhorias em teste
 - melhorias em eficiência (baixo nivel e truques isolados)
 
 E todo mundo consegue acompanhar.
@@ -189,20 +193,22 @@ outra coisa.
   + dependendo das suas experiencias prévias, você pode escrever algo que o time nunca tenha visto
   + torna mais complicado de uma pessoa trafegar entre sistemas
 - Desperdício de recursos
-  + temos uma quantidade bem variada de benchmarks indo de 30x até 200x mais lento que Java
+  + benchmarks variados indo de 30x até 200x mais lento que Java
   + em um time grande, essa diferença implica em mais gastos com servidores
 - Falta de um bom suporte para problemas concorrentes
   + Estamos em 2021, isso deve ser cada vez mais demandado
 - Estabilidade
   + a linguagem em si recebe diversas funcionalidades novas a cada lançamento
-  + a comunidade não tem a mentalidade de manter versões antigas em nome de compatibilidade com software existente
-  + clojure tem um núcleo da linguagem muito pequeno e qualquer funcionalidade pode ser feita via bibliotecas
+  + a comunidade não tem a mentalidade de manter retro compatibilidade com software existente
+  + clojure tem um núcleo da linguagem muito pequeno
+    - qualquer funcionalidade pode ser feita via bibliotecas
+    - vide o caso do =core.async= e =specs= como exemplos
   + as bibliotecas em java são bem estáveis e testadas em produção por muitos anos
 
-Esses são alguns aspectos do Python que importam para *mim*, logo se você deve
-ter os seus próprios motivos, certo? E como estamos em um mundo onde tudo é
-pessoal, eu tenho certeza que você tem melhores formas de lidar com cada um dos
-pontos que eu mencionei de uma forma melhor; por favor faça isso.
+Esses são alguns aspectos do Python que importam para *mim*, logo você deve ter
+os seus próprios motivos, certo? E como estamos em um mundo onde tudo é pessoal,
+eu tenho certeza que você tem melhores formas de lidar com cada um dos pontos
+que eu mencionei acima; por favor faça isso.
 
 Um dos principais pontos atrativos do Python é que o gasto com servidores é
 barato e o tempo para codificar qualquer coisa em Java é muito custoso, assim a

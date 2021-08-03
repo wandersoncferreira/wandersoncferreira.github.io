@@ -156,6 +156,8 @@ the language we can turn the team focus into:
 -   shared understanding of architecture (higher level)
 -   shared understanding of current capabilities
 -   improving readability of code
+-   improving automation
+-   improving tests
 -   improving efficiency of code (smaller level and isolated tricks)
 
 And everybody can follow.
@@ -185,6 +187,7 @@ you are creating an engineering team, you might consider something else.
     -   the language itself has many features being added every release
     -   do not have a strong community support to backward compatibility
     -   clojure has a very small core and any additional feature can be suplied via libraries
+        -   look at `core-async` and `specs` as examples
     -   java libraries are very stable and battle-tested too
 
 These are some of the facets of Python that matters to **me**, so you should have
