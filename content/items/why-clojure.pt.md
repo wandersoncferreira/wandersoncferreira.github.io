@@ -73,7 +73,7 @@ manifestam dentro da empresa?
 
 Impossível.
 
-A quantidade de questões abertas nesse quadro pintado acima é abismal.
+A quantidade de questões abertas é abismal.
 
 
 ## As opções {#as-opções}

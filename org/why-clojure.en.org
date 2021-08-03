@@ -4,7 +4,7 @@
 #+date: <2021-08-02 Mon 14:29>
 
 For the past 5 years I have been asked this question from time to time and I
-always give a bad answer. In fact let's start with why can't I answer this
+always gave a bad answer. Let's try again and start with why can't I answer this
 question properly?
 
 <!--more-->
@@ -29,23 +29,26 @@ If you shoot some electrical waves into the ground and create a new mechanism to
 measure resistivity you can easily test if it works by making a hole in the
 ground, get a rock sample and measure the resistivity in your lab. And this
 scenario is not only true inside the academia, if you are a company like
-ExxonMobil or Petrobras, you do have the same constraints and ruler. Companies
-usually have rules of thumb when science don't have established explanations to
-events, but they are always validated by the same ruler.
+ExxonMobil or Petrobras, you do have the same constraints and ruler.
 
 But now, what are the core concepts of software development? Are they easily
 measurable? Better yet, how does them matter inside a small company building a
-pilot project to 1000 users at best?
+project to 1000 users at best?
 
 I never went to Computer Science college, but I imagine we do have good answers
 there, but in corporate world we quickly get into the realm of "good practices"
-which are a pile of general advices that most of the industry think as good
+which are piles of general advices that most of the industry think as good
 ideas. How useful are these advices? In my opinion, not much.
+
+And why is that? It's weird to me that theoric concepts are not part of the
+daily basis for the regular programmer. When we think about time complexity and
+space complexity, we are closer to theory, but apart from that we are on our
+own.
 
 If I tell you "avoid complexity", what does that mean? Of course I want to avoid
 complexity, but how? and more important, how can I avoid it given the current
-circumstances of *my* project, *my* company, *my* budget, *my* timeframe, and
-*my* skill level?
+circumstances of *my* project, *my* company, *my8 team, *my* budget, *my*
+timeframe, and *my* skill level?
 
 I don't know, just avoid complexity.
 
@@ -57,7 +60,7 @@ can they manifest in the company?
 
 Impossible.
 
-The amount of issues in this picture is amazing to me.
+The amount of open questions is amazing to me.
 
 * The options
 
