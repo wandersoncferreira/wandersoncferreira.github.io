@@ -49,10 +49,9 @@ basicamente uma pilha de conselhos genéricos que a maioria da industria acordou
 serem boas ideias.
 
 E por que isso? É esquisito que os conceitos teóricos não façam parte do
-dia-a-dia do programador. Isso pensando em "estruturas de dados", "tempo de
-execução de algoritmos", etc. Porém quando falamos de "como resolver um problema
-de logistica da empresa do setor farmacêutico com restrições A, B, e C", ai a
-teoria nos deixa completamente a deriva.
+dia-a-dia do programador. Talvez nós estamos mais próximo da teoria quando
+pensamos em "estruturas de dados", "tempo de execução de algoritmos", etc. Porém
+para todo o resto estamos a deriva.
 
 O quão úteis são os conselhos de melhores práticas? Na minha opinião, não muito!
 
@@ -175,7 +174,7 @@ em outros pontos:
 -   entendimento compartilhado sobre a arquitetura (alto nivel)
 -   entendimento compartilhado das capacidades atuais do sistema
 -   melhorias em entendimento do código
--   melhorias com automações
+-   melhorias em automações
 -   melhorias em teste
 -   melhorias em eficiência (baixo nivel e truques isolados)
 
