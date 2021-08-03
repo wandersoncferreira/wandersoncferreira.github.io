@@ -175,7 +175,7 @@ you are creating an engineering team, you might consider something else.
   + we are in 2021
 - Stability
   + the language itself has many features being added every release
-  + do not have a strong community supporting backward compatibility
+  + do not have a strong community support to backward compatibility
   + clojure has a very small core and any additional feature can be suplied via libraries
   + java libraries are very stable and battle-tested too
 
