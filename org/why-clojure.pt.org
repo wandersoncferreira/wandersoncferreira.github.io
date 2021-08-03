@@ -154,7 +154,7 @@ bibliotecas SQLAlchemy ou Pandas, ou simplesmente tente entender alguns
 =decoradores=, é uma maravilha. Se você consegue, eu tenho certeza que você se
 sente bem esperto e deveria mesmo.
 
-A sensação de entender algo completo é muito boa, eu sinto bastante falta disso
+A sensação de entender algo complexo é muito boa, eu sinto bastante falta disso
 para ser sincero. Talvez essa seja a explicação porque alguns projetos usam
 tantos =macros= ("meta-programming") em Clojure.
 
