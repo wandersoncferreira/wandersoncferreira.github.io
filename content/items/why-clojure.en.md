@@ -223,7 +223,7 @@ language happen to be in place.
 In the end, how does it fix the "opinionated" scenario we face in software
 development? It does not, no way whatsoever.
 
-Clojure has its own set of believes and its followers too.
+Clojure has its own set of beliefs and its followers too.
 
 That's why my answers are always bad and that's why you should continue doing
 whatever you want.
