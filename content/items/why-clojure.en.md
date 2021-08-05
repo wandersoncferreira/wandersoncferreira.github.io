@@ -141,7 +141,7 @@ The power of the Functional idiom is also too good to be ignored. The amount of
 cognitive overload associated with programming in Python is amazing that we
 accept and encourage that. Try to follow some code from SQLAlchemy library or
 Pandas, or simply following some nested decorators, it's great. If you can, I am
-sure you feel very smart to do so.
+sure you feel very smart to do so and you should!
 
 The feeling of understanding something complex is great, I miss that a lot to be
 honest. Perhaps this might be the reason some codebases has lots of `macros` in
@@ -188,7 +188,7 @@ you are creating an engineering team, you might consider something else.
     -   do not have a strong community support to backward compatibility
     -   clojure has a very small core and any additional feature can be suplied via libraries
         -   look at `core-async` and `specs` as examples
-    -   java libraries are very stable and battle-tested too
+        -   java libraries are very stable and battle-tested too
 
 These are some of the facets of Python that matters to **me**, so you should have
 your owns, right? As we are in a world where everything is personal, I am sure
@@ -225,5 +225,5 @@ development? It does not, no way whatsoever.
 
 Clojure has its own set of beliefs and its followers too.
 
-That's why my answers are always bad and that's why you should continue doing
-whatever you want.
+That's why my answers are always bad to "Why Clojure?" and that's why you should
+continue to do whatever you want.

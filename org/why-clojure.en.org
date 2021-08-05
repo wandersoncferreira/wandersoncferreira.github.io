@@ -216,5 +216,5 @@ development? It does not, no way whatsoever.
 
 Clojure has its own set of beliefs and its followers too.
 
-That's why my answers are always bad and that's why you should continue doing
-whatever you want.
+That's why my answers are always bad to "Why Clojure?" and that's why you should
+continue to do whatever you want.
