@@ -156,12 +156,11 @@ No inicio de 2021, o tema surgiu novamente sobre conhecimento tácito:
 
 ![Flow Chart](https://github.com/wandersoncferreira/wandersoncferreira.github.io/blob/main/static/images/miikka_1.png?raw=true)
 
-E ainda mantenho a minha posição de que os **ambientes** que você frequenta vão
-impactar consideravelmente nas suas capacidades técnicas e cognitivas, por
-exemplo, para aprender a escrever sistemas distribuídos, você precisa estar em
-um ambiente que tenha a necessidade de um sistema distribuído e implementá-lo na
-prática. Apenas fazer projetos pequenos no tempo livre não vai te levar muito
-longe.
+E ainda mantenho a minha posição de que os **ambientes** que você frequenta
+impactam consideravelmente as suas capacidades técnicas e cognitivas, por
+exemplo, para aprender sistemas distribuídos, você precisa estar em um ambiente
+que tenha a necessidade de um sistema distribuído e implementá-lo na prática.
+Apenas fazer projetos pequenos no tempo livre não vai te levar muito longe.
 
 Vale ressaltar a importância do **ambiente** nesse processo e que no caso da
 programação não significa ter um computador potente, rápido ou super
@@ -172,7 +171,7 @@ solucionar problemas.
 Fica evidente a importância desses três componentes porque para o Flow existir é
 necessário que o seu **ambiente** te entregue feedbacks constantes sobre sua
 evolução e que o próprio **ambiente** evolua junto. Caso essas condições não sejam
-mantidas, sinto informar, mas você pode estar perdendo tempo.
+mantidas, sinto te informar, mas você pode estar perdendo tempo.
 
 
 ## Conclusão {#conclusão}
@@ -185,8 +184,15 @@ Os benefícios da experiencia do Flow são todos muito relevantes para mim e a
 ideia de que devemos evitar esse estado porque acabamos agindo sem pensar parece
 um pouco míope.
 
----
+Eu precisei readequar algumas atividades do meu dia-a-dia para focar em
+objetivos de longo prazo que de fato eram importantes para mim. Ainda estou
+apenas no inicio das explorações dentro desse novo espaço, espero encontrar
+ideias ainda mais provocantes.
+
+
+## Pós-conclusão {#pós-conclusão}
 
 Talvez eu respondesse para Camus que ao entrar em Flow, eu não tenho atenção
 suficiente para fazer questionamentos sobre propósito, logo não posso cair **no
-absurdo** e no interim, basta aceitar a falta de sentido de todo o resto.
+absurdo** e entre um flow e outro, basta aceitar a falta de sentido de todo o
+resto.
