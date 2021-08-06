@@ -95,7 +95,7 @@ você treina as suas habilidades para ter **insights** dentro daquele ambiente.
 Vervaeke também menciona dois pontos extremamente interessantes para mim, a
 prática do Flow nos permite intensificar o nosso aprendizado implícito e o
 conhecimento tácito. Essas são situações em que não sabemos explicar o porque
-algo é do jeito que diz ser, mas sabemos que é! A famosa **intuição**.
+algo é do jeito que dizemos ser, mas sabemos que é! A famosa **intuição**.
 
 A direta conexão com o ambiente e a intensidade da atenção aplicada nos deixa
 "super-sensitivos" para eventos que ocorrem fora da nossa própria percepção.
