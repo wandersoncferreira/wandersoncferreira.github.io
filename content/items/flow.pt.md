@@ -3,7 +3,7 @@ title: "Flow"
 author: ["Wanderson Ferreira"]
 date: 2021-08-06T10:00:00-03:00
 tags: ["life", "programming"]
-draft: true
+draft: false
 ---
 
 Eu já tinha ouvido falar sobre "entrar em flow" que é o momento em que o
