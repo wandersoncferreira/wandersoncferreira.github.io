@@ -115,8 +115,8 @@ muitas coisas que eu tenho feito, segue uma lista de comentários que fiz que me
 recordo de memoria:
 
 -   [Ensino Médio] - Funções trigonométricas era um grande puzzle para simplificar equações
--   [Ensino Médio] - Comparava algoritmos de determinante de matrizes para ver qual era mais rápido
--   [Ensino Médio] - Memorizamos um alfabeto diferente para trocar mensagens
+-   [Ensino Médio] - Comparava resultados entre algoritmos de determinante de matrizes
+-   [Ensino Médio] - Memorizei um alfabeto diferente para trocar mensagens com amigos
 -   [Faculdade] - Cálculo; mais ferramentas para entender o jogo da Física
 -   [Faculdade] - Programação; um grande jogo de lógica
 
