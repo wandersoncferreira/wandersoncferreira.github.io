@@ -134,9 +134,9 @@ que isso deveria ser evitado, me levou nessa jornada inteira.
 
 Já li livros como "[[https://leanpub.com/elementsofclojure][Elements of Clojure]]" e "[[https://www.amazon.com.br/Philosophy-Software-Design-John-Ousterhout/dp/1732102201][Philosophy of Software Design]]" que
 tentam transmitir um pouco sobre conhecimento tácito que desenvolvedores mais
-experientes tem e não conseguimos expressas claramente, são ótimos livros, mas
-ainda assim eu nunca achei tão "uteis" porque me parece que você precisa
-internalizar esses conceitos, somente lendo é bem complicado atingir isso.
+experientes tem e não conseguem expressas claramente, são ótimos livros, mas
+ainda assim eu acho pouco "uteis" porque você precisa internalizar esses
+conceitos, somente ler é bem complicado para atingir isso.
 
 O post "[[https://www.scotthyoung.com/blog/2020/05/04/do-the-real-thing/][Do the Real Thing]]" do Scott Young é mais uma dica valiosa na direção do
 aprendizado através da prática direta. Desde o inicio de 2020 eu tenho mantido
