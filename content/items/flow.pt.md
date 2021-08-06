@@ -6,11 +6,11 @@ tags: ["life", "programming"]
 draft: false
 ---
 
-Eu já ouvi falar sobre "entrar no flow" que é o momento em que um programador
-está bem focado em criar seu código, porém recentemente tenho me aprofundado em
-questões similares sob a ótica da <span class="underline">psicologia</span> e até tomado decisões
-pessoas/profissionais como consequência desses estudos. Vamos dar uma olhada
-nisso!
+Eu já tinha ouvido falar sobre "entrar no flow" como um instante de foco, em que
+o programador está bem concentrado em fazer o seu código funcionar, porém
+recentemente tenho me aprofundado em questões similares sob a ótica da
+<span class="underline">psicologia</span> e até tomado decisões pessoas/profissionais como consequência
+desses estudos. Vamos dar uma olhada nisso!
 
 <!--more-->
 
