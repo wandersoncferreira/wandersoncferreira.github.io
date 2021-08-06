@@ -24,10 +24,11 @@ obras de Camus; **o absurdo** que consiste no reconhecimento de que nós humanos
 não podemos escapar do destino de fazer perguntas para entender o nosso
 propósito, mas o universo é completamente alheio as nossas demandas e
 interrogações sendo assim impossível de que vamos encontrar qualquer resposta
-definitiva para essas mesmas perguntas. Portanto, Camus não vê sentido na
-discussão sobre "significado da vida" além da recomendação que precisamos
-assimilar que a vida **é sem significado** algum e temos que nos libertar de
-ideologias que preconizam o oposto.
+definitiva para essas mesmas perguntas.
+
+Portanto, Camus não vê sentido na discussão sobre "significado da vida" além da
+recomendação que precisamos assimilar que a vida **é sem significado** algum e
+temos que nos libertar de ideologias que preconizam o oposto.
 
 Na série do Vervaeke, temos a sua interpretação sobre o que é **vida com
 significado** para diversas culturas no decorrer da história do pensamento
