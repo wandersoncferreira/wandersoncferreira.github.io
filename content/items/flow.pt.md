@@ -46,7 +46,7 @@ de classe econômica, escolaridade, atividade social, e nacionalidade.
 
 Mihaly estudou as estruturas que possibilitam a experiencia flow.
 
-![Flow Chart](/static/images/flow_chart.png)
+![Flow Chart](/static/images/flow_chart.pt.png)
 
 Basicamente você precisa de um **ambiente** proporcionando desafios pouco acima
 das suas **habilidades** atuais e que te force a utilizar o máximo das suas
