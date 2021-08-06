@@ -116,12 +116,12 @@ Em 2020, eu tive uma boa discussão com Mikka (desenvolvedor da Metosin) sobre
 como facilitar o aprendizado e a resposta dele abaixo é bem interessante nesse
 conceito de interação profunda com o seu ambiente:
 
-![Flow Chart](/static/images/miikka_1.png)
+![Flow Chart](https://github.com/wandersoncferreira/wandersoncferreira.github.io/blob/main/static/images/miikka_2.png?raw=true)
 
 
 No inicio de 2021, o tema surgiu novamente sobre conhecimento tácito:
 
-![Flow Chart](/static/images/miikka_2.png)
+![Flow Chart](https://github.com/wandersoncferreira/wandersoncferreira.github.io/blob/main/static/images/miikka_1.png?raw=true)
 
 Mantenho a minha posição de que os ambientes que você frequenta dentro de
 desenvolvimento de software vão impactar consideravelmente nas suas capacidades
