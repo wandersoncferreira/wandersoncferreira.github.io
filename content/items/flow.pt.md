@@ -78,7 +78,7 @@ grande que você se esquece da sua própria existência:
 Devido a intensidade desse evento, muitas pessoas o descreve como a experiencia
 mais importante que tiveram em suas vidas e muitas direcionam suas decisões em
 busca de manter essa experiencia com mais frequência. Para Mihaly, quanto mais
-experiencias de flow você tiver, maior será a sensação de que sua vida teve
+experiencias de Flow você tiver, maior será a sensação de que sua vida teve
 significado.
 
 ---
@@ -92,7 +92,7 @@ auxiliar a atingir um objetivo, ou seja, quanto mais você pratica o Flow, mais
 você treina as suas habilidades para ter **insights** dentro daquele ambiente.
 
 Vervaeke também menciona dois pontos extremamente interessantes para mim, a
-prática do flow nos permite intensificar o nosso aprendizado implícito e o
+prática do Flow nos permite intensificar o nosso aprendizado implícito e o
 conhecimento tácito. Essas são situações em que não sabemos explicar o porque
 algo é do jeito que diz ser, mas sabemos que é! A famosa **intuição**.
 
@@ -102,19 +102,42 @@ A direta conexão com o ambiente e a intensidade da atenção aplicada nos deixa
 Para alguns estudiosos, a **intuição** é a consequência do aprendizado de padrões
 complexos de forma implícita, ou seja, sem a sua consciência direta.
 
+---
 
-## E a programação? {#e-a-programação}
+Um aspecto importante dessa estrutura é que algumas atividades são bem propicias
+para te induzir ao estado de Flow, por exemplo, videogames e jogos de aposta. A
+experiencia do Flow em si não tem nenhum pré-julgamento, não é bom e nem ruim
+estar em Flow, tudo depende do que está sendo feito... qual ambiente e qual
+atividade.
+
+Eu sou um ex-viciado em jogos de computador e venho usando essa analogia para
+muitas coisas que eu tenho feito, segue uma lista de comentários que fiz que me
+recordo de memoria:
+
+-   [Ensino Médio] - Funções trigonométricas era um grande puzzle para simplificar equações
+-   [Ensino Médio] - Aprendi diversos algoritmos de calculo de determinante de matrizes e via qual era mais rápido
+-   [Ensino Médio] - Memorizamos um alfabeto diferente para trocar mensagens sem a professora pegar
+-   [Faculdade] - Cálculo mais ferramentas para entender o jogo da Física
+-   [Faculdade] - Programação; um grande jogo de lógica
+
+Quase sempre coloco atividades sob essa perspectiva. Grandes jogos com regras
+claras, feedbacks imediatos, e desafios de dificuldade progressiva.
+
+Buscando justificativas pós-fato me parece fácil explicar diversos
+comportamentos do meu passado sob essa ótica.
+
+
+## Voltando para desenvolvimento de software {#voltando-para-desenvolvimento-de-software}
 
 Eu acho fascinante como um comentário em um video de programação alertando que
 os programadores fazem muita coisa sem pensar direito quando estão em "flow" e
 que isso deveria ser evitado, me levou nessa jornada inteira.
 
-No passado eu li livros como "[Elements of Clojure](https://leanpub.com/elementsofclojure)" e "[Philosophy of Software
-Design](https://www.amazon.com.br/Philosophy-Software-Design-John-Ousterhout/dp/1732102201)" que tentam transmitir um pouco sobre conhecimento tácito que
-desenvolvedores mais experientes tem e não conseguimos expressas claramente, são
-ótimos livros, mas ainda assim eu nunca achei tão "uteis" porque me parece que
-você precisa internalizar esses conceitos, somente lendo é bem complicado
-atingir isso.
+Já li livros como "[Elements of Clojure](https://leanpub.com/elementsofclojure)" e "[Philosophy of Software Design](https://www.amazon.com.br/Philosophy-Software-Design-John-Ousterhout/dp/1732102201)" que
+tentam transmitir um pouco sobre conhecimento tácito que desenvolvedores mais
+experientes tem e não conseguimos expressas claramente, são ótimos livros, mas
+ainda assim eu nunca achei tão "uteis" porque me parece que você precisa
+internalizar esses conceitos, somente lendo é bem complicado atingir isso.
 
 O post "[Do the Real Thing](https://www.scotthyoung.com/blog/2020/05/04/do-the-real-thing/)" do Scott Young é mais uma dica valiosa na direção do
 aprendizado através da prática direta. Desde o inicio de 2020 eu tenho mantido
@@ -132,26 +155,37 @@ No inicio de 2021, o tema surgiu novamente sobre conhecimento tácito:
 
 ![Flow Chart](https://github.com/wandersoncferreira/wandersoncferreira.github.io/blob/main/static/images/miikka_1.png?raw=true)
 
-Mantenho a minha posição de que os **ambientes** que você frequenta vão impactar
-consideravelmente nas suas capacidades técnicas e pessoais, ou seja, para
-aprender a escrever sistemas distribuídos, você precisa estar em um ambiente que
-tenha a necessidade de um sistema distribuído e implementá-lo na prática. Apenas
-fazer projetos pequenos no tempo livre não vai te levar muito longe.
+E ainda mantenho a minha posição de que os **ambientes** que você frequenta vão
+impactar consideravelmente nas suas capacidades técnicas e cognitivas, por
+exemplo, para aprender a escrever sistemas distribuídos, você precisa estar em
+um ambiente que tenha a necessidade de um sistema distribuído e implementá-lo na
+prática. Apenas fazer projetos pequenos no tempo livre não vai te levar muito
+longe.
 
-Vale ressaltar a importância do **ambiente** que no caso do programador não
-significa ter um computador potente, rápido ou super customizado. Dentro de uma
-empresa, os principais componentes do **ambiente** são os seus companheiros de
-equipe, seus gestores e como vocês interagem para solucionar problemas.
+Vale ressaltar a importância do **ambiente** nesse processo e que no caso da
+programação não significa ter um computador potente, rápido ou super
+customizado. Dentro de uma empresa, os principais componentes do **ambiente** são
+os seus companheiros de equipe, seus gestores e como vocês interagem para
+solucionar problemas.
 
 Fica evidente a importância desses três componentes porque para o Flow existir é
 necessário que o seu **ambiente** te entregue feedbacks constantes sobre sua
 evolução e que o próprio **ambiente** evolua junto. Caso essas condições não sejam
 mantidas, sinto informar, mas você pode estar perdendo tempo.
 
+
+## Conclusão {#conclusão}
+
 Acredito que precisamos entender o contexto maior do que significa a experiencia
 do Flow e como podemos nos beneficiar dela em vários aspectos da vida, inclusive
 programando.
 
-Talvez eu dissesse para Camus que ao entrar em Flow, eu não tenho atenção
+Os benefícios da experiencia do Flow são todos muito relevantes para mim e a
+ideia de que devemos evitar esse estado porque acabamos agindo sem pensar parece
+um pouco míope.
+
+---
+
+Talvez eu respondesse para Camus que ao entrar em Flow, eu não tenho atenção
 suficiente para fazer questionamentos sobre propósito, logo não posso cair **no
 absurdo** e no interim, basta aceitar a falta de sentido de todo o resto.
