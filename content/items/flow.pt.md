@@ -115,19 +115,19 @@ muitas coisas que eu tenho feito, segue uma lista de comentários que fiz que me
 recordo de memoria:
 
 -   [Ensino Médio] - Funções trigonométricas era um grande puzzle para simplificar equações
--   [Ensino Médio] - Aprendi diversos algoritmos de calculo de determinante de matrizes e via qual era mais rápido
--   [Ensino Médio] - Memorizamos um alfabeto diferente para trocar mensagens sem a professora pegar
--   [Faculdade] - Cálculo mais ferramentas para entender o jogo da Física
+-   [Ensino Médio] - Comparava algoritmos de determinante de matrizes para ver qual era mais rápido
+-   [Ensino Médio] - Memorizamos um alfabeto diferente para trocar mensagens
+-   [Faculdade] - Cálculo; mais ferramentas para entender o jogo da Física
 -   [Faculdade] - Programação; um grande jogo de lógica
 
-Quase sempre coloco atividades sob essa perspectiva. Grandes jogos com regras
+Quase sempre coloco as atividades sob essa perspectiva. Grandes jogos com regras
 claras, feedbacks imediatos, e desafios de dificuldade progressiva.
 
 Buscando justificativas pós-fato me parece fácil explicar diversos
 comportamentos do meu passado sob essa ótica.
 
 
-## Voltando para desenvolvimento de software {#voltando-para-desenvolvimento-de-software}
+## Voltando para o desenvolvimento de software {#voltando-para-o-desenvolvimento-de-software}
 
 Eu acho fascinante como um comentário em um video de programação alertando que
 os programadores fazem muita coisa sem pensar direito quando estão em "flow" e
