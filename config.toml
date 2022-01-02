@@ -4,7 +4,7 @@ defaultContentLanguage = "en"
 theme = "smol"
 copyright = "Wanderson Ferreira"
 defaultContentLanguageInSubdir = true
-
+disqusShortname = "bartuka"
 
 enableEmoji = true
 enableGitInfo = true
