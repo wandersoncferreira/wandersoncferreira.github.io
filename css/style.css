@@ -10,3 +10,17 @@ img {display: block; max-width: 100%; height: auto;}
 figcaption {color: #888; font: 12px/1.5 monospace; text-align: center;}
 figure {margin: auto}
 footer{margin-top:auto}
+blockquote {
+    background: #f9f9f9;
+    border-left: 10px solid #ccc;
+    margin: 1.5em 10px;
+    padding: 0.5em 10px;
+}
+
+blockquote:before {
+    color: #ccc;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.4em;
+}
