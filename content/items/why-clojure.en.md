@@ -1,5 +1,5 @@
 ---
-title: "Why Clojure?"
+title: "why clojure?"
 author: ["Wanderson Ferreira"]
 date: 2021-08-02T14:29:00-03:00
 tags: ["clojure"]
