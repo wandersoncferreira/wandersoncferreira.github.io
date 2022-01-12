@@ -78,7 +78,7 @@ think about strategies for how to move forward:
 2.  do we want to compare their results because this is critical operation?
 3.  do we want to randomly return possible answers?
 
-{{< figure src="/ox-hugo/_20220104_152344screenshot.png" >}}
+{{< figure src="/images/degeneracy.png" >}}
 
 This a theoretical relationship between biological properties that are important
 to evolution. Seems like if we want to improve our game and start building
