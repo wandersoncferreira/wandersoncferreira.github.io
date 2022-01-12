@@ -21,13 +21,13 @@ at what I want to automate:
 2.  Fetch any updates in the `main` branch
 3.  Create a new branch
 4.  Create a worktree in a folder in the same level as the main project
-5.  Run some shell scripts to decrypt secrets and perform additional setups
-6.  Move to a file inside the project
+5.  Run some shell scripts to decrypt secrets and perform additional setup
+6.  Move a file inside the root project
 7.  Ask if I want to start my REPL or not
 
-Considerable list of things! Let's see how I did it.
+A considerable list of things! Let's see how I did it.
 
-{{< figure src="/images/my-project-worktree.png" >}}
+{{< figure src="/images/my-project-worktree.png" caption="Figure 1: Function my-project/worktree displaying 8 blocks required to perform the bullet itens above." >}}
 
 Clunky, huh?
 
@@ -41,14 +41,15 @@ And in the end, I never had to change a single line of this code in 6 months.
 
 Let's break it down to see what is going on
 
-{{< figure src="/images/my-project-worktree-commented.png" >}}
+{{< figure src="/images/my-project-worktree-commented.png" caption="Figure 2: Function my-project/worktree displaying 8 explicitly segmented blocks required to perform the bullet itens above." >}}
 
-1.  hard-code of directory structure and important some useful names
+1.  hard-code for the directory structures and important useful variable names
 2.  I started to use `tab-bar-mode` recently, so I want a new tab to every worktree now
-3.  Magit calls in the most obvious and possibly wrong way. I got public interactive function and called it
-    1.  Basically did `C-h k` to find what functions was bound to the keybindings I was used to and pasted it here
-    2.  Read the `magit` codebase to find `magit-this-process` and add a lock to synchronize my process
-4.  Ask myself for a branch & worktree name and then create it
+3.  Magit calls in the most obvious and possibly wrong way.
+    1.  I basically did `C-h k` to find what functions was bound to the keybindings
+    2.  Paste the interactive functions in desired sequence
+    3.  Read the `magit` code base to find `magit-this-process` and added a lock to synchronize
+4.  Ask myself for a branch & worktree name and then creates it
 5.  Run some shell scripts, ones are async and others sync
 6.  I noticed that `shell-command` added some extra windows so I delete every other one without any checks
 7.  Assume everything went ok and we are in the project root! ask me for a new file to visit
@@ -58,4 +59,4 @@ This is one of the workflows I have coded in Elisp that helps me avoid
 unnecessary manual intervention during my day. This is by far not the prettiest
 function I ever wrote, but it gets the job done.
 
-Sometimes we only want to accomplish what we want and move on...
+Sometimes we only want to accomplish what we need and move on...
