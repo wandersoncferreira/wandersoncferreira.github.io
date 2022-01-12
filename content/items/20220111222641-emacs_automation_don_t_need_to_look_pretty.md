@@ -1,7 +1,8 @@
 ---
 title: "emacs - automation don't need to look pretty"
 author: ["Wanderson Ferreira"]
-tags: ["blog"]
+date: 2022-01-11T00:00:00-03:00
+tags: ["emacs"]
 draft: false
 ---
 
