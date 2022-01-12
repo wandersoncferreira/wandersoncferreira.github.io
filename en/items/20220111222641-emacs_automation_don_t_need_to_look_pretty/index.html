@@ -39,12 +39,14 @@ at what I want to automate:</p>
 <li>Fetch any updates in the <code>main</code> branch</li>
 <li>Create a new branch</li>
 <li>Create a worktree in a folder in the same level as the main project</li>
-<li>Run some shell scripts to decrypt secrets and perform additional setups</li>
-<li>Move to a file inside the project</li>
+<li>Run some shell scripts to decrypt secrets and perform additional setup</li>
+<li>Move a file inside the root project</li>
 <li>Ask if I want to start my REPL or not</li>
 </ol>
-<p>Considerable list of things! Let&rsquo;s see how I did it.</p>
-<figure><img src=/images/my-project-worktree.png>
+<p>A considerable list of things! Let&rsquo;s see how I did it.</p>
+<figure><img src=/images/my-project-worktree.png alt="Figure 1: Function my-project/worktree displaying 8 blocks required to perform the bullet itens above."><figcaption>
+<p>Figure 1: Function my-project/worktree displaying 8 blocks required to perform the bullet itens above.</p>
+</figcaption>
 </figure>
 <p>Clunky, huh?</p>
 <p>Before looking at what each of these lines, let&rsquo;s make some general remarks:</p>
@@ -55,18 +57,21 @@ and so on.</li>
 </ul>
 <p>And in the end, I never had to change a single line of this code in 6 months.</p>
 <p>Let&rsquo;s break it down to see what is going on</p>
-<figure><img src=/images/my-project-worktree-commented.png>
+<figure><img src=/images/my-project-worktree-commented.png alt="Figure 2: Function my-project/worktree displaying 8 explicitly segmented blocks required to perform the bullet itens above."><figcaption>
+<p>Figure 2: Function my-project/worktree displaying 8 explicitly segmented blocks required to perform the bullet itens above.</p>
+</figcaption>
 </figure>
 <ol>
-<li>hard-code of directory structure and important some useful names</li>
+<li>hard-code for the directory structures and important useful variable names</li>
 <li>I started to use <code>tab-bar-mode</code> recently, so I want a new tab to every worktree now</li>
-<li>Magit calls in the most obvious and possibly wrong way. I got public interactive function and called it
+<li>Magit calls in the most obvious and possibly wrong way.
 <ol>
-<li>Basically did <code>C-h k</code> to find what functions was bound to the keybindings I was used to and pasted it here</li>
-<li>Read the <code>magit</code> codebase to find <code>magit-this-process</code> and add a lock to synchronize my process</li>
+<li>I basically did <code>C-h k</code> to find what functions was bound to the keybindings</li>
+<li>Paste the interactive functions in desired sequence</li>
+<li>Read the <code>magit</code> code base to find <code>magit-this-process</code> and added a lock to synchronize</li>
 </ol>
 </li>
-<li>Ask myself for a branch & worktree name and then create it</li>
+<li>Ask myself for a branch & worktree name and then creates it</li>
 <li>Run some shell scripts, ones are async and others sync</li>
 <li>I noticed that <code>shell-command</code> added some extra windows so I delete every other one without any checks</li>
 <li>Assume everything went ok and we are in the project root! ask me for a new file to visit</li>
@@ -75,7 +80,7 @@ and so on.</li>
 <p>This is one of the workflows I have coded in Elisp that helps me avoid
 unnecessary manual intervention during my day. This is by far not the prettiest
 function I ever wrote, but it gets the job done.</p>
-<p>Sometimes we only want to accomplish what we want and move on&mldr;</p>
+<p>Sometimes we only want to accomplish what we need and move on&mldr;</p>
 </div>
 </article>
 </main>
