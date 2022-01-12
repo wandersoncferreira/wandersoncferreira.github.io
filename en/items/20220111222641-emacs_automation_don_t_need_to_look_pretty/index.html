@@ -1,0 +1,108 @@
+<!doctype html><html lang=en-us>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<style type=text/css>body{font-family:monospace}</style>
+<title>emacs - automation don't need to look pretty</title>
+<link rel=stylesheet href=/css/style.css>
+</head>
+<body>
+<header>
+<a href=/en>Wanderson Ferreira</a> - <a href=/pt>pt-BR</a> / <a href=/en>en</a>
+<br>
+-------------------------------
+<div style=float:right>Reifying fragmented ideas</div><br>
+<p>
+<nav>
+<a href=/en><b>Posts</b></a>.
+<a href=/en/tags/><b>Tags</b></a>.
+</nav>
+</p>
+</header>
+<main>
+<article>
+<h1>emacs - automation don't need to look pretty</h1>
+<b><time>2022-01-11 00:00:00</time></b>
+<a href=/en/tags/emacs>emacs</a>
+<div>
+<p>One of the great strengths of Emacs for me is that my configuration file is
+<strong><strong>mine</strong></strong> and I can do whatever I want to it. I understand the value of sharing
+ideas and contributing to other peoples issues and desires but there is an
+intrinsic anxiety associated with it.</p>
+<p>You don&rsquo;t want people thinking you are stupid or sloppy!</p>
+<p>In this post I want to share the most used function I have in my current config
+file. This is how I start every single new demand at my current work. Let&rsquo;s look
+at what I want to automate:</p>
+<ol>
+<li>Create a new Emacs tab</li>
+<li>Fetch any updates in the <code>main</code> branch</li>
+<li>Create a new branch</li>
+<li>Create a worktree in a folder in the same level as the main project</li>
+<li>Run some shell scripts to decrypt secrets and perform additional setups</li>
+<li>Move to a file inside the project</li>
+<li>Ask if I want to start my REPL or not</li>
+</ol>
+<p>Considerable list of things! Let&rsquo;s see how I did it.</p>
+<figure><img src=/images/my-project-worktree.png>
+</figure>
+<p>Clunky, huh?</p>
+<p>Before looking at what each of these lines, let&rsquo;s make some general remarks:</p>
+<ul>
+<li>hard codes, rely on undocumented inner variables of other packages, hacks to
+synchronize async calls, hacks to move data around in very optimistic fashion,
+and so on.</li>
+</ul>
+<p>And in the end, I never had to change a single line of this code in 6 months.</p>
+<p>Let&rsquo;s break it down to see what is going on</p>
+<figure><img src=/images/my-project-worktree-commented.png>
+</figure>
+<ol>
+<li>hard-code of directory structure and important some useful names</li>
+<li>I started to use <code>tab-bar-mode</code> recently, so I want a new tab to every worktree now</li>
+<li>Magit calls in the most obvious and possibly wrong way. I got public interactive function and called it
+<ol>
+<li>Basically did <code>C-h k</code> to find what functions was bound to the keybindings I was used to and pasted it here</li>
+<li>Read the <code>magit</code> codebase to find <code>magit-this-process</code> and add a lock to synchronize my process</li>
+</ol>
+</li>
+<li>Ask myself for a branch & worktree name and then create it</li>
+<li>Run some shell scripts, ones are async and others sync</li>
+<li>I noticed that <code>shell-command</code> added some extra windows so I delete every other one without any checks</li>
+<li>Assume everything went ok and we are in the project root! ask me for a new file to visit</li>
+<li>Should I start my Clojure REPL? most of the time is YES.</li>
+</ol>
+<p>This is one of the workflows I have coded in Elisp that helps me avoid
+unnecessary manual intervention during my day. This is by far not the prettiest
+function I ever wrote, but it gets the job done.</p>
+<p>Sometimes we only want to accomplish what we want and move on&mldr;</p>
+</div>
+</article>
+</main>
+<aside>
+<div>
+<div>
+<h3>LATEST POSTS</h3>
+</div>
+<div>
+<ul>
+<li><a href=/en/items/20220111222641-emacs_automation_don_t_need_to_look_pretty/>emacs - automation don't need to look pretty</a></li>
+<li><a href=/en/items/20220104144350-role_of_software/>role of software</a></li>
+<li><a href=/en/items/20220104151027-we_dont_know_how_to_compute/>we dont know how to compute</a></li>
+<li><a href=/en/items/why-clojure/>why clojure?</a></li>
+</ul>
+</div>
+</div>
+</aside>
+<div id=disqus_thread></div>
+<script type=application/javascript>var disqus_config=function(){};(function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById('disqus_thread').innerHTML='Disqus comments not available by default when the website is previewed locally.';return}var b=document,a=b.createElement('script');a.async=!0,a.src='//bartuka.disqus.com/embed.js',a.setAttribute('data-timestamp',+new Date),(b.head||b.body).appendChild(a)})()</script>
+<noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript>
+<a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a>
+<footer>
+<p>&copy; 2022 <a href=https://wandersoncferreira.github.io><b>Wanderson Ferreira</b></a>.
+<a href=https://github.com/wandersoncferreira><b>Github</b></a>.
+<a href=https://twitter.com/bartuka_><b>Twitter</b></a>.
+</p>
+</footer>
+</body>
+</html>
