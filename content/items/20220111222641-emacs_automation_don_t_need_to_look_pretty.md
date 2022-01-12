@@ -18,7 +18,7 @@ file. This is how I start every single new demand at my current work. Let's look
 at what I want to automate:
 
 1.  Create a new Emacs tab
-2.  Fetch any updates in the `main` branch
+2.  Fetch any updates in the `master` branch
 3.  Create a new branch
 4.  Create a worktree in a folder in the same level as the main project
 5.  Run some shell scripts to decrypt secrets and perform additional setup
