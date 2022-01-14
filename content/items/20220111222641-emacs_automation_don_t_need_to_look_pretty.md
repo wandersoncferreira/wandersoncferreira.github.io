@@ -8,7 +8,7 @@ draft: false
 
 One of the great strengths of Emacs for me is that my configuration file is
 ****mine**** and I can do whatever I want to it. I understand the value of sharing
-ideas and contributing to other peoples issues and desires but there is an
+ideas and contributing to other people issues and desires but there is an
 intrinsic anxiety associated with it.
 
 You don't want people thinking you are stupid or sloppy!
