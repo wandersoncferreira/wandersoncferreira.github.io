@@ -38,11 +38,15 @@ workflow is simple:</p>
 </ol>
 <p>Great! To accomplish this I am using <a href=https://github.com/bbatsov/projectile>projectile</a> and <a href=https://github.com/nex3/perspective-el>perspective</a>.</p>
 <p>Simply enable projectile and perspective:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-elisp data-lang=elisp><span class=p>(</span><span class=nb>require</span> <span class=ss>&#39;perspective</span><span class=p>)</span>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-elisp data-lang=elisp>
+<span class=p>(</span><span class=nb>require</span> <span class=ss>&#39;perspective</span><span class=p>)</span>
+
 
 <span class=p>(</span><span class=nv>persp-mode</span> <span class=no>t</span><span class=p>)</span>
 
+
 <span class=p>(</span><span class=nb>require</span> <span class=ss>&#39;projectile</span><span class=p>)</span>
+
 
 <span class=p>(</span><span class=nv>projectile-mode</span> <span class=mi>+1</span><span class=p>)</span>
 </code></pre></div><p>Projectile has a nice hook called
