@@ -31,9 +31,9 @@ workflow is simple:</p>
 <ol>
 <li>Use <code>projectile-switch-project</code></li>
 <li>Choose a project</li>
-<li>Automatically create a new workspace with the project name</li>
-<li>Switch to the new workspace</li>
-<li>Open file in the new workspace</li>
+<li>Automatic creation of new workspace with project&rsquo;s name</li>
+<li>Switch to new workspace</li>
+<li>Open file in new workspace</li>
 <li>Commands like <code>ido-switch-buffer</code> needs to recognize only buffers of this workspace</li>
 </ol>
 <p>Great! To accomplish this I am using <a href=https://github.com/bbatsov/projectile>projectile</a> and <a href=https://github.com/nex3/perspective-el>perspective</a>.</p>
@@ -73,7 +73,7 @@ name in different folders.</p>
 
 <span class=p>(</span><span class=nv>add-hook</span> <span class=ss>&#39;projectile-before-switch-project-hook</span> <span class=nf>#&#39;</span><span class=nv>bk/new-persp-for-project-switch</span><span class=p>)</span>
 </code></pre></div><p>Easy!</p>
-<p>Now, every time you switch a project using projectile a new
+<p>Now, every time you switch to a project using projectile a new
 perspective will be created.</p>
 </div>
 </article>
