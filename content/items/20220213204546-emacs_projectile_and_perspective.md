@@ -11,9 +11,9 @@ workflow is simple:
 
 1.  Use `projectile-switch-project`
 2.  Choose a project
-3.  Automatically create a new workspace with the project name
-4.  Switch to the new workspace
-5.  Open file in the new workspace
+3.  Automatic creation of new workspace with project's name
+4.  Switch to new workspace
+5.  Open file in new workspace
 6.  Commands like `ido-switch-buffer` needs to recognize only buffers of this workspace
 
 Great! To accomplish this I am using [projectile](https://github.com/bbatsov/projectile) and [perspective](https://github.com/nex3/perspective-el).
@@ -70,5 +70,5 @@ And finally, we can use our hook
 
 Easy!
 
-Now, every time you switch a project using projectile a new
+Now, every time you switch to a project using projectile a new
 perspective will be created.
