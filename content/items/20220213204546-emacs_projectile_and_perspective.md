@@ -21,11 +21,15 @@ Great! To accomplish this I am using [projectile](https://github.com/bbatsov/pro
 Simply enable projectile and perspective:
 
 ```elisp
+
 (require 'perspective)
+
 
 (persp-mode t)
 
+
 (require 'projectile)
+
 
 (projectile-mode +1)
 ```
