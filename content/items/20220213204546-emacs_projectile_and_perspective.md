@@ -9,12 +9,12 @@ draft: false
 I'd like to have one workspace for each project I work on. The desired
 workflow is simple:
 
-1.  Use `projectile-switch-project`
+1.  Use **projectile-switch-project**
 2.  Choose a project
 3.  Automatic creation of new workspace with project's name
 4.  Switch to new workspace
 5.  Open file in new workspace
-6.  Commands like `ido-switch-buffer` needs to recognize only buffers of this workspace
+6.  Commands like **ido-switch-buffer** needs to recognize only buffers of this workspace
 
 Great! To accomplish this I am using [projectile](https://github.com/bbatsov/projectile) and [perspective](https://github.com/nex3/perspective-el).
 
@@ -24,22 +24,19 @@ Simply enable projectile and perspective:
 
 (require 'perspective)
 
-
 (persp-mode t)
 
-
 (require 'projectile)
-
 
 (projectile-mode +1)
 ```
 
 Projectile has a nice hook called
-`projectile-before-switch-project-hook` which seems exactly what I
+**projectile-before-switch-project-hook** which seems exactly what I
 need i.e. before switching to the project, create the new perspective!
 
 However, there is a single problem. How can we get the name of the
-selected project? The function `projectile-project-root` will return
+selected project? The function **projectile-project-root** will return
 an outdated value if you call it inside our hook because the hook is
 called before the chosen project name is used by projectile.
 
@@ -55,11 +52,12 @@ Not a problem, let's hack it!
                                            (-last-item)))
   (apply projectile-switch-project-by-name args))
 
-(advice-add #'projectile-switch-project-by-name :around #'bk/projectile-switch-project-by-name)
+(advice-add #'projectile-switch-project-by-name
+            :around #'bk/projectile-switch-project-by-name)
 ```
 
 The advice will extract the chosen project name and keep it in
-`bk--projectile-target-project` so we can use it later on. Keep in
+**bk--projectile-target-project** so we can use it later on. Keep in
 mind that collisions can happen if you have two projects with the same
 name in different folders.
 
