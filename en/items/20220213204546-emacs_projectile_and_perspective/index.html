@@ -29,31 +29,28 @@
 <p>I&rsquo;d like to have one workspace for each project I work on. The desired
 workflow is simple:</p>
 <ol>
-<li>Use <code>projectile-switch-project</code></li>
+<li>Use <strong>projectile-switch-project</strong></li>
 <li>Choose a project</li>
 <li>Automatic creation of new workspace with project&rsquo;s name</li>
 <li>Switch to new workspace</li>
 <li>Open file in new workspace</li>
-<li>Commands like <code>ido-switch-buffer</code> needs to recognize only buffers of this workspace</li>
+<li>Commands like <strong>ido-switch-buffer</strong> needs to recognize only buffers of this workspace</li>
 </ol>
 <p>Great! To accomplish this I am using <a href=https://github.com/bbatsov/projectile>projectile</a> and <a href=https://github.com/nex3/perspective-el>perspective</a>.</p>
 <p>Simply enable projectile and perspective:</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-elisp data-lang=elisp>
 <span class=p>(</span><span class=nb>require</span> <span class=ss>&#39;perspective</span><span class=p>)</span>
 
-
 <span class=p>(</span><span class=nv>persp-mode</span> <span class=no>t</span><span class=p>)</span>
-
 
 <span class=p>(</span><span class=nb>require</span> <span class=ss>&#39;projectile</span><span class=p>)</span>
 
-
 <span class=p>(</span><span class=nv>projectile-mode</span> <span class=mi>+1</span><span class=p>)</span>
 </code></pre></div><p>Projectile has a nice hook called
-<code>projectile-before-switch-project-hook</code> which seems exactly what I
+<strong>projectile-before-switch-project-hook</strong> which seems exactly what I
 need i.e. before switching to the project, create the new perspective!</p>
 <p>However, there is a single problem. How can we get the name of the
-selected project? The function <code>projectile-project-root</code> will return
+selected project? The function <strong>projectile-project-root</strong> will return
 an outdated value if you call it inside our hook because the hook is
 called before the chosen project name is used by projectile.</p>
 <p>Not a problem, let&rsquo;s hack it!</p>
@@ -66,9 +63,10 @@ called before the chosen project name is used by projectile.</p>
                                            <span class=p>(</span><span class=nv>-last-item</span><span class=p>)))</span>
   <span class=p>(</span><span class=nf>apply</span> <span class=nv>projectile-switch-project-by-name</span> <span class=nv>args</span><span class=p>))</span>
 
-<span class=p>(</span><span class=nv>advice-add</span> <span class=nf>#&#39;</span><span class=nv>projectile-switch-project-by-name</span> <span class=nb>:around</span> <span class=nf>#&#39;</span><span class=nv>bk/projectile-switch-project-by-name</span><span class=p>)</span>
+<span class=p>(</span><span class=nv>advice-add</span> <span class=nf>#&#39;</span><span class=nv>projectile-switch-project-by-name</span>
+            <span class=nb>:around</span> <span class=nf>#&#39;</span><span class=nv>bk/projectile-switch-project-by-name</span><span class=p>)</span>
 </code></pre></div><p>The advice will extract the chosen project name and keep it in
-<code>bk--projectile-target-project</code> so we can use it later on. Keep in
+<strong>bk&ndash;projectile-target-project</strong> so we can use it later on. Keep in
 mind that collisions can happen if you have two projects with the same
 name in different folders.</p>
 <p>And finally, we can use our hook</p>
