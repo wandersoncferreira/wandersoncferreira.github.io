@@ -1,241 +1,96 @@
-<!doctype html><html lang=en-us>
-<head>
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta http-equiv=x-ua-compatible content="IE=edge">
-<style type=text/css>body{font-family:monospace}</style>
-<title>why clojure?</title>
-<link rel=stylesheet href=/css/style.css>
-</head>
-<body>
-<header>
-<a href=/en>Wanderson Ferreira</a> - <a href=/pt>pt-BR</a> / <a href=/en>en</a>
-<br>
--------------------------------
-<div style=float:right>Reifying fragmented ideas</div><br>
-<p>
-<nav>
-<a href=/en><b>Posts</b></a>.
-<a href=/en/tags/><b>Tags</b></a>.
-</nav>
-</p>
-</header>
-<main>
-<article>
-<h1>why clojure?</h1>
-<b><time>2021-08-02 14:29:00</time></b>
-<a href=/en/tags/clojure>clojure</a>
-<div>
-<p>For the past 5 years I have been asked this question from time to time and I
+<!doctype html><html lang=en-us><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="IE=edge"><style type=text/css>body{font-family:monospace}</style><title>why clojure?</title><link rel=stylesheet href=/css/style.css></head><body><header><a href>Wanderson Ferreira</a> - <a href=/pt>pt-BR</a> / <a href=/en>en</a><br>-------------------------------<div style=float:right>Reifying fragmented ideas</div><br><p><nav><a href><b>Posts</b></a>.
+<a href=/en/tags/><b>Tags</b></a>.</nav></p></header><main><article><h1>why clojure?</h1><b><time>2021-08-02 14:29:00</time></b>
+<a href=/en/tags/clojure>clojure</a><div><p>For the past 5 years I have been asked this question from time to time and I
 always gave a bad answer. Let&rsquo;s try again and lets start with why can&rsquo;t I answer
-this question properly?</p>
-<hr>
-<h2 id=background>Background</h2>
-<p>I came from an academic background and as soon as I started in software
+this question properly?</p><hr><h2 id=background>Background</h2><p>I came from an academic background and as soon as I started in software
 development a striking fact was visible: <strong>Personal opinions are a driven force
-to several important decisions</strong>.</p>
-<p>Curious, right? I&rsquo;m not allowed to have a personal favorite explanation about
+to several important decisions</strong>.</p><p>Curious, right? I&rsquo;m not allowed to have a personal favorite explanation about
 Plate Tectonics in Geophysics, for sure we can disagree with mainstream theory,
 but you need to come up with a pretty good theory, data to support it and many
 researchers independently confirming your findings. So, as you might expect this
-does not happen so often with &ldquo;foundational concepts&rdquo;.</p>
-<p>Even to regular concepts we always have a good ruler in Geophysics: The Planet
-Earth.</p>
-<p>If you shoot some electrical waves into the ground and create a new mechanism to
+does not happen so often with &ldquo;foundational concepts&rdquo;.</p><p>Even to regular concepts we always have a good ruler in Geophysics: The Planet
+Earth.</p><p>If you shoot some electrical waves into the ground and create a new mechanism to
 measure resistivity you can easily test if it works by making a hole in the
 ground, get a rock sample and measure the resistivity in your lab. And this
 scenario is not only true inside the academia, if you are a company like
-ExxonMobil or Petrobras, you do have the same constraints and ruler.</p>
-<p>But now, what are the core concepts of software development? Are they easily
+ExxonMobil or Petrobras, you do have the same constraints and ruler.</p><p>But now, what are the core concepts of software development? Are they easily
 measurable? Better yet, how does them matter inside a small company building a
-project to 1000 users at best?</p>
-<p>I never went to Computer Science college, but I imagine we do have good answers
+project to 1000 users at best?</p><p>I never went to Computer Science college, but I imagine we do have good answers
 there, but in corporate world we quickly get into the realm of &ldquo;good practices&rdquo;
 which are piles of general advices that most of the industry think as good
-ideas. How useful are these advices? In my opinion, not much.</p>
-<p>And why is that? It&rsquo;s weird to me that theoretical concepts are not part of the
+ideas. How useful are these advices? In my opinion, not much.</p><p>And why is that? It&rsquo;s weird to me that theoretical concepts are not part of the
 daily basis for the regular programmer. Perhaps we are closer to theory when we
 think about time complexity and space complexity, but apart from that we are on
-our own.</p>
-<p>If I tell you &ldquo;avoid complexity&rdquo;, what does that even mean? Of course I want to
+our own.</p><p>If I tell you &ldquo;avoid complexity&rdquo;, what does that even mean? Of course I want to
 avoid complexity, but how? and more important, how can I avoid it given the
 current circumstances of <strong>my</strong> project, <strong>my</strong> company, <strong>my</strong> team, <strong>my</strong> budget,
-<strong>my</strong> timeframe, and <strong>my</strong> skill level?</p>
-<p>I don&rsquo;t know, just avoid complexity.</p>
-<p>Let&rsquo;s now add the nature of system design into that ball of uncertainty: There
+<strong>my</strong> timeframe, and <strong>my</strong> skill level?</p><p>I don&rsquo;t know, just avoid complexity.</p><p>Let&rsquo;s now add the nature of system design into that ball of uncertainty: There
 are countless ways to stick together code to make something happen. How do we
 break our problem into smaller pieces? How will they interact? How do we account
 for changes in the future? What are the possible nature of these changes? How
-can they manifest in the company?</p>
-<p>Impossible.</p>
-<p>The amount of open questions is amazing to me.</p>
-<h2 id=the-options>The options</h2>
-<p>I can easily understand why a <strong>team</strong> chooses Java/C# to create their products.
+can they manifest in the company?</p><p>Impossible.</p><p>The amount of open questions is amazing to me.</p><h2 id=the-options>The options</h2><p>I can easily understand why a <strong>team</strong> chooses Java/C# to create their products.
 We have so many things to think about and Java/C# has been around for ages and
 it just works! Google, Amazon, Netflix, and many others have lots of Java around
 (and lots of money too). We can find answers to our technical questions easily
 online and we have a shared vocabulary to talk about some of the &ldquo;general good
-practices&rdquo; of this community.</p>
-<p>I can easily understand why a <strong>person</strong> chooses Java/C# to learn and to become
+practices&rdquo; of this community.</p><p>I can easily understand why a <strong>person</strong> chooses Java/C# to learn and to become
 proficient. We have many idioms to master, we have bills to pay and due to
-rationale above we have more jobs around that community too.</p>
-<hr>
-<p>Then, why clojure?</p>
-<p>Back in 2014 when I started programming regularly, I joined a company using
+rationale above we have more jobs around that community too.</p><hr><p>Then, why clojure?</p><p>Back in 2014 when I started programming regularly, I joined a company using
 Object-Oriented style. The amount of jargons in those days were insane: Should
 we use Factory Pattern? And Multiple Inheritance from X, and Y? We could create
 an Abstract Base class for that? I believe Visitor Pattern will be useful here.
 Yeah, let&rsquo;s think if we are not violating LSP too. Maybe this relationship is
 not mapped correct in the ORM, so the objects are not hydrated correctly when
-you call Z.</p>
-<p>Incredible, no words about the problem domain. In fact, the business domain was
+you call Z.</p><p>Incredible, no words about the problem domain. In fact, the business domain was
 reframed to fit the established narrative. Then, eight months into the future,
 the real world shows us a new scenario that completely invalidate a very
-important assumption we made to keep the code &ldquo;elegant&rdquo;.</p>
-<p>Back to whiteboard.</p>
-<p>Sometimes, back to re-write the whole system.</p>
-<hr>
-<p>Clojure is terribly boring. It has very few constructs to be learned and for 90%
+important assumption we made to keep the code &ldquo;elegant&rdquo;.</p><p>Back to whiteboard.</p><p>Sometimes, back to re-write the whole system.</p><hr><p>Clojure is terribly boring. It has very few constructs to be learned and for 90%
 of the business problems out there you will never use any advanced feature. I so
 far experienced codebases with better Object Oriented concepts applied written
-in Clojure rather than Java/C# which is very amazing to me.</p>
-<p>Most of the business problems nowdays are related to information processing.
+in Clojure rather than Java/C# which is very amazing to me.</p><p>Most of the business problems nowdays are related to information processing.
 Basically, get data from source 1, send data to recipient 2, collect result,
 modify some stateful store or send some emails, and respond to source 1 with
-results.</p>
-<p>The Clojure community also developed its own set of &ldquo;best practices&rdquo; to make
-developing this kind of application as simple as possible.</p>
-<p>The consequences about being a small language became evident in the previous
+results.</p><p>The Clojure community also developed its own set of &ldquo;best practices&rdquo; to make
+developing this kind of application as simple as possible.</p><p>The consequences about being a small language became evident in the previous
 companies I worked for: <strong>we eliminate the language from the thinking process to
-solve problems</strong>.</p>
-<p>I never talk about Clojure when I discuss some business problem with my teams.
+solve problems</strong>.</p><p>I never talk about Clojure when I discuss some business problem with my teams.
 Clojure is an implementation detail. It&rsquo;s common to say: &ldquo;We can create a
 Protocol for that or should we type check this to make sure?&rdquo; But its very
 different than waiting for a senior developer or architect to explain that a
 specific set of classes cannot be manipulated to perform X due to A, B, C, D,
-and E that we defined in the past.</p>
-<p>Of course there are bad ways to code something, you will need to interact with
+and E that we defined in the past.</p><p>Of course there are bad ways to code something, you will need to interact with
 existing code and make sure nothing will break. However, there are no set of
 self-inflicted pain due to hard specified relationship rules about the business
-entities of your problem space.</p>
-<p>I agree that sometimes is useful to add more constraints and invariants to our
+entities of your problem space.</p><p>I agree that sometimes is useful to add more constraints and invariants to our
 system. So, we have ways in Clojure to add more restriction when needed using
-Schemas which feels like using a &ldquo;type system&rdquo; only when convenient.</p>
-<p>The power of the Functional idiom is also too good to be ignored. The amount of
+Schemas which feels like using a &ldquo;type system&rdquo; only when convenient.</p><p>The power of the Functional idiom is also too good to be ignored. The amount of
 cognitive overload associated with programming in Python is amazing that we
 accept and encourage that. Try to follow some code from SQLAlchemy library or
 Pandas, or simply following some nested decorators, it&rsquo;s great. If you can, I am
-sure you feel very smart to do so and you should!</p>
-<p>The feeling of understanding something complex is great, I miss that a lot to be
+sure you feel very smart to do so and you should!</p><p>The feeling of understanding something complex is great, I miss that a lot to be
 honest. Perhaps this might be the reason some codebases has lots of <code>macros</code> in
-Clojure too.</p>
-<hr>
-<p>The killer feature of Clojure to me is that a small set of individuals can
+Clojure too.</p><hr><p>The killer feature of Clojure to me is that a small set of individuals can
 collaborate evenly in several layers of the project. Due to the boringness of
-the language we can turn the team focus into:</p>
-<ul>
-<li>shared understanding of architecture (higher level)</li>
-<li>shared understanding of current capabilities</li>
-<li>improving readability of code</li>
-<li>improving automation</li>
-<li>improving tests</li>
-<li>improving efficiency of code (smaller level and isolated tricks)</li>
-</ul>
-<p>And everybody can follow.</p>
-<h2 id=what-about-python-ruby-etc>What about Python, Ruby, etc?</h2>
-<p>Languages like Python got a great deal of attention due to the &ldquo;easiness&rdquo; of use
+the language we can turn the team focus into:</p><ul><li>shared understanding of architecture (higher level)</li><li>shared understanding of current capabilities</li><li>improving readability of code</li><li>improving automation</li><li>improving tests</li><li>improving efficiency of code (smaller level and isolated tricks)</li></ul><p>And everybody can follow.</p><h2 id=what-about-python-ruby-etc>What about Python, Ruby, etc?</h2><p>Languages like Python got a great deal of attention due to the &ldquo;easiness&rdquo; of use
 and the speed in order to get yourself a good prototype for an idea. Other than
 that, Python became even more essential due to the advancements of the Data
-Science community.</p>
-<p>I can only talk about Python here, its a great language and I would never
+Science community.</p><p>I can only talk about Python here, its a great language and I would never
 recommend that you start a data science team using Clojure or F#. However, if
-you are creating an engineering team, you might consider something else.</p>
-<ul>
-<li>Python is nice for prototype, but it&rsquo;s difficult to get consistency across teams
-<ul>
-<li>enables several idioms</li>
-<li>dependending on previous background you might write something the team never saw</li>
-<li>more difficult for a developer to jump from one system to the next</li>
-</ul>
-</li>
-<li>Waste of resources
-<ul>
-<li>wild range of variability in published benchmarks from 30x to 200x slower than Java</li>
-<li>In a big team, this difference implies more spending with servers</li>
-</ul>
-</li>
-<li>Lack of good idioms to handle concurrent problems
-<ul>
-<li>we are in 2021</li>
-</ul>
-</li>
-<li>Stability
-<ul>
-<li>the language itself has many features being added every release</li>
-<li>do not have a strong community support to backward compatibility</li>
-<li>clojure has a very small core and any additional feature can be suplied via libraries
-<ul>
-<li>look at <code>core-async</code> and <code>specs</code> as examples</li>
-<li>java libraries are very stable and battle-tested too</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>These are some of the facets of Python that matters to <strong>me</strong>, so you should have
+you are creating an engineering team, you might consider something else.</p><ul><li>Python is nice for prototype, but it&rsquo;s difficult to get consistency across teams<ul><li>enables several idioms</li><li>dependending on previous background you might write something the team never saw</li><li>more difficult for a developer to jump from one system to the next</li></ul></li><li>Waste of resources<ul><li>wild range of variability in published benchmarks from 30x to 200x slower than Java</li><li>In a big team, this difference implies more spending with servers</li></ul></li><li>Lack of good idioms to handle concurrent problems<ul><li>we are in 2021</li></ul></li><li>Stability<ul><li>the language itself has many features being added every release</li><li>do not have a strong community support to backward compatibility</li><li>clojure has a very small core and any additional feature can be suplied via libraries<ul><li>look at <code>core-async</code> and <code>specs</code> as examples</li><li>java libraries are very stable and battle-tested too</li></ul></li></ul></li></ul><p>These are some of the facets of Python that matters to <strong>me</strong>, so you should have
 your owns, right? As we are in a world where everything is personal, I am sure
 you can come up with ways to do better on each of those points above; please do
-it.</p>
-<p>One of the main selling points of Python is that &ldquo;machine is cheap&rdquo; and the time
+it.</p><p>One of the main selling points of Python is that &ldquo;machine is cheap&rdquo; and the time
 to get something done in Java is too expensive, so we throw away a good
 foundation in the name of speed (&ldquo;productivity&rdquo;). Then, if our product is a
-success we think about what to do later.</p>
-<p>To be honest, the whole premise of Java/C# programmers to be &ldquo;slower&rdquo; can be
+success we think about what to do later.</p><p>To be honest, the whole premise of Java/C# programmers to be &ldquo;slower&rdquo; can be
 argued too when we compare the amount of money that giant enterprises put into
-developing good tooling for developers.</p>
-<p>My take on this is that Clojure provides the best of both worlds, I can use all
+developing good tooling for developers.</p><p>My take on this is that Clojure provides the best of both worlds, I can use all
 the incredible foundations of Java and JVM while I keep the productivity of a
-Python programmer.</p>
-<h2 id=in-the-end-dot-dot-dot>In the end, &mldr;</h2>
-<p>But, is Clojure the only answer?</p>
-<p>Definitely not! If I join a company with expertise in Microsoft I would never
+Python programmer.</p><h2 id=in-the-end-dot-dot-dot>In the end, &mldr;</h2><p>But, is Clojure the only answer?</p><p>Definitely not! If I join a company with expertise in Microsoft I would never
 suggest to throw everything out and embrace Clojure/JVM/Java. However, I would
-definitely push forward to use F#.</p>
-<p>I would definitely choose the functional alternative to whatever mainstream
-language happen to be in place.</p>
-<p>In the end, how does it fix the &ldquo;opinionated&rdquo; scenario we face in software
-development? It does not, no way whatsoever.</p>
-<p>Clojure has its own set of beliefs and its followers too.</p>
-<p>That&rsquo;s why my answers are always bad to &ldquo;Why Clojure?&rdquo; and that&rsquo;s why you should
-continue to do whatever you want.</p>
-</div>
-</article>
-</main>
-<aside>
-<div>
-<div>
-<h3>LATEST POSTS</h3>
-</div>
-<div>
-<ul>
-<li><a href=/en/items/20220213204546-emacs_projectile_and_perspective/>emacs - projectile and perspective</a></li>
-<li><a href=/en/items/20220111222641-emacs_automation_don_t_need_to_look_pretty/>emacs - automation don't need to look pretty</a></li>
-<li><a href=/en/items/20220104144350-role_of_software/>role of software</a></li>
-<li><a href=/en/items/20220104151027-we_dont_know_how_to_compute/>we dont know how to compute</a></li>
-<li><a href=/en/items/why-clojure/>why clojure?</a></li>
-</ul>
-</div>
-</div>
-</aside>
-<div id=disqus_thread></div>
-<script type=application/javascript>var disqus_config=function(){};(function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById('disqus_thread').innerHTML='Disqus comments not available by default when the website is previewed locally.';return}var b=document,a=b.createElement('script');a.async=!0,a.src='//bartuka.disqus.com/embed.js',a.setAttribute('data-timestamp',+new Date),(b.head||b.body).appendChild(a)})()</script>
-<noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript>
-<a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a>
-<footer>
-<p>&copy; 2022 <a href=https://wandersoncferreira.github.io><b>Wanderson Ferreira</b></a>.
+definitely push forward to use F#.</p><p>I would definitely choose the functional alternative to whatever mainstream
+language happen to be in place.</p><p>In the end, how does it fix the &ldquo;opinionated&rdquo; scenario we face in software
+development? It does not, no way whatsoever.</p><p>Clojure has its own set of beliefs and its followers too.</p><p>That&rsquo;s why my answers are always bad to &ldquo;Why Clojure?&rdquo; and that&rsquo;s why you should
+continue to do whatever you want.</p></div></article></main><aside><div><div><h3>LATEST POSTS</h3></div><div><ul><li><a href=/en/items/20220315095410-developers_aiming_to_the_wrong_target/>developers aiming to the wrong target</a></li><li><a href=/en/items/20220213204546-emacs_projectile_and_perspective/>emacs - projectile and perspective</a></li><li><a href=/en/items/20220111222641-emacs_automation_don_t_need_to_look_pretty/>emacs - automation don't need to look pretty</a></li><li><a href=/en/items/20220104144350-role_of_software/>role of software</a></li><li><a href=/en/items/20220104151027-we_dont_know_how_to_compute/>we dont know how to compute</a></li></ul></div></div></aside><div id=disqus_thread></div><script type=application/javascript>window.disqus_config=function(){},function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById("disqus_thread").innerHTML="Disqus comments not available by default when the website is previewed locally.";return}var t=document,e=t.createElement("script");e.async=!0,e.src="//bartuka.disqus.com/embed.js",e.setAttribute("data-timestamp",+new Date),(t.head||t.body).appendChild(e)}()</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript><a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a><footer><p>&copy; 2022 <a href=https://wandersoncferreira.github.io><b>Wanderson Ferreira</b></a>.
 <a href=https://github.com/wandersoncferreira><b>Github</b></a>.
-<a href=https://twitter.com/bartuka_><b>Twitter</b></a>.
-</p>
-</footer>
-</body>
-</html>
+<a href=https://twitter.com/bartuka_><b>Twitter</b></a>.</p></footer></body></html>

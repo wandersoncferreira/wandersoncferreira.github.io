@@ -1,134 +1,50 @@
-<!doctype html><html lang=en-us>
-<head>
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta http-equiv=x-ua-compatible content="IE=edge">
-<style type=text/css>body{font-family:monospace}</style>
-<title>we dont know how to compute</title>
-<link rel=stylesheet href=/css/style.css>
-</head>
-<body>
-<header>
-<a href=/en>Wanderson Ferreira</a> - <a href=/pt>pt-BR</a> / <a href=/en>en</a>
-<br>
--------------------------------
-<div style=float:right>Reifying fragmented ideas</div><br>
-<p>
-<nav>
-<a href=/en><b>Posts</b></a>.
-<a href=/en/tags/><b>Tags</b></a>.
-</nav>
-</p>
-</header>
-<main>
-<article>
-<h1>we dont know how to compute</h1>
-<b><time>2022-01-04 00:00:00</time></b>
-<a href=/en/tags/software>software</a>
-<div>
-<p>These are some thoughts after watching <a href=https://youtu.be/Rk76BurH384>We Really Don&rsquo;t Know How to Compute!</a> from
-Gerald Sussman.</p>
-<p>Sussman is intrigued by how bad we build our systems today, basically when a
+<!doctype html><html lang=en-us><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="IE=edge"><style type=text/css>body{font-family:monospace}</style><title>we dont know how to compute</title><link rel=stylesheet href=/css/style.css></head><body><header><a href>Wanderson Ferreira</a> - <a href=/pt>pt-BR</a> / <a href=/en>en</a><br>-------------------------------<div style=float:right>Reifying fragmented ideas</div><br><p><nav><a href><b>Posts</b></a>.
+<a href=/en/tags/><b>Tags</b></a>.</nav></p></header><main><article><h1>we dont know how to compute</h1><b><time>2022-01-04 00:00:00</time></b>
+<a href=/en/tags/software>software</a><div><p>These are some thoughts after watching <a href=https://youtu.be/Rk76BurH384>We Really Don&rsquo;t Know How to Compute!</a> from
+Gerald Sussman.</p><p>Sussman is intrigued by how bad we build our systems today, basically when a
 problem to be solved changes we need to change the software too. Ideally we
 would add more code to deal with new requirements but often even a small change
 in the problem domain will represent a huge amount of code that needs to be
-shifted around.</p>
-<p>Nature does not work that way. If we think about the human genome it has about 1
+shifted around.</p><p>Nature does not work that way. If we think about the human genome it has about 1
 GB of code. This code is capable to adapt to pretty different environments, to
 changes in requirements, and it&rsquo;s a lot flexible too if you tweak 10% you create
-a <strong>cat</strong>, 15% a <strong>mouse</strong>, 20% a <strong>cow</strong>, etc (1). We definitely don&rsquo;t know how to compute.</p>
-<p>Earlier this year, we had a <a href="https://www.youtube.com/watch?v=YDQmbT62eZk">Strange Loop</a> chat with Sussman and Chris Hanson
+a <strong>cat</strong>, 15% a <strong>mouse</strong>, 20% a <strong>cow</strong>, etc (1). We definitely don&rsquo;t know how to compute.</p><p>Earlier this year, we had a <a href="https://www.youtube.com/watch?v=YDQmbT62eZk">Strange Loop</a> chat with Sussman and Chris Hanson
 about their new book: <a href=https://mitpress.mit.edu/books/software-design-flexibility>Software Design for Flexibility</a>. Great news, one more
 addition from the wizards of MIT. If you want a preview, this lecture about <a href="https://www.youtube.com/watch?v=cblhgNUoX9M">The
 Power of Generic Operations</a> provides a good proxy for the kind of material
-available in the book.</p>
-<p><strong>WARNING</strong>: Scheme and lots of parenthesis in the resources above.</p>
-<p>I am already past chapter 3, but I would like to talk about two properties we
-desire in our systems to achieve more flexibility: <strong>adaptability</strong> and <strong>degeneracy</strong>.</p>
-<h2 id=adaptability>Adaptability</h2>
-<p>We build our <strong>systems</strong> with a large amount of custom-made highly specialized
+available in the book.</p><p><strong>WARNING</strong>: Scheme and lots of parenthesis in the resources above.</p><p>I am already past chapter 3, but I would like to talk about two properties we
+desire in our systems to achieve more flexibility: <strong>adaptability</strong> and <strong>degeneracy</strong>.</p><h2 id=adaptability>Adaptability</h2><p>We build our <strong>systems</strong> with a large amount of custom-made highly specialized
 components and this leads to a very brittle system - if we add a bit of noise in
 the input of the program it&rsquo;s enough to break it. We need systems that can make
-<strong>reasonable decisions</strong> facing a new situation.</p>
-<p>In the <strong>Power of Generic Operations</strong>, Sussman talks about an auto-pilot module for
+<strong>reasonable decisions</strong> facing a new situation.</p><p>In the <strong>Power of Generic Operations</strong>, Sussman talks about an auto-pilot module for
 aircraft that was programmed to be turned off when any failure happens, however
-the module had a lot of information available to make better decisions.</p>
-<p>However, as designers of systems we can build something like that today, but we
+the module had a lot of information available to make better decisions.</p><p>However, as designers of systems we can build something like that today, but we
 would lose a very important aspect of today&rsquo;s software: <strong>correctness</strong>. Can we give
 up the feeling of total control over the system and predictability in name of
-adaptability? How about liabilities?</p>
-<blockquote>
-<p>The first thing we do, let&rsquo;s kill all the lawers - Henry VI, Part 2, Act IV, Scene 2 - Shakespeare.</p>
-</blockquote>
-<p>There are also standard practices that does not contribute to this notion of
+adaptability? How about liabilities?</p><blockquote><p>The first thing we do, let&rsquo;s kill all the lawers - Henry VI, Part 2, Act IV, Scene 2 - Shakespeare.</p></blockquote><p>There are also standard practices that does not contribute to this notion of
 adaptability, for example, I believe the Java-style <strong>oop</strong> that is widely practiced
 to be complicated to cope with adaptability. When we think about a problem to be
 solved and immediately try to reduce our attention to only the &ldquo;core concepts&rdquo;
 to lock them inside a class we are already imposing lots of limitations to our
-code that will be run against the real world, not our simplification of it.</p>
-<p>I find funny that it&rsquo;s often said in OOP lectures that we don&rsquo;t want to
+code that will be run against the real world, not our simplification of it.</p><p>I find funny that it&rsquo;s often said in OOP lectures that we don&rsquo;t want to
 replicate all the details of the problem domain in our classes, however every
 single day you add a new &ldquo;discovered&rdquo; detail about the same problem domain but
 eventually you see a hidden relationship that invalidates all previous
-assumptions that you created in your &lsquo;&lsquo;fake domain&rsquo;&rsquo;. Gj, time to hire.</p>
-<h2 id=degeneracy>Degeneracy</h2>
-<p>In Software design is common to talk about redundancy but not degeneracy.
+assumptions that you created in your &lsquo;&lsquo;fake domain&rsquo;&rsquo;. Gj, time to hire.</p><h2 id=degeneracy>Degeneracy</h2><p>In Software design is common to talk about redundancy but not degeneracy.
 <strong>degeneracy</strong> is the ability to have many different ways to achieve the same
-requirement.</p>
-<p>We have access to a lot of computational power nowadays, we can execute several
+requirement.</p><p>We have access to a lot of computational power nowadays, we can execute several
 pieces of code in parallel that should achieve the same answer and then we can
-think about strategies for how to move forward:</p>
-<ol>
-<li>do we want to return the answer as soon as we get one?</li>
-<li>do we want to compare their results because this is critical operation?</li>
-<li>do we want to randomly return possible answers?</li>
-</ol>
-<figure><img src=/images/degeneracy.png>
-</figure>
-<p>This a theoretical relationship between biological properties that are important
+think about strategies for how to move forward:</p><ol><li>do we want to return the answer as soon as we get one?</li><li>do we want to compare their results because this is critical operation?</li><li>do we want to randomly return possible answers?</li></ol><figure><img src=/images/degeneracy.png></figure><p>This a theoretical relationship between biological properties that are important
 to evolution. Seems like if we want to improve our game and start building
 software that follows our ever changing needs we need to borrow more concepts
 from this incredible system called <strong>nature</strong>. The concept of degeneracy is not so
-distant for our current capabilities. We just choose not to do it.</p>
-<p>As pointed out by Sussman we have additional constraints to achieve flexible
+distant for our current capabilities. We just choose not to do it.</p><p>As pointed out by Sussman we have additional constraints to achieve flexible
 systems that does not live in the technological realm such as regulations and
 liabilities. I would include economical factors too because time to market is
 paramount to businesses today. Imagine yourself explaining that you need four
-times more time to think and implement these concepts in your program.</p>
-<p>Many reports about the cost of software maintenance indicates that it represents
+times more time to think and implement these concepts in your program.</p><p>Many reports about the cost of software maintenance indicates that it represents
 60% to 90% of total cost for the full lifecycle . Also, the majority of the
-maintenance is due to changes in requirements.</p>
-<p>We definitely can improve our tooling around flexibility, but would that be
-enough?</p>
-<p>(1) Assuming a mechanistic view of the world.</p>
-</div>
-</article>
-</main>
-<aside>
-<div>
-<div>
-<h3>LATEST POSTS</h3>
-</div>
-<div>
-<ul>
-<li><a href=/en/items/20220213204546-emacs_projectile_and_perspective/>emacs - projectile and perspective</a></li>
-<li><a href=/en/items/20220111222641-emacs_automation_don_t_need_to_look_pretty/>emacs - automation don't need to look pretty</a></li>
-<li><a href=/en/items/20220104144350-role_of_software/>role of software</a></li>
-<li><a href=/en/items/20220104151027-we_dont_know_how_to_compute/>we dont know how to compute</a></li>
-<li><a href=/en/items/why-clojure/>why clojure?</a></li>
-</ul>
-</div>
-</div>
-</aside>
-<div id=disqus_thread></div>
-<script type=application/javascript>var disqus_config=function(){};(function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById('disqus_thread').innerHTML='Disqus comments not available by default when the website is previewed locally.';return}var b=document,a=b.createElement('script');a.async=!0,a.src='//bartuka.disqus.com/embed.js',a.setAttribute('data-timestamp',+new Date),(b.head||b.body).appendChild(a)})()</script>
-<noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript>
-<a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a>
-<footer>
-<p>&copy; 2022 <a href=https://wandersoncferreira.github.io><b>Wanderson Ferreira</b></a>.
+maintenance is due to changes in requirements.</p><p>We definitely can improve our tooling around flexibility, but would that be
+enough?</p><p>(1) Assuming a mechanistic view of the world.</p></div></article></main><aside><div><div><h3>LATEST POSTS</h3></div><div><ul><li><a href=/en/items/20220315095410-developers_aiming_to_the_wrong_target/>developers aiming to the wrong target</a></li><li><a href=/en/items/20220213204546-emacs_projectile_and_perspective/>emacs - projectile and perspective</a></li><li><a href=/en/items/20220111222641-emacs_automation_don_t_need_to_look_pretty/>emacs - automation don't need to look pretty</a></li><li><a href=/en/items/20220104144350-role_of_software/>role of software</a></li><li><a href=/en/items/20220104151027-we_dont_know_how_to_compute/>we dont know how to compute</a></li></ul></div></div></aside><div id=disqus_thread></div><script type=application/javascript>window.disqus_config=function(){},function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById("disqus_thread").innerHTML="Disqus comments not available by default when the website is previewed locally.";return}var t=document,e=t.createElement("script");e.async=!0,e.src="//bartuka.disqus.com/embed.js",e.setAttribute("data-timestamp",+new Date),(t.head||t.body).appendChild(e)}()</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript><a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a><footer><p>&copy; 2022 <a href=https://wandersoncferreira.github.io><b>Wanderson Ferreira</b></a>.
 <a href=https://github.com/wandersoncferreira><b>Github</b></a>.
-<a href=https://twitter.com/bartuka_><b>Twitter</b></a>.
-</p>
-</footer>
-</body>
-</html>
+<a href=https://twitter.com/bartuka_><b>Twitter</b></a>.</p></footer></body></html>
