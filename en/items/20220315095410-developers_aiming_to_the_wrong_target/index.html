@@ -31,52 +31,55 @@ and Kubernetes to <strong>fix all the problems</strong> is very seductive. The r
 towards your manager because he chose bad libraries or because we
 chosen language X to implement service Y and all was terrible and
 doomed to failure is very seductive.</p><p>But let&rsquo;s attempt to dive deeper.</p><p>What really is software development?</p><h2 id=the-naive>The Naive</h2><p>There is a naive view that software development is the production of
-programs. What? and What is it then?</p><p>In fact we do this:</p><ol><li>There is a problem to be solved</li><li>The problem is described in terms of necessary programs</li><li>Programmers write programs</li><li>A program is a set of instructions</li><li>A instruction is a set of symbols written in text</li><li>The text is interpreted by the computer</li><li>The computer executes the instruction</li></ol><p>Fair enough. Now, the naive view of software development attempts to
-advocate that we only need to define the <strong>right instructions</strong> that
-need to be coded in the computer to solve a problem.</p><p>That&rsquo;s it.</p><p>This view is great to foster all sorts of shallow discussions: i)
-this is cheap labour as we can replace the programmer easyli as
-anyone can follow specifications; ii) leave the programmer to only
-discuss the best way possible to translate the programs into
-instructions; iii) removes any ethical responsibility from the
-programmer about the consequences of running such programs; and so
-on.</p><p>There are more assumptions to justify the so called
-&ldquo;Production-view&rdquo; of software development, for example:</p><ul><li>There is a given reality &ldquo;out there&rdquo; which we come across during software development</li><li>By analyzing the facts of this reality, we obtain requirements for the software</li><li>It is possible to separate the production of software from its use</li><li>Software production is based on models representing reality. Models should map reality correctly</li><li>Communication should be restricted and regular via fixed interfaces</li><li>The division of production into linear phases</li></ul><p>The view is well sounded and pretty much how we operate
-nowadays. But my personal experiences doesn&rsquo;t match exactly with
-this model.</p><p>Interesting to bring back the debate on &ldquo;which programming language
-to choose?&rdquo; now. If there is a given reality &ldquo;out there&rdquo; as
-practitioners of production-view software development believes then
-there is no point in discussing this choice other than mere
-technical aspects. But if we quickly fall into a diminishing returns
-point on technical aspects, then this is closer to a undecidable
-problem? However, if we do believe that the language we chose helps
-us to perceive reality in a different way, would it change your
-candidates? Perhaps we need this crystal clear line of argument next
-time we face this decision. In what ways the real world will change
-if we keep re-estructuring reality into a given Design Pattern
-instead of embracing its raw form in a more loose way?</p><p>Programs often emerge out of a specific context, the person behind
-the code matters a lot because the ideas shared to construct the
-solution is very hard to grasp without a deep imersion in that
-particular context. Often inputs from non-programmers are major
-drivers for technical decisions.</p><p>And to be honest, there must have a better way&mldr;.</p><h2 id=the-theory>The Theory</h2><p>I came across <a href=https://pages.cs.wisc.edu/~remzi/Naur.pdf>Peter Naur, Programming as Theory Building</a> paper and
-this was illuminating to me. I still can&rsquo;t make justice to such text
-without distorting its intent but basically the general idea is that
-programmers should be viewed as developers of theories.</p><p>The Theory Building View states that the output of the programming
-activity is not symbols in text but rather a theory about the nature
-of that translation.</p><p>The word <strong>theory</strong> here has a different connotation than our daily
+programs. This is called &ldquo;Production-view&rdquo;. What? and What is it then?</p><p>In fact we do this:</p><ol><li>There is a problem to be solved</li><li>The problem is described in terms of necessary programs</li><li>Programmers write programs</li><li>A program is a set of instructions</li><li>A instruction is a set of symbols written in text</li><li>The text is interpreted by the computer</li><li>The computer executes the instruction</li></ol><p>Fair enough. Now, the naive view of software development advocates
+that we only need to define the <strong>right instructions</strong> that needs to
+be coded in the computer to solve a problem.</p><p>That&rsquo;s it.</p><p>This view is great to foster all sorts of shallow discussions: i) this
+is cheap labour as we can replace the programmer easily as anyone can
+follow specifications; ii) leave the programmer to discuss only the
+best forms to translate the programs into instructions; iii) removes
+any ethical responsibility from the programmer about the consequences
+of running such programs; and so on.</p><p>There are more assumptions to justify the so called &ldquo;Production-View&rdquo;
+of software development:</p><ul><li>There is a given reality &ldquo;out there&rdquo; which we come across during software development</li><li>By analyzing the facts of this reality, we obtain requirements for the software</li><li>It is possible to separate the production of software from its use</li><li>Software production is based on models representing reality. Models should map reality correctly</li><li>Communication should be restricted and regular via fixed interfaces</li><li>The division of production into linear phases</li></ul><p>The view is well sounded and pretty much how we operate nowadays. But
+my personal experiences doesn&rsquo;t match exactly with this model.</p><p>A small detour here to bring back the debate on &ldquo;Which Programming
+Language to choose?&rdquo;. If there is a given reality &ldquo;out there&rdquo; as
+practitioners of production-view believes then there is no point in
+discussing the choice of languages other than mere technical
+aspects. But if we quickly fall into a diminishing return point when
+only technical aspects is taking into account, then this is closer to
+a undecidable problem?</p><p>However, if we do believe that the language we chose helps us to
+perceive reality in a different way, would it change your candidates?
+Perhaps we need this new line of argument next time we face this
+decision. In what ways the real world will change if we keep
+re-estructuring reality into a given &ldquo;Design Pattern&rdquo; instead of
+embracing its raw form in a more loosen way?</p><p>Programs often emerge out of a specific context, the person behind the
+code matters a lot because the ideas shared to construct the solution
+is very hard to grasp without a deep imersion in that particular
+context and all the background knowledge provided by the coder. Often
+inputs from non-programmers are major drivers for technical decisions.</p><p>And to be honest, there must have a better way&mldr;.</p><h2 id=the-theory>The Theory</h2><p>I came across <a href=https://pages.cs.wisc.edu/~remzi/Naur.pdf>Peter Naur, Programming as Theory
+Building</a> paper and it was
+illuminating to me. I still can&rsquo;t make justice to such text without
+distorting its intent but basically the general idea is that
+programmers should be viewed as developers of theories.</p><p>The <em>Theory Building View</em> states that the output of the programming
+activity is not symbols in text form but rather a theory about the
+nature of that translation.</p><p>The word <strong>theory</strong> here has a different connotation than our daily
 usage today but it includes the abilities to:</p><ul><li><strong>explain</strong> the program on <strong>why</strong> and <strong>how</strong>.</li><li>identity how new modifications can be expressed in terms of the
 theory of the program</li></ul><p>We can simplify even further by introducing the idea of a
 <strong>metaphor</strong>. What is the initial metaphor used to code the program?
 Let&rsquo;s see an example:</p><ul><li>We work in the Financial Industry with Loans</li><li>We have a particular business issue to solve</li><li>After endless discussions with all parties involved we arrive at
 the idea to treat the Credit Contract the same way a Marketplace
 treats a SKU.</li><li>We are making a parallel about Credit Contract &lt;&ndash;> Marketplace SKU</li></ul><p>This might fix the problem elegantly. Very clever solution. However,
-what all the programmers involved in coding this did was not to type
-the program but to make the metaphor alive. And their jobs is to
-keep the metaphor alive and add new features respecting the
-constraints imposed by the initial metaphor.</p><p>And here we start to have problems, if all the developers that made
+what all the programmers involved in coding did was not to type the
+program but to make the metaphor alive. And their jobs is to keep the
+metaphor alive and add new features respecting the constraints imposed
+by the initial metaphor.</p><p>And here we start to have problems, if all the developers that made
 the metaphor possible left the company then we are in trouble. There
 are often many ways to implement a change, but only a few options will
 not distort the initial metaphor and make the program less prone to
-bugs, performance issues, and the famous <strong>re-writes</strong>.</p><p>What Naur is suggesting is that we should focus on how to
+bugs, performance issues, and the famous <strong>re-writes</strong>.</p><p>Coming back to our Marketplace metaphor above, even if we attempt to
+describe that we are making this conceptual leap we are not guaranteed
+to transmit the theory forward. New programmers may have a totally
+different notion of what a Loean, Credit Contract, Marketplace, and
+SKU even means.</p><p>What Naur is suggesting is that we should focus on how to
 communicate and keep the <strong>theory</strong> alive not the implementation
 details. In his paper, Naur&rsquo;s suggest that is not possible to convey
 this information in any written form. This is something we learn by
@@ -112,11 +115,11 @@ analysis, only be evaluated once in use. It creates social contexts
 for human actions, which are shaped by the technical properties of the
 product.</p><p>Design thus links different worlds: the social world of the
 application in question, the technical world of the means of
-implementation, and the formal world of methods and concepts.</p></blockquote><p>I like her description and coverage of this definition. These notions
-has the potential to redefine everything we take for granted today in
-software development like tooling, interview processes, performance
-assessments, skillset required for a role, new roles, vanishing old
-roles, and so on.</p><p>So far my quest for a definition for &ldquo;What is software development?&rdquo;
+implementation, and the formal world of methods and concepts.</p></blockquote><p>I like her description and coverage of this <em>design</em> definition. These
+notions has the potential to redefine everything we take for granted
+today in software development like tooling, interview processes,
+performance assessments, skillset required for a role, new roles,
+vanishing old roles, and so on.</p><p>So far my quest for a definition for &ldquo;What is software development?&rdquo;
 lead to a happy realization that there is a lot more to it than mere
 text production and a enthusiastic realization that I am far from
 getting a definitive answer.</p><p>I hope in my next endeavors fixing problems with software, I can
