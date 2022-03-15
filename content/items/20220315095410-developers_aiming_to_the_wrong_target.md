@@ -11,7 +11,7 @@ draft: false
 I set a personal journey to understand software development in a more
 fundamental level.
 
-What is this thing that I like so much to do? and how to explain the
+What is this activity that I like so much to do? How to explain the
 unease feeling that most of my discussions with other practitioners
 are meaningless?
 
@@ -19,21 +19,23 @@ The meaningless arises from my perception that discussing technical
 aspects of a problem has a strong [diminishing returns](https://en.wikipedia.org/wiki/Diminishing_returns) component to
 it. For example, programming language choices.
 
-Everybody has a personal opinion about Python, PHP, Java, Ruby, etc
-and why we should use it. However, most of the arguments I listened
-to was related to technical aspects e.g. lack of native support for
-multithreading programming, several historical inventions to
-overcome language limitations through the usage of "Established
-Patterns", some definition of "Fun", etc.
+Everybody has an opinion about Python, PHP, Java, and Ruby also why we
+should use each. However, most of the arguments I see is related to
+technical aspects e.g. lack of native support for multithreading
+programming, several historical inventions to overcome language
+limitations through the usage of "Established Patterns", some
+definition of "Fun", etc.
 
-As valid as they all can be, this is not enough for me. If you think
-careful about these aspects, once you overcome some basic high-level
-concepts in programming languages then any option is a good
-option. For the general case.
+As valid as they can all be, this is not enough for me. If you think
+careful about these aspects, once you are over some basic high-level
+concepts in programming languages threshold then any option is a good
+option.
 
-I've been trying to avoid these traps and trying to define what is
-really important to me on the craft of developing software. For
-example, programming language choices.
+For the general case.
+
+Therefore, I've been trying to avoid these traps and trying to define
+what is really important to me on the craft. For example, programming
+language choices.
 
 I trully believe that [Language changes the way we think](https://www.gofluent.com/blog/how-language-affects-the-way-we-think/):
 
@@ -45,24 +47,29 @@ With that in mind, I'd like to find world views more aligned with my
 beliefs and if possible some similarities between the problem I'm
 trying to work with and the imposed view carried by the language.
 
-So far so good, but now I have a major issue to think about. Would be
-easy if we were focusing too much on disliking parenthesis and over
-praising "hireability" because the world runs on Javascript in
-detriment of a well suited world view discussion of our
-craft. However, the problem here is that Real World have many more
-actors participating in the game: there are business people,
-regulations, customers, physical limitations, and so on.
+So far so good, but now I have a major issue to think about.
+
+Would be easy if we were focusing too much on disliking parenthesis
+and over praising "hireability" because the world runs on Javascript
+in detriment of a well suited World view discussion of our craft.
+
+However, the problem here is that Real World have many more actors
+participating in the game: there are business people, regulations,
+customers, physical limitations, people mood, politics, power
+relationships, and so on.
 
 We quickly enter the realm of social sciences.
 
-And here probably I'll loose any technical people that made so
-far. The feeling of joining a "hard science" to avoid "people
-interaction" is fading away and I feel cheated.
+And here probably I'll loose the technical person that made thus
+far.
 
-The blog posts about how did we implement micro-services using Kafka
+The feeling of joining a "hard science" to avoid "people interactions"
+was fading away and I felt cheated.
+
+Those blog posts about how we implemented micro-services using Kafka
 and Kubernetes to **fix all the problems** is very seductive. The rage
-towards your manager because we use bad libraries or because we had
-chosen language X to implement service Y and all is terrible and
+towards your manager because he chose bad libraries or because we
+chosen language X to implement service Y and all was terrible and
 doomed to failure is very seductive.
 
 But let's attempt to dive deeper.
