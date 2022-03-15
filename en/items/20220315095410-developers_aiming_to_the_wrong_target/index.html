@@ -1,36 +1,35 @@
 <!doctype html><html lang=en-us><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="IE=edge"><style type=text/css>body{font-family:monospace}</style><title>developers aiming to the wrong target</title><link rel=stylesheet href=/css/style.css></head><body><header><a href>Wanderson Ferreira</a> - <a href=/pt>pt-BR</a> / <a href=/en>en</a><br>-------------------------------<div style=float:right>Reifying fragmented ideas</div><br><p><nav><a href><b>Posts</b></a>.
 <a href=/en/tags/><b>Tags</b></a>.</nav></p></header><main><article><h1>developers aiming to the wrong target</h1><b><time>2022-03-15 00:00:00</time></b>
 <a href=/en/tags/general>general</a><div><h2 id=the-introduction>The Introduction</h2><p>I set a personal journey to understand software development in a more
-fundamental level.</p><p>What is this thing that I like so much to do? and how to explain the
+fundamental level.</p><p>What is this activity that I like so much to do? How to explain the
 unease feeling that most of my discussions with other practitioners
 are meaningless?</p><p>The meaningless arises from my perception that discussing technical
 aspects of a problem has a strong <a href=https://en.wikipedia.org/wiki/Diminishing_returns>diminishing returns</a> component to
-it. For example, programming language choices.</p><p>Everybody has a personal opinion about Python, PHP, Java, Ruby, etc
-and why we should use it. However, most of the arguments I listened
-to was related to technical aspects e.g. lack of native support for
-multithreading programming, several historical inventions to
-overcome language limitations through the usage of &ldquo;Established
-Patterns&rdquo;, some definition of &ldquo;Fun&rdquo;, etc.</p><p>As valid as they all can be, this is not enough for me. If you think
-careful about these aspects, once you overcome some basic high-level
-concepts in programming languages then any option is a good
-option. For the general case.</p><p>I&rsquo;ve been trying to avoid these traps and trying to define what is
-really important to me on the craft of developing software. For
-example, programming language choices.</p><p>I trully believe that <a href=https://www.gofluent.com/blog/how-language-affects-the-way-we-think/>Language changes the way we think</a>:</p><blockquote><p>Languages don’t limit our ability to perceive the world or to think
+it. For example, programming language choices.</p><p>Everybody has an opinion about Python, PHP, Java, and Ruby also why we
+should use each. However, most of the arguments I see is related to
+technical aspects e.g. lack of native support for multithreading
+programming, several historical inventions to overcome language
+limitations through the usage of &ldquo;Established Patterns&rdquo;, some
+definition of &ldquo;Fun&rdquo;, etc.</p><p>As valid as they can all be, this is not enough for me. If you think
+careful about these aspects, once you are over some basic high-level
+concepts in programming languages threshold then any option is a good
+option.</p><p>For the general case.</p><p>Therefore, I&rsquo;ve been trying to avoid these traps and trying to define
+what is really important to me on the craft. For example, programming
+language choices.</p><p>I trully believe that <a href=https://www.gofluent.com/blog/how-language-affects-the-way-we-think/>Language changes the way we think</a>:</p><blockquote><p>Languages don’t limit our ability to perceive the world or to think
 about the world, rather, they focus our attention, and thought on
 specific aspects of the world.</p></blockquote><p>With that in mind, I&rsquo;d like to find world views more aligned with my
 beliefs and if possible some similarities between the problem I&rsquo;m
-trying to work with and the imposed view carried by the language.</p><p>So far so good, but now I have a major issue to think about. Would be
-easy if we were focusing too much on disliking parenthesis and over
-praising &ldquo;hireability&rdquo; because the world runs on Javascript in
-detriment of a well suited world view discussion of our
-craft. However, the problem here is that Real World have many more
-actors participating in the game: there are business people,
-regulations, customers, physical limitations, and so on.</p><p>We quickly enter the realm of social sciences.</p><p>And here probably I&rsquo;ll loose any technical people that made so
-far. The feeling of joining a &ldquo;hard science&rdquo; to avoid &ldquo;people
-interaction&rdquo; is fading away and I feel cheated.</p><p>The blog posts about how did we implement micro-services using Kafka
+trying to work with and the imposed view carried by the language.</p><p>So far so good, but now I have a major issue to think about.</p><p>Would be easy if we were focusing too much on disliking parenthesis
+and over praising &ldquo;hireability&rdquo; because the world runs on Javascript
+in detriment of a well suited World view discussion of our craft.</p><p>However, the problem here is that Real World have many more actors
+participating in the game: there are business people, regulations,
+customers, physical limitations, people mood, politics, power
+relationships, and so on.</p><p>We quickly enter the realm of social sciences.</p><p>And here probably I&rsquo;ll loose the technical person that made thus
+far.</p><p>The feeling of joining a &ldquo;hard science&rdquo; to avoid &ldquo;people interactions&rdquo;
+was fading away and I felt cheated.</p><p>Those blog posts about how we implemented micro-services using Kafka
 and Kubernetes to <strong>fix all the problems</strong> is very seductive. The rage
-towards your manager because we use bad libraries or because we had
-chosen language X to implement service Y and all is terrible and
+towards your manager because he chose bad libraries or because we
+chosen language X to implement service Y and all was terrible and
 doomed to failure is very seductive.</p><p>But let&rsquo;s attempt to dive deeper.</p><p>What really is software development?</p><h2 id=the-naive>The Naive</h2><p>There is a naive view that software development is the production of
 programs. What? and What is it then?</p><p>In fact we do this:</p><ol><li>There is a problem to be solved</li><li>The problem is described in terms of necessary programs</li><li>Programmers write programs</li><li>A program is a set of instructions</li><li>A instruction is a set of symbols written in text</li><li>The text is interpreted by the computer</li><li>The computer executes the instruction</li></ol><p>Fair enough. Now, the naive view of software development attempts to
 advocate that we only need to define the <strong>right instructions</strong> that
