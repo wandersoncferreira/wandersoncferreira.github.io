@@ -80,7 +80,7 @@ What really is software development?
 ## The Naive {#the-naive}
 
 There is a naive view that software development is the production of
-programs. What? and What is it then?
+programs. This is called "Production-view". What? and What is it then?
 
 In fact we do this:
 
@@ -92,22 +92,21 @@ In fact we do this:
 6.  The text is interpreted by the computer
 7.  The computer executes the instruction
 
-Fair enough. Now, the naive view of software development attempts to
-advocate that we only need to define the **right instructions** that
-need to be coded in the computer to solve a problem.
+Fair enough. Now, the naive view of software development advocates
+that we only need to define the **right instructions** that needs to
+be coded in the computer to solve a problem.
 
 That's it.
 
-This view is great to foster all sorts of shallow discussions: i)
-this is cheap labour as we can replace the programmer easyli as
-anyone can follow specifications; ii) leave the programmer to only
-discuss the best way possible to translate the programs into
-instructions; iii) removes any ethical responsibility from the
-programmer about the consequences of running such programs; and so
-on.
+This view is great to foster all sorts of shallow discussions: i) this
+is cheap labour as we can replace the programmer easily as anyone can
+follow specifications; ii) leave the programmer to discuss only the
+best forms to translate the programs into instructions; iii) removes
+any ethical responsibility from the programmer about the consequences
+of running such programs; and so on.
 
-There are more assumptions to justify the so called
-"Production-view" of software development, for example:
+There are more assumptions to justify the so called "Production-View"
+of software development:
 
 -   There is a given reality "out there" which we come across during software development
 -   By analyzing the facts of this reality, we obtain requirements for the software
@@ -116,42 +115,44 @@ There are more assumptions to justify the so called
 -   Communication should be restricted and regular via fixed interfaces
 -   The division of production into linear phases
 
-The view is well sounded and pretty much how we operate
-nowadays. But my personal experiences doesn't match exactly with
-this model.
+The view is well sounded and pretty much how we operate nowadays. But
+my personal experiences doesn't match exactly with this model.
 
-Interesting to bring back the debate on "which programming language
-to choose?" now. If there is a given reality "out there" as
-practitioners of production-view software development believes then
-there is no point in discussing this choice other than mere
-technical aspects. But if we quickly fall into a diminishing returns
-point on technical aspects, then this is closer to a undecidable
-problem? However, if we do believe that the language we chose helps
-us to perceive reality in a different way, would it change your
-candidates? Perhaps we need this crystal clear line of argument next
-time we face this decision. In what ways the real world will change
-if we keep re-estructuring reality into a given Design Pattern
-instead of embracing its raw form in a more loose way?
+A small detour here to bring back the debate on "Which Programming
+Language to choose?". If there is a given reality "out there" as
+practitioners of production-view believes then there is no point in
+discussing the choice of languages other than mere technical
+aspects. But if we quickly fall into a diminishing return point when
+only technical aspects is taking into account, then this is closer to
+a undecidable problem?
 
-Programs often emerge out of a specific context, the person behind
-the code matters a lot because the ideas shared to construct the
-solution is very hard to grasp without a deep imersion in that
-particular context. Often inputs from non-programmers are major
-drivers for technical decisions.
+However, if we do believe that the language we chose helps us to
+perceive reality in a different way, would it change your candidates?
+Perhaps we need this new line of argument next time we face this
+decision. In what ways the real world will change if we keep
+re-estructuring reality into a given "Design Pattern" instead of
+embracing its raw form in a more loosen way?
+
+Programs often emerge out of a specific context, the person behind the
+code matters a lot because the ideas shared to construct the solution
+is very hard to grasp without a deep imersion in that particular
+context and all the background knowledge provided by the coder. Often
+inputs from non-programmers are major drivers for technical decisions.
 
 And to be honest, there must have a better way....
 
 
 ## The Theory {#the-theory}
 
-I came across [Peter Naur, Programming as Theory Building](https://pages.cs.wisc.edu/~remzi/Naur.pdf) paper and
-this was illuminating to me. I still can't make justice to such text
-without distorting its intent but basically the general idea is that
+I came across [Peter Naur, Programming as Theory
+Building](https://pages.cs.wisc.edu/~remzi/Naur.pdf) paper and it was
+illuminating to me. I still can't make justice to such text without
+distorting its intent but basically the general idea is that
 programmers should be viewed as developers of theories.
 
-The Theory Building View states that the output of the programming
-activity is not symbols in text but rather a theory about the nature
-of that translation.
+The *Theory Building View* states that the output of the programming
+activity is not symbols in text form but rather a theory about the
+nature of that translation.
 
 The word **theory** here has a different connotation than our daily
 usage today but it includes the abilities to:
@@ -172,16 +173,22 @@ Let's see an example:
 -   We are making a parallel about Credit Contract &lt;--&gt; Marketplace SKU
 
 This might fix the problem elegantly. Very clever solution. However,
-what all the programmers involved in coding this did was not to type
-the program but to make the metaphor alive. And their jobs is to
-keep the metaphor alive and add new features respecting the
-constraints imposed by the initial metaphor.
+what all the programmers involved in coding did was not to type the
+program but to make the metaphor alive. And their jobs is to keep the
+metaphor alive and add new features respecting the constraints imposed
+by the initial metaphor.
 
 And here we start to have problems, if all the developers that made
 the metaphor possible left the company then we are in trouble. There
 are often many ways to implement a change, but only a few options will
 not distort the initial metaphor and make the program less prone to
 bugs, performance issues, and the famous **re-writes**.
+
+Coming back to our Marketplace metaphor above, even if we attempt to
+describe that we are making this conceptual leap we are not guaranteed
+to transmit the theory forward. New programmers may have a totally
+different notion of what a Loean, Credit Contract, Marketplace, and
+SKU even means.
 
 What Naur is suggesting is that we should focus on how to
 communicate and keep the **theory** alive not the implementation
@@ -242,11 +249,11 @@ paragraphs that I've been digesting for sometime:
 > application in question, the technical world of the means of
 > implementation, and the formal world of methods and concepts.
 
-I like her description and coverage of this definition. These notions
-has the potential to redefine everything we take for granted today in
-software development like tooling, interview processes, performance
-assessments, skillset required for a role, new roles, vanishing old
-roles, and so on.
+I like her description and coverage of this *design* definition. These
+notions has the potential to redefine everything we take for granted
+today in software development like tooling, interview processes,
+performance assessments, skillset required for a role, new roles,
+vanishing old roles, and so on.
 
 So far my quest for a definition for "What is software development?"
 lead to a happy realization that there is a lot more to it than mere
