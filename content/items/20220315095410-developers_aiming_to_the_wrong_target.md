@@ -120,18 +120,18 @@ my personal experiences doesn't match exactly with this model.
 
 A small detour here to bring back the debate on "Which Programming
 Language to choose?". If there is a given reality "out there" as
-practitioners of production-view believes then there is no point in
-discussing the choice of languages other than mere technical
-aspects. But if we quickly fall into a diminishing return point when
-only technical aspects is taking into account, then this is closer to
-a undecidable problem?
+practitioners of production-view said then there is no point in
+discussing the choice of languages other than strict technical
+aspects. But if we acknowledge the sudden fall into a diminishing
+return point when only technical aspects is relevant, then this
+discussion is basically a undecidable problem.
 
-However, if we do believe that the language we chose helps us to
-perceive reality in a different way, would it change your candidates?
-Perhaps we need this new line of argument next time we face this
-decision. In what ways the real world will change if we keep
-re-estructuring reality into a given "Design Pattern" instead of
-embracing its raw form in a more loosen way?
+However, if we agree that languages help us to shape and perceive
+reality in a different way, would this change your language
+candidates?  Perhaps we need this new line of argument the next time
+we face this decision. In what ways the real world will change if we
+keep re-estructuring reality into given "Design Pattern" instead of
+embracing its raw form in a more loosen fashion?
 
 Programs often emerge out of a specific context, the person behind the
 code matters a lot because the ideas shared to construct the solution
