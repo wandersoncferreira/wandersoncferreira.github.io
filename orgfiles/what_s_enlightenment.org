@@ -2,7 +2,7 @@
 :ID:       fd31ebe4-e8d5-4fbd-91a8-1b6e34be1a4f
 :END:
 #+TITLE: what's enlightenment?
-#+hugo_lastmod: Time-stamp: <2022-05-06 18:03:23 wferreir>
+#+hugo_lastmod: Time-stamp: <2022-05-06 20:03:43 wferreir>
 #+hugo_url: /bookmarks/what_s_enlightenment
 #+hugo_tags: "raw page"
 
@@ -50,7 +50,7 @@ narrowest ditch, because he is not used to such free movement. That is
 why there are only a few men who walk firmly, and who have emerged from
 nonage by cultivating their own minds.
 
-It is more nearly possible, however, for the public to enlighten itself;
+It is more nearly possible, however, for the [[id:a5d5128a-a16e-4ee6-b62f-75eae369fb79][public]] to enlighten itself;
 indeed, if it is only given freedom, enlightenment is almost inevitable.
 There will always be a few independent thinkers, even among the
 self-appointed guardians of the multitude. Once such men have thrown off
