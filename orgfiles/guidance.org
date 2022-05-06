@@ -1,0 +1,12 @@
+:PROPERTIES:
+:ID:       79c8ed79-fc93-430a-8dfc-a9a840f6c2c5
+:END:
+#+TITLE: guidance
+#+hugo_lastmod: Time-stamp: <2022-05-06 17:58:13 wferreir>
+
+
+Questions while reading Kant's [[id:fd31ebe4-e8d5-4fbd-91a8-1b6e34be1a4f][what's enlightenment?]] essay:
+
+- what level of guidance is desirable?
+  - at some point we need to draw the line between good vs bad guidance. I
+    believe we all need people to provide us directions.

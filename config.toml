@@ -28,6 +28,11 @@ pygmentsUseClasses = true       # This applies to Chroma too.
         identifier = "tags"
         name = "Tags"
         url = "/tags/"
+        weight = 4
+    [[menu.main]]
+        identifier = "notes"
+        name = "Notes"
+        url = "/notes/"
         weight = 3
     [[menu.main]]
         identifier = "bookmarks"

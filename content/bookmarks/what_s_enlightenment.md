@@ -1,7 +1,7 @@
 +++
 title = "what's enlightenment?"
 author = ["Wanderson Ferreira"]
-lastmod = 2022-05-06T13:36:00-03:00
+lastmod = 2022-05-06T18:03:00-03:00
 tags = ["raw page"]
 url = "/bookmarks/what_s_enlightenment"
 draft = false
@@ -13,7 +13,7 @@ Published at [Columbia Edu](http://www.columbia.edu/acis/ets/CCREAD/etscc/kant.h
 Immanuel Kant
 
 Enlightenment is man's emergence from his self-imposed nonage. Nonage is
-the inability to use one's own understanding without another's guidance.
+the inability to use one's own [understanding]({{< relref "understanding.md" >}}) without another's [guidance]({{< relref "guidance.md" >}}).
 This nonage is self-imposed if its cause lies not in lack of
 understanding but in indecision and lack of courage to use one's own
 mind without another's guidance. _Dare to know!_ (_Sapere aude._) "Have
@@ -51,7 +51,7 @@ narrowest ditch, because he is not used to such free movement. That is
 why there are only a few men who walk firmly, and who have emerged from
 nonage by cultivating their own minds.
 
-It is more nearly possible, however, for the public to enlighten itself;
+It is more nearly possible, however, for the [public]({{< relref "public.md" >}}) to enlighten itself;
 indeed, if it is only given freedom, enlightenment is almost inevitable.
 There will always be a few independent thinkers, even among the
 self-appointed guardians of the multitude. Once such men have thrown off
