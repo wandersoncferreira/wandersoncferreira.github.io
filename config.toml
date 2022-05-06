@@ -19,10 +19,6 @@ pygmentsUseClasses = true       # This applies to Chroma too.
         weight = 1
     [languages.en.params]
         subtitle = "Reifying fragmented ideas"
-    [languages.pt]
-        weight = 2
-    [languages.pt.params]
-        subtitle = "Materializando ideias fragmentadas"
 
 [markup]
   [markup.goldmark]
