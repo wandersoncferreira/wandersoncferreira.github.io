@@ -2,7 +2,8 @@
 :ID:       fd31ebe4-e8d5-4fbd-91a8-1b6e34be1a4f
 :END:
 #+TITLE: what's enlightenment?
-#+hugo_lastmod: Time-stamp: <2022-05-05 21:47:50 wferreir>
+#+hugo_lastmod: Time-stamp: <2022-05-06 00:47:57 wferreir>
+#+hugo_url: /bookmarks/what_s_enlightenment
 #+hugo_tags: "raw page"
 
 \\

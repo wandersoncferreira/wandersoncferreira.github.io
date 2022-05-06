@@ -1,10 +1,10 @@
----
-title: "what's enlightenment?"
-author: ["Wanderson Ferreira"]
-lastmod: 2022-05-05T21:47:00-03:00
-tags: ["raw page"]
-draft: false
----
++++
+title = "what's enlightenment?"
+author = ["Wanderson Ferreira"]
+lastmod = 2022-05-06T00:47:00-03:00
+tags = ["raw page"]
+draft = false
++++
 
 <br />
 Published at [Columbia Edu](http://www.columbia.edu/acis/ets/CCREAD/etscc/kant.html)

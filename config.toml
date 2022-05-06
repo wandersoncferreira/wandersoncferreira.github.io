@@ -20,10 +20,20 @@ pygmentsUseClasses = true       # This applies to Chroma too.
 
 [menu]
     [[menu.main]]
+        identifier = "posts"
+        name = "Posts"
+        url = "/posts/"
+        weight = 1
+    [[menu.main]]
         identifier = "tags"
         name = "Tags"
         url = "/tags/"
         weight = 3
+    [[menu.main]]
+        identifier = "bookmarks"
+        name = "Bookmarks"
+        url = "/bookmarks/"
+        weight = 2
     [[menu.footer]]
         name = "Github"
         url = "https://github.com/wandersoncferreira"
