@@ -1,16 +1,15 @@
 +++
 title = "what's enlightenment?"
 author = ["Wanderson Ferreira"]
-lastmod = 2022-05-06T00:47:00-03:00
+lastmod = 2022-05-06T13:36:00-03:00
 tags = ["raw page"]
+url = "/bookmarks/what_s_enlightenment"
 draft = false
 +++
 
 <br />
 Published at [Columbia Edu](http://www.columbia.edu/acis/ets/CCREAD/etscc/kant.html)
 <br />
-
-What Is Enlightenment?<br />
 Immanuel Kant
 
 Enlightenment is man's emergence from his self-imposed nonage. Nonage is

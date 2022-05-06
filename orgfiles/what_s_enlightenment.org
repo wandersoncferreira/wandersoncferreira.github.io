@@ -2,15 +2,13 @@
 :ID:       fd31ebe4-e8d5-4fbd-91a8-1b6e34be1a4f
 :END:
 #+TITLE: what's enlightenment?
-#+hugo_lastmod: Time-stamp: <2022-05-06 00:47:57 wferreir>
+#+hugo_lastmod: Time-stamp: <2022-05-06 13:36:17 wferreir>
 #+hugo_url: /bookmarks/what_s_enlightenment
 #+hugo_tags: "raw page"
 
 \\
 Published at [[http://www.columbia.edu/acis/ets/CCREAD/etscc/kant.html][Columbia Edu]]
 \\
-
-What Is Enlightenment?\\
 Immanuel Kant
 
 Enlightenment is man's emergence from his self-imposed nonage. Nonage is

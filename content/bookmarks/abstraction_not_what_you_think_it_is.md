@@ -1,24 +1,10 @@
 +++
 title = "abstraction: not what you think it is"
 author = ["Wanderson Ferreira"]
-lastmod = 2022-05-06T11:41:00-03:00
+lastmod = 2022-05-06T13:36:00-03:00
 tags = ["raw-page"]
 draft = false
 +++
-
-## [Path-Sensitive](https://www.pathsensitive.com/) {#path-sensitive}
-
-<span class="org-target" id="org-target--content"></span>
-
-<span class="org-target" id="org-target--Blog1"></span>
-
-<span class="org-target" id="org-target--pic1"></span>
-
-
-### Monday, March 28, 2022 {#monday-march-28-2022}
-
-
-## Abstraction: Not What You Think It Is {#abstraction-not-what-you-think-it-is}
 
 March 28, 2022
 
@@ -658,6 +644,8 @@ recent notable work based on doing so.
 
 
 ### Liked this post? {#liked-this-post}
+
+<br />
 
 <!--list-separator-->
 

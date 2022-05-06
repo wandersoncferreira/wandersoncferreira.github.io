@@ -2,32 +2,8 @@
 :ID:       12ce5141-b974-444c-afba-11f780e7a818
 :END:
 #+TITLE: abstraction: not what you think it is
-#+hugo_lastmod: Time-stamp: <2022-05-06 11:55:03 wferreir>
+#+hugo_lastmod: Time-stamp: <2022-05-06 13:36:40 wferreir>
 #+hugo_tags: "raw-page"
-
-
-* [[https://www.pathsensitive.com/][Path-Sensitive]]
-:PROPERTIES:
-:CUSTOM_ID: path-sensitive
-:CLASS: title
-:END:
-
-<<content>>
-
-<<Blog1>>
-
-<<pic1>>
-
-** Monday, March 28, 2022
-:PROPERTIES:
-:CUSTOM_ID: monday-march-28-2022
-:CLASS: date-header
-:END:
-
-* Abstraction: Not What You Think It Is
-:PROPERTIES:
-:CUSTOM_ID: abstraction-not-what-you-think-it-is
-:END:
 
 March 28, 2022
 
