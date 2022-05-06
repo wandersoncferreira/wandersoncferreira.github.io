@@ -1,0 +1,11 @@
+:PROPERTIES:
+:ID:       a4f30f6b-6b7a-4efc-acf4-fbdf08fc1060
+:END:
+#+TITLE: todo entrypoint file
+#+hugo_lastmod: Time-stamp: <2022-05-06 17:29:53 wferreir>
+#+hugo_tags: "todo" "raw-page" "entrypoint"
+
+This is a set of raw pages that I want to take at look before turning them into
+actual bookmarks or posts
+
+- [ ] [[https://en.wikipedia.org/wiki/Dreyfus_model_of_skill_acquisition][dreyfus model of skill acquisition]]
