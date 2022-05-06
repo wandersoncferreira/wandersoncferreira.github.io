@@ -1,9 +1,8 @@
 baseURL = "https://wandersoncferreira.github.io"
 title = "Wanderson Ferreira"
-defaultContentLanguage = "en"
+subtitle = "Reifying fragmented ideas"
 theme = "smol"
 copyright = "Wanderson Ferreira"
-defaultContentLanguageInSubdir = true
 disqusShortname = "bartuka"
 
 enableEmoji = true
@@ -13,12 +12,6 @@ disableFastRender = true        # Hugo 0.30
 
 pygmentsCodeFences = true       # This applies to Chroma too.
 pygmentsUseClasses = true       # This applies to Chroma too.
-
-[languages]
-    [languages.en]
-        weight = 1
-    [languages.en.params]
-        subtitle = "Reifying fragmented ideas"
 
 [markup]
   [markup.goldmark]
