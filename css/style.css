@@ -23,11 +23,11 @@ blockquote:before {
     vertical-align: -0.4em;
 }
 
-code {
-    background-color: #272822;
-    color: #f8f8f2;
-    border-radius: 0.3rem;
-    padding: 4px 5px 5px;
-    white-space: pre-wrap;
-    display: block;
-}
+/* code { */
+/*     background-color: #272822; */
+/*     color: #f8f8f2; */
+/*     border-radius: 0.3rem; */
+/*     padding: 4px 5px 5px; */
+/*     white-space: pre-wrap; */
+/*     display: block; */
+/* } */
