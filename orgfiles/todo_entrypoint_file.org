@@ -2,7 +2,7 @@
 :ID:       a4f30f6b-6b7a-4efc-acf4-fbdf08fc1060
 :END:
 #+TITLE: todo entrypoint file
-#+hugo_lastmod: Time-stamp: <2022-05-06 17:51:02 wferreir>
+#+hugo_lastmod: Time-stamp: <2022-05-06 22:25:17 wferreir>
 #+hugo_tags: "todo" "raw-page" "entrypoint"
 
 This is a set of raw pages that I want to take at look before turning them into
@@ -11,14 +11,18 @@ actual bookmarks or posts
 - [ ] [[https://en.wikipedia.org/wiki/Dreyfus_model_of_skill_acquisition][dreyfus model of skill acquisition]]
 - [ ] [[https://www.youtube.com/channel/UCNup6IsUwrqiDpl3aIlOV6A][M-x Research videos]]
 - [ ] [[https://twitter.com/GeePawHill/status/1513371319911469057][GeePawHill Tweet on the State of Hiring Programmers]]
-- [ ] [[https://hillelwayne.com/post/are-we-really-engineers/][are we really engineers?]]
+- [X] [[https://hillelwayne.com/post/are-we-really-engineers/][are we really engineers?]]
 - [ ] [[https://sitn.hms.harvard.edu/flash/2018/dopamine-smartphones-battle-time/][dopamine, smartphones & you: a battle for your time]]
 - [ ] [[https://kanjun.me/writing/research-as-understanding][research as understanding]]
 - [ ] [[https://www.cl.cam.ac.uk/teaching/2122/ConcDisSys/dist-sys-notes.pdf][distributed systems lecture notes - Dr. Martin Kleppmann]]
-- [ ] [[https://twitter.com/nikitonsky/status/1443605908609806341][Tonsky thread on things learned from other programming languages]]
+- [X] [[https://twitter.com/nikitonsky/status/1443605908609806341][Tonsky thread on things learned from other programming languages]]
+- [ ] [[https://www.toptal.com/python/pythons-wsgi-server-application-interface][Python WSGI]]
 - [ ] [[https://www.youtube.com/channel/UCFaYLR_1aryjfB7hLrKGRaQ][Michael Sugrue Lectures on philosophy]]
 - [ ] [[https://web.stanford.edu/class/cs253/][stanford cs 253 web security]]
-- [ ] [[https://blog.computationalcomplexity.org/2021/11/when-did-computer-science-theory-get-so.html?m=1][when did computer science theory get so hard?]]
+- [X] [[https://blog.computationalcomplexity.org/2021/11/when-did-computer-science-theory-get-so.html?m=1][when did computer science theory get so hard?]]
 - [ ] [[https://mcfunley.com/choose-boring-technology][choose boring technology]]
-- [ ] [[https://danluu.com/learn-what/][what to learn?]]
+- [X] [[id:51e42738-a998-4a62-8e38-5b74ff1d71f2][what to learn?]]
 - [ ] [[https://xuorig.medium.com/graphql-is-a-trap-e83ca380aa8f][graphql is a trap?]]
+- [ ] [[https://malisper.me/there-is-more-to-programming-than-programming-languages/][there is more to programming than programming languages]]
+- [ ] [[https://www.benkuhn.net/conviction/][no one can teach you to have conviction]]
+- [ ] [[https://alumni.media.mit.edu/~cahn/life/gian-carlo-rota-10-lessons.html][10 lessons I wish I had been taught]]

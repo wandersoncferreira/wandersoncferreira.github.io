@@ -1,7 +1,7 @@
 +++
 title = "what's enlightenment?"
 author = ["Wanderson Ferreira"]
-lastmod = 2022-05-06T18:03:00-03:00
+lastmod = 2022-05-06T20:03:00-03:00
 tags = ["raw page"]
 url = "/bookmarks/what_s_enlightenment"
 draft = false
