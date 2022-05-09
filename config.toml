@@ -7,11 +7,16 @@ disqusShortname = "bartuka"
 
 enableEmoji = true
 enableGitInfo = true
-
 disableFastRender = true        # Hugo 0.30
-
 pygmentsCodeFences = true       # This applies to Chroma too.
 pygmentsUseClasses = true       # This applies to Chroma too.
+
+[params]
+  mainSections = ["posts", "bookmarks", "notes"]
+  toc = true
+
+[taxonomies]
+  tag = 'tags'
 
 [markup]
   [markup.goldmark]
