@@ -1,7 +1,7 @@
 +++
 title = "amplify my strenghts"
 author = ["Wanderson Ferreira"]
-lastmod = 2022-05-09T08:35:00-03:00
+lastmod = 2022-05-09T08:43:00-03:00
 draft = false
 +++
 
@@ -76,3 +76,13 @@ However, these are ones I believe I have good fit:
 -   **judgment and decision making**: considering the relative costs and benefits of potential actions to choose the most appropriate one
 -   **systems analysis**: determining how a system should work and how changes in conditions, operations, and the environment will affect outcomes
 -   **systems evaluation**: identifying measures or indicators of system performance and the actions needed to improve or correct performance, relatie to the goals of the system.
+
+
+## Conclusion / Point of Actions {#conclusion-point-of-actions}
+
+From the points given here, seems like [intrapreneurship]({{< relref "intrapreneurship.md" >}}) is really something I
+should look more carefully! This raises some questions:
+
+-   how to prepare myself to improve my chances in a new endeavor?
+-   clearly the company I work for should foster/promote/reward this behavior. Am I currently in such place?
+-   what are well known places where this is a good trait?
