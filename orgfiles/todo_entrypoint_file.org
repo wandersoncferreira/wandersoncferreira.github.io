@@ -2,7 +2,7 @@
 :ID:       a4f30f6b-6b7a-4efc-acf4-fbdf08fc1060
 :END:
 #+TITLE: todo entrypoint file
-#+hugo_lastmod: Time-stamp: <2022-05-06 22:25:17 wferreir>
+#+hugo_lastmod: Time-stamp: <2022-05-10 09:03:00 wferreir>
 #+hugo_tags: "todo" "raw-page" "entrypoint"
 
 This is a set of raw pages that I want to take at look before turning them into
@@ -22,7 +22,9 @@ actual bookmarks or posts
 - [X] [[https://blog.computationalcomplexity.org/2021/11/when-did-computer-science-theory-get-so.html?m=1][when did computer science theory get so hard?]]
 - [ ] [[https://mcfunley.com/choose-boring-technology][choose boring technology]]
 - [X] [[id:51e42738-a998-4a62-8e38-5b74ff1d71f2][what to learn?]]
-- [ ] [[https://xuorig.medium.com/graphql-is-a-trap-e83ca380aa8f][graphql is a trap?]]
-- [ ] [[https://malisper.me/there-is-more-to-programming-than-programming-languages/][there is more to programming than programming languages]]
-- [ ] [[https://www.benkuhn.net/conviction/][no one can teach you to have conviction]]
-- [ ] [[https://alumni.media.mit.edu/~cahn/life/gian-carlo-rota-10-lessons.html][10 lessons I wish I had been taught]]
+- [X] [[https://xuorig.medium.com/graphql-is-a-trap-e83ca380aa8f][graphql is a trap?]]
+- [X] [[https://malisper.me/there-is-more-to-programming-than-programming-languages/][there is more to programming than programming languages]]
+- [X] [[https://www.benkuhn.net/conviction/][no one can teach you to have conviction]]
+- [X] [[https://alumni.media.mit.edu/~cahn/life/gian-carlo-rota-10-lessons.html][10 lessons I wish I had been taught]]
+- [ ] [[https://www.lesswrong.com/posts/B7P97C27rvHPz3s9B/gears-in-understanding][gears in understanding]]
+- [ ] [[https://fs.blog/mental-models/][mental models: the best way to make intelligent decisions]]

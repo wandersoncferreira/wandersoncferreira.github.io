@@ -1,7 +1,7 @@
 +++
 title = "todo entrypoint file"
 author = ["Wanderson Ferreira"]
-lastmod = 2022-05-06T22:25:00-03:00
+lastmod = 2022-05-10T09:03:00-03:00
 tags = ["todo", "raw-page", "entrypoint"]
 draft = false
 +++
@@ -23,7 +23,9 @@ actual bookmarks or posts
 -   [X] [when did computer science theory get so hard?](https://blog.computationalcomplexity.org/2021/11/when-did-computer-science-theory-get-so.html?m=1)
 -   [ ] [choose boring technology](https://mcfunley.com/choose-boring-technology)
 -   [X] [what to learn?]({{< relref "what_to_learn.md" >}})
--   [ ] [graphql is a trap?](https://xuorig.medium.com/graphql-is-a-trap-e83ca380aa8f)
--   [ ] [there is more to programming than programming languages](https://malisper.me/there-is-more-to-programming-than-programming-languages/)
--   [ ] [no one can teach you to have conviction](https://www.benkuhn.net/conviction/)
--   [ ] [10 lessons I wish I had been taught](https://alumni.media.mit.edu/~cahn/life/gian-carlo-rota-10-lessons.html)
+-   [X] [graphql is a trap?](https://xuorig.medium.com/graphql-is-a-trap-e83ca380aa8f)
+-   [X] [there is more to programming than programming languages](https://malisper.me/there-is-more-to-programming-than-programming-languages/)
+-   [X] [no one can teach you to have conviction](https://www.benkuhn.net/conviction/)
+-   [X] [10 lessons I wish I had been taught](https://alumni.media.mit.edu/~cahn/life/gian-carlo-rota-10-lessons.html)
+-   [ ] [gears in understanding](https://www.lesswrong.com/posts/B7P97C27rvHPz3s9B/gears-in-understanding)
+-   [ ] [mental models: the best way to make intelligent decisions](https://fs.blog/mental-models/)
