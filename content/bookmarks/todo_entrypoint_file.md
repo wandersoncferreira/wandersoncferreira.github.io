@@ -1,7 +1,7 @@
 +++
 title = "todo entrypoint file"
 author = ["Wanderson Ferreira"]
-lastmod = 2022-05-10T09:03:00-03:00
+lastmod = 2022-05-10T21:53:00-03:00
 tags = ["todo", "raw-page", "entrypoint"]
 draft = false
 +++
@@ -9,7 +9,7 @@ draft = false
 This is a set of raw pages that I want to take at look before turning them into
 actual bookmarks or posts
 
--   [ ] [dreyfus model of skill acquisition](https://en.wikipedia.org/wiki/Dreyfus_model_of_skill_acquisition)
+-   [X] [dreyfus model of skill acquisition](https://en.wikipedia.org/wiki/Dreyfus_model_of_skill_acquisition)
 -   [ ] [M-x Research videos](https://www.youtube.com/channel/UCNup6IsUwrqiDpl3aIlOV6A)
 -   [ ] [GeePawHill Tweet on the State of Hiring Programmers](https://twitter.com/GeePawHill/status/1513371319911469057)
 -   [X] [are we really engineers?](https://hillelwayne.com/post/are-we-really-engineers/)
@@ -29,3 +29,11 @@ actual bookmarks or posts
 -   [X] [10 lessons I wish I had been taught](https://alumni.media.mit.edu/~cahn/life/gian-carlo-rota-10-lessons.html)
 -   [ ] [gears in understanding](https://www.lesswrong.com/posts/B7P97C27rvHPz3s9B/gears-in-understanding)
 -   [ ] [mental models: the best way to make intelligent decisions](https://fs.blog/mental-models/)
+-   [ ] [peridot - a fast functional language based on two level type theory](https://github.com/eashanhatti/peridot)
+-   [ ] [All-In on server-side SQLite](https://fly.io/blog/all-in-on-sqlite-litestream/)
+-   [ ] [Lesser known postgresql features](https://hakibenita.com/postgresql-unknown-features)
+-   [ ] [Don't feed the thought leaders](https://earthly.dev/blog/thought-leaders/)
+-   [ ] [an incomplete list of skills senior engineers need, beyond coding](https://skamille.medium.com/an-incomplete-list-of-skills-senior-engineers-need-beyond-coding-8ed4a521b29f)
+-   [ ] [what is category theory?](https://www.math3ma.com/blog/what-is-category-theory-anyway)
+-   [ ] [rich already answered that](https://gist.github.com/reborg/dc8b0c96c397a56668905e2767fd697f)
+-   [ ] [senior engineers build consensus](https://hyperbo.la/w/nemawashi/)
