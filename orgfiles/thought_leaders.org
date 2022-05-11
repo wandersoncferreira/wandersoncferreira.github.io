@@ -1,0 +1,28 @@
+:PROPERTIES:
+:ID:       f50a9014-a9d1-40a4-95f5-2721a518a87c
+:END:
+#+TITLE: thought-leaders
+#+hugo_lastmod: Time-stamp: <2022-05-11 07:22:59 wferreir>
+#+hugo_tags: "general"
+
+someone has a single solution that seems to fit every problem.
+
+In this [[https://earthly.dev/blog/thought-leaders/][post]], Adam Gordon Bell discuss the advices given by thought-leaders. In
+his research he found the work of [[https://scholar.google.com/citations?user=CJjf6H0AAAAJ&hl=en][Philip E. Tetlock]] on the decision-making
+process of experts. Tetlock was able to split the group of experts in his
+research broadly in two groups: the hedgehogs and foxes.
+
+- hedgehog
+  - has one big idea like "free-market capitalism" which they use as a lens to look at many issues
+  - they are "confident forecasters"
+- foxes
+  - they have complicated advice and were skeptical of even their own predictions
+  - less likely to be famous because their advices are harder to explain in a sound bite
+
+When all predictions were added up and scores, hedgehogs lost out to foxes.
+
+#+begin_quote
+Ignore confident forecasters
+
+- Tetlock
+#+end_quote

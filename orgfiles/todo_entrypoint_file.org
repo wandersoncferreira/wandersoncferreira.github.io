@@ -2,7 +2,7 @@
 :ID:       a4f30f6b-6b7a-4efc-acf4-fbdf08fc1060
 :END:
 #+TITLE: todo entrypoint file
-#+hugo_lastmod: Time-stamp: <2022-05-11 06:50:59 wferreir>
+#+hugo_lastmod: Time-stamp: <2022-05-11 07:16:09 wferreir>
 #+hugo_tags: "todo" "raw-page" "entrypoint"
 
 This is a set of raw pages that I want to take at look before turning them into
@@ -31,8 +31,8 @@ actual bookmarks or posts
 - [ ] [[https://github.com/eashanhatti/peridot][peridot - a fast functional language based on two level type theory]]
 - [ ] [[https://fly.io/blog/all-in-on-sqlite-litestream/][All-In on server-side SQLite]]
 - [ ] [[https://hakibenita.com/postgresql-unknown-features][Lesser known postgresql features]]
-- [ ] [[https://earthly.dev/blog/thought-leaders/][Don't feed the thought leaders]]
-- [ ] [[https://skamille.medium.com/an-incomplete-list-of-skills-senior-engineers-need-beyond-coding-8ed4a521b29f][an incomplete list of skills senior engineers need, beyond coding]]
+- [X] [[https://earthly.dev/blog/thought-leaders/][Don't feed the thought leaders]]
+- [X] [[https://skamille.medium.com/an-incomplete-list-of-skills-senior-engineers-need-beyond-coding-8ed4a521b29f][an incomplete list of skills senior engineers need, beyond coding]]
 - [ ] [[https://www.math3ma.com/blog/what-is-category-theory-anyway][what is category theory?]]
 - [ ] [[https://gist.github.com/reborg/dc8b0c96c397a56668905e2767fd697f][rich already answered that]]
 - [X] [[https://hyperbo.la/w/nemawashi/][senior engineers build consensus]]

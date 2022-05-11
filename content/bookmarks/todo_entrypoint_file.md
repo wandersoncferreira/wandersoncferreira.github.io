@@ -1,7 +1,7 @@
 +++
 title = "todo entrypoint file"
 author = ["Wanderson Ferreira"]
-lastmod = 2022-05-10T21:53:00-03:00
+lastmod = 2022-05-11T07:16:00-03:00
 tags = ["todo", "raw-page", "entrypoint"]
 draft = false
 +++
@@ -32,8 +32,8 @@ actual bookmarks or posts
 -   [ ] [peridot - a fast functional language based on two level type theory](https://github.com/eashanhatti/peridot)
 -   [ ] [All-In on server-side SQLite](https://fly.io/blog/all-in-on-sqlite-litestream/)
 -   [ ] [Lesser known postgresql features](https://hakibenita.com/postgresql-unknown-features)
--   [ ] [Don't feed the thought leaders](https://earthly.dev/blog/thought-leaders/)
--   [ ] [an incomplete list of skills senior engineers need, beyond coding](https://skamille.medium.com/an-incomplete-list-of-skills-senior-engineers-need-beyond-coding-8ed4a521b29f)
+-   [X] [Don't feed the thought leaders](https://earthly.dev/blog/thought-leaders/)
+-   [X] [an incomplete list of skills senior engineers need, beyond coding](https://skamille.medium.com/an-incomplete-list-of-skills-senior-engineers-need-beyond-coding-8ed4a521b29f)
 -   [ ] [what is category theory?](https://www.math3ma.com/blog/what-is-category-theory-anyway)
 -   [ ] [rich already answered that](https://gist.github.com/reborg/dc8b0c96c397a56668905e2767fd697f)
--   [ ] [senior engineers build consensus](https://hyperbo.la/w/nemawashi/)
+-   [X] [senior engineers build consensus](https://hyperbo.la/w/nemawashi/)
