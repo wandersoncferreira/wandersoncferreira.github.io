@@ -1,8 +1,8 @@
 +++
 title = "todo entrypoint file"
 author = ["Wanderson Ferreira"]
-lastmod = 2022-05-11T07:16:00-03:00
-tags = ["todo", "raw-page", "entrypoint"]
+lastmod = 2022-05-14T07:44:00-03:00
+tags = ["entrypoint"]
 draft = false
 +++
 
@@ -21,13 +21,13 @@ actual bookmarks or posts
 -   [ ] [Michael Sugrue Lectures on philosophy](https://www.youtube.com/channel/UCFaYLR_1aryjfB7hLrKGRaQ)
 -   [ ] [stanford cs 253 web security](https://web.stanford.edu/class/cs253/)
 -   [X] [when did computer science theory get so hard?](https://blog.computationalcomplexity.org/2021/11/when-did-computer-science-theory-get-so.html?m=1)
--   [ ] [choose boring technology](https://mcfunley.com/choose-boring-technology)
+-   [X] [choose boring technology](https://mcfunley.com/choose-boring-technology)
 -   [X] [what to learn?]({{< relref "what_to_learn.md" >}})
 -   [X] [graphql is a trap?](https://xuorig.medium.com/graphql-is-a-trap-e83ca380aa8f)
 -   [X] [there is more to programming than programming languages](https://malisper.me/there-is-more-to-programming-than-programming-languages/)
 -   [X] [no one can teach you to have conviction](https://www.benkuhn.net/conviction/)
 -   [X] [10 lessons I wish I had been taught](https://alumni.media.mit.edu/~cahn/life/gian-carlo-rota-10-lessons.html)
--   [ ] [gears in understanding](https://www.lesswrong.com/posts/B7P97C27rvHPz3s9B/gears-in-understanding)
+-   [X] [gears in understanding](https://www.lesswrong.com/posts/B7P97C27rvHPz3s9B/gears-in-understanding)
 -   [ ] [mental models: the best way to make intelligent decisions](https://fs.blog/mental-models/)
 -   [ ] [peridot - a fast functional language based on two level type theory](https://github.com/eashanhatti/peridot)
 -   [ ] [All-In on server-side SQLite](https://fly.io/blog/all-in-on-sqlite-litestream/)
@@ -37,3 +37,7 @@ actual bookmarks or posts
 -   [ ] [what is category theory?](https://www.math3ma.com/blog/what-is-category-theory-anyway)
 -   [ ] [rich already answered that](https://gist.github.com/reborg/dc8b0c96c397a56668905e2767fd697f)
 -   [X] [senior engineers build consensus](https://hyperbo.la/w/nemawashi/)
+-   [ ] [critical uncertainties](https://criticaluncertainties.com/)
+-   [ ] [what are some differences between the many functional programming languages?](https://qr.ae/pGE59Z)
+-   [ ] [a case against Annotations](https://blog.softwaremill.com/the-case-against-annotations-4b2fb170ed67)
+-   [ ] [functional Programming blog by Purescript author](http://functorial.com/writing.html)
