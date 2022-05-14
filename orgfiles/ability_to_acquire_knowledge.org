@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       d97f42b5-5697-4002-bbf5-ba11ce94bbb1
+:END:
+#+TITLE: ability to acquire knowledge
+#+hugo_lastmod: Time-stamp: <2022-05-11 08:34:51 wferreir>
+#+hugo_tags: "tbd"

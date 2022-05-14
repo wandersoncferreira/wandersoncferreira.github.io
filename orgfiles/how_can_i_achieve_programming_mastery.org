@@ -1,0 +1,22 @@
+:PROPERTIES:
+:ID:       66b81b56-dce4-4219-aeb1-b38a685c6e7a
+:END:
+#+TITLE: how can I achieve programming mastery?
+#+hugo_lastmod: Time-stamp: <2022-05-11 08:36:17 wferreir>
+
+Rich Hickey once said: Mastery comes from a combination of at least several of the following:
+
+- Knowledge
+- Focus
+- Relentless considered practice over a long period of time
+- Detected, recovered-from failures
+- Mentorship by an expert
+- Always working slightly beyond your comfort/ability zone, pushing it ever forward
+
+What skills then are so universally useful and transportable in software development? Two are:
+- [[id:d97f42b5-5697-4002-bbf5-ba11ce94bbb1][ability to acquire knowledge]]
+- [[id:8c4ebcbe-c9b6-4387-bad3-e2e91376daeb][ability to solve problems]]
+
+Rich seems to believe that one can get better at acquiring knowledge and solving
+problems by acquiring ever deeper knowledge and solving ever harder problems. Is
+that it? Can we provide clearer pathways to such goals?
