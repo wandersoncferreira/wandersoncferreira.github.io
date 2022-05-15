@@ -1,7 +1,8 @@
 +++
 title = "intrapreneurship"
 author = ["Wanderson Ferreira"]
-lastmod = 2022-05-09T08:13:00-03:00
+lastmod = 2022-05-15T08:13:00-03:00
+tags = ["definitions"]
 draft = false
 +++
 

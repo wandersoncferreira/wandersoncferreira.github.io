@@ -2,9 +2,9 @@
 :ID:       fd31ebe4-e8d5-4fbd-91a8-1b6e34be1a4f
 :END:
 #+TITLE: what's enlightenment?
-#+hugo_lastmod: Time-stamp: <2022-05-06 20:03:43 wferreir>
+#+hugo_lastmod: Time-stamp: <2022-05-15 08:10:54 wferreir>
 #+hugo_url: /bookmarks/what_s_enlightenment
-#+hugo_tags: "raw page"
+#+hugo_tags: "philosophy" "kant" "advices"
 
 \\
 Published at [[http://www.columbia.edu/acis/ets/CCREAD/etscc/kant.html][Columbia Edu]]

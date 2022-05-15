@@ -1,12 +1,12 @@
 +++
 title = "thought-leaders"
 author = ["Wanderson Ferreira"]
-lastmod = 2022-05-11T07:22:00-03:00
+lastmod = 2022-05-15T08:11:00-03:00
 tags = ["general"]
 draft = false
 +++
 
-someone has a single solution that seems to fit every problem.
+definition: someone has a single solution that seems to fit every problem.
 
 In this [post](https://earthly.dev/blog/thought-leaders/), Adam Gordon Bell discuss the advices given by thought-leaders. In
 his research he found the work of [Philip E. Tetlock](https://scholar.google.com/citations?user=CJjf6H0AAAAJ&hl=en) on the decision-making

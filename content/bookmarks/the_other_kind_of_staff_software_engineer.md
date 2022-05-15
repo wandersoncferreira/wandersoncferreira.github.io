@@ -1,8 +1,8 @@
 +++
 title = "the other kind of staff software engineer"
 author = ["Wanderson Ferreira"]
-lastmod = 2022-05-14T07:36:00-03:00
-tags = ["raw-page"]
+lastmod = 2022-05-15T08:12:00-03:00
+tags = ["work"]
 draft = false
 +++
 

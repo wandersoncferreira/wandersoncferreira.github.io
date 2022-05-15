@@ -1,8 +1,8 @@
 +++
 title = "what to learn?"
 author = ["Wanderson Ferreira"]
-lastmod = 2022-05-06T21:50:00-03:00
-tags = ["raw-page"]
+lastmod = 2022-05-15T08:10:00-03:00
+tags = ["knowledge", "advices"]
 draft = false
 +++
 

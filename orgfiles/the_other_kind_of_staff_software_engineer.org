@@ -2,8 +2,8 @@
 :ID:       397cb35a-5534-4f25-ba75-cdaf4e2838a7
 :END:
 #+TITLE: the other kind of staff software engineer
-#+hugo_lastmod: Time-stamp: <2022-05-14 07:36:35 wferreir>
-#+hugo_tags: "raw-page"
+#+hugo_lastmod: Time-stamp: <2022-05-15 08:12:43 wferreir>
+#+hugo_tags: "work"
 
 // 11 minute read    // Updated: May 12, 2022
 

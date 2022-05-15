@@ -2,10 +2,10 @@
 :ID:       f50a9014-a9d1-40a4-95f5-2721a518a87c
 :END:
 #+TITLE: thought-leaders
-#+hugo_lastmod: Time-stamp: <2022-05-11 07:22:59 wferreir>
+#+hugo_lastmod: Time-stamp: <2022-05-15 08:11:47 wferreir>
 #+hugo_tags: "general"
 
-someone has a single solution that seems to fit every problem.
+definition: someone has a single solution that seems to fit every problem.
 
 In this [[https://earthly.dev/blog/thought-leaders/][post]], Adam Gordon Bell discuss the advices given by thought-leaders. In
 his research he found the work of [[https://scholar.google.com/citations?user=CJjf6H0AAAAJ&hl=en][Philip E. Tetlock]] on the decision-making

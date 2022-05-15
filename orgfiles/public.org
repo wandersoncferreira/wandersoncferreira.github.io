@@ -2,7 +2,8 @@
 :ID:       a5d5128a-a16e-4ee6-b62f-75eae369fb79
 :END:
 #+TITLE: public
-#+hugo_lastmod: Time-stamp: <2022-05-06 19:11:49 wferreir>
+#+hugo_lastmod: Time-stamp: <2022-05-15 08:13:31 wferreir>
+#+hugo_tags: "definition"
 
 I once learned that Kant is extremely precise with the words he chooses to
 express any thought. Therefore, everytime I read any Kant essay I need to be
