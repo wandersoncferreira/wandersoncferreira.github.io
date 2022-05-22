@@ -2,5 +2,5 @@
 :ID:       8c4ebcbe-c9b6-4387-bad3-e2e91376daeb
 :END:
 #+TITLE: ability to solve problems
-#+hugo_lastmod: Time-stamp: <2022-05-11 08:34:57 wferreir>
-#+hugo_tags: "tbd"
+#+hugo_lastmod: Time-stamp: <2022-05-21 23:15:19 wferreir>
+#+hugo_tags: "tbd" "note"

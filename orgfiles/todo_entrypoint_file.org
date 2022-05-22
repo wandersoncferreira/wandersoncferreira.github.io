@@ -2,8 +2,8 @@
 :ID:       a4f30f6b-6b7a-4efc-acf4-fbdf08fc1060
 :END:
 #+TITLE: todo entrypoint file
-#+hugo_lastmod: Time-stamp: <2022-05-21 20:52:14 wferreir>
-#+hugo_tags: "entrypoint"
+#+hugo_lastmod: Time-stamp: <2022-05-21 23:13:31 wferreir>
+#+hugo_tags: "entrypoint" "bookmark"
 
 This is a set of raw pages that I want to take at look before turning them into
 actual bookmarks or posts
@@ -51,3 +51,5 @@ actual bookmarks or posts
 - [ ] [[https://www.cs.cmu.edu/~mblum/research/pdf/grad.html][advice to a beginning graduate student]]
 - [ ] handbook theoretical computer science
 - [ ] read the book: The life of Samuel Johnson
+- [X] [[https://www.ias.edu/sites/default/files/library/UsefulnessHarpers.pdf][the usefulness of useless knowledge]]
+- [ ] [[https://github.com/BartoszMilewski/Publications/blob/master/TheDaoOfFP/DaoFP.pdf][the Dao of Functional Programming]]
