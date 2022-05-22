@@ -1,8 +1,8 @@
 +++
 title = "todo entrypoint file"
 author = ["Wanderson Ferreira"]
-lastmod = 2022-05-14T07:44:00-03:00
-tags = ["entrypoint"]
+lastmod = 2022-05-22T08:31:00-03:00
+tags = ["entrypoint", "bookmark"]
 draft = false
 +++
 
@@ -10,11 +10,11 @@ This is a set of raw pages that I want to take at look before turning them into
 actual bookmarks or posts
 
 -   [X] [dreyfus model of skill acquisition](https://en.wikipedia.org/wiki/Dreyfus_model_of_skill_acquisition)
--   [ ] [M-x Research videos](https://www.youtube.com/channel/UCNup6IsUwrqiDpl3aIlOV6A)
+-   [X] [M-x Research videos](https://www.youtube.com/channel/UCNup6IsUwrqiDpl3aIlOV6A)
 -   [ ] [GeePawHill Tweet on the State of Hiring Programmers](https://twitter.com/GeePawHill/status/1513371319911469057)
 -   [X] [are we really engineers?](https://hillelwayne.com/post/are-we-really-engineers/)
 -   [ ] [dopamine, smartphones &amp; you: a battle for your time](https://sitn.hms.harvard.edu/flash/2018/dopamine-smartphones-battle-time/)
--   [ ] [research as understanding](https://kanjun.me/writing/research-as-understanding)
+-   [X] [research as understanding]({{< relref "research_as_understanding.md" >}})
 -   [ ] [distributed systems lecture notes - Dr. Martin Kleppmann](https://www.cl.cam.ac.uk/teaching/2122/ConcDisSys/dist-sys-notes.pdf)
 -   [X] [Tonsky thread on things learned from other programming languages](https://twitter.com/nikitonsky/status/1443605908609806341)
 -   [ ] [Python WSGI](https://www.toptal.com/python/pythons-wsgi-server-application-interface)
@@ -41,3 +41,16 @@ actual bookmarks or posts
 -   [ ] [what are some differences between the many functional programming languages?](https://qr.ae/pGE59Z)
 -   [ ] [a case against Annotations](https://blog.softwaremill.com/the-case-against-annotations-4b2fb170ed67)
 -   [ ] [functional Programming blog by Purescript author](http://functorial.com/writing.html)
+-   [ ] [how to make smart decisions without getting lucky](https://fs.blog/smart-decisions/)
+-   [ ] [the map is not the territory](https://fs.blog/map-and-territory/)
+-   [ ] [understanding your circle of competence](https://fs.blog/circle-of-competence/)
+-   [ ] [first principles: the building block of true knowledge](https://fs.blog/first-principles/)
+-   [ ] [foundations of computer science](http://infolab.stanford.edu/~ullman/focs.html)
+-   [ ] [best paper awards in computer science](https://jeffhuang.com/best_paper_awards/#1996)
+-   [ ] [is god a taoist?](http://www.mit.edu/people/dpolicar/writing/prose/text/godTaoist.html)
+-   [ ] [on the P vs NP problem](http://youtu.be/pTeZP-XfuKI)
+-   [X] [advice to a beginning graduate student](https://www.cs.cmu.edu/~mblum/research/pdf/grad.html)
+-   [ ] handbook theoretical computer science
+-   [ ] read the book: The life of Samuel Johnson
+-   [X] [the usefulness of useless knowledge](https://www.ias.edu/sites/default/files/library/UsefulnessHarpers.pdf)
+-   [ ] [the Dao of Functional Programming](https://github.com/BartoszMilewski/Publications/blob/master/TheDaoOfFP/DaoFP.pdf)

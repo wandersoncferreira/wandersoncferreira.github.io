@@ -2,7 +2,7 @@
 :ID:       a4f30f6b-6b7a-4efc-acf4-fbdf08fc1060
 :END:
 #+TITLE: todo entrypoint file
-#+hugo_lastmod: Time-stamp: <2022-05-21 23:13:31 wferreir>
+#+hugo_lastmod: Time-stamp: <2022-05-22 08:31:43 wferreir>
 #+hugo_tags: "entrypoint" "bookmark"
 
 This is a set of raw pages that I want to take at look before turning them into
@@ -48,7 +48,7 @@ actual bookmarks or posts
 - [ ] [[https://jeffhuang.com/best_paper_awards/#1996][best paper awards in computer science]]
 - [ ] [[http://www.mit.edu/people/dpolicar/writing/prose/text/godTaoist.html][is god a taoist?]]
 - [ ] [[http://youtu.be/pTeZP-XfuKI][on the P vs NP problem]]
-- [ ] [[https://www.cs.cmu.edu/~mblum/research/pdf/grad.html][advice to a beginning graduate student]]
+- [X] [[https://www.cs.cmu.edu/~mblum/research/pdf/grad.html][advice to a beginning graduate student]]
 - [ ] handbook theoretical computer science
 - [ ] read the book: The life of Samuel Johnson
 - [X] [[https://www.ias.edu/sites/default/files/library/UsefulnessHarpers.pdf][the usefulness of useless knowledge]]
