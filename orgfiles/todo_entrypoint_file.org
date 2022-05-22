@@ -2,7 +2,7 @@
 :ID:       a4f30f6b-6b7a-4efc-acf4-fbdf08fc1060
 :END:
 #+TITLE: todo entrypoint file
-#+hugo_lastmod: Time-stamp: <2022-05-15 07:44:13 wferreir>
+#+hugo_lastmod: Time-stamp: <2022-05-21 20:52:14 wferreir>
 #+hugo_tags: "entrypoint"
 
 This is a set of raw pages that I want to take at look before turning them into
@@ -44,3 +44,10 @@ actual bookmarks or posts
 - [ ] [[https://fs.blog/map-and-territory/][the map is not the territory]]
 - [ ] [[https://fs.blog/circle-of-competence/][understanding your circle of competence]]
 - [ ] [[https://fs.blog/first-principles/][first principles: the building block of true knowledge]]
+- [ ] [[http://infolab.stanford.edu/~ullman/focs.html][foundations of computer science]]
+- [ ] [[https://jeffhuang.com/best_paper_awards/#1996][best paper awards in computer science]]
+- [ ] [[http://www.mit.edu/people/dpolicar/writing/prose/text/godTaoist.html][is god a taoist?]]
+- [ ] [[http://youtu.be/pTeZP-XfuKI][on the P vs NP problem]]
+- [ ] [[https://www.cs.cmu.edu/~mblum/research/pdf/grad.html][advice to a beginning graduate student]]
+- [ ] handbook theoretical computer science
+- [ ] read the book: The life of Samuel Johnson

@@ -2,7 +2,7 @@
 :ID:       2cce9311-d957-4d36-85f9-71b62062cbfe
 :END:
 #+TITLE: quotes
-#+hugo_lastmod: Time-stamp: <2022-05-11 06:52:32 wferreir>
+#+hugo_lastmod: Time-stamp: <2022-05-21 20:23:22 wferreir>
 #+hugo_tags: "quotes"
 
 Nice quotes:
@@ -24,4 +24,9 @@ The goal of a senior engineer should be to identify what those right things are
 and set the organization up for success by removing roadblocks.
 
 - Ryan Lopopolo
+#+end_quote
+
+#+begin_quote
+Computer Science is no more about computers than astronomy is about telescopes.
+- Mike Fellows
 #+end_quote

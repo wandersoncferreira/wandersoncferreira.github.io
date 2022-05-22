@@ -1,0 +1,12 @@
+:PROPERTIES:
+:ID:       0d252c99-ee8d-438f-b36e-3c5c6b5942d6
+:END:
+#+TITLE: modularization
+#+hugo_lastmod: Time-stamp: <2022-05-17 21:51:42 wferreir>
+#+hugo_tags: "software"
+
+#+begin_quote
+We have tried to demonstrate by these examples that it is almost always incorrect to begin the decomposition of a system into modules on the basis of a flowchart. We propose instead that one begins with a list of difficult design decisions or design decisions which are likely to change. Each module is then designed to hide such a decision from the others.
+
+[[http://sunnyday.mit.edu/16.355/parnas-criteria.html][D.L. Parnas]]
+#+end_quote
