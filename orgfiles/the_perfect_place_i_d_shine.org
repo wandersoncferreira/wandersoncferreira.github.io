@@ -2,5 +2,5 @@
 :ID:       19674b22-8c2e-4c36-a636-be0f63f564cc
 :END:
 #+TITLE: the perfect place I'd shine?
-#+hugo_lastmod: Time-stamp: <2022-05-15 08:12:21 wferreir>
-#+hugo_tags: "tbd"
+#+hugo_lastmod: Time-stamp: <2022-05-22 21:19:07 wferreir>
+#+hugo_tags: tbd note

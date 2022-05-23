@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       b227ecc3-b53b-4c57-a3b9-18ed8f8c3c79
+:END:
+#+TITLE: objects
+#+hugo_lastmod: Time-stamp: <2022-05-22 21:17:58 wferreir>
+#+hugo_tags: tbd note definition

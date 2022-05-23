@@ -2,7 +2,8 @@
 :ID:       66b81b56-dce4-4219-aeb1-b38a685c6e7a
 :END:
 #+TITLE: how can I achieve programming mastery?
-#+hugo_lastmod: Time-stamp: <2022-05-11 08:36:17 wferreir>
+#+hugo_lastmod: Time-stamp: <2022-05-22 21:17:00 wferreir>
+#+hugo_tags: note self programming
 
 Rich Hickey once said: Mastery comes from a combination of at least several of the following:
 

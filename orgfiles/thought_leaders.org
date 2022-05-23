@@ -2,8 +2,8 @@
 :ID:       f50a9014-a9d1-40a4-95f5-2721a518a87c
 :END:
 #+TITLE: thought-leaders
-#+hugo_lastmod: Time-stamp: <2022-05-15 08:11:47 wferreir>
-#+hugo_tags: "general"
+#+hugo_lastmod: Time-stamp: <2022-05-22 21:19:16 wferreir>
+#+hugo_tags: general note
 
 definition: someone has a single solution that seems to fit every problem.
 

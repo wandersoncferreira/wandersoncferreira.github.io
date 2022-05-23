@@ -2,8 +2,8 @@
 :ID:       57b7fd01-c182-40ff-9e40-a97c7686c71b
 :END:
 #+TITLE: codebases as communication
-#+hugo_lastmod: Time-stamp: <2022-05-22 08:30:44 wferreir>
-#+hugo_tags: "bookmark" "raw-page"
+#+hugo_lastmod: Time-stamp: <2022-05-22 21:15:32 wferreir>
+#+hugo_tags: bookmark raw-page
 
 * Computer Things
 :PROPERTIES:

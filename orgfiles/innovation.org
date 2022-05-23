@@ -2,7 +2,7 @@
 :ID:       a700351d-3e7f-4ec6-a429-0bbd5ddcb8ef
 :END:
 #+TITLE: innovation
-#+hugo_lastmod: Time-stamp: <2022-05-09 08:14:01 wferreir>
-#+hugo_tags: "tbd"
+#+hugo_lastmod: Time-stamp: <2022-05-22 21:17:11 wferreir>
+#+hugo_tags: tbd
 
 <empty>

@@ -2,5 +2,5 @@
 :ID:       d97f42b5-5697-4002-bbf5-ba11ce94bbb1
 :END:
 #+TITLE: ability to acquire knowledge
-#+hugo_lastmod: Time-stamp: <2022-05-21 23:15:04 wferreir>
-#+hugo_tags: "tbd" "note"
+#+hugo_lastmod: Time-stamp: <2022-05-22 21:15:03 wferreir>
+#+hugo_tags: tbd note

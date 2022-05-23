@@ -2,8 +2,8 @@
 :ID:       51e42738-a998-4a62-8e38-5b74ff1d71f2
 :END:
 #+TITLE: what to learn?
-#+hugo_lastmod: Time-stamp: <2022-05-15 08:10:16 wferreir>
-#+hugo_tags: "knowledge" "advices"
+#+hugo_lastmod: Time-stamp: <2022-05-22 21:20:14 wferreir>
+#+hugo_tags: knowledge advices bookmark
 
 It's common to see people advocate for learning skills that they have or
 using processes that they use. For example, Steve Yegge has a set of

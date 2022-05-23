@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       ca19008f-319a-4b1c-8eac-090daa69c81e
+:END:
+#+TITLE: relation
+#+hugo_lastmod: Time-stamp: <2022-05-22 21:18:27 wferreir>
+#+hugo_tags: tbd note definition

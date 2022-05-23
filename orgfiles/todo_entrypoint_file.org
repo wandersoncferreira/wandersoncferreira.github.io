@@ -2,8 +2,8 @@
 :ID:       a4f30f6b-6b7a-4efc-acf4-fbdf08fc1060
 :END:
 #+TITLE: todo entrypoint file
-#+hugo_lastmod: Time-stamp: <2022-05-22 08:31:43 wferreir>
-#+hugo_tags: "entrypoint" "bookmark"
+#+hugo_lastmod: Time-stamp: <2022-05-22 21:19:36 wferreir>
+#+hugo_tags: entrypoint bookmark
 
 This is a set of raw pages that I want to take at look before turning them into
 actual bookmarks or posts

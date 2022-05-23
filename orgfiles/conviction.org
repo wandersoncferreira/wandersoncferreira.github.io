@@ -2,8 +2,8 @@
 :ID:       16354327-5b96-409a-9610-c9e207a30091
 :END:
 #+TITLE: conviction
-#+hugo_lastmod: Time-stamp: <2022-05-21 23:15:45 wferreir>
-#+hugo_tags: "definition" "note"
+#+hugo_lastmod: Time-stamp: <2022-05-22 21:16:05 wferreir>
+#+hugo_tags: definition note
 
 The confidence that your idea is good enough that it's worth throwing a lot of
 effort behind.

@@ -2,7 +2,8 @@
 :ID:       24e3753d-0209-4988-9a2a-9e59eace502f
 :END:
 #+TITLE: amplify my strenghts
-#+hugo_lastmod: Time-stamp: <2022-05-09 08:43:49 wferreir>
+#+hugo_lastmod: Time-stamp: <2022-05-22 21:14:36 wferreir>
+#+hugo_tags: self note
 
 The idea to amplify where you have a good advantage seems interesting but how to
 pin point our strengths? I've been battling with this idea for quite some [[id:4417146c-f45e-4181-b346-1e2f3b786f88][time]]

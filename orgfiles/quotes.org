@@ -2,8 +2,8 @@
 :ID:       2cce9311-d957-4d36-85f9-71b62062cbfe
 :END:
 #+TITLE: quotes
-#+hugo_lastmod: Time-stamp: <2022-05-21 20:23:22 wferreir>
-#+hugo_tags: "quotes"
+#+hugo_lastmod: Time-stamp: <2022-05-22 21:18:14 wferreir>
+#+hugo_tags: quotes note
 
 Nice quotes:
 

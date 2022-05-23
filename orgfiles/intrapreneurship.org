@@ -3,8 +3,8 @@
 :ROAM_ALIASES: intrapreneur
 :END:
 #+TITLE: intrapreneurship
-#+hugo_lastmod: Time-stamp: <2022-05-15 08:13:58 wferreir>
-#+hugo_tags: "definitions"
+#+hugo_lastmod: Time-stamp: <2022-05-22 21:17:24 wferreir>
+#+hugo_tags: definition note
 
 A person within a large corporation who takes direct responsibility for turning
 an idea into a profitable finished product through assertive risk-taking and

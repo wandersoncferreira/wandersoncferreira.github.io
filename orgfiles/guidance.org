@@ -2,7 +2,8 @@
 :ID:       79c8ed79-fc93-430a-8dfc-a9a840f6c2c5
 :END:
 #+TITLE: guidance
-#+hugo_lastmod: Time-stamp: <2022-05-06 17:58:13 wferreir>
+#+hugo_lastmod: Time-stamp: <2022-05-22 21:16:46 wferreir>
+#+hugo_tags: note self
 
 
 Questions while reading Kant's [[id:fd31ebe4-e8d5-4fbd-91a8-1b6e34be1a4f][what's enlightenment?]] essay:
