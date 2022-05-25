@@ -2,8 +2,8 @@
 :ID:       804668f2-ef20-4023-9af1-c2b1bdc462d1
 :END:
 #+TITLE: how expert programmers think about errors
-#+hugo_lastmod: Time-stamp: <2022-05-24 21:33:49 wferreir>
-#+hugo_tags: note presentation strage_loop advices
+#+hugo_lastmod: Time-stamp: <2022-05-24 21:47:04 wferreir>
+#+hugo_tags: note presentation strange_loop advices
 
 Link of the [[https://youtu.be/Jor-Rh0gwus][talk]].
 

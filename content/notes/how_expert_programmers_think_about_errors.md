@@ -1,8 +1,8 @@
 +++
 title = "how expert programmers think about errors"
 author = ["Wanderson Ferreira"]
-lastmod = 2022-05-24T21:33:00-03:00
-tags = ["note", "presentation", "strage_loop", "advices"]
+lastmod = 2022-05-24T21:47:00-03:00
+tags = ["note", "presentation", "strange_loop", "advices"]
 draft = false
 +++
 
