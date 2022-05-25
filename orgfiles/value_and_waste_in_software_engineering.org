@@ -1,0 +1,23 @@
+:PROPERTIES:
+:ID:       b89fbc87-9306-4d0d-92fa-f589684fab4e
+:END:
+#+TITLE: value and waste in software engineering
+#+hugo_lastmod: Time-stamp: <2022-05-24 21:44:28 wferreir>
+#+hugo_tags: note presentation strange_loop advices
+
+- what is waste?
+  - bad code reviews
+  - building the wrong feature or product
+  - mismanaging the backlog
+  - rework
+  - unecessarily complex solutions
+  - extraneous cognitive load
+  - psychological distress
+  - knowledge loss
+  - waiting
+  - ineffective communication
+
+- human values?
+  - maintain honour + respect for users
+    - e.g. what user information is kept, how is it shared?
+  - facilitate different origins, languages, cultures, knowledge
