@@ -2,7 +2,7 @@
 :ID:       2cce9311-d957-4d36-85f9-71b62062cbfe
 :END:
 #+TITLE: quotes
-#+hugo_lastmod: Time-stamp: <2022-05-22 21:18:14 wferreir>
+#+hugo_lastmod: Time-stamp: <2022-05-26 15:27:54 wferreir>
 #+hugo_tags: quotes note
 
 Nice quotes:
@@ -29,4 +29,9 @@ and set the organization up for success by removing roadblocks.
 #+begin_quote
 Computer Science is no more about computers than astronomy is about telescopes.
 - Mike Fellows
+#+end_quote
+
+#+begin_quote
+if people are trying to learn programming by being taught how to code, well they're being taught writing by being taught how to type, which doesn't make much sense.
+- Leslie Lampard
 #+end_quote
