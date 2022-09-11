@@ -1,8 +1,0 @@
-:PROPERTIES:
-:ID:       a2be0719-b3d3-4f6e-893b-543a4f953acc
-:END:
-#+TITLE: inference rules
-#+hugo_lastmod: Time-stamp: <2022-05-22 14:21:47 wferreir>
-#+hugo_tags: math definition note
-
-set of rules that let us derive new true statements from the [[id:b070c9ef-fb63-4d4b-8059-e0ed6a542c6d][axioms]].

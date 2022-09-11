@@ -1,12 +1,6 @@
-[submodule "themes/hugonews"]
-	path = themes/hugonews
-	url = https://github.com/spaghettiwews/hugonews.git
-[submodule "themes/photophobia"]
-	path = themes/photophobia
-	url = https://github.com/setsevireon/photophobia.git
-[submodule "themes/zen"]
-	path = themes/zen
-	url = https://github.com/frjo/hugo-theme-zen.git
-[submodule "themes/smol"]
-	path = themes/smol
-	url = https://github.com/wandersoncferreira/smol.git
+[submodule "themes/hugo-theme-nostyleplease"]
+	path = themes/hugo-theme-nostyleplease
+	url = https://github.com/Masellum/hugo-theme-nostyleplease.git
+[submodule "themes/nostyleplease"]
+	path = themes/nostyleplease
+	url = https://github.com/Masellum/hugo-theme-nostyleplease.git

@@ -1,9 +1,0 @@
-:PROPERTIES:
-:ID:       a7923c08-ab93-4a98-be62-0dde0671d6be
-:ROAM_ALIASES: models
-:END:
-#+TITLE: model
-#+hugo_lastmod: Time-stamp: <2022-05-22 14:24:47 wferreir>
-#+hugo_tags: math definition note
-
-a model is typically a collection [[id:b227ecc3-b53b-4c57-a3b9-18ed8f8c3c79][objects]] and [[id:ca19008f-319a-4b1c-8eac-090daa69c81e][relation]] between them.

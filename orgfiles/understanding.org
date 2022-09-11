@@ -1,6 +1,0 @@
-:PROPERTIES:
-:ID:       431e95d0-c1eb-4c5a-a64f-65bb344619b0
-:END:
-#+TITLE: understanding
-#+hugo_lastmod: Time-stamp: <2022-05-22 21:19:44 wferreir>
-#+hugo_tags: tbd note
