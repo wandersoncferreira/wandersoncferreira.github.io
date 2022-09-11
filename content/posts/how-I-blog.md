@@ -1,15 +1,18 @@
 +++
-title = "How to blog"
+title = "How I blog"
 author = ["Wanderson Ferreira"]
 date = 2022-09-10T00:00:00-03:00
+tags = ["meta"]
 draft = false
 +++
 
 This is a meta post in order to teach myself from the future how to do it!
 
-I often spend a few weeks without the desire to write anything in my blog, I
-should fix that but let's be real first, but at some moment I do want to type
-some letters down.. but they I freeze.. how did I do it?
+I often spend a few weeks without the desire to write anything in my blog (~~I
+should fix that but let's be real first~~), but at some moment I do want to type
+some letters down.. but they I freeze.. how do I do it?
+
+These are the steps I used to write this blog post starting from complete scratch:
 
 1.  I use hugo.
 2.  These are the relevant commands run using Hugo
@@ -29,14 +32,17 @@ some letters down.. but they I freeze.. how did I do it?
             org-hugo-section "posts"))
     ```
 
-6.  I ought to write `org` files inside the `orgfiles` folder of this blog repo
-7.  I have to add some special meta information in the header of the file:
+6.  I wrote an `org` file inside the `orgfiles` folder
+7.  I had to add some special meta information in the header of the file:
     1.  `#+title:`
     2.  `#+date:` created using `M-x org-time-stamp`
     3.  `#+draft:` true or false
-8.  Time to publish!
+    4.  [OPTIONAL] `#+author:`
+    5.  [OPTIONAL] `#+filetags:`
+        1.  are you wondering why `filetags` and not only `tags`? The [answer](https://ox-hugo.scripter.co/doc/tags-and-categories/#why-use-plus-filetags-and-not-plus-tags) is waiting for you
+8.  Time to publish
     1.  `spc m e` to run `org-export-dispatch`
     2.  `H` to export to `ox-hugo`
     3.  commit all the files
 
-A clever github action will handle everything from now on!
+A clever github action will handle everything from here onwards!
