@@ -1,0 +1,75 @@
+<!doctype html><html lang=en-us class=han-init><head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>
+How to blog
+</title>
+<link rel="shortcut icon" type=image/x-icon href=/>
+<link rel=stylesheet href=/css/main.css>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/han-css@3/dist/han.min.css>
+</head>
+<body a=auto>
+<main class=page-content aria-label=Content>
+<div class=w>
+<a href=/>..</a>
+<article>
+<p class=post-meta>
+<time datetime="2022-09-10 00:00:00 -0300 -0300">
+2022-09-10
+</time>
+</p>
+<h1>How to blog</h1>
+<p>This is a meta post in order to teach myself from the future how to do it!</p>
+<p>I often spend a few weeks without the desire to write anything in my blog, I
+should fix that but let&rsquo;s be real first, but at some moment I do want to type
+some letters down.. but they I freeze.. how did I do it?</p>
+<ol>
+<li>
+<p>I use hugo.</p>
+</li>
+<li>
+<p>These are the relevant commands run using Hugo</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>hugo new site wandersoncferreira
+hugo new posts/first.md
+cd themes/
+git submodule add git@github.com:wandersoncferreira/hugo-theme-nostyleplease.git
+</code></pre></div></li>
+<li>
+<p>I use Emacs</p>
+</li>
+<li>
+<p>My Emacs has a <code>ox-hugo</code> plugin enabled</p>
+</li>
+<li>
+<p>These are the relevant lines to configure <code>ox-hugo</code> properly</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-elisp data-lang=elisp>(after! ox-hugo
+  (setq org-hugo-base-dir <span style=color:#e6db74>&#34;~/code/wandersoncferreira.github.io&#34;</span>
+        org-hugo-section <span style=color:#e6db74>&#34;posts&#34;</span>))
+</code></pre></div></li>
+<li>
+<p>I ought to write <code>org</code> files inside the <code>orgfiles</code> folder of this blog repo</p>
+</li>
+<li>
+<p>I have to add some special meta information in the header of the file:</p>
+<ol>
+<li><code>#+title:</code></li>
+<li><code>#+date:</code> created using <code>M-x org-time-stamp</code></li>
+<li><code>#+draft:</code> true or false</li>
+</ol>
+</li>
+<li>
+<p>Time to publish!</p>
+<ol>
+<li><code>spc m e</code> to run <code>org-export-dispatch</code></li>
+<li><code>H</code> to export to <code>ox-hugo</code></li>
+<li>commit all the files</li>
+</ol>
+</li>
+</ol>
+<p>A clever github action will handle everything from now on!</p>
+</article>
+</div>
+</main>
+<script src=https://cdn.jsdelivr.net/npm/han-css@3/dist/han.min.js></script>
+</body></html>
