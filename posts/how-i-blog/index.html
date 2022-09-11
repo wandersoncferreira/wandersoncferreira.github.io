@@ -3,7 +3,7 @@
 <meta http-equiv=x-ua-compatible content="IE=edge">
 <meta name=viewport content="width=device-width,initial-scale=1">
 <title>
-How to blog
+How I blog
 </title>
 <link rel="shortcut icon" type=image/x-icon href=/>
 <link rel=stylesheet href=/css/main.css>
@@ -19,11 +19,12 @@ How to blog
 2022-09-10
 </time>
 </p>
-<h1>How to blog</h1>
+<h1>How I blog</h1>
 <p>This is a meta post in order to teach myself from the future how to do it!</p>
-<p>I often spend a few weeks without the desire to write anything in my blog, I
-should fix that but let&rsquo;s be real first, but at some moment I do want to type
-some letters down.. but they I freeze.. how did I do it?</p>
+<p>I often spend a few weeks without the desire to write anything in my blog (<del>I
+should fix that but let&rsquo;s be real first</del>), but at some moment I do want to type
+some letters down.. but they I freeze.. how do I do it?</p>
+<p>These are the steps I used to write this blog post starting from complete scratch:</p>
 <ol>
 <li>
 <p>I use hugo.</p>
@@ -48,18 +49,24 @@ git submodule add git@github.com:wandersoncferreira/hugo-theme-nostyleplease.git
         org-hugo-section <span style=color:#e6db74>&#34;posts&#34;</span>))
 </code></pre></div></li>
 <li>
-<p>I ought to write <code>org</code> files inside the <code>orgfiles</code> folder of this blog repo</p>
+<p>I wrote an <code>org</code> file inside the <code>orgfiles</code> folder</p>
 </li>
 <li>
-<p>I have to add some special meta information in the header of the file:</p>
+<p>I had to add some special meta information in the header of the file:</p>
 <ol>
 <li><code>#+title:</code></li>
 <li><code>#+date:</code> created using <code>M-x org-time-stamp</code></li>
 <li><code>#+draft:</code> true or false</li>
+<li>[OPTIONAL] <code>#+author:</code></li>
+<li>[OPTIONAL] <code>#+filetags:</code>
+<ol>
+<li>are you wondering why <code>filetags</code> and not only <code>tags</code>? The <a href=https://ox-hugo.scripter.co/doc/tags-and-categories/#why-use-plus-filetags-and-not-plus-tags>answer</a> is waiting for you</li>
+</ol>
+</li>
 </ol>
 </li>
 <li>
-<p>Time to publish!</p>
+<p>Time to publish</p>
 <ol>
 <li><code>spc m e</code> to run <code>org-export-dispatch</code></li>
 <li><code>H</code> to export to <code>ox-hugo</code></li>
@@ -67,7 +74,7 @@ git submodule add git@github.com:wandersoncferreira/hugo-theme-nostyleplease.git
 </ol>
 </li>
 </ol>
-<p>A clever github action will handle everything from now on!</p>
+<p>A clever github action will handle everything from here onwards!</p>
 </article>
 </div>
 </main>
