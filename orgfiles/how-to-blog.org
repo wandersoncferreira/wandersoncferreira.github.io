@@ -1,0 +1,42 @@
+#+title: How to blog
+#+draft: false
+#+date: <2022-09-10 Sat> 
+
+This is a meta post in order to teach myself from the future how to do it!
+
+I often spend a few weeks without the desire to write anything in my blog, I
+should fix that but let's be real first, but at some moment I do want to type
+some letters down.. but they I freeze.. how did I do it?
+
+1. I use hugo.
+2. These are the relevant commands run using Hugo
+   
+   #+begin_src sh
+hugo new site wandersoncferreira
+hugo new posts/first.md
+cd themes/
+git submodule add git@github.com:wandersoncferreira/hugo-theme-nostyleplease.git
+   #+end_src
+   
+3. I use Emacs
+4. My Emacs has a ~ox-hugo~ plugin enabled
+5. These are the relevant lines to configure ~ox-hugo~ properly
+   
+   #+begin_src elisp
+(after! ox-hugo
+  (setq org-hugo-base-dir "~/code/wandersoncferreira.github.io"
+        org-hugo-section "posts"))
+   #+end_src 
+   
+6. I ought to write ~org~ files inside the ~orgfiles~ folder of this blog repo
+7. I have to add some special meta information in the header of the file:
+   1. ~#+title:~
+   2. ~#+date:~ created using ~M-x org-time-stamp~
+   3. ~#+draft:~ true or false
+8. Time to publish!
+   1. ~spc m e~ to run ~org-export-dispatch~
+   2. ~H~ to export to ~ox-hugo~
+   3. commit all the files
+
+A clever github action will handle everything from now on!
+
