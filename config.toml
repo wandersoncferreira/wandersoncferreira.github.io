@@ -3,3 +3,5 @@ languageCode = 'en-us'
 title = 'Wanderson Ferreira'
 subtitle = 'Reifying fragmented ideas'
 theme = "nostyleplease"
+refLinksErrorLevel = "WARNING"
+refLinksNotFoundURL = "https://wandersoncferreira.github.io"
