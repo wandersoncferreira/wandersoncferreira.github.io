@@ -19,6 +19,6 @@ ever need this kind of support.
 for now, I am struggling with the process to become a , at least i
 have identified some of the main pain points that i am facing:
 
-1.  [diet]({{< relref "20240614220717-diet.md" >}}) and in general
+1.  [diet]({{< relref "notes/20240614220717-diet.md" >}}) and in general
 2.
 3.
