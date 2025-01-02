@@ -1,5 +1,5 @@
 +++
-title = "primeira maratona: internacional são paulo 2025"
+title = "maratona internacional de são paulo 2025"
 author = ["Wanderson Ferreira"]
 date = 2025-01-02T11:28:00-03:00
 slug = "/Users/wferreir/code/roam/notes/20250102100219-primeira-maratona"
@@ -9,7 +9,7 @@ draft = false
 
 {{< figure src="/img/running_oil_painting.jpg" caption="<span class=\"figure-number\">Figure 1: </span>Run like a child!" >}}
 
-Escolhi fazer a maratona Internacional de São Paulo como primeira maratona em 06
+Escolhi fazer a maratona Internacional de São Paulo como **primeira** maratona em 06
 de Abril de 2025.
 
 Estou bem animado para conhecer a reação do meu corpo com
