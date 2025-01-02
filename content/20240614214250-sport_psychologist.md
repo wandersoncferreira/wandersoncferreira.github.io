@@ -2,7 +2,7 @@
 title = "sport psychology: put yourself together to perform"
 author = ["Wanderson Ferreira"]
 date = 2024-06-14T00:00:00-03:00
-slug = "/home/bartuka/code/roam/notes/20240614214250-sport-psychologist"
+slug = "/Users/wferreir/code/roam/notes/20240614214250-sport-psychologist"
 tags = ["mind", "performance", "sports", "publish"]
 draft = false
 +++
