@@ -3,7 +3,7 @@ title = "reference missing"
 author = ["Wanderson Ferreira"]
 date = 2020-01-01T00:00:00-03:00
 slug = "/Users/wferreir/code/roam/notes/20240915190218-reference-missing"
-tags = ["publish"]
+tags = ["meta", "publish"]
 draft = false
 +++
 
