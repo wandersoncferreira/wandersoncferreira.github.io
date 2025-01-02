@@ -2,16 +2,22 @@
 title = "primeira maratona"
 author = ["Wanderson Ferreira"]
 slug = "/Users/wferreir/code/roam/notes/20250102100219-primeira-maratona"
-tags = ["publish"]
+tags = ["publish", "maratona"]
 draft = false
 +++
 
-Escolhi fazer a maratona de São Paulo como primeira maratona em 06 de Abril
-de 2025. E estou bem animado para conhecer a reação do meu corpo com esse volume
-de treinamento diferente. Também estou um pouco preocupado sobre a conciliação
-desse treino com os demais compromissos que eu possuo no meu dia-a-dia. Mas por
-enquanto estou conseguindo lidar com isso, as coisas vão ficar bem mais
-complicadas em Março de 2025.
+date:<span class="timestamp-wrapper"><span class="timestamp">&lt;2025-01-02 Thu 11:28&gt; </span></span>
+
+{{< figure src="/img/running_oil_painting.jpg" caption="<span class=\"figure-number\">Figure 1: </span>Run like a child!" >}}
+
+Escolhi fazer a maratona Internacional de São Paulo como primeira maratona em 06
+de Abril de 2025.
+
+Estou bem animado para conhecer a reação do meu corpo com
+esse volume de treinamento diferente. Também estou um pouco preocupado sobre a
+conciliação desse treino com os demais compromissos que eu possuo no meu
+dia-a-dia. Mas por enquanto estou conseguindo lidar com isso, as coisas vão
+ficar bem mais complicadas em Março de 2025.
 
 O ciclo de treinamento iniciou um pouco depois da minha segunda prova de meia
 maratona que finalizei com 1h 35 minutos no percurso da Marginal Pinheiros em
@@ -23,10 +29,8 @@ Um resumo dos volumes totais e longões.
 |----------|--------|--------------|-----------------------------|
 | 1        | 16     | 35           | 45.714286                   |
 | 2        | 18     | 38           | 47.368421                   |
-| 3        | 22     | 46.5         | 47.311828                   |
-| 4        | 26     | 52           | 50.                         |
 
-{{< figure src="/img/volume_primeira_maratona.png" caption="<span class=\"figure-number\">Figure 1: </span>Volume Total semanal da minha primeira Maratona" >}}
+{{< figure src="/img/volume_primeira_maratona.png" caption="<span class=\"figure-number\">Figure 2: </span>Volume Total semanal da minha primeira Maratona" >}}
 
 Vou tentar documentar cada uma das semanas aqui:
 
