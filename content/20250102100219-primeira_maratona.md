@@ -46,21 +46,21 @@ Vou tentar documentar cada uma das semanas aqui:
     -   As sessões de corrida foram leves do meu ponto de vista, como eu fiz duas
         provas de meia maratonas muito próximas, o Alessandro preferiu começar o
         ciclo mais suave.
--   Treinos
-    -   Segunda - 10 km
-        -   Aquecimento: 3km no pace 5'27"/km
-        -   Repetir 6 vezes
-            -   600m forte no pace 5'02"/km
-            -   400m fraco no pace 5'50"/km
+    -   Treinos
+        -   Segunda - 10 km
+            -   Aquecimento: 3km no pace 5'27"/km
+            -   Repetir 6 vezes
+                -   600m forte no pace 5'02"/km
+                -   400m fraco no pace 5'50"/km
+                -   Desaquecimento: 1km no pace 5'27"/km
+        -   Quarta - 8.7km
+            -   Aquecimento: 3km no pace 5'27"/km
+            -   Repetir 10 vezes
+                -   400m forte no pace 4'48"/km
+                -   100m caminhando no pace 10'00"/km
             -   Desaquecimento: 1km no pace 5'27"/km
-    -   Quarta - 8.7km
-        -   Aquecimento: 3km no pace 5'27"/km
-        -   Repetir 10 vezes
-            -   400m forte no pace 4'48"/km
-            -   100m caminhando no pace 10'00"/km
-        -   Desaquecimento: 1km no pace 5'27"/km
-    -   Sabado - 16km
-        -   16km no pace de 5'14"/km
+        -   Sabado - 16km
+            -   16km no pace de 5'14"/km
 
 
 ## Semana 2 {#semana-2}
