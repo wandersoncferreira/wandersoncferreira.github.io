@@ -1,12 +1,11 @@
 +++
 title = "primeira maratona"
 author = ["Wanderson Ferreira"]
+date = 2025-01-02T11:28:00-03:00
 slug = "/Users/wferreir/code/roam/notes/20250102100219-primeira-maratona"
 tags = ["publish", "maratona"]
 draft = false
 +++
-
-date:<span class="timestamp-wrapper"><span class="timestamp">&lt;2025-01-02 Thu 11:28&gt; </span></span>
 
 {{< figure src="/img/running_oil_painting.jpg" caption="<span class=\"figure-number\">Figure 1: </span>Run like a child!" >}}
 
