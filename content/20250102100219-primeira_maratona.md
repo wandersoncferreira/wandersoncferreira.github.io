@@ -1,5 +1,5 @@
 +++
-title = "primeira maratona"
+title = "primeira maratona: internacional são paulo 2025"
 author = ["Wanderson Ferreira"]
 date = 2025-01-02T11:28:00-03:00
 slug = "/Users/wferreir/code/roam/notes/20250102100219-primeira-maratona"
@@ -46,6 +46,9 @@ Vou tentar documentar cada uma das semanas aqui:
     -   As sessões de corrida foram leves do meu ponto de vista, como eu fiz duas
         provas de meia maratonas muito próximas, o Alessandro preferiu começar o
         ciclo mais suave.
+-   TrainingPeaks:
+
+    {{< figure src="/img/maratona_semana_1.png" >}}
 
 
 ## Semana 2 {#semana-2}
