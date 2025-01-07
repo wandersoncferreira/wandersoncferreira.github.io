@@ -32,7 +32,12 @@ Um resumo dos volumes totais e longões.
 
 {{< figure src="/img/volume_primeira_maratona.png" caption="<span class=\"figure-number\">Figure 2: </span>Volume Total semanal da minha primeira Maratona" >}}
 
-Vou tentar documentar cada uma das semanas aqui:
+
+## Diário Semanal <span class="tag"><span class="TOC">TOC</span></span> {#diário-semanal}
+
+-
+-
+-
 
 
 ## Semana 1 {#semana-1}
