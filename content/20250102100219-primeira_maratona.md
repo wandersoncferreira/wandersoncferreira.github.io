@@ -28,6 +28,7 @@ Um resumo dos volumes totais e longões.
 |----------|--------|--------------|-----------------------------|
 | 1        | 16     | 35           | 45.714286                   |
 | 2        | 18     | 38           | 47.368421                   |
+| 3        | 22     | 46.5         | 47.311828                   |
 
 {{< figure src="/img/volume_primeira_maratona.png" caption="<span class=\"figure-number\">Figure 2: </span>Volume Total semanal da minha primeira Maratona" >}}
 
@@ -38,7 +39,7 @@ Vou tentar documentar cada uma das semanas aqui:
 
 -   23 até 28 de Dezembro
 -   Volume Total: **35km**
--   Intensidade Total: **266 TSS**
+-   Intensidade Total: **200 TSS**
 -   Longão: **16KM**
 -   Fortalecimento:
     -   Duas sessões com foco em aumento de força, menos repetições e mais carga
@@ -67,7 +68,7 @@ Vou tentar documentar cada uma das semanas aqui:
 
 -   30 Dezembro até 04 de Janeiro 2025
 -   Volume Total: **38km**
--   Intensidade Total: **266 TSS**
+-   Intensidade Total: **218 TSS**
 -   Longão: **18km**
 -   Fortalecimento:
     -   <span class="underline">Nenhuma sessão de fortalecimento</span>
@@ -94,3 +95,44 @@ Vou tentar documentar cada uma das semanas aqui:
             -   Desaquecimento: 1km no pace 5'27"/km
         -   Sabado - 18km
             -   18km no pace 5'14"/km
+
+
+## Semana 3 {#semana-3}
+
+-   06 de Janeiro até 12 de Janeiro 2025
+-   Volume Total: **45.6km**
+-   Intensidade Total: **271 TSS**
+-   Longão: **22km**
+-   Fortalecimento:
+    -   <span class="underline">Nenhuma sessão de fortalecimento ainda</span>
+-   Corrida
+    -   Apesar do volume ter aumentado
+        -   Treinos:
+            -   Segunda - 11.8km
+                -   Aquecimento: 3km no pace 5'27"/km
+                -   Repetir 8 vezes
+                    -   600m forte no pace 5'02"/km
+                    -   400m fraco no pace 5'50"/km
+                    -   Desaquecimento: 1km no pace 5'27"/km
+            -   Quarta - 12.5km
+                -   Aquecimento: 3km no pace 5'27"/km
+                -   Repetir 15 vezes
+                    -   400m forte no pace 4'48"/km
+                    -   100m caminhando no pace 10'00"/km
+                -   Desaquecimento: 1km no pace 5'27"/km
+            -   Sabado - 22km
+                -   Aquecimento: 6km progressivo
+                    -   500m com 5'20"/km
+                    -   500m com 5'10"/km
+                    -   1km com 4'50"/km
+                -   16km no pace 4'58"/km
+-   Dores anormais :)
+    -   Estou sentindo bastante dormência nos três menores dedos do pé direito. Eu
+        já senti isso outras vezes quando comprei tênis novos e fiz treinos mais
+        intensos com eles. Dessa vez parece ter sido o mesmo motivo, mas voltei ao
+        tênis de sempre e a dor continua. Marquei uma sessão de fisioterapia para o
+        dia **7 de janeiro 2025** para ver isso melhor.
+    -   Também estou sentindo uma sensibilidade maior nos tendões de aquiles. Isso
+        eu nunca tinha sentido até agora. Parece apenas relacionado ao volume dos
+        treinos. Nada que incomode muito, mas na sessão de recovery que vou fazer
+        vou pedir dicas sobre isso.
