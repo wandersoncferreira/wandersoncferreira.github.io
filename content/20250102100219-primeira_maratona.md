@@ -106,26 +106,29 @@ Vou tentar documentar cada uma das semanas aqui:
 -   Fortalecimento:
     -   <span class="underline">Nenhuma sessão de fortalecimento ainda</span>
 -   Corrida
-    -   Apesar do volume ter aumentado
-        -   Treinos:
-            -   Segunda - 11.8km
-                -   Aquecimento: 3km no pace 5'27"/km
-                -   Repetir 8 vezes
-                    -   600m forte no pace 5'02"/km
-                    -   400m fraco no pace 5'50"/km
-                    -   Desaquecimento: 1km no pace 5'27"/km
-            -   Quarta - 12.5km
-                -   Aquecimento: 3km no pace 5'27"/km
-                -   Repetir 15 vezes
-                    -   400m forte no pace 4'48"/km
-                    -   100m caminhando no pace 10'00"/km
+    -   Apesar do volume ter aumentado eu não senti nenhuma dificuldade maior nos
+        treinos dentro da semana. Porém os longos a dificuldade é nitida, o problema
+        é **mental**. O tempo não passa, os metros ficam mais longos, a vontade de parar
+        depois de correr 15km é bem alta.
+    -   Treinos:
+        -   Segunda - 11.8km
+            -   Aquecimento: 3km no pace 5'27"/km
+            -   Repetir 8 vezes
+                -   600m forte no pace 5'02"/km
+                -   400m fraco no pace 5'50"/km
                 -   Desaquecimento: 1km no pace 5'27"/km
-            -   Sabado - 22km
-                -   Aquecimento: 6km progressivo
-                    -   500m com 5'20"/km
-                    -   500m com 5'10"/km
-                    -   1km com 4'50"/km
-                -   16km no pace 4'58"/km
+        -   Quarta - 12.5km
+            -   Aquecimento: 3km no pace 5'27"/km
+            -   Repetir 15 vezes
+                -   400m forte no pace 4'48"/km
+                -   100m caminhando no pace 10'00"/km
+            -   Desaquecimento: 1km no pace 5'27"/km
+        -   Sabado - 22km
+            -   Aquecimento: 6km progressivo
+                -   500m com 5'20"/km
+                -   500m com 5'10"/km
+                -   1km com 4'50"/km
+            -   16km no pace 4'58"/km
 -   Dores anormais :)
     -   Estou sentindo bastante dormência nos três menores dedos do pé direito. Eu
         já senti isso outras vezes quando comprei tênis novos e fiz treinos mais
