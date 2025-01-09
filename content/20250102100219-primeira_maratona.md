@@ -24,11 +24,11 @@ São Paulo.
 
 Um resumo dos volumes totais e longões.
 
-| # Semana | Longão | Volume Total | Percentual Longão/Total (%) |
-|----------|--------|--------------|-----------------------------|
-| 1        | 16     | 41.8         | 38.277512                   |
-| 2        | 18     | 48.3         | 37.267081                   |
-| 3        | 22     | 46.5         | 47.311828                   |
+| # Semana | Longão (km) | Volume Total (km) | Longão/Total (%) |
+|----------|-------------|-------------------|------------------|
+| 1        | 16          | 41.8              | 38.277512        |
+| 2        | 18          | 48.3              | 37.267081        |
+| 3        | 22          | 46.5              | 47.311828        |
 
 {{< figure src="/img/volume_primeira_maratona.png" caption="<span class=\"figure-number\">Figure 2: </span>Volume Total semanal da minha primeira Maratona" >}}
 
@@ -101,7 +101,7 @@ Break down of each week of training.
         -   Sabado - 18km
             -   18km no pace 5'14"/km
         -   Domingo - 10.2km
-            -   \*10.2km em ritmo leve 6'45"/km por conta própria com o Douglas
+            -   \*10.2km em ritmo leve 6'45"/km conta própria com o Douglas
 
 
 ### Semana 3 {#semana-3}
@@ -111,7 +111,8 @@ Break down of each week of training.
 -   Intensidade Total: **271 TSS**
 -   Longão: **22km**
 -   Fortalecimento:
-    -   <span class="underline">Nenhuma sessão de fortalecimento ainda</span>
+    -   Hoje (quinta-feira) eu fiz um treino de fortalecimento muito bom. Estou um pouco
+        preocupado se amanhã vou acordar com muitas dores musculares para correr.
 -   Corrida
     -   Apesar do volume ter aumentado eu não senti nenhuma dificuldade maior nos
         treinos dentro da semana. Porém os longos a dificuldade é nitida, o problema
