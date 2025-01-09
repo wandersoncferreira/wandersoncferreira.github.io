@@ -38,7 +38,7 @@ Um resumo dos volumes totais e longões.
 Break down of each week of training.
 
 
-### Semana_1 {#semana-1}
+### Semana 1 {#semana-1}
 
 -   23 até 28 de Dezembro
 -   Volume Total (Realizado / Planejado):  **41.8km**  / 35km
@@ -69,7 +69,7 @@ Break down of each week of training.
             -   16km no pace de 5'14"/km
 
 
-### Semana_2 {#semana-2}
+### Semana 2 {#semana-2}
 
 -   30 Dezembro até 04 de Janeiro 2025
 -   Volume Total (Realizado / Planejado):  **48.3km**  / 38km
@@ -101,10 +101,10 @@ Break down of each week of training.
         -   Sabado - 18km
             -   18km no pace 5'14"/km
         -   Domingo - 10.2km
-            -   \*10.2km em ritmo leve 6'45"/km  feito por conta própria com o Douglas
+            -   \*10.2km em ritmo leve 6'45"/km por conta própria com o Douglas
 
 
-### Semana_3 {#semana-3}
+### Semana 3 {#semana-3}
 
 -   06 de Janeiro até 12 de Janeiro 2025
 -   Volume Total (Realizado / Planejado):  **48.3km**  / 46.5km
