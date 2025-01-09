@@ -26,25 +26,23 @@ Um resumo dos volumes totais e longões.
 
 | # Semana | Longão | Volume Total | Percentual Longão/Total (%) |
 |----------|--------|--------------|-----------------------------|
-| 1        | 16     | 35           | 45.714286                   |
-| 2        | 18     | 38           | 47.368421                   |
+| 1        | 16     | 41.8         | 38.277512                   |
+| 2        | 18     | 48.3         | 37.267081                   |
 | 3        | 22     | 46.5         | 47.311828                   |
 
 {{< figure src="/img/volume_primeira_maratona.png" caption="<span class=\"figure-number\">Figure 2: </span>Volume Total semanal da minha primeira Maratona" >}}
 
 
-## Diário Semanal <span class="tag"><span class="TOC">TOC</span></span> {#diário-semanal}
+## Diario semanal {#diario-semanal}
 
--
--
--
+Break down of each week of training.
 
 
-## Semana 1 {#semana-1}
+### Semana_1 {#semana-1}
 
 -   23 até 28 de Dezembro
--   Volume Total: **35km**
--   Intensidade Total: **200 TSS**
+-   Volume Total (Realizado / Planejado):  **41.8km**  / 35km
+-   Intensidade Total: **311 TSS**
 -   Longão: **16KM**
 -   Fortalecimento:
     -   Duas sessões com foco em aumento de força, menos repetições e mais carga
@@ -59,6 +57,8 @@ Um resumo dos volumes totais e longões.
                 -   600m forte no pace 5'02"/km
                 -   400m fraco no pace 5'50"/km
                 -   Desaquecimento: 1km no pace 5'27"/km
+        -   Terça
+            -   **7km em ritmo leve 5'30"/km  feito por conta própria**
         -   Quarta - 8.7km
             -   Aquecimento: 3km no pace 5'27"/km
             -   Repetir 10 vezes
@@ -69,11 +69,11 @@ Um resumo dos volumes totais e longões.
             -   16km no pace de 5'14"/km
 
 
-## Semana 2 {#semana-2}
+### Semana_2 {#semana-2}
 
 -   30 Dezembro até 04 de Janeiro 2025
--   Volume Total: **38km**
--   Intensidade Total: **218 TSS**
+-   Volume Total (Realizado / Planejado):  **48.3km**  / 38km
+-   Intensidade Total: **300 TSS**
 -   Longão: **18km**
 -   Fortalecimento:
     -   <span class="underline">Nenhuma sessão de fortalecimento</span>
@@ -100,12 +100,14 @@ Um resumo dos volumes totais e longões.
             -   Desaquecimento: 1km no pace 5'27"/km
         -   Sabado - 18km
             -   18km no pace 5'14"/km
+        -   Domingo - 10.2km
+            -   \*10.2km em ritmo leve 6'45"/km  feito por conta própria com o Douglas
 
 
-## Semana 3 {#semana-3}
+### Semana_3 {#semana-3}
 
 -   06 de Janeiro até 12 de Janeiro 2025
--   Volume Total: **45.6km**
+-   Volume Total (Realizado / Planejado):  **48.3km**  / 46.5km
 -   Intensidade Total: **271 TSS**
 -   Longão: **22km**
 -   Fortalecimento:
@@ -128,6 +130,8 @@ Um resumo dos volumes totais e longões.
                 -   400m forte no pace 4'48"/km
                 -   100m caminhando no pace 10'00"/km
             -   Desaquecimento: 1km no pace 5'27"/km
+        -   Sexta-feira
+            -   O Alessandro pediu para eu correr por conta própria em um ritmo leve
         -   Sabado - 22km
             -   Aquecimento: 6km progressivo
                 -   500m com 5'20"/km
