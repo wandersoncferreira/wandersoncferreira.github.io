@@ -24,13 +24,18 @@ São Paulo.
 
 Um resumo dos volumes totais e longões.
 
+<a id="table--volumes"></a>
+
 | # Semana | Longão (km) | Volume Total (km) | Longão/Total (%) |
 |----------|-------------|-------------------|------------------|
-| 1        | 16          | 41.8              | 38.277512        |
-| 2        | 18          | 48.3              | 37.267081        |
-| 3        | 22          | 46.5              | 47.311828        |
+| 1        | 16          | 41.8              | 38.3             |
+| 2        | 18          | 48.3              | 37.3             |
+| 3        | 22          | 57.5              | 38.3             |
+| 4        | 10.7        | 44.7              | 23.9             |
+| 5        | 16          | 44.3              | 36.1             |
+| 6        | 24          | 54.2              | 44.3             |
 
-{{< figure src="/img/volume_primeira_maratona.png" caption="<span class=\"figure-number\">Figure 2: </span>Volume Total semanal da minha primeira Maratona" >}}
+{{< figure src="/ox-hugo/volume_primeira_maratona.png" caption="<span class=\"figure-number\">Figure 2: </span>Volume Total semanal da minha primeira Maratona" >}}
 
 
 ## Diario semanal {#diario-semanal}
@@ -107,7 +112,7 @@ Break down of each week of training.
 ### Semana 3 {#semana-3}
 
 -   06 de Janeiro até 12 de Janeiro 2025
--   Volume Total (Realizado / Planejado):  **48.3km**  / 46.5km
+-   Volume Total (Realizado / Planejado):  **57.5km**  / 46.5km
 -   Intensidade Total: **271 TSS**
 -   Longão: **22km**
 -   Fortalecimento:
@@ -133,6 +138,7 @@ Break down of each week of training.
             -   Desaquecimento: 1km no pace 5'27"/km
         -   Sexta-feira
             -   O Alessandro pediu para eu correr por conta própria em um ritmo leve
+            -   **10.2 km no ritmo de 6'50"/km com o Douglas**
         -   Sabado - 22km
             -   Aquecimento: 6km progressivo
                 -   500m com 5'20"/km
@@ -149,3 +155,77 @@ Break down of each week of training.
         eu nunca tinha sentido até agora. Parece apenas relacionado ao volume dos
         treinos. Nada que incomode muito, mas na sessão de recovery que vou fazer
         vou pedir dicas sobre isso.
+
+
+### Semana 4 {#semana-4}
+
+-   13 de Janeiro até 19 de Janeiro 2025
+-   Volume Total (Realizado / Planejado):  **44.7km**  / 52km
+-   Intensidade Total: **271 TSS**
+-   Longão: **22km**
+-   Fortalecimento:
+-   Corrida
+    -   Treinos:
+        -   Segunda - 11.8km
+            -   Aquecimento: 3km no pace 5'27"/km
+            -   Repetir 8 vezes
+                -   600m forte no pace 5'02"/km
+                -   400m fraco no pace 5'50"/km
+                -   Desaquecimento: 1km no pace 5'27"/km
+        -   Quarta - 12.5km
+            -   Aquecimento: 3km no pace 5'27"/km
+            -   Repetir 15 vezes
+                -   400m forte no pace 4'48"/km
+                -   100m caminhando no pace 10'00"/km
+            -   Desaquecimento: 1km no pace 5'27"/km
+        -   Sexta-feira
+            -   O Alessandro pediu para eu correr por conta própria em um ritmo leve
+            -   **7.06 km no ritmo de 6'50"/km com o Douglas**
+        -   Sabado - 26km
+            -   Aquecimento: 6km progressivo
+                -   500m com 5'20"/km
+                -   500m com 5'10"/km
+                -   1km com 4'50"/km
+            -   20km no pace 4'58"/km
+-   Dores anormais:
+    -   As dores nos dedos melhoraram mas ainda permanecem, eu fui fazer uma
+        Ressonancia Magnética no pé direito hoje. O resultado sai em 3 dias.
+-   Problemas Intestinais:
+    -   Eu não consegui completar o longo de 26km, eu já senti um pouco de enjoo
+        enquanto eu dirigia até a USP, logo nos primeiros quilometros eu senti um
+        forte desconforto intestinal, e assim que tomei o primeiro gel com 6km
+        começou uma correria contra o tempo para encontrar banheiros.
+    -   Eu fiquei bastante chateado :/ ainda estou na verdade.
+
+
+### Semana 5 {#semana-5}
+
+-   20 de Janeiro até 26 de Janeiro 2025
+-   Volume Total (Realizado / Planejado):  **?km**  / 36.3km
+-   Intensidade Total: **271 TSS**
+-   Longão: **22km**
+-   Fortalecimento:
+-   Corrida
+    -   Treinos:
+        -   Segunda - 11.8km
+            -   Aquecimento: 3km no pace 5'27"/km
+            -   Repetir 8 vezes
+                -   600m forte no pace 5'02"/km
+                -   400m fraco no pace 5'50"/km
+                -   Desaquecimento: 1km no pace 5'27"/km
+        -   Quarta - 12.5km
+            -   Aquecimento: 3km no pace 5'27"/km
+            -   Repetir 15 vezes
+                -   400m forte no pace 4'48"/km
+                -   100m caminhando no pace 10'00"/km
+            -   Desaquecimento: 1km no pace 5'27"/km
+        -   Sexta-feira
+            -   O Alessandro pediu para eu correr por conta própria em um ritmo leve
+            -   **10.2 km no ritmo de 6'50"/km com o Douglas**
+        -   Sabado - 22km
+            -   Aquecimento: 6km progressivo
+                -   500m com 5'20"/km
+                -   500m com 5'10"/km
+                -   1km com 4'50"/km
+            -   16km no pace 4'58"/km
+-   Dores anormais :)
