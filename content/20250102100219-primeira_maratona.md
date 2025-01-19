@@ -35,7 +35,7 @@ Um resumo dos volumes totais e longões.
 | 5        | 16          | 44.3              | 36.1             |
 | 6        | 24          | 54.2              | 44.3             |
 
-{{< figure src="/ox-hugo/volume_primeira_maratona.png" caption="<span class=\"figure-number\">Figure 2: </span>Volume Total semanal da minha primeira Maratona" >}}
+{{< figure src="/img/volume_primeira_maratona.png" caption="<span class=\"figure-number\">Figure 2: </span>Volume Total semanal da minha primeira Maratona" >}}
 
 
 ## Diario semanal {#diario-semanal}
