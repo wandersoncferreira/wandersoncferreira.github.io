@@ -2,6 +2,10 @@ baseURL = 'https://wandersoncferreira.github.io'
 languageCode = 'en-us'
 title = 'Wanderson Ferreira'
 subtitle = 'Reifying fragmented ideas'
-theme = "nostyleplease"
+theme = "simple"
 refLinksErrorLevel = "WARNING"
 refLinksNotFoundURL = "https://wandersoncferreira.github.io/users/wferreir/code/roam/notes/20240915190218-reference-missing/"
+
+[taxonomies]
+  tag = 'tags'
+  serie = 'series'

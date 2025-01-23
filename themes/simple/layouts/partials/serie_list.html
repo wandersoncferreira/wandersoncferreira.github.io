@@ -1,0 +1,27 @@
+{{ $series := site.GetPage "/series" }}
+<ul>
+{{ range $series.Pages }}
+    <li>
+    <span>{{- (.Date | time.Format site.Params.theme_config.date_format) }}</span>
+    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+    <ul style="list-style-type:none;">
+    <li>
+    <span style="font-size:0.9vw;font-style:italic;text-align:justify">
+        {{ if gt (len .Summary) 150 }}
+        {{ slicestr .Summary 0 150 | markdownify }}
+        {{ else }}
+        {{ .Summary | markdownify}}
+        {{ end }}
+    </span>
+    </li>
+    <li>
+    <span style="font-size:0.9vw;font-style:italic;text-align:justify">
+        Total de posts:
+        {{ $Totalpage := len .Pages }}
+        {{ $Totalpage }}
+    </span>
+    </li>
+    </ul>
+    </li>
+{{ end }}
+</ul>

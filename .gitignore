@@ -4,3 +4,6 @@ _site
 .jekyll-metadata
 vendor
 .DS_Store
+public
+resources/_gen/
+.hugo_build.lock
