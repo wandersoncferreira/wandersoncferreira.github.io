@@ -5,10 +5,12 @@ date = 2025-01-04T11:28:00-03:00
 tags = ["publish", "maratona"]
 draft = false
 series = "maratona internacional de sao paulo 2025"
-summary = "Segunda semana!"
+summary = "O ritmo começou a apertar um pouco. Longão em um pace bacana, não muito lento e nem rápido. Boa semana essa!"
 +++
 
--   30 Dezembro até 04 de Janeiro 2025
+Segue um resumo dos principais pontos dessa semana:
+
+-   Período: 30 Dezembro até 04 de Janeiro 2025
 -   Volume Total (Realizado / Planejado):  **48.3km**  / 38km
 -   Intensidade Total: **300 TSS**
 -   Longão: **18km**
@@ -38,4 +40,4 @@ summary = "Segunda semana!"
         -   Sabado - 18km
             -   18km no pace 5'14"/km
         -   Domingo - 10.2km
-            -   \*10.2km em ritmo leve 6'45"/km conta própria com o Douglas
+            -   **10.2km em ritmo leve 6'45"/km conta própria com o Douglas**
