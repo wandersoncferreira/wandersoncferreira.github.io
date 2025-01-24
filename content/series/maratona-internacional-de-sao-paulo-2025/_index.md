@@ -7,16 +7,22 @@ draft = false
 summary = "Documentando o ciclo de treinamento da minha primeira maratona."
 +++
 
-Escolhi fazer a maratona Internacional de São Paulo como **primeira** maratona em 06
-de Abril de 2025.
+A minha **primeira** maratona será no dia 06 de abril de 2025. Escolhi fazer em
+são paulo pela facilidade de acesso e porque é um percurso que eu já estarei
+mais familiarizado. Porém, tem um problema grande com essa escolha, a prova é
+conhecida pelos corredores como sendo muito dura e desafiadora pois contém uma
+altimetria razoável, o clima na época do ano tende a ser bem quente e contém
+alguns trechos de túneis que costumam ser locais bem quentes e com pouca
+ventilação. 
 
-Estou bem animado para conhecer a reação do meu corpo com
-esse volume de treinamento diferente. Também estou um pouco preocupado sobre a
-conciliação desse treino com os demais compromissos que eu possuo no meu
-dia-a-dia. Mas por enquanto estou conseguindo lidar com isso, as coisas vão
-ficar bem mais complicadas em Março de 2025.
+Pois bem, vamos aos treinos!
 
-Um resumo dos volumes totais e longões.
+Estou bem animado para conhecer a reação que o meu corpo vai ter com
+esse volume de treinamento. Também estou um pouco preocupado com a
+conciliação desse treino com os demais compromissos que eu tenho no meu
+dia-a-dia.
+
+Segue um resumo dos volumes totais e longões:
 
 <a id="table--volumes"></a>
 
@@ -26,5 +32,4 @@ Um resumo dos volumes totais e longões.
 | 2        | 18          | 48.3              | 37.3             |
 | 3        | 22          | 57.5              | 38.3             |
 | 4        | 10.7        | 44.7              | 23.9             |
-| 5        | 16          | 44.3              | 36.1             |
-| 6        | 24          | 54.2              | 44.3             |
+| 5        | 16          | 48                | 33.3             |
