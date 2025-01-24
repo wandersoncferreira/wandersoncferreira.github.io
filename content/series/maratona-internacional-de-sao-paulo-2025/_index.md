@@ -7,6 +7,8 @@ draft = false
 summary = "Documentando o ciclo de treinamento da minha primeira maratona."
 +++
 
+{{< figure src="/img/running_oil_painting.jpg" caption="<span class=\"figure-number\">Figure 1: </span>Run like a child!" >}}
+
 A minha **primeira** maratona será no dia 06 de abril de 2025. Escolhi fazer em
 são paulo pela facilidade de acesso e porque é um percurso que eu já estarei
 mais familiarizado. Porém, tem um problema grande com essa escolha, a prova é

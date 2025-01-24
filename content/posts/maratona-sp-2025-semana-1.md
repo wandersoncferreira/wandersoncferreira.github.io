@@ -8,8 +8,6 @@ series = "maratona internacional de sao paulo 2025"
 summary = "Primeira semana! Voltando após 2 provas de meia-maratonas bem puxadas."
 +++
 
-{{< figure src="/img/running_oil_painting.jpg" caption="<span class=\"figure-number\">Figure 1: </span>Run like a child!" >}}
-
 O ciclo de treinamento iniciou um pouco depois da minha segunda prova de meia
 maratona que finalizei com 1h 35 minutos no percurso da Marginal Pinheiros em
 São Paulo.
