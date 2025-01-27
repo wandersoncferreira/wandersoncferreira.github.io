@@ -35,3 +35,4 @@ Segue um resumo dos volumes totais e longões:
 | 3        | 22          | 57.5              | 38.3             |
 | 4        | 10.7        | 44.7              | 23.9             |
 | 5        | 16          | 48                | 33.3             |
+| 6        | 24          | 56                | 42.8             |
