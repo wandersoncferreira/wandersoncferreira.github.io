@@ -2,7 +2,7 @@
 title = "Semana 3: Ciclo Maratona de SP 2025"
 author = ["Wanderson Ferreira"]
 date = 2025-01-12T11:28:00-03:00
-tags = ["publish", "maratona"]
+tags = ["maratona"]
 draft = false
 series = "maratona internacional de sao paulo 2025"
 summary = "O maior volume que eu corri até agora. Segurar a parte mental para o longão foi bem complicado. Não fiz nenhuma pausa no treino, foram 22km diretos!"

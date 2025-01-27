@@ -2,7 +2,7 @@
 title = "maratona internacional de são paulo 2025"
 author = ["Wanderson Ferreira"]
 date = 2025-01-02T11:28:00-03:00
-tags = ["publish", "maratona"]
+tags = ["maratona"]
 draft = false
 summary = "Documentando o ciclo de treinamento da minha primeira maratona."
 +++

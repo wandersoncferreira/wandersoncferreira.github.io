@@ -2,7 +2,7 @@
 title = "Semana 2: Ciclo Maratona de SP 2025"
 author = ["Wanderson Ferreira"]
 date = 2025-01-04T11:28:00-03:00
-tags = ["publish", "maratona"]
+tags = ["maratona"]
 draft = false
 series = "maratona internacional de sao paulo 2025"
 summary = "O ritmo começou a apertar um pouco. Longão em um pace bacana, não muito lento e nem rápido. Boa semana essa!"

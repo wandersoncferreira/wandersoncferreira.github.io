@@ -2,7 +2,7 @@
 title = "Semana 4: Ciclo Maratona de SP 2025"
 author = ["Wanderson Ferreira"]
 date = 2025-01-19T11:28:00-03:00
-tags = ["publish", "maratona"]
+tags = ["maratona"]
 draft = false
 series = "maratona internacional de sao paulo 2025"
 summary = "Péssimo final de semana! Não consegui completar o longão."

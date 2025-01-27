@@ -2,7 +2,7 @@
 title = "Semana 1: Ciclo Maratona de SP 2025"
 author = ["Wanderson Ferreira"]
 date = 2024-12-28T11:28:00-03:00
-tags = ["publish", "marathon", "maratona", "diary", "diario"]
+tags = ["marathon", "maratona", "diary", "diario"]
 draft = false
 series = "maratona internacional de sao paulo 2025"
 summary = "Primeira semana! Voltando após as minhas primeiras 2 meia-maratonas. Não sei se foi uma boa idéia ter feito a prova na Estrada Velha de Santos."
