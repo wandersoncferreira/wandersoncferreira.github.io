@@ -26,6 +26,10 @@ dia-a-dia.
 
 Segue um resumo dos volumes totais e longões:
 
+{{< figure src="/img/volume_primeira_maratona.png" caption="<span class=\"figure-number\">Figure 2: </span>Volume total semanal." >}}
+
+Segue a tabela dos dados do gráfico acima:
+
 <a id="table--volumes"></a>
 
 | # Semana | Longão (km) | Volume Total (km) | Longão/Total (%) |
@@ -35,4 +39,4 @@ Segue um resumo dos volumes totais e longões:
 | 3        | 22          | 57.5              | 38.3             |
 | 4        | 10.7        | 44.7              | 23.9             |
 | 5        | 16          | 48                | 33.3             |
-| 6        | 24          | 56                | 42.8             |
+| 6        | 24          | 56.2              | 42.7             |
