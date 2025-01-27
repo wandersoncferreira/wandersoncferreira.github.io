@@ -22,32 +22,37 @@ como seria o ciclo pela frente.
 
 Segue um resumo dos principais pontos dessa semana:
 
+### Resumo geral
+
 -   Período: 23 até 28 de Dezembro
 -   Volume Total (Realizado / Planejado):  **41.8km**  / 35km
 -   Intensidade Total: **311 TSS**
 -   Longão: **16KM**
--   Fortalecimento:
-    -   Duas sessões com foco em aumento de força, menos repetições e mais carga
--  Corrida
-    -   As sessões de corrida foram leves do meu ponto de vista. Somente rodagens.
-    -   Treinos
-        -   Segunda - 10 km
-            -   Aquecimento: 3km no pace 5'27"/km
-            -   Repetir 6 vezes
-                -   600m forte no pace 5'02"/km
-                -   400m fraco no pace 5'50"/km
-                -   Desaquecimento: 1km no pace 5'27"/km
-        -   Terça
-            -   **7km em ritmo leve 5'30"/km  feito por conta própria**
-        -   Quarta - 8.7km
-            -   Aquecimento: 3km no pace 5'27"/km
-            -   Repetir 10 vezes
-                -   400m forte no pace 4'48"/km
-                -   100m caminhando no pace 10'00"/km
-            -   Desaquecimento: 1km no pace 5'27"/km
-        -   Sabado - 16km
-            -   16km no pace de 5'14"/km
 
+### Fortalecimento
+
+Duas sessões com foco em aumento de força, menos repetições e mais carga
+
+### Treino
+
+-   Segunda - 10 km
+    -   Aquecimento: 3km no pace 5'27"/km
+    -   Repetir 6 vezes
+        -   600m forte no pace 5'02"/km
+        -   400m fraco no pace 5'50"/km
+        -   Desaquecimento: 1km no pace 5'27"/km
+-   Terça
+    -   **7km em ritmo leve 5'30"/km  feito por conta própria**
+-   Quarta - 8.7km
+    -   Aquecimento: 3km no pace 5'27"/km
+    -   Repetir 10 vezes
+        -   400m forte no pace 4'48"/km
+        -   100m caminhando no pace 10'00"/km
+    -   Desaquecimento: 1km no pace 5'27"/km
+-   Sabado - 16km
+    -   16km no pace de 5'14"/km
+
+As sessões de corrida foram leves do meu ponto de vista. Somente rodagens.
 Algo bem importante é que não sinto nenhuma dor diferente no final dessa
 primeira semana. Apenas um incomodo nos dedos do pé direito por causa de um
 tênis novo que eu ganhei no natal e utilizei para fazer o longão.

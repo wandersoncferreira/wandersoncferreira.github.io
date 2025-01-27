@@ -12,30 +12,35 @@ Semana bem consistente e nenhuma grande novidade, nem tudo precisa ser super
 interessante. Muitas vezes é só necessário executar o que está proposto, sem
 novidades. Segue um resumo dos principais pontos dessa semana:
 
+### Resumo geral
+
 -   Período: 30 Dezembro até 04 de Janeiro 2025
 -   Volume Total (Realizado / Planejado):  **48.3km**  / 38km
 -   Intensidade Total: **300 TSS**
 -   Longão: **18km**
--   Fortalecimento:
-    -   <span class="underline">Nenhuma sessão de fortalecimento</span>
--   Corrida
-    -   Treinos:
-        -   Segunda - 10km
-            -   Aquecimento: 3km no pace 5'27"/km
-            -   Repetir 6 vezes
-                -   600m forte no pace 5'02"/km
-                -   400m fraco no pace 5'50"/km
-                -   Desaquecimento: 1km no pace 5'27"/km
-        -   Quinta - 10km
-            -   Aquecimento: 3km no pace 5'27"/km
-            -   Repetir 12 vezes
-                -   400m forte no pace 4'48"/km
-                -   100m caminhando no pace 10'00"/km
-            -   Desaquecimento: 1km no pace 5'27"/km
-        -   Sabado - 18km
-            -   18km no pace 5'14"/km
-        -   Domingo - 10.2km
-            -   **10.2km em ritmo leve 6'45"/km conta própria com o Douglas**
+
+### Fortalecimento
+
+<span class="underline">Nenhuma sessão de fortalecimento</span>
+
+### Treino
+
+-   Segunda - 10km
+    -   Aquecimento: 3km no pace 5'27"/km
+    -   Repetir 6 vezes
+        -   600m forte no pace 5'02"/km
+        -   400m fraco no pace 5'50"/km
+        -   Desaquecimento: 1km no pace 5'27"/km
+-   Quinta - 10km
+    -   Aquecimento: 3km no pace 5'27"/km
+    -   Repetir 12 vezes
+        -   400m forte no pace 4'48"/km
+        -   100m caminhando no pace 10'00"/km
+    -   Desaquecimento: 1km no pace 5'27"/km
+-   Sabado - 18km
+    -   18km no pace 5'14"/km
+-   Domingo - 10.2km
+    -   **10.2km em ritmo leve 6'45"/km conta própria com o Douglas**
 
 As sessões de corrida tiveram uma intensidade moderada, ainda estou bem focado
 em correr relaxado e com respiração controlada. 
