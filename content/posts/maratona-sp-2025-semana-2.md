@@ -8,7 +8,9 @@ series = "maratona internacional de sao paulo 2025"
 summary = "O ritmo começou a apertar um pouco. Longão em um pace bacana, não muito lento e nem rápido. Boa semana essa!"
 +++
 
-Segue um resumo dos principais pontos dessa semana:
+Semana bem consistente e nenhuma grande novidade, nem tudo precisa ser super
+interessante. Muitas vezes é só necessário executar o que está proposto, sem
+novidades. Segue um resumo dos principais pontos dessa semana:
 
 -   Período: 30 Dezembro até 04 de Janeiro 2025
 -   Volume Total (Realizado / Planejado):  **48.3km**  / 38km
@@ -17,13 +19,6 @@ Segue um resumo dos principais pontos dessa semana:
 -   Fortalecimento:
     -   <span class="underline">Nenhuma sessão de fortalecimento</span>
 -   Corrida
-    -   As sessões de corrida tiveram uma intensidade moderada, ainda estou
-        bem focado em correr relaxado e com respiração controlada. Percebi que
-        essas últimas duas semanas eu tenho ficado com mais dores nos pés do que
-        antes. Talvez o motivo seja o uso de dois tênis novos que eu ganhei,
-        Cumulus 26 da ASICS e Nitro Deviate da Puma. O longo dessa semana eu já
-        vou utilizar o meu ASICS Nimbus que me acompanhou no ultimo ciclo de meia
-        maratona e eu nunca senti desconforto nos pés.
     -   Treinos:
         -   Segunda - 10km
             -   Aquecimento: 3km no pace 5'27"/km
@@ -41,3 +36,12 @@ Segue um resumo dos principais pontos dessa semana:
             -   18km no pace 5'14"/km
         -   Domingo - 10.2km
             -   **10.2km em ritmo leve 6'45"/km conta própria com o Douglas**
+
+As sessões de corrida tiveram uma intensidade moderada, ainda estou bem focado
+em correr relaxado e com respiração controlada. 
+
+Percebi que essas últimas duas semanas eu tenho ficado com mais dores nos pés do
+que antes. Talvez o motivo seja o uso de dois tênis novos que eu ganhei, Cumulus
+26 da ASICS e Nitro Deviate da Puma. O longo dessa semana eu já vou utilizar o
+meu ASICS Nimbus que me acompanhou no ultimo ciclo de meia maratona e eu nunca
+senti desconforto nos pés.
