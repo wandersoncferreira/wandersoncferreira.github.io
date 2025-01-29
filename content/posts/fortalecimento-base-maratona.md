@@ -44,3 +44,27 @@ Alguns dos pontos que eu levei para o Carlos:
   - Panturrilha unilateral no smith com step
 
 ### Treino Dia 2
+
+- Mobilidade extensão de quadril e joelho
+- Mobilidade maior do mundo
+- Superset
+  - Prancha frontal com fitball
+  - Prancha dorsal com fitball
+  - Russian twist
+- Estabilidade isometria unilateral no bosu
+- Superset
+  - Deslocamento lateral agachado (Miniband acima dos joelhos e nos tornozelos)
+  - Abdução dec. lateral pernas estendidas
+- Superset
+  - Búlgaro com halter mão inversa
+  - Pulley frente
+- Superset
+  - Subida no banco com retrocesso
+  - Supino reto barra
+- Superset
+  - Leg Press 45 Pés Afastados
+  - Desenvolvimento Barra Reta
+- Superset
+  - Cadeira Flexora
+  - Abdominal Canivete Alternado
+- Panturrilha Sentado Máquina
