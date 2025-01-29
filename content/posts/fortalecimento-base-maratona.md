@@ -1,7 +1,7 @@
 +++
 title = "Fortalecimento durante a fase de base no ciclo maratona"
 author = ["Wanderson Ferreira"]
-date = 2025-01-29T11:28:00-03:00
+date = 2025-01-29
 tags = ["fortalecimento", "maratona"]
 draft = false
 series = "fortalecimento"

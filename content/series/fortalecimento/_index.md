@@ -1,7 +1,7 @@
 +++
 title = "fortalecimento"
 author = ["Wanderson Ferreira"]
-date = 2025-01-29T11:28:00-03:00
+date = 2025-01-29
 tags = ["fortalecimento"]
 draft = false
 summary = "Documento os diferentes tipos de treinamento de fortalecimento que eu tenho feito"
