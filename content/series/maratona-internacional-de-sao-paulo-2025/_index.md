@@ -32,7 +32,7 @@ Segue a tabela dos dados do gráfico acima:
 
 <a id="table--volumes"></a>
 
-| # Semana | Longão (km) | Volume Total (km) | Longão/Total (%) | Como Planejado? | Se sim, qual?                 |
+| # Semana | Longão (km) | Volume Total (km) | Longão/Total (%) | Como Planejado? | Comentário                    |
 |----------|-------------|-------------------|------------------|:---------------:|-------------------------------|
 | 1        | 16          | 41.8              | 38.3             | ✓               |                               |
 | 2        | 18          | 48.3              | 37.3             | ✓               |                               |
@@ -40,3 +40,5 @@ Segue a tabela dos dados do gráfico acima:
 | 4        | 10.7        | 44.7              | 23.9             | ❌              | problema intestinal no longão |
 | 5        | 16          | 48                | 33.3             | ✓               |                               |
 | 6        | 24          | 56.2              | 42.7             | ✓               |                               |
+| 7        | 18.3        | 49.1              | 37.3             | ✓               | longão no Pico do Jaraguá     |
+| 8        | 30.2        | 72.6              | 41.6             | ✓               |                               |
